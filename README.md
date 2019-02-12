@@ -36,3 +36,19 @@ $ npm start
 ```
 
 This will watch the source files for any changes and start a local development server with hot module reloading.
+
+### Checking the formatting / running the formatter
+
+(We are using Prettier as our formatter of choice. If you consider working on this project, we highly recommend setting your IDE up to automatically run prettier on code changes.)
+
+```
+$ npm run format:check
+```
+
+Checks whether all files match the project's formatting.
+
+```
+$ npm run format:write
+```
+
+Runs the formatter and makes all files match the project's formatting.
