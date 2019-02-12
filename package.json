@@ -10,19 +10,27 @@
     "url": "https://github.com/eutopia-platform/members-platform-frontend/issues"
   },
   "homepage": "https://github.com/eutopia-platform/members-platform-frontend#readme",
+  "scripts": {
+    "start": "parcel src/index.html --no-autoinstall",
+    "format:check": "prettier --check ./* ./**/*",
+    "format:write": "prettier --write ./* ./**/*",
+    "lint:check": "eslint ./src/ --ext .js,.vue",
+    "lint:write": "eslint ./src/ --ext .js,.vue --fix",
+    "format-lint:check": "npm run lint:check && npm run format:check",
+    "format-lint:write": "npm run lint:write && npm run format:write"
+  },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.5.2",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
+    "eslint": "^5.13.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-vue": "^5.1.0",
     "parcel-bundler": "^1.11.0",
+    "prettier": "^1.16.4",
     "sass": "^1.17.0",
-    "vue-template-compiler": "^2.6.6",
-    "prettier": "^1.16.4"
-  },
-  "scripts": {
-    "start": "parcel src/index.html --no-autoinstall",
-    "format:check": "prettier --check ./* ./**/*",
-    "format:write": "prettier --write ./* ./**/*"
+    "vue-template-compiler": "^2.6.6"
   },
   "dependencies": {
     "vue": "^2.6.6",
