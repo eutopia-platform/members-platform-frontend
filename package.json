@@ -1,0 +1,16 @@
+{
+  "name": "members-platform-frontend",
+  "version": "1.0.0",
+  "description": "The Frontend repository for the members platform.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eutopia-platform/members-platform-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eutopia-platform/members-platform-frontend/issues"
+  },
+  "homepage": "https://github.com/eutopia-platform/members-platform-frontend#readme",
+  "devDependencies": {
+    "parcel": "^1.11.0"
+  }
+}
