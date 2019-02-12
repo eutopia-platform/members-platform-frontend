@@ -17,6 +17,8 @@ $ npm install
 $ npm start
 ```
 
+Run `$npm run format-lint:write` after all changes.
+
 ### Install all dependencies
 
 (Make sure to have all requirements installed)
@@ -39,7 +41,7 @@ This will watch the source files for any changes and start a local development s
 
 ### Checking the formatting / running the formatter
 
-(We are using Prettier as our formatter of choice. If you consider working on this project, we highly recommend setting your IDE up to automatically run prettier on code changes.)
+(We are using Prettier as our formatter of choice. If you consider working on this project, we highly recommend setting up your IDE to automatically run prettier on code changes.)
 
 ```
 $ npm run format:check
@@ -52,3 +54,33 @@ $ npm run format:write
 ```
 
 Runs the formatter and makes all files match the project's formatting.
+
+### Running the js-linter
+
+(We are using eslint as our linter of choice. If you consider working on this project, we highly recommend setting up your IDE to integrate eslint.)
+
+```
+$ npm run lint:check
+```
+
+Checks the `.js` and `.vue` files in the src/ directory for any linter errors/warnings.
+
+```
+$ npm run lint:write
+```
+
+Checks the `.js` and `.vue` files in the src/ directory for any linter errors/warnings and fixes what it can fix by itself.
+
+### Running both the linter and the formatter
+
+```
+$ npm run format-lint:check
+```
+
+Checks for any formatting or linter errors/warnings.
+
+```
+$ npm run format-lint:write
+```
+
+Checks for any linter errors/warnings, fixes what it can and then formats all code.
