@@ -39,6 +39,15 @@ $ npm start
 
 This will watch the source files for any changes and start a local development server with hot module reloading.
 
+### Building the frontend
+
+(Make sure to have all dependencies installed)
+```
+$ npm run build
+```
+
+Bundles all the resources into a browser readable [production build](https://parceljs.org/production.html) in `dist/`.
+
 ### Checking the formatting / running the formatter
 
 (We are using Prettier as our formatter of choice. If you consider working on this project, we highly recommend setting up your IDE to automatically run prettier on code changes.)
