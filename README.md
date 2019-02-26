@@ -42,6 +42,7 @@ This will watch the source files for any changes and start a local development s
 ### Building the frontend
 
 (Make sure to have all dependencies installed)
+
 ```
 $ npm run build
 ```

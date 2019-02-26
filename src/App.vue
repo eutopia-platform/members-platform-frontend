@@ -2,8 +2,14 @@
   <div>
     <h1>Hello Eutopia!</h1>
     <p>This page was created with Vue!</p>
-    <LandingPage></LandingPage>
-    <ProjectHub></ProjectHub>
+    <button @click="showLandingPage">
+      Landing Page
+    </button>
+    <button @click="showProjectHub">
+      Project Hub
+    </button>
+    <LandingPage v-if="landingPageIsShown"></LandingPage>
+    <ProjectHub v-if="projectHubIsShown"></ProjectHub>
   </div>
 </template>
 
@@ -15,12 +21,24 @@ const App = {
   name: "App",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App!"
+      msg: "Welcome to Your Vue.js App!",
+      landingPageIsShown: true,
+      projectHubIsShown: false
     };
   },
   components: {
     LandingPage,
     ProjectHub
+  },
+  methods: {
+    showLandingPage() {
+      this.$data.landingPageIsShown = true;
+      this.$data.projectHubIsShown = false;
+    },
+    showProjectHub() {
+      this.$data.landingPageIsShown = false;
+      this.$data.projectHubIsShown = true;
+    }
   }
 };
 
