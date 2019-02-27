@@ -12,5 +12,3 @@ const ProjectHub = {
 
 export default ProjectHub;
 </script>
-
-<style lang="scss" scoped></style>

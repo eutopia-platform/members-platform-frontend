@@ -15,5 +15,3 @@ const NotFound = {
 
 export default NotFound;
 </script>
-
-<style lang="scss" scoped></style>

@@ -12,5 +12,3 @@ const LandingPage = {
 
 export default LandingPage;
 </script>
-
-<style lang="scss" scoped></style>
