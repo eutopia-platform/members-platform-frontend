@@ -1,23 +1,11 @@
 <template>
-  <div>
-    <h1>Hello Members Platform!</h1>
-    <p>This page was created with Vue!</p>
-  </div>
+  <router-view />
 </template>
 
 <script>
-export default {
-  name: "App",
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App!"
-    };
-  }
+const App = {
+  name: "App"
 };
-</script>
 
-<style lang="scss" scoped>
-h1 {
-  color: green;
-}
-</style>
+export default App;
+</script>

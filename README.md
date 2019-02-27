@@ -1,6 +1,6 @@
-# Members Platform Frontend
+# Frontend
 
-This is the frontend repository for the members platform of Eutopia.
+This is the frontend repository for Eutopia.
 
 ## Requirements
 
@@ -42,6 +42,7 @@ This will watch the source files for any changes and start a local development s
 ### Building the frontend
 
 (Make sure to have all dependencies installed)
+
 ```
 $ npm run build
 ```
@@ -93,3 +94,23 @@ $ npm run format-lint:write
 ```
 
 Checks for any linter errors/warnings, fixes what it can and then formats all code.
+
+## Component structure
+
+We are using App.vue as an empty container component for all top level pages on the project.
+
+Currently, the following top level pages exist:
+
+- Landing page
+- Project hub
+- 404 Not found
+
+These have corresponding Vue componenets found in `pages/` and corresponding routes defined in `index.js`
+
+Currently the routes are:
+
+- Landing page: `/#/`
+- Project hub: `/#/project-hub`
+- 404 Not found: `/#/anything-else`
+
+Each page can be viewed by typing in its URL.
