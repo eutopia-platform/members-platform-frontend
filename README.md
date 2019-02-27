@@ -1,4 +1,4 @@
-# Members Platform Frontend
+# Frontend
 
 This is the frontend repository for Eutopia.
 
