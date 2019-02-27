@@ -1,9 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App.vue";
-import LandingPage from "./app/LandingPage";
-import ProjectHub from "./app/ProjectHub";
-import NotFound from "./components/NotFound";
+import LandingPage from "./pages/LandingPage";
+import ProjectHub from "./pages/ProjectHub";
+import NotFound from "./pages/NotFound";
 
 Vue.use(VueRouter);
 
