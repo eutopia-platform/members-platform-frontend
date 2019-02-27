@@ -5,7 +5,6 @@
     <router-link to="/">
       Go to landing page
     </router-link>
-
   </div>
 </template>
 

@@ -5,7 +5,6 @@
     <router-link to="/project-hub">
       Go to project hub
     </router-link>
-
   </div>
 </template>
 
