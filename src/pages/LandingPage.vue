@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>Hello Landing Page!</h1>
-    <p>This page was created with Vue!</p>
+    <p>Welcome to our super awesome project!</p>
+    <router-link to="/project-hub">
+      Go to project hub
+    </router-link>
+
   </div>
 </template>
 
