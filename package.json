@@ -21,21 +21,21 @@
     "format-lint:write": "npm run lint:write && npm run format:write"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^2.5.2",
+    "@vue/component-compiler-utils": "^2.6.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^5.13.0",
-    "eslint-config-prettier": "^4.0.0",
+    "eslint": "^5.14.1",
+    "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-vue": "^5.1.0",
+    "eslint-plugin-vue": "^5.2.2",
     "parcel-bundler": "^1.11.0",
     "prettier": "^1.16.4",
-    "sass": "^1.17.0",
-    "vue-template-compiler": "^2.6.6"
+    "sass": "^1.17.2",
+    "vue-template-compiler": "^2.6.7"
   },
   "dependencies": {
-    "vue": "^2.6.6",
-    "vue-hot-reload-api": "^2.3.2",
+    "vue": "^2.6.7",
+    "vue-hot-reload-api": "^2.3.3",
     "vue-router": "^3.0.2"
   }
 }
