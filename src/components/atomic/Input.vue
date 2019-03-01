@@ -1,11 +1,13 @@
 <template>
   <div>
-    <input class="input"
-      v-bind:name="name"
-      v-bind:type="type"
-      v-bind:placeholder="placeholder"
+    <input
       v-model="value"
-      @input="onChange">
+      class="input"
+      :name="name"
+      :type="type"
+      :placeholder="placeholder"
+      @input="onChange"
+    >
   </div>
 </template>
 
@@ -13,21 +15,21 @@
 const Input = {
   name: "Input",
   props: {
-      name: String,
-      type: String,
-      placeholder: String,
+    name: String,
+    type: String,
+    placeholder: String
   },
   data: () => ({
-      value: ""
+    value: ""
   }),
   methods: {
-      onChange () {
+    onChange() {
       const data = {
         name: this.name,
         value: this.value
       };
-          this.$emit("valueChange", data);
-      }
+      this.$emit("valueChange", data);
+    }
   }
 };
 

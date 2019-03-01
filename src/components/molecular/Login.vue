@@ -1,7 +1,17 @@
 <template>
   <div>
-    <Input type="email" name="email" placeholder="Email" @valueChange="updateVal"></Input>
-    <Input type="password" name="password" placeholder="Password" @valueChange="updateVal"></Input>
+    <Input
+      type="email"
+      name="email"
+      placeholder="Email"
+      @valueChange="updateVal">
+      </Input>
+    <Input
+      type="password"
+      name="password"
+      placeholder="Password"
+      @valueChange="updateVal">
+      </Input>
     <Button @click="submit">
       Login
     </Button>
@@ -23,7 +33,7 @@ const Login = {
     password: ""
   }),
   methods: {
-    updateVal (data) {
+    updateVal(data) {
       // data == { name: value } E.g. { "email": "john.doe@vue.js" }
       // This method only works because the Input components have the same names as the variables in data
       this[data.name] = data.value;

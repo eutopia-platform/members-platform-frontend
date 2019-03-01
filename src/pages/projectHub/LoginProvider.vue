@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Login @submit="onSubmit"></Login>
+    <Login @submit="onSubmit" />
   </div>
 </template>
 
