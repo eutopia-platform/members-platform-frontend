@@ -1,8 +1,10 @@
 <template>
   <div>
-    <input type="email" name="email" v-model="email">
-    <input type="password" name="password" v-model="password">
-    <Button @click="submit">Login</Button>
+    <input type="email" v-model="email" name="email">
+    <input type="password" v-model="password" name="password">
+    <Button @click="submit">
+      Login
+    </Button>
   </div>
 </template>
 
@@ -32,4 +34,3 @@ const Login = {
 
 export default Login;
 </script>
-

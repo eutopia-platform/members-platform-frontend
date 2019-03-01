@@ -10,19 +10,12 @@
 </template>
 
 <script>
-import Button from "../components/atomic/Button";
 import LoginProvider from "./projectHub/LoginProvider";
 
 const ProjectHub = {
   name: "ProjectHub",
   components: {
-    Button,
-    Login
-  },
-  methods: {
-    onLogin(data) {
-      console.log(data);
-    }
+    LoginProvider
   }
 };
 
