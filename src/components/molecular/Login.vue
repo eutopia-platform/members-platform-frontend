@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input type="email" v-model="email" name="email">
-    <input type="password" v-model="password" name="password">
+    <Input type="email" name="email" placeholder="Email" @valueChange="updateVal"></Input>
+    <Input type="password" name="password" placeholder="Password" @valueChange="updateVal"></Input>
     <Button @click="submit">
       Login
     </Button>
@@ -10,10 +10,12 @@
 
 <script>
 import Button from "../atomic/Button";
+import Input from "../atomic/Input";
 
 const Login = {
   name: "Login",
   components: {
+    Input,
     Button
   },
   data: () => ({
@@ -21,12 +23,17 @@ const Login = {
     password: ""
   }),
   methods: {
+    updateVal (data) {
+      // data == { name: value } E.g. { "email": "john.doe@vue.js" }
+      // This method only works because the Input components have the same names as the variables in data
+      this[data.name] = data.value;
+    },
     submit() {
       const data = {
         email: this.email,
         password: this.password
       };
-      this.password = "";
+      //Currently I haven't figured out how to reset password Input.
       this.$emit("submit", data);
     }
   }
