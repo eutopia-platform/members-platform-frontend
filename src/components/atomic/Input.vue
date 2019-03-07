@@ -43,7 +43,7 @@ export default Input;
 .input {
   width: 12rem;
   background-color: $c-primary-foreground;
-  color: $c-primary;
+  color: $c-primary-intense;
   border: $border;
   border-radius: $border-radius;
   box-shadow: $shadow;

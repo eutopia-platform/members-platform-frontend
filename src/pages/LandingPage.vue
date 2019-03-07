@@ -6,7 +6,22 @@
       <Button>Go to project hub</Button>
     </router-link> -->
 
-    <!-- Slide 1 -->
+    <PageSlide>
+      <template v-slot:left>
+        <Header type="primary">I am a header </Header>
+      </template>
+      <template v-slot:right>
+        Text right
+      </template>
+    </PageSlide>
+
+
+
+
+
+
+
+    <!-- Slide 1 -
     <div class="pageslide" id="slide-1">
       <div class="slide-sec cont-sec">
         <div class="cont-wrap">
@@ -22,7 +37,7 @@
       </div>
       <div class="slide-sec img-sec"></div>
     </div>
-    <!-- Slide 2 -->
+     Slide 2 --
     <div class="pageslide" id="slide-2">
       <div class="slide-sec cont-sec">
         <div class="cont-wrap">
@@ -50,7 +65,7 @@
       </div>
       <div class="slide-sec img-sec"></div>
     </div>
-    <!-- Slide 3 -->
+    -- Slide 3 --
     <div class="pageslide" id="slide-3">
       <div class="slide-sec cont-sec">
         <div class="cont-wrap">
@@ -65,21 +80,25 @@
       </div>
       <div class="slide-sec img-sec"></div>
     </div>
-    <!-- Mail Slide -->
-    <div class="pageslide" id="slide-mail"></div>
-
+    -- Mail Slide --
+    <div class="pageslide" id="slide-mail">
+      <h2>Let's talk about your project</h2>
+      
+      <Form></Form>
+    </div>
+    -->
   </div>
 </template>
 
 <script>
-import Button from "../components/atomic/Button";
-import PageSlide from '../components/unstructured/PageSlide.vue'
+import PageSlide from "../components/atomic/PageSlide";
+import Header from "../components/atomic/Header";
 
 const LandingPage = {
   name: "LandingPage",
   components: {
-    Button: Button,
-    PageSlide: PageSlide
+    PageSlide,
+    Header
   }
 };
 
@@ -195,6 +214,10 @@ export default LandingPage;
   }
   #slide-mail {
     background-color: rgb(89, 109, 238);
+    Form {
+      position: relative;
+      top: 200em;
+    }
   }
 
 </style>
