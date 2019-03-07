@@ -1,9 +1,9 @@
 <template>
   <div class="page-slide">
-    <div class="half">
+    <div class="half half-left">
       <slot name="left"></slot>
     </div>
-    <div class="half">
+    <div class="half half-right">
       <slot name="right"></slot>
     </div>
   </div>
@@ -11,7 +11,10 @@
 
 <script>
 const PageSlide = {
-  name: "PageSlide"
+  name: "PageSlide",
+  props: {
+    imgSrcRight: String
+  }
 };
 
 export default PageSlide;
@@ -30,11 +33,20 @@ export default PageSlide;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
+    border-bottom: 1px red solid;
 
     .half {
         width: 50%;
         display: block;
         flex-grow: 1;
+    } 
+
+    .half-left {
+      padding: 5rem;
+    }
+
+    .half-right {
+      background-color: $c-primary-notsointense;
     }
 }
 

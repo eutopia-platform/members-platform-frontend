@@ -6,12 +6,23 @@
       <Button>Go to project hub</Button>
     </router-link> -->
 
-    <PageSlide>
+    <PageSlide img-src-right="../../data/img/team.svg">
       <template v-slot:left>
-        <Header type="primary">I am a header </Header>
+        <Header type="primary">
+          Helping projects succeed
+        </Header>
+        <p>
+          Project hub helps you to identify the most important aspects of your
+          project so you achieve the right goals.
+        </p>
+        <Button>
+          Request early access
+        </Button>
       </template>
       <template v-slot:right>
-        Text right
+        <div>
+          <img class="image-right" src="../../data/img/team.svg">
+        </div>
       </template>
     </PageSlide>
 
@@ -93,12 +104,14 @@
 <script>
 import PageSlide from "../components/atomic/PageSlide";
 import Header from "../components/atomic/Header";
+import Button from "../components/atomic/Button";
 
 const LandingPage = {
   name: "LandingPage",
   components: {
     PageSlide,
-    Header
+    Header,
+    Button
   }
 };
 
@@ -106,6 +119,10 @@ export default LandingPage;
 </script>
 
 <style lang="scss" scoped>
+
+  .image-right {
+    height: 100vh;
+  }
 
   $blue-light: rgb(126, 192, 250);
   $blue-dark: rgb(89, 109, 238);
