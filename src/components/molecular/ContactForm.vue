@@ -48,11 +48,10 @@ const ContactForm = {
   }),
   
   methods: {
-    onInputValueChange (payload) {
+    onInputValueChange(payload) {
       //Only works because payload has the same name as the data
-      console.log(payload.name);
       this[payload.name].value = payload.value;
-      this[payload.name].requred = payload.required;
+      this[payload.name].required = payload.required;
     },
     onSubmit () {
       const payload = {
@@ -62,6 +61,7 @@ const ContactForm = {
 
       for (var item in payload) {
         if (payload.hasOwnProperty(item)) {
+          //check if input is required and throw error
         }
       }
 
