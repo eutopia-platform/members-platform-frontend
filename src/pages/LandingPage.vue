@@ -47,9 +47,9 @@ import PageSlide from "../components/atomic/PageSlide";
 import Header from "../components/atomic/Header";
 import Button from "../components/atomic/Button";
 import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue';
-import LpWelcome from '../components/molecular/LpWelcome.vue'
-import LpVision from '../components/molecular/LpVision.vue'
-import LpContact from '../components/molecular/LpContact.vue'
+import LpWelcome from './landingPage/LpWelcome.vue'
+import LpVision from './landingPage/LpVision.vue'
+import LpContact from './landingPage/LpContact.vue'
 
 const LandingPage = {
   name: "LandingPage",
