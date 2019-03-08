@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div class="input"> -->
     <input
       v-model="value"
       class="input"
@@ -8,7 +8,7 @@
       :placeholder="placeholder"
       @input="onChange"
     >
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -41,6 +41,7 @@ export default Input;
 @import "../sharedStyles/shapes.scss";
 
 .input {
+  display: block;
   width: 12rem;
   background-color: $c-primary-foreground;
   color: $c-primary-intense;
@@ -53,10 +54,10 @@ export default Input;
   transition: box-shadow 0.2s, transform 0.2s;
   transform: translate(0, 0px);
 
-  &:hover {
-    box-shadow: $shadow-hover;
-    transform: translate(0, -1px);
-  }
+  // &:hover {
+  //   box-shadow: $shadow-hover;
+  //   transform: translate(0, -1px);
+  // }
   &:active {
     box-shadow: $shadow-active;
     transform: translate(0, 0px);

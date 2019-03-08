@@ -7,28 +7,32 @@
       1. Setup your vision
     </Header>
     <p>
-      asdf
+      Define a concrete problem and user centered vision that you, your team
+      and your customer believe in.
     </p>
     <hr/>
     <Header type="secondary">
       2. Develop a strategy
     </Header>
     <p>
-      asdf
+      Make it feasable by evaluating the risk. Understand the
+      vision/sustainability impact each potential strategy has.
     </p>
     <hr/>
     <Header type="secondary">
       3. Create your roadmap
     </Header>
     <p>
-      asdf
+      Start activity-focused initiatives, choose teams and highlight key
+      results, to achieve the right goals at the right time.
     </p>
     <hr/>
     <Header type="secondary">
       4. Execute and measure
     </Header>
     <p>
-      asdf
+      The final step to finish a vision driven product plan is to transform key
+      results into measurable metrics, hypothesis and tasks.
     </p>
   </div>
 </template>
@@ -74,6 +78,8 @@ export default LpVision
       width: 30%;
       left: 0;
       margin-left: 0;
+      margin-top: 2em;
+      margin-bottom: 2em;
       border: none;
       background-color: $c-primary-intense;
     }

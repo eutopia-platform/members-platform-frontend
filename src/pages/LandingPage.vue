@@ -22,21 +22,6 @@
     <PageSlide>
       <SplitViewHorizontal>
         <template v-slot:left>
-          <!-- <Header type="primary">
-            Vision driven project plan
-          </Header>
-          <Header type="secondary">
-            1. Setup your vision
-          </Header>
-          <Header type="secondary">
-            2. Develop a strategy
-          </Header>
-          <Header type="secondary">
-            3. Create your roadmap
-          </Header>
-          <Header type="secondary">
-            4. Execute and measure
-          </Header> -->
           <LpVision></LpVision>
         </template>
         <template v-slot:right>
@@ -45,8 +30,13 @@
       </SplitViewHorizontal>
     </PageSlide>
 
-    <PageSlide style="background-color: rgb(89, 109, 238)">
+    <PageSlide>
+      <!-- <Header type="primary">
+        Let's talk about your project
+      </Header> -->
+      <LpContact>
 
+      </LpContact>
     </PageSlide>
 
   </div>
@@ -59,6 +49,7 @@ import Button from "../components/atomic/Button";
 import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue';
 import LpWelcome from '../components/molecular/LpWelcome.vue'
 import LpVision from '../components/molecular/LpVision.vue'
+import LpContact from '../components/molecular/LpContact.vue'
 
 const LandingPage = {
   name: "LandingPage",
@@ -68,7 +59,8 @@ const LandingPage = {
     Button,
     SplitViewHorizontal,
     LpWelcome,
-    LpVision
+    LpVision,
+    LpContact
   }
 };
 
