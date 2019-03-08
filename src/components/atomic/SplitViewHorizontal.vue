@@ -20,6 +20,7 @@ export default SplitViewHorizontal;
 <style lang="scss" scoped>
 @import "../sharedStyles/colors.scss";
 @import "../sharedStyles/shapes.scss";
+@import "../sharedStyles/responsive.scss";
 
 .splitview-horizontal {
     width: 100%;
@@ -30,20 +31,45 @@ export default SplitViewHorizontal;
     box-sizing: border-box;
     border-bottom: 1px red solid;
 
+    @media screen and (max-width: $break-mobile) {
+      flex-direction: column;
+      height: 150vh;
+      height: auto;
+    }
+
     .half {
         width: 50%;
         display: block;
         flex-grow: 1;
         overflow: hidden;
         box-sizing: border-box;
+
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        @media screen and (max-width: $break-mobile) {
+          width: 100%;
+          display: block;
+          // min-height: 100vh;
+        }
     }
 
     .half-left {
       // padding: 5rem;
+      min-height: 100vh;
     }
 
     .half-right {
       background-color: $c-primary-notsointense;
+
+      @media screen and (max-width: $break-mobile) {
+        height: 50vh;
+      }
     }
 }
 </style>

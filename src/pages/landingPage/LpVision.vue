@@ -51,6 +51,7 @@ export default LpVision
 
 <style lang="scss" scoped>
   @import "../../components/sharedStyles/colors.scss";
+  @import "../../components/sharedStyles/responsive.scss";
 
   .lp-vision {
     align-content: center;
@@ -60,11 +61,13 @@ export default LpVision
     padding: 2em;
     padding-left: 3em;
     top: 50%;
-    transform: translateY(-50%);
-    position: relative;
+
+    @media screen and(min-width: $break-mobile + 1px) {
+      transform: translateY(-50%);
+      position: relative;
+    }
 
     .header-primary {
-      // margin-top: 1em;
       margin-bottom: 1.5em;
     }
 

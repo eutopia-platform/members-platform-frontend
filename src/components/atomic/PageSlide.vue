@@ -1,7 +1,6 @@
 <template>
   <div class="page-slide">
-    <slot></slot>
-  </div>
+  <slot></slot>
 </template>
 
 <script>
@@ -15,10 +14,16 @@ export default PageSlide;
 <style lang="scss" scoped>
 @import "../sharedStyles/colors.scss";
 @import "../sharedStyles/shapes.scss";
+@import "../sharedStyles/responsive.scss";
 
 .page-slide {
     width: 100%;
     height: 100vh;
-    // overflow: hidden;
+    overflow: hidden;
+
+    @media screen and (max-width: $break-mobile) {
+      // height: 150vh;
+      height: auto;
+    }
 }
 </style>
