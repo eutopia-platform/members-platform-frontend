@@ -35,7 +35,7 @@ export default LpWelcome
     box-sizing: border-box;
     padding: 1em;
     text-align: center;
-    top: 50%;
+    top: 50vh;
     transform: translateY(-50%);
     position: relative;
 
