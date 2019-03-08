@@ -36,7 +36,7 @@ const ContactForm = {
     Input,
     Button
   },
-  data: {
+  data: () => ({
     name: {
       value: "",
       required: false
@@ -45,12 +45,12 @@ const ContactForm = {
       value: "",
       required: false
     }
-  },
+  }),
   
   methods: {
     onInputValueChange (payload) {
       //Only works because payload has the same name as the data
-      console.log(this);
+      console.log(payload.name);
       this[payload.name].value = payload.value;
       this[payload.name].requred = payload.required;
     },
