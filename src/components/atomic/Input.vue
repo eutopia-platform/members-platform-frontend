@@ -15,20 +15,34 @@
 const Input = {
   name: "Input",
   props: {
-    name: String,
-    type: String,
-    placeholder: String
+    name: {
+      default: "",
+      type: String
+    },
+    placeholder: {
+      default: "",
+      type: String
+    },
+    required: {
+      default: false,
+      type: Boolean
+    },
+    type: {
+      default: "text",
+      type: String
+    }
   },
   data: () => ({
     value: ""
   }),
   methods: {
     onChange() {
-      const data = {
+      const payload = {
         name: this.name,
-        value: this.value
+        value: this.value,
+        required: this.required
       };
-      this.$emit("valueChange", data);
+      this.$emit("valueChange", payload);
     }
   }
 };
@@ -42,7 +56,7 @@ export default Input;
 
 .input {
   display: block;
-  width: 12rem;
+  width: 100%;
   background-color: $c-primary-foreground;
   color: $c-primary-intense;
   border: $border;

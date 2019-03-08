@@ -3,10 +3,22 @@
     <!-- <p>
       Hello
     </p> -->
-    <Input placeholder="Name (required)"></Input>
-    <Input placeholder="Email (required)"></Input>
-    <Input placeholder="Subject (required)"></Input>
-    <Input placeholder="Message (required)"></Input>
+    <div class="center">
+      <Input
+        @valueChange="onInputValueChange"
+        placeholder="Name (optional)"
+        name="name"
+      ></Input>
+      <Input
+        @valueChange="onInputValueChange"
+        placeholder="Email (required)"
+        name="email"
+        v-bind:required="true"
+      ></Input>
+    </div>
+    <Button @click="onSubmit">
+      Submit
+    </Button>
     <!-- <input type="text" name="" value="">
     <input type="text" name="" value="">
     <input type="text" name="" value="">
@@ -16,20 +28,65 @@
 
 <script>
 import Input from "../atomic/Input.vue"
+import Button from "../atomic/Button.vue"
+
 const ContactForm = {
   name: "ContactForm",
   components: {
-    Input
+    Input,
+    Button
+  },
+  data: {
+    name: {
+      value: "",
+      required: false
+    },
+    email: {
+      value: "",
+      required: false
+    }
+  },
+  
+  methods: {
+    onInputValueChange (payload) {
+      //Only works because payload has the same name as the data
+      console.log(this);
+      this[payload.name].value = payload.value;
+      this[payload.name].requred = payload.required;
+    },
+    onSubmit () {
+      const payload = {
+        name: this.name,
+        email: this.email
+      };
+
+      for (var item in payload) {
+        if (payload.hasOwnProperty(item)) {
+        }
+      }
+
+      console.log(payload);
+    }
   }
 }
 export default ContactForm;
 </script>
 
 <style lang="scss" scoped>
+  @import "../sharedStyles/colors.scss";
 
   .contact-form {
-    background-color: gray;
+    background-color: $c-primary-intense;
     display: block;
+
+  .center {
+    display: block;
+    width: 12rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
     // width: 12rem;
     // margin: auto;
   }

@@ -4,7 +4,7 @@
       Hello
     </p> -->
     <Header type="primary">
-      Let's talk about your project
+      Let's stay in touch
     </Header>
     <ContactForm>
     </ContactForm>
@@ -35,11 +35,12 @@
     height: 100%;
     margin: 0;
     background-color: $c-primary-intense;
-    text-align: center;
     padding: 3em;
+    text-align: center;
 
     .header-primary {
       color: white;
     }
+
   }
 </style>
