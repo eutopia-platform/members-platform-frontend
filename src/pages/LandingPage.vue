@@ -6,7 +6,7 @@
       <Button>Go to project hub</Button>
     </router-link> -->
 
-    <PageSlide img-src-right="../../data/img/team.svg">
+    <PageSlide>
       <template v-slot:left>
         <Header type="primary">
           Helping projects succeed
@@ -20,9 +20,21 @@
         </Button>
       </template>
       <template v-slot:right>
-        <div>
-          <img class="image-right" src="../../data/img/team.svg">
-        </div>
+        <img class="image-right" src="../../data/img/landingpage/slide1.svg">
+      </template>
+    </PageSlide>
+
+    <PageSlide>
+      <template v-slot:left></template>
+      <template v-slot:right>
+        <img class="image-right" src="../../data/img/landingpage/slide2.svg">
+      </template>
+    </PageSlide>
+
+    <PageSlide>
+      <template v-slot:left></template>
+      <template v-slot:right>
+        <img class="image-right" src="../../data/img/landingpage/slide3.svg">
       </template>
     </PageSlide>
 
@@ -94,7 +106,7 @@
     -- Mail Slide --
     <div class="pageslide" id="slide-mail">
       <h2>Let's talk about your project</h2>
-      
+
       <Form></Form>
     </div>
     -->
@@ -133,108 +145,108 @@ export default LandingPage;
     padding: 0;
   }
 
-  .pageslide {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-
-    // border-bottom: 1px rgba(100, 100, 100, 0.1) solid;
-
-    .slide-sec {
-      display: block;
-      box-sizing: border-box;
-      overflow: hidden;
-      height: 100%;
-      width: 50%;
-    }
-
-    .cont-sec {
-      background-color: white;
-      padding: 10%;
-      color: #1A1818;
-      hr {
-        width: 50%;
-        background-color: $blue-dark;
-        height: .4em;
-        border: none;
-      }
-
-      .cont-wrap {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      h1 {
-        text-align: center;
-        font-size: 2.2em;
-      }
-    }
-
-    .img-sec {
-      background-color: $blue-light;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-  }
-
-  #slide-1 {
-    .cont-sec {
-      p {
-        font-size: 1em;
-      }
-      button {
-        border: none;
-        border-radius: 1em;
-        background-color: $blue-dark;
-        padding: 0.75rem;
-        cursor: pointer;
-        outline: none;
-        transition: box-shadow 0.2s, transform 0.2s;
-        transform: translate(0, 0px);
-        color: white;
-        left: 50%;
-        position: relative;
-        margin-top: 1em;
-        transform: translateX(-50%);
-      }
-    }
-    .img-sec {
-      background-image: url("../../data/img/team.svg");
-    }
-  }
-  #slide-2 {
-    .cont-sec {
-
-    }
-    .img-sec {
-      background-image: url("../../data/img/team2.svg");
-    }
-  }
-  #slide-3 {
-    .cont-sec {
-      .quote-wrap {
-        background-color: grey;
-        width: 100%;
-        height: 20vh;
-        display: block;
-        margin-bottom: 1em;
-      }
-    }
-    .img-sec {
-      background-image: url("../../data/img/team3.svg");
-    }
-  }
-  #slide-mail {
-    background-color: rgb(89, 109, 238);
-    Form {
-      position: relative;
-      top: 200em;
-    }
-  }
+  // .pageslide {
+  //   width: 100%;
+  //   height: 100vh;
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-around;
+  //   box-sizing: border-box;
+  //   font-family: 'Roboto', sans-serif;
+  //   font-size: 16px;
+  //
+  //   // border-bottom: 1px rgba(100, 100, 100, 0.1) solid;
+  //
+  //   .slide-sec {
+  //     display: block;
+  //     box-sizing: border-box;
+  //     overflow: hidden;
+  //     height: 100%;
+  //     width: 50%;
+  //   }
+  //
+  //   .cont-sec {
+  //     background-color: white;
+  //     padding: 10%;
+  //     color: #1A1818;
+  //     hr {
+  //       width: 50%;
+  //       background-color: $blue-dark;
+  //       height: .4em;
+  //       border: none;
+  //     }
+  //
+  //     .cont-wrap {
+  //       position: relative;
+  //       top: 50%;
+  //       transform: translateY(-50%);
+  //     }
+  //     h1 {
+  //       text-align: center;
+  //       font-size: 2.2em;
+  //     }
+  //   }
+  //
+  //   .img-sec {
+  //     background-color: $blue-light;
+  //     background-size: contain;
+  //     background-repeat: no-repeat;
+  //   }
+  // }
+  //
+  // #slide-1 {
+  //   .cont-sec {
+  //     p {
+  //       font-size: 1em;
+  //     }
+  //     button {
+  //       border: none;
+  //       border-radius: 1em;
+  //       background-color: $blue-dark;
+  //       padding: 0.75rem;
+  //       cursor: pointer;
+  //       outline: none;
+  //       transition: box-shadow 0.2s, transform 0.2s;
+  //       transform: translate(0, 0px);
+  //       color: white;
+  //       left: 50%;
+  //       position: relative;
+  //       margin-top: 1em;
+  //       transform: translateX(-50%);
+  //     }
+  //   }
+  //   .img-sec {
+  //     // background-image: url("../../data/img/team.svg");
+  //   }
+  // }
+  // #slide-2 {
+  //   .cont-sec {
+  //
+  //   }
+  //   .img-sec {
+  //     // background-image: url("../../data/img/team2.svg");
+  //   }
+  // }
+  // #slide-3 {
+  //   .cont-sec {
+  //     .quote-wrap {
+  //       background-color: grey;
+  //       width: 100%;
+  //       height: 20vh;
+  //       display: block;
+  //       margin-bottom: 1em;
+  //     }
+  //   }
+  //   .img-sec {
+  //     // background-image: url("../../data/img/team3.svg");
+  //   }
+  // }
+  // #slide-mail {
+  //   background-color: rgb(89, 109, 238);
+  //   Form {
+  //     position: relative;
+  //     top: 200em;
+  //   }
+  // }
 
 </style>

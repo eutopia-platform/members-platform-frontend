@@ -11,10 +11,7 @@
 
 <script>
 const PageSlide = {
-  name: "PageSlide",
-  props: {
-    imgSrcRight: String
-  }
+  name: "PageSlide"
 };
 
 export default PageSlide;
