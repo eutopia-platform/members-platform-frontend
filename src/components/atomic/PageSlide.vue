@@ -39,7 +39,9 @@ export default PageSlide;
         width: 50%;
         display: block;
         flex-grow: 1;
-    } 
+        overflow: hidden;
+        box-sizing: border-box;
+    }
 
     .half-left {
       padding: 5rem;
