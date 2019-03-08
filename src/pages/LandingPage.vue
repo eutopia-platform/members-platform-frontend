@@ -10,16 +10,7 @@
       <template v-slot>
         <SplitViewHorizontal>
           <template v-slot:left>
-            <Header type="primary">
-              Helping projects succeed
-            </Header>
-            <p>
-              Project hub helps you to identify the most important aspects of your
-              project so you achieve the right goals.
-            </p>
-            <Button>
-              Request early access
-            </Button>
+            <LpWelcome></LpWelcome>
           </template>
           <template v-slot:right>
             <img class="image-right" src="../../data/img/landingpage/slide1.svg">
@@ -31,9 +22,22 @@
     <PageSlide>
       <SplitViewHorizontal>
         <template v-slot:left>
-          <Header type="primary">
+          <!-- <Header type="primary">
             Vision driven project plan
           </Header>
+          <Header type="secondary">
+            1. Setup your vision
+          </Header>
+          <Header type="secondary">
+            2. Develop a strategy
+          </Header>
+          <Header type="secondary">
+            3. Create your roadmap
+          </Header>
+          <Header type="secondary">
+            4. Execute and measure
+          </Header> -->
+          <LpVision></LpVision>
         </template>
         <template v-slot:right>
           <img class="image-right" src="../../data/img/landingpage/slide2.svg">
@@ -42,6 +46,7 @@
     </PageSlide>
 
     <PageSlide style="background-color: rgb(89, 109, 238)">
+
     </PageSlide>
 
   </div>
@@ -51,7 +56,9 @@
 import PageSlide from "../components/atomic/PageSlide";
 import Header from "../components/atomic/Header";
 import Button from "../components/atomic/Button";
-import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue'
+import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue';
+import LpWelcome from '../components/molecular/LpWelcome.vue'
+import LpVision from '../components/molecular/LpVision.vue'
 
 const LandingPage = {
   name: "LandingPage",
@@ -59,7 +66,9 @@ const LandingPage = {
     PageSlide,
     Header,
     Button,
-    SplitViewHorizontal
+    SplitViewHorizontal,
+    LpWelcome,
+    LpVision
   }
 };
 
@@ -71,9 +80,6 @@ export default LandingPage;
   .image-right {
     height: 100vh;
   }
-
-  $blue-light: rgb(126, 192, 250);
-  $blue-dark: rgb(89, 109, 238);
 
   .landing-page {
     width: 100%;

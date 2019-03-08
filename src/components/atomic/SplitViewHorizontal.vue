@@ -39,12 +39,11 @@ export default SplitViewHorizontal;
     }
 
     .half-left {
-      padding: 5rem;
+      // padding: 5rem;
     }
 
     .half-right {
       background-color: $c-primary-notsointense;
     }
 }
-
 </style>
