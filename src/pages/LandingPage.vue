@@ -31,13 +31,10 @@
     </PageSlide>
 
     <PageSlide>
-      <!-- <Header type="primary">
-        Let's talk about your project
-      </Header> -->
-      <LpContact>
-
-      </LpContact>
+      <LpContact></LpContact>
     </PageSlide>
+
+    <LpFooter></LpFooter>
 
   </div>
 </template>
@@ -50,6 +47,7 @@ import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue';
 import LpWelcome from './landingPage/LpWelcome.vue'
 import LpVision from './landingPage/LpVision.vue'
 import LpContact from './landingPage/LpContact.vue'
+import LpFooter from './landingPage/LpFooter.vue'
 
 const LandingPage = {
   name: "LandingPage",
@@ -60,7 +58,8 @@ const LandingPage = {
     SplitViewHorizontal,
     LpWelcome,
     LpVision,
-    LpContact
+    LpContact,
+    LpFooter
   }
 };
 

@@ -4,22 +4,21 @@
       Hello
     </p> -->
     <Header type="primary">
-      Let's stay in touch
+      Want more successful projects?
     </Header>
-    <ContactForm>
-    </ContactForm>
+    <EmailSignup></EmailSignup>
   </div>
 </template>
 
 <script>
   import Header from '../../components/atomic/Header.vue';
-  import ContactForm from '../../components/molecular/ContactForm.vue'
+  import EmailSignup from '../../components/molecular/EmailSignup.vue'
 
   const LpContact = {
     name: "LpContact",
     components: {
       Header,
-      ContactForm
+      EmailSignup
     }
   }
   export default LpContact

@@ -30,8 +30,8 @@
 import Input from "../atomic/Input.vue"
 import Button from "../atomic/Button.vue"
 
-const ContactForm = {
-  name: "ContactForm",
+const EmailSignup = {
+  name: "EmailSignup",
   components: {
     Input,
     Button
@@ -46,7 +46,7 @@ const ContactForm = {
       required: false
     }
   }),
-  
+
   methods: {
     onInputValueChange(payload) {
       //Only works because payload has the same name as the data
@@ -58,18 +58,10 @@ const ContactForm = {
         name: this.name,
         email: this.email
       };
-
-      for (var item in payload) {
-        if (payload.hasOwnProperty(item)) {
-          //check if input is required and throw error
-        }
-      }
-
-      console.log(payload);
     }
   }
 }
-export default ContactForm;
+export default EmailSignup;
 </script>
 
 <style lang="scss" scoped>

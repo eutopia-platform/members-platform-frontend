@@ -7,8 +7,8 @@
       Project hub helps you to identify the most important aspects of your
       project so you achieve the right goals.
     </p>
-    <Button>
-      Request early access
+    <Button type="request">
+      Request Access
     </Button>
   </div>
 </template>
