@@ -18,11 +18,10 @@ export default PageSlide;
 
 .page-slide {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
 
     @media screen and (max-width: $break-mobile) {
-      // height: 150vh;
       height: auto;
     }
 }
