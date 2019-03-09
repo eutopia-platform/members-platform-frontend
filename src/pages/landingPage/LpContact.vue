@@ -3,10 +3,15 @@
     <!-- <p>
       Hello
     </p> -->
-    <Header type="primary">
-      Want more successful projects?
-    </Header>
-    <EmailSignup></EmailSignup>
+    <div class="mail-wrap">
+      <Header type="primary">
+        Want more successful projects?
+      </Header>
+      <Header type="secondary">
+        Get access as soon as we release our product.
+      </Header>
+      <EmailSignup></EmailSignup>
+    </div>
   </div>
 </template>
 
@@ -31,15 +36,26 @@
     box-sizing: border-box;
     display: block;
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     background-color: $c-primary-intense;
     padding: 3em;
     text-align: center;
 
-    .header-primary {
-      color: white;
+    .mail-wrap {
+      position: relative;
+      display: block;
+      top: 50%;
+      transform: translateY(-50%);
+
+      .header {
+        color: white;
+        margin-bottom: 1em;
+      }
+
+      .header-secondary {
+        margin-bottom: 2em;
+      }
     }
 
   }

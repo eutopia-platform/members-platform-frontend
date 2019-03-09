@@ -3,13 +3,13 @@
     <!-- <p>
       Hello
     </p> -->
-    <div class="center">
-      <Input
+    <!-- <div class="center"> -->
+      <!-- <Input
         @valueChange="onInputValueChange"
         placeholder="Name (optional)"
         name="name"
-      ></Input>
-      <Input
+      ></Input> -->
+      <!-- <Input
         @valueChange="onInputValueChange"
         placeholder="Email (required)"
         name="email"
@@ -18,11 +18,20 @@
     </div>
     <Button @click="onSubmit">
       Submit
-    </Button>
-    <!-- <input type="text" name="" value="">
-    <input type="text" name="" value="">
-    <input type="text" name="" value="">
-    <input type="text" name="" value=""> -->
+    </Button> -->
+
+    <div class="input-wrap">
+      <Input
+        @valueChange="onInputValueChange"
+        placeholder="Email (required)"
+        name="email"
+        v-bind:required="true"
+      ></Input>
+      <Button>
+        Sign up
+      </Button>
+    </div>
+
   </div>
 </template>
 
@@ -37,10 +46,6 @@ const EmailSignup = {
     Button
   },
   data: () => ({
-    name: {
-      value: "",
-      required: false
-    },
     email: {
       value: "",
       required: false
@@ -55,7 +60,6 @@ const EmailSignup = {
     },
     onSubmit () {
       const payload = {
-        name: this.name,
         email: this.email
       };
     }
@@ -71,13 +75,33 @@ export default EmailSignup;
     background-color: $c-primary-intense;
     display: block;
 
-  .center {
-    display: block;
-    width: 12rem;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+    width: 20em;
+    margin: auto;
+
+    .input-wrap {
+      display: flex;
+      flex-direction: row;
+
+      input {
+        color: black;
+        
+        &::placeholder {
+          color: $c-primary-notsointense;
+        }
+      }
+
+      button {
+        width: 7em;
+      }
+    }
+
+  // .center {
+  //   display: block;
+  //   width: 12rem;
+  //   position: relative;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  // }
 
     // width: 12rem;
     // margin: auto;
