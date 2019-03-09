@@ -44,7 +44,9 @@ const ContactForm = {
     email: {
       value: "",
       required: false
-    }
+    },
+    postDebug: true,
+    postQuery: '{ "query": "{ queryTest }" }'
   }),
   
   methods: {
@@ -52,6 +54,14 @@ const ContactForm = {
       //Only works because payload has the same name as the data
       this[payload.name].value = payload.value;
       this[payload.name].required = payload.required;
+    },
+    testGraphql () {
+      console.log("is calling func");
+      this.ajaxRequest = true;
+      this.$http.post(
+        'http://127.0.0.1:5000/api',
+        this.postQuery
+      ).then(result => console.log(result.data));
     },
     onSubmit () {
       const payload = {
@@ -66,6 +76,7 @@ const ContactForm = {
       }
 
       console.log(payload);
+      this.testGraphql();
     }
   }
 }
