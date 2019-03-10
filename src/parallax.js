@@ -17,7 +17,7 @@ function init() {
 
   console.log('init parallax', images)
 
-  window.addEventListener('scroll', positionImages)
+  window.onscroll = positionImages
 
   function positionImages() {
     images.each(i => {

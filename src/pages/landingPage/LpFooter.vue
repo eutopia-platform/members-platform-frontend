@@ -3,12 +3,9 @@
     <p>
       &copy; 2019 Projectpad
     </p>
-    <p>
-      Imprint
-    </p>
-    <p>
-      Terms of Service
-    </p>
+    <router-link to="/privacy">
+      Privacy Policy
+    </router-link>
   </div>
 </template>
 
@@ -29,19 +26,18 @@
     width: 100%;
     height: 100px;
     background-color: $c-primary-really-intense;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
     width: 100%;
     padding-left: 2em;
     padding-right: 2em;
 
-    p {
+    p, a {
+      text-decoration: none;
+      margin: 1em;
+      margin-top: 0;
       color: white;
       float: left;
-      flex-grow: 1;
       text-align: center;
+      line-height: 100px;
     }
   }
 </style>
