@@ -1,5 +1,15 @@
 <template>
-  <EmailSignup @mySubmit="onSubmit"></EmailSignup>
+  <div>
+    <EmailSignup @mySubmit="onSubmit"></EmailSignup>
+    <div
+      class="graphql-response-div"
+      v-html="graphqlResponse.message"
+      v-bind:class="{
+        success: this.graphqlResponse.successful,
+        error: this.graphqlResponse.unsuccessful
+      }"
+    ></div>
+  </div>
 </template>
 
 <script>
@@ -59,3 +69,20 @@ const EmailSignupProvider = {
 
 export default EmailSignupProvider;
 </script>
+
+<style lang="scss" scoped>
+  @import "../../../components/sharedStyles/colors.scss";
+
+.graphql-response-div {
+  margin-top: 1rem;
+}
+
+.success {
+  color: $c-success;
+}
+
+.error {
+  color: $c-error;
+}
+
+</style>
