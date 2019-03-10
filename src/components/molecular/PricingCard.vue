@@ -45,7 +45,7 @@ export default PricingCard
 .pricing-card {
 
   width: 18em;
-  height: 32em;
+  height: 33em;
   margin: 1em;
   text-align: center;
   box-sizing: border-box;
@@ -73,6 +73,7 @@ export default PricingCard
   }
 
   .title {
+    margin-top: 1.5em;
     color: $c-primary-notsointense;
   }
 

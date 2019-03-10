@@ -1,11 +1,11 @@
 <template>
   <div class="lp-welcome">
     <Header type="primary">
-      Toolkits for teams and startups.
+      Proven frameworks to scale your projects.
     </Header>
     <p>
-      Clarity for your projects, so your teams achieve the right goals, at all
-      times.
+      Tools for you and your teams, so you achieve the right goals, over and
+      over again.
     </p>
     <Button type="request">
       Request Access
@@ -46,7 +46,10 @@ export default LpWelcome
     }
 
     .button {
-      margin-top: 1rem;
+      margin-top: 1.5em;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
   }

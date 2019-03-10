@@ -1,10 +1,11 @@
 <template>
   <div class="lp-vision">
     <Header type="primary">
-      Vision driven project plan
+      A toolkit for every aspect of your project.
     </Header>
     <Header type="secondary">
-      1. Setup your vision
+      <img class="image-right" src="../../../data/img/landingpage/step1.svg">
+      Setup your vision
     </Header>
     <p>
       Define a concrete problem and user centered vision that you, your team
@@ -12,7 +13,8 @@
     </p>
     <hr/>
     <Header type="secondary">
-      2. Develop a strategy
+      <img class="image-right" src="../../../data/img/landingpage/step2.svg">
+      Develop your strategy
     </Header>
     <p>
       Make it feasable by evaluating the risk. Understand the
@@ -20,19 +22,21 @@
     </p>
     <hr/>
     <Header type="secondary">
-      3. Create your roadmap
+      <img class="image-right" src="../../../data/img/landingpage/step3.svg">
+      Define your roadmap
     </Header>
     <p>
-      Start activity-focused initiatives, choose teams and highlight key
-      results, to achieve the right goals at the right time.
+      Define the road of activity-focused initiatives, choose teams and
+      highlight key results, so you know how to achieve your vision.
     </p>
     <hr/>
     <Header type="secondary">
-      4. Execute and measure
+      <img class="image-right" src="../../../data/img/landingpage/step4.svg">
+      Measure and execute
     </Header>
     <p>
-      The final step to finish a vision driven product plan is to transform key
-      results into measurable metrics, hypothesis and tasks.
+      Set SMART goals and turn objective key results into measurable, actionable
+      steps so you achieve more important goals.
     </p>
   </div>
 </template>

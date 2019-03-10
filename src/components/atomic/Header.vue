@@ -27,6 +27,13 @@ export default Header;
 .header {
   padding: 0;
   font-size: 1rem;
+
+  img {
+    height: 1.5em;
+    transform: translateY(.25em);
+    margin-right: .5em;
+    display: inline-block;
+  }
 }
 
 .header-primary {

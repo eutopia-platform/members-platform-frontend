@@ -13,6 +13,8 @@ const slide_state = {
   in_scroll: false
 }
 
+onScrollStop(() => slide_state.in_scroll = false)
+
 function onScrollStop(callback) {
   if (!callback || typeof callback !== 'function') return
   let isScrolling
@@ -34,8 +36,6 @@ function scrollTo(target, callback = () => {}) {
     })
 }
 
-onScrollStop(() => slide_state.in_scroll = false)
-
 function handleWheel(e) {
   if (e.deltaY == 0)
     slide_state.in_scroll = false
@@ -47,10 +47,11 @@ function handleWheel(e) {
     return
   }
   // find slide that is currently scrolled over
-  const slide_top = slides.find(slide => window.pageYOffset > slide.offsetTop &&
-    window.pageYOffset < slide.offsetTop + slide.offsetHeight)
-  const slide_bottom = slides.find(slide => window.pageYOffset + window.innerHeight > slide.offsetTop &&
-    window.pageYOffset + window.innerHeight < slide.offsetTop + slide.offsetHeight)
+  const off = 5
+  const slide_top = slides.find(slide => window.pageYOffset > slide.offsetTop + off &&
+    window.pageYOffset < slide.offsetTop + slide.offsetHeight - off)
+  const slide_bottom = slides.find(slide => window.pageYOffset + window.innerHeight > slide.offsetTop + off &&
+    window.pageYOffset + window.innerHeight < slide.offsetTop + slide.offsetHeight - off)
 
   if (e.deltaY > 0 ? !slide_bottom : !slide_top) return // not scrolling over any slide
   if (slide_top == slide_bottom) return // scrolling inside slide
@@ -58,5 +59,5 @@ function handleWheel(e) {
   const target = e.deltaY > 0 ? slide_bottom.offsetTop :
     slide_top.offsetTop + slide_top.offsetHeight - window.innerHeight
   slide_state.in_scroll = true
-  scrollTo(target, () => {console.log('anim done')})
+  scrollTo(target)
 }
