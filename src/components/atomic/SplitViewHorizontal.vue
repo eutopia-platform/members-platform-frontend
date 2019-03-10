@@ -29,7 +29,7 @@ export default SplitViewHorizontal;
     flex-direction: row;
     justify-content: space-around;
     box-sizing: border-box;
-    border-bottom: 1px red solid;
+    // border-bottom: 1px red solid;
 
     @media screen and (max-width: $break-mobile) {
       flex-direction: column;
@@ -49,7 +49,8 @@ export default SplitViewHorizontal;
           max-height: 100%;
           position: relative;
           left: 50%;
-          transform: translateX(-50%);
+          top: 50%;
+          transform: translateX(-50%) translateY(-50%);
         }
 
         @media screen and (max-width: $break-mobile) {

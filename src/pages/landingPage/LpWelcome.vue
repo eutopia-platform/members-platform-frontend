@@ -38,6 +38,7 @@ export default LpWelcome
     top: 50vh;
     transform: translateY(-50%);
     position: relative;
+    margin-bottom: 5em;
 
     p {
       font-size: 1.2rem;

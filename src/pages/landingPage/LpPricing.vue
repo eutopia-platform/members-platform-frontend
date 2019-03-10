@@ -54,6 +54,8 @@ export default LpPricing
   padding-left: 1em;
   padding-right: 1em;
   padding-bottom: 1em;
+  margin-top: 3em;
+  margin-bottom: 5em;
 
   .header {
     height: 1.5em;

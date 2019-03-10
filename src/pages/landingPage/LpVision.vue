@@ -64,6 +64,8 @@ export default LpVision
     box-sizing: border-box;
     padding: 2em;
     padding-left: 3em;
+    margin-top: 3em;
+    margin-bottom: 5em;
 
     @media screen and(min-width: $break-mobile + 1px) {
       // transform: translateY(-50%);
