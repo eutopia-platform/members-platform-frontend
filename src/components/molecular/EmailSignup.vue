@@ -54,7 +54,6 @@ const EmailSignup = {
     onInputValueChange(payload) {
       //Only works because payload has the same name as the data
       this[payload.name].value = payload.value;
-      this[payload.name].required = payload.required;
     },
     onSubmit () {
       const payload = {
