@@ -337,7 +337,7 @@ const Privacy = {
 export default Privacy
 </script>
 
-<style type="text/css">
+<style type="text/css" scoped>
   .privacy-wrap {
     padding: 4em;
   }
