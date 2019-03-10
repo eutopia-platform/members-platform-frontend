@@ -63,8 +63,7 @@ export default Button;
 
 .bt-pc-request {
   height: 3em;
-  width: calc(100% + 2em);
-  margin-left: -1em;
+  width: 100%;
   border-radius: 0;
   padding-left: 3em;
   padding-right: 3em;

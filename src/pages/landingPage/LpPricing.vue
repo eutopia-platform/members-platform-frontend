@@ -1,20 +1,30 @@
 <template>
-  <div class="lp-welcome">
+  <div class="lp-pricing">
     <Header type="primary">
       Pricing options
     </Header>
-    <!-- <div class="pricing-card">
-      <Header type="quaternary" class="title">
-        Product Pad for Entrepreneurs
-      </Header>
-    </div> -->
-    <PricingCard v-bind:feats="['Project Starter-Bundle',
-      'Access to project dashboard', 'Up to 3 team members',
-      'Manage up to 3 projects', '1 mentorship session free']">
-      <template>
-      <img class="image-right" src="../../../data/img/landingpage/card1.png">
-      </template>
-    </PricingCard>
+    <div class="pricing-list">
+      <PricingCard title="Product Pad for Entrepreneurs" price="free"
+        v-bind:feats="[
+          'Project Starter-Bundle', 'Access to project dashboard',
+          'Up to 3 team members', 'Manage up to 3 projects', '1 mentorship session free'
+          ]">
+        <template>
+        <img class="image-right" src="../../../data/img/landingpage/card1.png">
+        </template>
+      </PricingCard>
+
+      <PricingCard title="Product Pad for Scaleups" price="€189 / month"
+        v-bind:feats="[
+          'Unlimited project toolkits', 'Access to project dashboard',
+          'Unlimited team members', 'Manage unlimited projects',
+          'Two mentorship sessions per month', 'Project recommendations'
+          ]">
+        <template>
+        <img class="image-right" src="../../../data/img/landingpage/card2.png">
+        </template>
+      </PricingCard>
+    </div>
   </div>
 </template>
 
@@ -36,8 +46,28 @@ export default LpPricing
 @import "../../components/sharedStyles/shapes.scss";
 @import "../../components/sharedStyles/colors.scss";
 
-.lp-welcome {
-  padding: 2em;
-  padding-left: 3em;
+.lp-pricing {
+  padding-top: 2em;
+  text-align: center;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+
+  .header {
+    height: 1.5em;
+  }
+
+  .pricing-list {
+    margin: 0;
+    min-height: calc(100vh - 8rem);
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 }
 </style>

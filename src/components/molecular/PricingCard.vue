@@ -2,12 +2,11 @@
   <div class="pricing-card">
     <div class="pc-shape">
       <Header type="quaternary" class="title">
-        Product Pad for Entrepreneurs
+        {{title}}
       </Header>
       <p class="pc-price">
-        Free
+        {{price}}
       </p>
-      <!-- <div class="pc-image"></div> -->
       <slot class="pc-image">
       </slot>
       <ul>
@@ -27,6 +26,8 @@ import Button from '../atomic/Button.vue'
 const PricingCard = {
   name: "PricingCard",
   props: {
+    title: String,
+    price: String,
     feats: Array
   },
   components: {
@@ -43,8 +44,9 @@ export default PricingCard
 
 .pricing-card {
 
-  width: 17em;
-  height: 30em;
+  width: 18em;
+  height: 32em;
+  margin: 1em;
   text-align: center;
   box-sizing: border-box;
   border-bottom-right-radius: 1.5em;
@@ -67,7 +69,7 @@ export default PricingCard
     border-bottom-right-radius: 1.5em;
     display: block;
     background-color: white;
-    padding: 1em;
+    padding: .5em;
   }
 
   .title {
@@ -80,7 +82,7 @@ export default PricingCard
   }
 
   img {
-    width: 80%;
+    height: 8em;
   }
 
   ul {
@@ -89,9 +91,20 @@ export default PricingCard
     margin-top: 1.5em;
 
     li {
-      margin: 1em;
+      margin-top: 1.1em;
+      // margin-bottom: 1em;
       color: gray;
+      font-size: 1em;
     }
+  }
+
+  button {
+    position: absolute;
+    // position: relative;
+    // top: 100%;
+    left: 0;
+    bottom: 0;
+    // transform: translateY(-100%);
   }
 }
 </style>
