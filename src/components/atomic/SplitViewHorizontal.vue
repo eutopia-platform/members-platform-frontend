@@ -55,12 +55,10 @@ export default SplitViewHorizontal;
         @media screen and (max-width: $break-mobile) {
           width: 100%;
           display: block;
-          // min-height: 100vh;
         }
     }
 
     .half-left {
-      // padding: 5rem;
       min-height: 100vh;
     }
 

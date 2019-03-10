@@ -1,5 +1,10 @@
 <template>
-  <div class="header" v-bind:class=" { 'header-primary': this.type === 'primary', 'header-secondary': this.type === 'secondary' } ">
+  <div class="header" v-bind:class=" {
+    'header-primary': this.type === 'primary',
+    'header-secondary': this.type === 'secondary',
+    'header-tertiary': this.type === 'tertiary',
+    'header-quaternary': this.type === 'quarternary'
+    } ">
     <slot></slot>
   </div>
 </template>
@@ -21,6 +26,7 @@ export default Header;
 
 .header {
   padding: 0;
+  font-size: 1rem;
 }
 
 .header-primary {
@@ -29,6 +35,14 @@ export default Header;
 
 .header-secondary {
   font-size: 1.7em;
+}
+
+.header-tertiary {
+  font-size: 1.2em;
+}
+
+.header-quaternary {
+  font-size: 1em;
 }
 
 </style>

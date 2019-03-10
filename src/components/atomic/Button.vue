@@ -1,5 +1,8 @@
 <template>
-  <button class="button v" v-bind:class="{ 'bt-request': this.type === 'request' }"
+  <button class="button v" v-bind:class="{
+    'bt-request': this.type === 'request',
+    'bt-pc-request': this.type === 'pc-request'
+    }"
 @click="onClick">
     <slot />
   </button>
@@ -56,5 +59,30 @@ export default Button;
   padding-left: 3em;
   padding-right: 3em;
   background: linear-gradient(to right, #8521BA, #5AAAFA);
+}
+
+.bt-pc-request {
+  height: 3em;
+  width: calc(100% + 2em);
+  margin-left: -1em;
+  border-radius: 0;
+  padding-left: 3em;
+  padding-right: 3em;
+  background: linear-gradient(to right, #8521BA, #5AAAFA);
+  box-shadow: none;
+
+  $bt-pc-shape: polygon(0 0, 100px 100px, 100% 100px, 100% 0);
+  shape-outside: $bt-pc-shape;
+  clip-path: $bt-pc-shape;
+  border-bottom-right-radius: 1.5em;
+
+  &:hover {
+    box-shadow: none;
+    transform: none;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
 }
 </style>
