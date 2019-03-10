@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import ProjectHub from "./pages/ProjectHub";
 import NotFound from "./pages/NotFound";
 import initPageScroll from './pageScroll.js'
+import initParallax from './parallax.js'
 
 Vue.use(VueRouter);
 
@@ -22,5 +23,6 @@ new Vue({
   el: "#app",
   router,
   render: h => h(App),
+  mounted: initParallax
   // mounted: initPageScroll
 });

@@ -51,6 +51,7 @@ export default SplitViewHorizontal;
           left: 50%;
           top: 50%;
           transform: translateX(-50%) translateY(-50%);
+          z-index: 1;
         }
 
         @media screen and (max-width: $break-mobile) {
@@ -61,6 +62,7 @@ export default SplitViewHorizontal;
 
     .half-left {
       min-height: 100vh;
+      z-index: 5;
     }
 
     .half-right {
