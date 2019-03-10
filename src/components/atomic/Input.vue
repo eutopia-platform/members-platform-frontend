@@ -35,8 +35,7 @@ const Input = {
     onChange() {
       const payload = {
         name: this.name,
-        value: this.value,
-        required: this.required
+        value: this.value
       };
       this.$emit("valueChange", payload);
     }
