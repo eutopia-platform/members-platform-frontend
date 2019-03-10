@@ -46,8 +46,7 @@ const EmailSignup = {
   },
   data: () => ({
     email: {
-      value: "",
-      required: false
+      value: ""
     }
   }),
 
