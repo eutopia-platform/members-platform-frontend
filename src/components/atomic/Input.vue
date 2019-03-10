@@ -63,14 +63,14 @@ export default Input;
   transition: box-shadow 0.2s, transform 0.2s;
   transform: translate(0, 0px);
 
-  // &:hover {
-  //   box-shadow: $shadow-hover;
-  //   transform: translate(0, -1px);
-  // }
   &:active {
     box-shadow: $shadow-active;
     transform: translate(0, 0px);
     transition-duration: 0.1s;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 </style>

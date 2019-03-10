@@ -42,7 +42,7 @@ export default Button;
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
 
-  &:hover {
+  &:hover:enabled {
     box-shadow: $shadow-hover;
     transform: translate(0, -1px);
   }
@@ -50,6 +50,9 @@ export default Button;
     box-shadow: $shadow-active;
     transform: translate(0, 0px);
     transition-duration: 0.1s;
+  }
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 

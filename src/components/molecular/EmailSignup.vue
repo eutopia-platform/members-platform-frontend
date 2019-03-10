@@ -1,33 +1,13 @@
 <template>
   <div class="contact-form">
-    <!-- <p>
-      Hello
-    </p> -->
-    <!-- <div class="center"> -->
-      <!-- <Input
-        @valueChange="onInputValueChange"
-        placeholder="Name (optional)"
-        name="name"
-      ></Input> -->
-      <!-- <Input
-        @valueChange="onInputValueChange"
-        placeholder="Email (required)"
-        name="email"
-        v-bind:required="true"
-      ></Input>
-    </div>
-    <Button @click="onSubmit">
-      Submit
-    </Button> -->
-
     <div class="input-wrap">
-      <Input
+      <Input disabled
         @valueChange="onInputValueChange"
         @keyup.enter.native="onSubmit"
         placeholder="Email"
         name="email"
       ></Input>
-      <Button @click="onSubmit">
+      <Button @click="onSubmit" disabled>
         Sign up
       </Button>
     </div>
@@ -83,7 +63,7 @@ export default EmailSignup;
 
       input {
         color: black;
-        
+
         &::placeholder {
           color: $c-primary-notsointense;
         }
