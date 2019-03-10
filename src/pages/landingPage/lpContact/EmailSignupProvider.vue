@@ -25,7 +25,7 @@ const EmailSignupProvider = {
     graphqlConnection: {
       url: "http://127.0.0.1:5000/graphql",
       mutationName: "addEmail",
-      mutationQuery: "ok"
+      mutationQuery: "ok" //add msg here when it exists
     },
     graphqlResponse: {
       successful: false,
