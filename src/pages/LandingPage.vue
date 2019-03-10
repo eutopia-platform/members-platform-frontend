@@ -1,11 +1,5 @@
 <template>
   <div class="landing-page">
-    <!-- <h1>Hello Landing Page!</h1>
-    <p>Welcome to our super awesome project!</p>
-    <router-link to="/project-hub">
-      <Button>Go to project hub</Button>
-    </router-link> -->
-
     <PageSlide>
       <template v-slot>
         <SplitViewHorizontal>
@@ -31,11 +25,21 @@
     </PageSlide>
 
     <PageSlide>
+      <SplitViewHorizontal>
+        <template v-slot:left>
+          <LpPricing></LpPricing>
+        </template>
+        <template v-slot:right>
+          <img class="image-right" src="../../data/img/landingpage/slide3.svg">
+        </template>
+      </SplitViewHorizontal>
+    </PageSlide>
+
+    <PageSlide>
       <LpContact></LpContact>
     </PageSlide>
 
     <LpFooter></LpFooter>
-
   </div>
 </template>
 
@@ -47,6 +51,7 @@ import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue';
 import LpWelcome from './landingPage/LpWelcome.vue'
 import LpVision from './landingPage/LpVision.vue'
 import LpContact from './landingPage/LpContact.vue'
+import LpPricing from './landingPage/LpPricing.vue'
 import LpFooter from './landingPage/LpFooter.vue'
 
 const LandingPage = {
@@ -59,7 +64,8 @@ const LandingPage = {
     LpWelcome,
     LpVision,
     LpContact,
-    LpFooter
+    LpFooter,
+    LpPricing
   }
 };
 
