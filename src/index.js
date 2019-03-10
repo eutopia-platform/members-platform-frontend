@@ -4,6 +4,7 @@ import App from "./App.vue";
 import LandingPage from "./pages/LandingPage";
 import ProjectHub from "./pages/ProjectHub";
 import NotFound from "./pages/NotFound";
+import initPageScroll from './pageScroll.js'
 
 Vue.use(VueRouter);
 
@@ -20,5 +21,6 @@ const router = new VueRouter({
 new Vue({
   el: "#app",
   router,
-  render: h => h(App)
+  render: h => h(App),
+  // mounted: initPageScroll
 });

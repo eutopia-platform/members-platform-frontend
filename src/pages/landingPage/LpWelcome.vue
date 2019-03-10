@@ -1,11 +1,11 @@
 <template>
   <div class="lp-welcome">
     <Header type="primary">
-      Helping projects succeed
+      Toolkits for teams and startups.
     </Header>
     <p>
-      Project hub helps you to identify the most important aspects of your
-      project so you achieve the right goals.
+      Clarity for your projects, so your teams achieve the right goals, at all
+      times.
     </p>
     <Button type="request">
       Request Access
@@ -29,19 +29,20 @@ export default LpWelcome
 
 <style lang="scss" scoped>
   .lp-welcome {
-    align-content: center;
     display: block;
     width: 100%;
     box-sizing: border-box;
     padding: 1em;
-    text-align: center;
+    padding-left: 4em;
+    padding-right: 4em;
     top: 50vh;
     transform: translateY(-50%);
     position: relative;
 
     p {
       font-size: 1.2rem;
-      margin: 2em;
+      margin-top: 2em;
+      margin-bottom: 2em;
     }
 
     .button {
