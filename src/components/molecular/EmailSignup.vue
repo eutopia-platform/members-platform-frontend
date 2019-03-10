@@ -23,9 +23,8 @@
     <div class="input-wrap">
       <Input
         @valueChange="onInputValueChange"
-        placeholder="Email (required)"
+        placeholder="Email"
         name="email"
-        v-bind:required="true"
       ></Input>
       <Button>
         Sign up

@@ -23,10 +23,6 @@ const Input = {
       default: "",
       type: String
     },
-    required: {
-      default: false,
-      type: Boolean
-    },
     type: {
       default: "text",
       type: String
