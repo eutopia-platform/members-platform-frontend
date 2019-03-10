@@ -3,7 +3,7 @@
     'bt-request': this.type === 'request',
     'bt-pc-request': this.type === 'pc-request'
     }"
-@click="onClick">
+    @click="onClick">
     <slot />
   </button>
 </template>

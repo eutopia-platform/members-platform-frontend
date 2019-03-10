@@ -4,7 +4,8 @@
       Pricing options
     </Header>
     <div class="pricing-list">
-      <PricingCard title="Product Pad for Entrepreneurs" price="free"
+      <PricingCard @request="scrollToSignup"
+        title="Product Pad for Entrepreneurs" price="free"
         v-bind:feats="[
           'Project Starter-Bundle', 'Access to project dashboard',
           'Up to 3 team members', 'Manage up to 3 projects', '1 mentorship session free'
@@ -14,7 +15,8 @@
         </template>
       </PricingCard>
 
-      <PricingCard title="Product Pad for Scaleups" price="€189 / month"
+      <PricingCard @request="scrollToSignup"
+        title="Product Pad for Scaleups" price="€189 / month"
         v-bind:feats="[
           'Unlimited project toolkits', 'Access to project dashboard',
           'Unlimited team members', 'Manage unlimited projects',
@@ -37,6 +39,16 @@ const LpPricing = {
    components: {
      Header,
      PricingCard
+   },
+   methods: {
+     scrollToSignup: function() {
+       document.getElementsByClassName('lp-contact')[0].scrollIntoView({
+         behavior: 'smooth'
+       })
+       setTimeout(() =>
+         document.getElementsByClassName('lp-contact')[0].getElementsByTagName('input')[0].focus()
+       , 1000);
+     }
    }
 }
 export default LpPricing

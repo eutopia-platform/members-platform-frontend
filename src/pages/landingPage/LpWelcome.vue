@@ -7,7 +7,7 @@
       Tools for you and your teams, so you achieve the right goals, over and
       over again.
     </p>
-    <Button type="request">
+    <Button type="request" @click="scrollToSignup">
       Request Access
     </Button>
   </div>
@@ -22,6 +22,16 @@ const LpWelcome = {
   components: {
     Header,
     Button
+  },
+  methods: {
+    scrollToSignup: function() {
+      document.getElementsByClassName('lp-contact')[0].scrollIntoView({
+        behavior: 'smooth'
+      })
+      setTimeout(() =>
+        document.getElementsByClassName('lp-contact')[0].getElementsByTagName('input')[0].focus()
+      , 1000);
+    }
   }
 }
 export default LpWelcome

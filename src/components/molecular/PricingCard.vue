@@ -14,7 +14,7 @@
           {{feat}}
         </li>
       </ul>
-      <Button class="bt-pc-request">Request Access</Button>
+      <Button class="bt-pc-request" @click="handleRequest">Request Access</Button>
     </div>
   </div>
 </template>
@@ -33,6 +33,11 @@ const PricingCard = {
   components: {
     Header,
     Button
+  },
+  methods: {
+    handleRequest() {
+      this.$emit('request')
+    }
   }
 }
 export default PricingCard
