@@ -23,10 +23,6 @@ const Input = {
       default: "",
       type: String
     },
-    required: {
-      default: false,
-      type: Boolean
-    },
     type: {
       default: "text",
       type: String
@@ -39,8 +35,7 @@ const Input = {
     onChange() {
       const payload = {
         name: this.name,
-        value: this.value,
-        required: this.required
+        value: this.value
       };
       this.$emit("valueChange", payload);
     }

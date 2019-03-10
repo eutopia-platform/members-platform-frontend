@@ -23,11 +23,11 @@
     <div class="input-wrap">
       <Input
         @valueChange="onInputValueChange"
-        placeholder="Email (required)"
+        @keyup.enter.native="onSubmit"
+        placeholder="Email"
         name="email"
-        v-bind:required="true"
       ></Input>
-      <Button>
+      <Button @click="onSubmit">
         Sign up
       </Button>
     </div>
@@ -47,8 +47,7 @@ const EmailSignup = {
   },
   data: () => ({
     email: {
-      value: "",
-      required: false
+      value: ""
     }
   }),
 
@@ -56,12 +55,12 @@ const EmailSignup = {
     onInputValueChange(payload) {
       //Only works because payload has the same name as the data
       this[payload.name].value = payload.value;
-      this[payload.name].required = payload.required;
     },
     onSubmit () {
       const payload = {
         email: this.email
       };
+      this.$emit("mySubmit", payload);
     }
   }
 }
