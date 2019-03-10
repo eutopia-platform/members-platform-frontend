@@ -23,9 +23,9 @@ const EmailSignupProvider = {
   data: () => ({
     email: "",
     graphqlConnection: {
-      url: "http://127.0.0.1:5000/api",
-      mutationName: "registerUser",
-      mutationQuery: "ok, msg"
+      url: "http://127.0.0.1:5000/graphql",
+      mutationName: "addEmail",
+      mutationQuery: "ok"
     },
     graphqlResponse: {
       successful: false,
@@ -41,7 +41,7 @@ const EmailSignupProvider = {
       if (payload.ok) {
         this.graphqlResponse.message = "Success!"
       } else {
-        this.graphqlResponse.message = "Error. " + payload.msg;
+        this.graphqlResponse.message = "Error. "/* + payload.msg*/;
       }
     },
     onSubmit (payload) {
@@ -54,7 +54,7 @@ const EmailSignupProvider = {
         + this.graphqlConnection.mutationName
         + '(email: \\"'
         + email
-        + '\\", callName: \\"\\", fullName: \\"\\", password: \\"\\") { ' //delete this once the query doesn't need it any longer
+        + '\\") { '
         + this.graphqlConnection.mutationQuery
         + ' } }"}';
 
@@ -62,7 +62,7 @@ const EmailSignupProvider = {
       this.$http.post(
         this.graphqlConnection.url,
         graphqlQueryString
-      ).then(result => this.handleResponce(result.data.data.registerUser));
+      ).then(result => this.handleResponce(result.data.data[this.graphqlConnection.mutationName]));
     }
   }
 }
