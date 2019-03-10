@@ -23,10 +23,11 @@
     <div class="input-wrap">
       <Input
         @valueChange="onInputValueChange"
+        @keyup.enter.native="onSubmit"
         placeholder="Email"
         name="email"
       ></Input>
-      <Button>
+      <Button @click="onSubmit">
         Sign up
       </Button>
     </div>
@@ -59,6 +60,7 @@ const EmailSignup = {
       const payload = {
         email: this.email
       };
+      this.$emit("mySubmit", payload);
     }
   }
 }

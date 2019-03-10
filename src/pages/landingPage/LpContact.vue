@@ -10,20 +10,20 @@
       <Header type="secondary">
         Get access as soon as we release our product.
       </Header>
-      <EmailSignup></EmailSignup>
+      <EmailSignupProvider></EmailSignupProvider>
     </div>
   </div>
 </template>
 
 <script>
   import Header from '../../components/atomic/Header.vue';
-  import EmailSignup from '../../components/molecular/EmailSignup.vue'
+  import EmailSignupProvider from './lpContact/EmailSignupProvider.vue';
 
   const LpContact = {
     name: "LpContact",
     components: {
       Header,
-      EmailSignup
+      EmailSignupProvider
     }
   }
   export default LpContact
