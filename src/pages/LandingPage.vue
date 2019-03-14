@@ -53,8 +53,6 @@ import LpVision from './landingPage/LpVision.vue'
 import LpContact from './landingPage/LpContact.vue'
 import LpPricing from './landingPage/LpPricing.vue'
 import LpFooter from './landingPage/LpFooter.vue'
-import initSlide from '../pageScroll.js'
-import initParallax from '../parallax'
 
 const LandingPage = {
   name: "LandingPage",
@@ -68,10 +66,6 @@ const LandingPage = {
     LpContact,
     LpFooter,
     LpPricing
-  },
-  mounted() {
-    this.$route.query.slide !== undefined ? initSlide() : console.log('slide disabled')
-    this.$route.query.parallax !== undefined ? initParallax() : console.log('parallax disabled')
   }
 };
 
