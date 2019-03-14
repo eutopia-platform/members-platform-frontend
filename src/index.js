@@ -1,25 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import VueApollo from "vue-apollo";
+import createVueRouter from "./index/vueRouter";
+import createApolloProvider from "./index/apolloProvider";
 import App from "./App.vue";
-import LandingPage from "./pages/LandingPage";
-import ProjectHub from "./pages/ProjectHub";
-import NotFound from "./pages/NotFound";
 
 Vue.use(VueRouter);
+Vue.use(VueApollo);
 
-const routes = [
-  { path: "/", component: LandingPage },
-  { path: "/project-hub", component: ProjectHub },
-  { path: "*", component: NotFound }
-];
-
-const router = new VueRouter({
-  mode: "history",
-  routes // short for `routes: routes`
-});
+const router = createVueRouter();
+const apolloProvider = createApolloProvider();
 
 new Vue({
   el: "#app",
   router,
+  apolloProvider,
   render: h => h(App)
 });
