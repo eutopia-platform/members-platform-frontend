@@ -31,6 +31,18 @@ const EmailSignup = {
     }
   }),
 
+  created() {
+    this.$eventBus.$on('scroll-to-email', () => {
+      const input = this.$el.querySelector('input')
+      if (input) {
+        input.scrollIntoView({
+          behavior: 'smooth'
+        })
+        setTimeout(() => input.focus(), 1000)
+      }
+    })
+  },
+
   methods: {
     onInputValueChange(payload) {
       //Only works because payload has the same name as the data

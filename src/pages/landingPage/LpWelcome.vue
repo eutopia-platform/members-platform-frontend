@@ -25,13 +25,8 @@ const LpWelcome = {
   },
   methods: {
     scrollToSignup: function() {
-      document.getElementsByClassName('lp-contact')[0].scrollIntoView({
-        behavior: 'smooth'
-      })
-      setTimeout(() =>
-        document.getElementsByClassName('lp-contact')[0].getElementsByTagName('input')[0].focus()
-      , 1000);
-    }
+      this.$eventBus.$emit('scroll-to-email')
+    },
   }
 }
 export default LpWelcome

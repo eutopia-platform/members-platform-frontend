@@ -22,6 +22,9 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 });
 
+// event bus for communication of unrelated components
+Vue.prototype.$eventBus = new Vue()
+
 new Vue({
   el: "#app",
   router,

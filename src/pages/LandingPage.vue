@@ -66,7 +66,7 @@ const LandingPage = {
     LpContact,
     LpFooter,
     LpPricing
-  }
+  },
 };
 
 export default LandingPage;
