@@ -66,7 +66,7 @@ export default SplitViewHorizontal;
     }
 
     .half-right {
-      background-color: $c-primary-notsointense;
+      background-color: $c-primary-light;
 
       @media screen and (max-width: $break-mobile) {
         height: 50vh;

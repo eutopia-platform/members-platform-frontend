@@ -53,7 +53,7 @@ export default Input;
   display: block;
   width: 100%;
   background-color: $c-primary-foreground;
-  color: $c-primary-intense;
+  color: $c-primary;
   border: $border;
   border-radius: $border-radius;
   box-shadow: $shadow;

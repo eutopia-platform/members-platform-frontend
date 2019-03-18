@@ -63,7 +63,7 @@ export default EmailSignup;
   @import "../sharedStyles/colors.scss";
 
   .contact-form {
-    background-color: $c-primary-intense;
+    background-color: $c-primary;
     display: block;
 
     width: 20em;
@@ -77,7 +77,7 @@ export default EmailSignup;
         color: black;
 
         &::placeholder {
-          color: $c-primary-notsointense;
+          color: $c-primary-light;
         }
       }
 

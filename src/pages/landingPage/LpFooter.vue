@@ -33,7 +33,7 @@
     box-sizing: border-box;
     width: 100%;
     min-height: 100px;
-    background-color: $c-primary-really-intense;
+    background-color: $c-primary-dark;
     width: 100%;
     padding-left: 2em;
     padding-right: 2em;

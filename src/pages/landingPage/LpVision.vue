@@ -89,7 +89,7 @@ export default LpVision
       margin-top: 2em;
       margin-bottom: 2em;
       border: none;
-      background-color: $c-primary-intense;
+      background-color: $c-primary;
     }
   }
 </style>

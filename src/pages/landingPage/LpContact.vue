@@ -38,7 +38,7 @@
     width: 100%;
     height: 100vh;
     margin: 0;
-    background-color: $c-primary-intense;
+    background-color: $c-primary;
     padding: 3em;
     text-align: center;
 

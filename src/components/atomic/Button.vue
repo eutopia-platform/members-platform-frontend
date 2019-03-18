@@ -29,7 +29,7 @@ export default Button;
 @import "../sharedStyles/shapes.scss";
 
 .button {
-  background-color: $c-primary-notsointense;
+  background-color: $c-primary-light;
   color: $c-primary-foreground;
   border: none;
   border-radius: $border-radius;
