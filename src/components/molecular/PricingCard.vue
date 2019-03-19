@@ -46,7 +46,7 @@ export default PricingCard
 <style lang="scss" scoped>
 @import "../../components/sharedStyles/shapes.scss";
 @import "../../components/sharedStyles/colors.scss";
-@import "../../components/sharedStyles/shadow.scss";
+@import "../../components/sharedStyles/shadows.scss";
 
 .pricing-card {
 

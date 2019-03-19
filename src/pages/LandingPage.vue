@@ -4,7 +4,7 @@
       <template v-slot>
         <SplitViewHorizontal>
           <template v-slot:left>
-            <LpWelcome></LpWelcome>
+            <Welcome></Welcome>
           </template>
           <template v-slot:right>
             <img class="image-right" src="../../data/img/landingpage/slide1.svg">
@@ -16,7 +16,7 @@
     <PageSlide>
       <SplitViewHorizontal>
         <template v-slot:left>
-          <LpVision></LpVision>
+          <Vision></Vision>
         </template>
         <template v-slot:right>
           <img class="image-right" src="../../data/img/landingpage/slide2.svg">
@@ -27,7 +27,7 @@
     <PageSlide>
       <SplitViewHorizontal>
         <template v-slot:left>
-          <LpPricing></LpPricing>
+          <Pricing></Pricing>
         </template>
         <template v-slot:right>
           <img class="image-right" src="../../data/img/landingpage/slide3.svg">
@@ -36,10 +36,10 @@
     </PageSlide>
 
     <PageSlide>
-      <LpContact></LpContact>
+      <Contact></Contact>
     </PageSlide>
 
-    <LpFooter></LpFooter>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -48,11 +48,11 @@ import PageSlide from "../components/atomic/PageSlide";
 import Header from "../components/atomic/Header";
 import Button from "../components/atomic/Button";
 import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue';
-import LpWelcome from './landingPage/LpWelcome.vue'
-import LpVision from './landingPage/LpVision.vue'
-import LpContact from './landingPage/LpContact.vue'
-import LpPricing from './landingPage/LpPricing.vue'
-import LpFooter from './landingPage/LpFooter.vue'
+import Welcome from './landingPage/Welcome.vue'
+import Vision from './landingPage/Vision.vue'
+import Contact from './landingPage/Contact.vue'
+import Pricing from './landingPage/Pricing.vue'
+import Footer from './landingPage/Footer.vue'
 
 const LandingPage = {
   name: "LandingPage",
@@ -61,11 +61,11 @@ const LandingPage = {
     Header,
     Button,
     SplitViewHorizontal,
-    LpWelcome,
-    LpVision,
-    LpContact,
-    LpFooter,
-    LpPricing
+    Welcome,
+    Vision,
+    Contact,
+    Footer,
+    Pricing
   },
 };
 

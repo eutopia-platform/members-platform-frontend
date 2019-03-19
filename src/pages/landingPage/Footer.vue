@@ -18,12 +18,12 @@
 </template>
 
 <script>
-  const LpFooter = {
-    name: "LpFooter",
+  const Footer = {
+    name: "Footer",
     components: {
     }
   }
-  export default LpFooter
+  export default Footer
 </script>
 
 <style lang="scss" scoped>

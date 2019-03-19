@@ -1,8 +1,5 @@
 <template>
   <div class="lp-contact">
-    <!-- <p>
-      Hello
-    </p> -->
     <div class="mail-wrap">
       <Header type="primary">
         Want more successful projects?
@@ -17,16 +14,16 @@
 
 <script>
   import Header from '../../components/atomic/Header.vue';
-  import EmailSignupProvider from './lpContact/EmailSignupProvider.vue';
+  import EmailSignupProvider from './Contact/EmailSignupProvider.vue';
 
-  const LpContact = {
-    name: "LpContact",
+  const Contact = {
+    name: "Contact",
     components: {
       Header,
       EmailSignupProvider
     }
   }
-  export default LpContact
+  export default Contact
 </script>
 
 <style lang="scss" scoped>
