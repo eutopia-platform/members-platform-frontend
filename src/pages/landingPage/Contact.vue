@@ -1,10 +1,10 @@
 <template>
   <div class="lp-contact">
     <div class="mail-wrap">
-      <Header type="primary">
+      <Header type="primary" color="secondary">
         Want more successful projects?
       </Header>
-      <Header type="secondary">
+      <Header type="secondary" color="secondary">
         Get access as soon as we release our product.
       </Header>
       <EmailSignupProvider></EmailSignupProvider>
@@ -43,11 +43,6 @@
       display: block;
       top: 50%;
       transform: translateY(-50%);
-
-      .header {
-        color: white;
-        margin-bottom: 1em;
-      }
 
       .header-secondary {
         margin-bottom: 2em;

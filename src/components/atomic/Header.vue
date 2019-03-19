@@ -3,7 +3,10 @@
     'header-primary': this.type === 'primary',
     'header-secondary': this.type === 'secondary',
     'header-tertiary': this.type === 'tertiary',
-    'header-quaternary': this.type === 'quarternary'
+    'header-quaternary': this.type === 'quarternary',
+
+    'text-primary': !this.color || this.color === 'primary',
+    'text-secondary': this.color && this.color === 'secondary'
     } ">
     <slot></slot>
   </div>
@@ -13,7 +16,8 @@
 export default {
   name: "Header",
   props: {
-    type: String
+    type: String,
+    color: String
   }
 };
 </script>
@@ -48,6 +52,14 @@ export default {
 
 .header-quaternary {
   font-size: 1em;
+}
+
+.text-primary {
+  color: $c-text-primary;
+}
+
+.text-secondary {
+  color: $c-text-secondary;
 }
 
 </style>

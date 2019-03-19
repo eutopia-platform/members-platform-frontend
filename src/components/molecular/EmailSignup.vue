@@ -73,8 +73,6 @@ export default {
       flex-direction: row;
 
       input {
-        color: black;
-
         &::placeholder {
           color: $c-primary-light;
         }

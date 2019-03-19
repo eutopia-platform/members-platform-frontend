@@ -1,8 +1,10 @@
 <template>
   <div class="lp-pricing">
-    <Header type="primary">
-      Pricing options
-    </Header>
+    <div class="section-title">
+      <Header type="primary">
+        Pricing options
+      </Header>
+    </div>
     <div class="pricing-list">
       <PricingCard @request="scrollToSignup"
         title="Product Pad for Entrepreneurs" price="free"
@@ -63,8 +65,8 @@ export default {
   margin-top: 3em;
   margin-bottom: 5em;
 
-  .header {
-    height: 1.5em;
+  .section-title {
+    margin-bottom: 3rem;
   }
 
   .pricing-list {

@@ -7,9 +7,11 @@
       Tools for you and your teams, so you achieve the right goals, over and
       over again.
     </p>
-    <Button type="request" @click="scrollToSignup">
-      Request Access
-    </Button>
+    <div class="bt-wrap">
+      <Button type="request" @click="scrollToSignup">
+        Request Access
+      </Button>
+    </div>
   </div>
 </template>
 
@@ -50,8 +52,10 @@ export default {
       margin-bottom: 2em;
     }
 
-    .button {
+    .bt-wrap {
+      display: inline-block;
       margin-top: 1.5em;
+      padding: 0;
       position: relative;
       left: 50%;
       transform: translateX(-50%);
