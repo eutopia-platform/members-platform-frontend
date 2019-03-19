@@ -85,16 +85,5 @@ export default EmailSignup;
         width: 7em;
       }
     }
-
-  // .center {
-  //   display: block;
-  //   width: 12rem;
-  //   position: relative;
-  //   left: 50%;
-  //   transform: translateX(-50%);
-  // }
-
-    // width: 12rem;
-    // margin: auto;
   }
 </style>

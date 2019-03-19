@@ -29,7 +29,6 @@ export default SplitViewHorizontal;
     flex-direction: row;
     justify-content: space-around;
     box-sizing: border-box;
-    // border-bottom: 1px red solid;
 
     @media screen and (max-width: $break-mobile) {
       flex-direction: column;

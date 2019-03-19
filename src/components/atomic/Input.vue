@@ -56,7 +56,7 @@ export default Input;
   color: $c-primary;
   border: $border;
   border-radius: $border-radius;
-  box-shadow: $shadow;
+  box-shadow: $shadow-default;
   padding: 0.75rem;
   cursor: text;
   outline: none;

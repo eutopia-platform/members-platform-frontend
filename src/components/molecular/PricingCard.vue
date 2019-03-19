@@ -46,6 +46,7 @@ export default PricingCard
 <style lang="scss" scoped>
 @import "../../components/sharedStyles/shapes.scss";
 @import "../../components/sharedStyles/colors.scss";
+@import "../../components/sharedStyles/shadow.scss";
 
 .pricing-card {
 
@@ -56,12 +57,12 @@ export default PricingCard
   box-sizing: border-box;
   border-bottom-right-radius: 1.5em;
 
-  filter: drop-shadow(5px 0px 20px rgba(gray, 0.5));
+  filter: drop-shadow($shadow-default);
   transition: all .2s ease-out;
 
   &:hover {
     transition: all .2s ease-out;
-    filter: drop-shadow(5px 0px 10px rgba(gray, 0.5));
+    filter: drop-shadow($shadow-hover);
   }
 
   .pc-shape {
@@ -98,7 +99,6 @@ export default PricingCard
 
     li {
       margin-top: 1.1em;
-      // margin-bottom: 1em;
       color: gray;
       font-size: 1em;
     }
@@ -106,11 +106,8 @@ export default PricingCard
 
   button {
     position: absolute;
-    // position: relative;
-    // top: 100%;
     left: 0;
     bottom: 0;
-    // transform: translateY(-100%);
   }
 }
 </style>

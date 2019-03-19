@@ -33,7 +33,7 @@ export default Button;
   color: $c-primary-foreground;
   border: none;
   border-radius: $border-radius;
-  box-shadow: $shadow;
+  box-shadow: $shadow-default;
   padding: 0.75rem;
   cursor: pointer;
   outline: none;
@@ -46,7 +46,7 @@ export default Button;
     box-shadow: $shadow-hover;
     transform: translate(0, -1px);
   }
-  
+
   &:active {
     box-shadow: $shadow-active;
     transform: translate(0, 0px);
