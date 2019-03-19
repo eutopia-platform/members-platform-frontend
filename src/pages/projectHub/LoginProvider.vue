@@ -7,7 +7,7 @@
 <script>
 import Login from "../../components/molecular/Login";
 
-const LoginProvider = {
+export default {
   name: "LoginProvider",
   components: {
     Login
@@ -19,6 +19,4 @@ const LoginProvider = {
     }
   }
 };
-
-export default LoginProvider;
 </script>

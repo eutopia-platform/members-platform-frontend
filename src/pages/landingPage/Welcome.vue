@@ -17,7 +17,7 @@
 import Header from '../../components/atomic/Header.vue'
 import Button from '../../components/atomic/Button.vue'
 
-const Welcome = {
+export default {
   name: "Welcome",
   components: {
     Header,
@@ -29,7 +29,6 @@ const Welcome = {
     },
   }
 }
-export default Welcome
 </script>
 
 <style lang="scss" scoped>

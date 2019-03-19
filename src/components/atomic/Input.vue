@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="input"> -->
     <input
       v-model="value"
       class="input"
@@ -8,11 +7,10 @@
       :placeholder="placeholder"
       @input="onChange"
     >
-  <!-- </div> -->
 </template>
 
 <script>
-const Input = {
+export default {
   name: "Input",
   props: {
     name: {
@@ -41,8 +39,6 @@ const Input = {
     }
   }
 };
-
-export default Input;
 </script>
 
 <style lang="scss" scoped>

@@ -44,13 +44,12 @@
 <script>
 import Header from '../../components/atomic/Header.vue'
 
-const Vision = {
+export default {
   name: "Vision",
   components: {
     Header
   }
 }
-export default Vision
 </script>
 
 <style lang="scss" scoped>

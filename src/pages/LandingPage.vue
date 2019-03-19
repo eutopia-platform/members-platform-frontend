@@ -54,7 +54,7 @@ import Contact from './landingPage/Contact.vue'
 import Pricing from './landingPage/Pricing.vue'
 import Footer from './landingPage/Footer.vue'
 
-const LandingPage = {
+export default {
   name: "LandingPage",
   components: {
     PageSlide,
@@ -68,8 +68,6 @@ const LandingPage = {
     Pricing
   },
 };
-
-export default LandingPage;
 </script>
 
 <style lang="scss" scoped>

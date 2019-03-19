@@ -22,7 +22,7 @@
 import Button from "../atomic/Button";
 import Input from "../atomic/Input";
 
-const Login = {
+export default {
   name: "Login",
   components: {
     Input,
@@ -48,6 +48,4 @@ const Login = {
     }
   }
 };
-
-export default Login;
 </script>

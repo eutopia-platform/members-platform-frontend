@@ -15,7 +15,7 @@
 <script>
 import EmailSignup from "../../../components/molecular/EmailSignup.vue";
 
-const EmailSignupProvider = {
+export default {
   name: "EmailSignupProvider",
   components: {
     EmailSignup
@@ -66,8 +66,6 @@ const EmailSignupProvider = {
     }
   }
 }
-
-export default EmailSignupProvider;
 </script>
 
 <style lang="scss" scoped>

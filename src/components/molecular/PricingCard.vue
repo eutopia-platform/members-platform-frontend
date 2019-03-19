@@ -23,7 +23,7 @@
 import Header from '../atomic/Header.vue'
 import Button from '../atomic/Button.vue'
 
-const PricingCard = {
+export default {
   name: "PricingCard",
   props: {
     title: String,
@@ -40,7 +40,6 @@ const PricingCard = {
     }
   }
 }
-export default PricingCard
 </script>
 
 <style lang="scss" scoped>

@@ -16,14 +16,13 @@
   import Header from '../../components/atomic/Header.vue';
   import EmailSignupProvider from './Contact/EmailSignupProvider.vue';
 
-  const Contact = {
+  export default {
     name: "Contact",
     components: {
       Header,
       EmailSignupProvider
     }
   }
-  export default Contact
 </script>
 
 <style lang="scss" scoped>

@@ -10,11 +10,9 @@
 </template>
 
 <script>
-const SplitViewHorizontal = {
+export default {
   name: "SplitViewHorizontal"
 };
-
-export default SplitViewHorizontal;
 </script>
 
 <style lang="scss" scoped>

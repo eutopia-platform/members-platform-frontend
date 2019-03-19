@@ -13,7 +13,6 @@ Vue.http.options.emulateJSON = true;
 
 const routes = [
   { path: "/", component: LandingPage },
-  // { path: "/project-hub", component: ProjectHub },
   { path: "/privacy", component: Privacy },
   { path: "*", component: NotFound }
 ];

@@ -34,7 +34,7 @@
 import Header from '../../components/atomic/Header.vue'
 import PricingCard from '../../components/molecular/PricingCard.vue'
 
-const Pricing = {
+export default {
    name: "Pricing",
    components: {
      Header,
@@ -46,7 +46,6 @@ const Pricing = {
      },
    }
 }
-export default Pricing
 </script>
 
 <style lang="scss" scoped>

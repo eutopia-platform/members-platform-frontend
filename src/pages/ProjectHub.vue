@@ -12,12 +12,10 @@
 <script>
 import LoginProvider from "./projectHub/LoginProvider";
 
-const ProjectHub = {
+export default {
   name: "ProjectHub",
   components: {
     LoginProvider
   }
 };
-
-export default ProjectHub;
 </script>

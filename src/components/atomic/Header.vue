@@ -10,14 +10,12 @@
 </template>
 
 <script>
-const Header = {
+export default {
   name: "Header",
   props: {
     type: String
   }
 };
-
-export default Header;
 </script>
 
 <style lang="scss" scoped>

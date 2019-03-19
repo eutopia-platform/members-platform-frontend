@@ -19,7 +19,7 @@
 import Input from "../atomic/Input.vue"
 import Button from "../atomic/Button.vue"
 
-const EmailSignup = {
+export default {
   name: "EmailSignup",
   components: {
     Input,
@@ -56,7 +56,6 @@ const EmailSignup = {
     }
   }
 }
-export default EmailSignup;
 </script>
 
 <style lang="scss" scoped>

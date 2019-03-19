@@ -4,11 +4,9 @@
 </template>
 
 <script>
-const PageSlide = {
+export default {
   name: "PageSlide"
 };
-
-export default PageSlide;
 </script>
 
 <style lang="scss" scoped>

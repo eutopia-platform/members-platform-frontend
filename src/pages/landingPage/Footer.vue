@@ -18,12 +18,11 @@
 </template>
 
 <script>
-  const Footer = {
+  export default {
     name: "Footer",
     components: {
     }
   }
-  export default Footer
 </script>
 
 <style lang="scss" scoped>

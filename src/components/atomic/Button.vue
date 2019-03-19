@@ -9,7 +9,7 @@
 </template>
 
 <script>
-const Button = {
+export default {
   name: "Button",
   props: {
     type: String
@@ -20,8 +20,6 @@ const Button = {
     }
   }
 };
-
-export default Button;
 </script>
 
 <style lang="scss" scoped>
