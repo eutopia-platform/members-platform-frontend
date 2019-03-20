@@ -9,9 +9,7 @@
 </template>
 
 <script>
-const NotFound = {
+export default {
   name: "NotFound"
 };
-
-export default NotFound;
 </script>

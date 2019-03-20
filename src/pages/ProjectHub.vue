@@ -3,15 +3,19 @@
     <h1>Hello Project Hub!</h1>
     <p>This page was created with Vue!</p>
     <router-link to="/">
-      Go to landing page
+      <Button>Go to landing page</Button>
     </router-link>
+    <LoginProvider />
   </div>
 </template>
 
 <script>
-const ProjectHub = {
-  name: "ProjectHub"
-};
+import LoginProvider from "./projectHub/LoginProvider";
 
-export default ProjectHub;
+export default {
+  name: "ProjectHub",
+  components: {
+    LoginProvider
+  }
+};
 </script>

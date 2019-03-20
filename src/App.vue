@@ -3,9 +3,7 @@
 </template>
 
 <script>
-const App = {
+export default {
   name: "App"
 };
-
-export default App;
 </script>
