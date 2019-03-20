@@ -1,12 +1,12 @@
 <template>
   <div class="header" v-bind:class=" {
-    'header-primary': this.type === 'primary',
-    'header-secondary': this.type === 'secondary',
-    'header-tertiary': this.type === 'tertiary',
-    'header-quaternary': this.type === 'quarternary',
+    'primary': this.type === 'primary',
+    'secondary': this.type === 'secondary',
+    'tertiary': this.type === 'tertiary',
+    'quaternary': this.type === 'quarternary',
 
-    'text-primary': !this.color || this.color === 'primary',
-    'text-secondary': this.color && this.color === 'secondary'
+    'color-primary': this.color === 'primary',
+    'color-secondary': this.color === 'secondary'
     } ">
     <slot></slot>
   </div>
@@ -17,7 +17,10 @@ export default {
   name: "Header",
   props: {
     type: String,
-    color: String
+    color: {
+      default: "primary",
+      type: String
+    }
   }
 };
 </script>
@@ -42,27 +45,27 @@ export default {
   }
 }
 
-.header-primary {
+.primary {
   font-size: $fs-header-1;
 }
 
-.header-secondary {
+.secondary {
   font-size: $fs-header-2;
 }
 
-.header-tertiary {
+.tertiary {
   font-size: $fs-header-3;
 }
 
-.header-quaternary {
+.quaternary {
   font-size: $fs-header-4;
 }
 
-.text-primary {
+.color-primary {
   color: $c-text-primary;
 }
 
-.text-secondary {
+.color-secondary {
   color: $c-text-secondary;
 }
 
