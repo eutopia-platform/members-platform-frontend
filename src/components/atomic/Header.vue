@@ -43,22 +43,18 @@ export default {
 }
 
 .header-primary {
-  // font-size: 2.9em;
   font-size: $fs-header-1;
 }
 
 .header-secondary {
-  // font-size: 1.7em;
   font-size: $fs-header-2;
 }
 
 .header-tertiary {
-  // font-size: 1.2em;
   font-size: $fs-header-3;
 }
 
 .header-quaternary {
-  // font-size: 1em;
   font-size: $fs-header-4;
 }
 
