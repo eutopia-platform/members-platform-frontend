@@ -48,6 +48,7 @@ export default {
 .input {
   display: block;
   width: 100%;
+  max-width: 30vw;
   background-color: $c-primary-foreground;
   color: $c-primary;
   border: $border;

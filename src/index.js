@@ -5,6 +5,7 @@ import App from "./App.vue";
 import LandingPage from "./pages/LandingPage";
 import ProjectHub from "./pages/ProjectHub";
 import Privacy from "./pages/Privacy";
+import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
 
 Vue.use(VueRouter);
@@ -14,6 +15,7 @@ Vue.http.options.emulateJSON = true;
 const routes = [
   { path: "/", component: LandingPage },
   { path: "/privacy", component: Privacy },
+  { path: "/components", component: Components },
   { path: "*", component: NotFound }
 ];
 

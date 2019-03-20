@@ -25,10 +25,14 @@ export default {
 <style lang="scss" scoped>
 @import "../sharedStyles/colors.scss";
 @import "../sharedStyles/shapes.scss";
+@import "../sharedStyles/text.scss";
 
 .header {
   padding: 0;
   font-size: 1rem;
+  font-weight: bold;
+  margin-top: .5em;
+  margin-bottom: .5em;
 
   img {
     height: 1.5em;
@@ -39,19 +43,23 @@ export default {
 }
 
 .header-primary {
-  font-size: 2.9em;
+  // font-size: 2.9em;
+  font-size: $fs-header-1;
 }
 
 .header-secondary {
-  font-size: 1.7em;
+  // font-size: 1.7em;
+  font-size: $fs-header-2;
 }
 
 .header-tertiary {
-  font-size: 1.2em;
+  // font-size: 1.2em;
+  font-size: $fs-header-3;
 }
 
 .header-quaternary {
-  font-size: 1em;
+  // font-size: 1em;
+  font-size: $fs-header-4;
 }
 
 .text-primary {
