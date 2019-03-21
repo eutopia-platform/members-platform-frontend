@@ -1,21 +1,17 @@
 <template>
-  <div class="pararaph" v-bind:class="{
-    'color-primary': this.color === 'primary',
-    'color-secondary': this.color === 'secondary',
-    'color-accent': this.color === 'accent'
-    }">
+  <TextBase class="paragraph" v-bind:class="colorClass">
     <slot></slot>
-  </div>
+  </TextBase>
 </template>
 
 <script>
+import TextBase from './TextBase.vue'
+
 export default {
   name: "Paragraph",
-  props: {
-    color: {
-      default: "primary",
-      type: String
-    }
+  extends: TextBase,
+  components: {
+    TextBase
   }
 }
 </script>
@@ -26,17 +22,5 @@ export default {
 
 .paragraph {
   font-size: $fs-base;
-}
-
-.color-primary {
-  color: $c-text-primary;
-}
-
-.color-secondary {
-  color: $c-text-secondary;
-}
-
-.color-accent {
-  color: $c-text-accent;
 }
 </style>

@@ -1,26 +1,25 @@
 <template>
-  <div class="tagline" v-bind:class="{
+  <TextBase class="tagline" v-bind:class="{
       'main': this.type === 'main',
-      'sub': this.type === 'sub',
-
-      'color-primary': this.color === 'primary',
-      'color-secondary': this.color === 'secondary'
+      'sub': this.type === 'sub'
     }">
     <slot></slot>
-  </div>
+  </TextBase>
 </template>
 
 <script>
+import TextBase from './TextBase.vue'
+
 export default {
   name: "Tagline",
+  extends: TextBase,
+  components: {
+    TextBase
+  },
   props: {
     type: {
       default: 'main',
-      type: String,
-      color: {
-        default: "primary",
-        type: String
-      }
+      type: String
     }
   }
 }
@@ -39,13 +38,5 @@ export default {
 }
 .sub {
   font-size: $fs-tagline-2;
-}
-
-.color-primary {
-  color: $c-text-primary;
-}
-
-.color-secondary {
-  color: $c-text-secondary;
 }
 </style>

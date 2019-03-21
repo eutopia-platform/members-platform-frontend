@@ -2,10 +2,10 @@
   <div class="user-status">
     <img class="profile-picture" src="https://via.placeholder.com/150"/>
     <div class="text-section">
-      <Paragraph class="name">
+      <Paragraph class="name" color="accent">
         John Doe
       </Paragraph>
-      <Paragraph class="email">
+      <Paragraph class="email" color="secondary">
         john.doe@foo.com
       </Paragraph>
     </div>

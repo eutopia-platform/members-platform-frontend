@@ -1,27 +1,25 @@
 <template>
-  <div class="header" v-bind:class=" {
+  <TextBase class="header" v-bind:class=" {
     'primary': this.type === 'primary',
     'secondary': this.type === 'secondary',
     'tertiary': this.type === 'tertiary',
     'quaternary': this.type === 'quarternary',
-
-    'color-primary': this.color === 'primary',
-    'color-secondary': this.color === 'secondary',
-    'color-accent': this.color === 'accent'
     } ">
     <slot></slot>
-  </div>
+  </TextBase>
 </template>
 
 <script>
+import TextBase from './TextBase.vue'
+
 export default {
   name: "Header",
+  extends: TextBase,
+  components: {
+    TextBase
+  },
   props: {
-    type: String,
-    color: {
-      default: "primary",
-      type: String
-    }
+    type: String
   }
 };
 </script>
@@ -61,17 +59,4 @@ export default {
 .quaternary {
   font-size: $fs-header-4;
 }
-
-.color-primary {
-  color: $c-text-primary;
-}
-
-.color-secondary {
-  color: $c-text-secondary;
-}
-
-.color-accent {
-  color: $c-text-accent;
-}
-
 </style>
