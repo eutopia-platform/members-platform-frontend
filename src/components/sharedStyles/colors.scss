@@ -4,11 +4,16 @@ $c-primary-light: rgb(126, 192, 250);
 $c-primary: rgb(89, 109, 238);
 $c-primary-dark: rgb(37, 61, 188);
 
+$c-background: #edf2fa;
+$c-accent: #109CF1;
+
 $c-success: green;
 $c-error: red;
 
 $c-shadow: rgba(gray, 0.5);
 
-$c-text-primary: black;
+$c-text-primary: #334D6E;
 $c-text-secondary: white;
-$c-text-accent: #109CF1;
+
+$c-text-primary-light: #8ca8a8;
+$c-text-accent: $c-accent;

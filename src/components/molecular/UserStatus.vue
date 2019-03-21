@@ -2,10 +2,10 @@
   <div class="user-status">
     <img class="profile-picture" src="https://via.placeholder.com/150"/>
     <div class="text-section">
-      <Paragraph class="name" color="accent">
+      <Paragraph class="name">
         John Doe
       </Paragraph>
-      <Small class="email" color="secondary">
+      <Small class="email">
         john.doe@foo.com
       </Small>
     </div>
@@ -29,7 +29,6 @@ export default {
 .user-status {
   width: 15rem;
   height: 50px;
-  background-color: black;
   display: flex;
   flex-direction: row;
 
@@ -41,8 +40,8 @@ export default {
   .text-section {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin-left: 1rem;
-    background-color: gray;
   }
 }
 </style>

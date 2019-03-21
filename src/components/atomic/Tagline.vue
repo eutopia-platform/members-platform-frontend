@@ -1,8 +1,5 @@
 <template>
-  <TextBase class="tagline" v-bind:class="{
-      'main': this.type === 'main',
-      'sub': this.type === 'sub'
-    }">
+  <TextBase class="tagline" v-bind:class="classObj">
     <slot></slot>
   </TextBase>
 </template>
@@ -21,6 +18,12 @@ export default {
       default: 'main',
       type: String
     }
+  },
+  computed: {
+    classObj: comp => Object.assign({
+      main: comp.type === 'main',
+      sub: comp.type === 'sub'
+    }, comp.colorClass)
   }
 }
 </script>

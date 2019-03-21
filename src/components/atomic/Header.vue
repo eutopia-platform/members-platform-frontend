@@ -1,10 +1,5 @@
 <template>
-  <TextBase class="header" v-bind:class=" {
-    'primary': this.type === 'primary',
-    'secondary': this.type === 'secondary',
-    'tertiary': this.type === 'tertiary',
-    'quaternary': this.type === 'quarternary',
-    } ">
+  <TextBase class="header" v-bind:class="classObj">
     <slot></slot>
   </TextBase>
 </template>
@@ -20,6 +15,14 @@ export default {
   },
   props: {
     type: String
+  },
+  computed: {
+    classObj: comp => Object.assign({
+      primary: comp.type === 'primary',
+      secondary: comp.type === 'secondary',
+      tertiary: comp.type === 'tertiary',
+      quaternary: comp.type === 'quarternary',
+    }, comp.colorClass)
   }
 };
 </script>
