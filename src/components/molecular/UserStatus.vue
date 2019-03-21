@@ -5,20 +5,22 @@
       <Paragraph class="name" color="accent">
         John Doe
       </Paragraph>
-      <Paragraph class="email" color="secondary">
+      <Small class="email" color="secondary">
         john.doe@foo.com
-      </Paragraph>
+      </Small>
     </div>
   </div>
 </template>
 
 <script>
 import Paragraph from '../atomic/Paragraph.vue'
+import Small from '../atomic/Small.vue'
 
 export default {
   name: "UserStatus",
   components: {
-    Paragraph
+    Paragraph,
+    Small
   }
 }
 </script>

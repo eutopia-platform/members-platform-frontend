@@ -1,11 +1,15 @@
-@function pow($number, $exponent) {
-  $value: 1;
+@function pow($number, $power) {
+    $exponent: 1;
 
-  @if $exponent > 0 {
-    @for $i from 1 through $exponent {
-      $value: $value * $number;
+    @if $power > 0 {
+        @for $i from 1 through $power {
+            $exponent: $exponent * $number;
+        }
+    } @else if $power < 0 {
+        @for $i from 1 through $power {
+            $exponent: $exponent / $number;
+        }
     }
-  }
 
-  @return $value;
+    @return $exponent;
 }
