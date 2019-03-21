@@ -1,21 +1,21 @@
 <template>
   <div class="workspace">
     <MenuSidebar></MenuSidebar>
-    <main>
-      asdf
-    </main>
+    <Initiative></Initiative>
   </div>
 </template>
 
 <script>
 import Header from '../components/atomic/Header.vue'
 import MenuSidebar from '../components/molecular/MenuSidebar.vue'
+import Initiative from './workspace/Initiative.vue'
 
 export default {
   name: "Workspace",
   components: {
     Header,
-    MenuSidebar
+    MenuSidebar,
+    Initiative
   }
 }
 </script>
@@ -26,11 +26,5 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-}
-
-main {
-  height: 150vh;
-  width: calc(100vw - 20rem);
-  transform: translateX(20rem);
 }
 </style>

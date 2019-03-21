@@ -4,6 +4,9 @@
       <Header type="tertiary" color="accent">ProjectCube.io</Header>
     </div>
     <LineHorizontal></LineHorizontal>
+    <div class="content">
+      <UserStatus></UserStatus>
+    </div>
   </div>
 </template>
 
@@ -11,13 +14,15 @@
 import Paragraph from '../atomic/Paragraph.vue'
 import Header from '../atomic/Header.vue'
 import LineHorizontal from '../atomic/LineHorizontal.vue'
+import UserStatus from './UserStatus.vue'
 
 export default {
   name: "MenuSidebar",
   components: {
     Paragraph,
     Header,
-    LineHorizontal
+    LineHorizontal,
+    UserStatus
   }
 }
 </script>
@@ -42,6 +47,10 @@ export default {
 
   p {
     color: white;
+  }
+
+  .content {
+    padding-left: 1rem;
   }
 }
 
