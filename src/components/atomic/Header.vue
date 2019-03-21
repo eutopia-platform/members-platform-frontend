@@ -6,7 +6,8 @@
     'quaternary': this.type === 'quarternary',
 
     'color-primary': this.color === 'primary',
-    'color-secondary': this.color === 'secondary'
+    'color-secondary': this.color === 'secondary',
+    'color-accent': this.color === 'accent'
     } ">
     <slot></slot>
   </div>
@@ -67,6 +68,10 @@ export default {
 
 .color-secondary {
   color: $c-text-secondary;
+}
+
+.color-accent {
+  color: $c-text-accent;
 }
 
 </style>

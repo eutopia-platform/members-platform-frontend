@@ -7,6 +7,7 @@ import ProjectHub from "./pages/ProjectHub";
 import Privacy from "./pages/Privacy";
 import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
+import Workspace from "./pages/Workspace";
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -14,6 +15,7 @@ Vue.http.options.emulateJSON = true;
 
 const routes = [
   { path: "/", component: LandingPage },
+  { path: "/workspace", component: Workspace },
   { path: "/privacy", component: Privacy },
   { path: "/components", component: Components },
   { path: "*", component: NotFound }
