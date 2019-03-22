@@ -39,6 +39,7 @@ export default {
   transform: translate(0, 0px);
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
+  box-sizing: border-box;
 
   &:hover {
     box-shadow: $shadow-hover;
