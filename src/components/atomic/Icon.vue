@@ -23,6 +23,7 @@ export default {
 
 <style lang="scss" scoped>
 .icon {
+  display: inline-block;
   img {
     display: block;
   }

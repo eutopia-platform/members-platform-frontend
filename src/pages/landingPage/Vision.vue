@@ -7,7 +7,7 @@
   </div>
   <div class="vision-title">
     <Header type="secondary">
-      <img class="image-right" src="../../../data/img/landingpage/step1.svg">
+      <Icon v-bind:src="img1" height="23px"></Icon>
       Setup your vision
     </Header>
   </div>
@@ -18,7 +18,7 @@
   <hr />
   <div class="vision-title">
     <Header type="secondary">
-      <img class="image-right" src="../../../data/img/landingpage/step2.svg">
+      <Icon v-bind:src="img2" height="23px"></Icon>
       Develop your strategy
     </Header>
   </div>
@@ -29,7 +29,7 @@
   <hr />
   <div class="vision-title">
     <Header type="secondary">
-      <img class="image-right" src="../../../data/img/landingpage/step3.svg">
+      <Icon v-bind:src="img3" height="23px"></Icon>
       Define your roadmap
     </Header>
   </div>
@@ -40,7 +40,7 @@
   <hr />
   <div class="vision-title">
     <Header type="secondary">
-      <img class="image-right" src="../../../data/img/landingpage/step4.svg">
+      <Icon v-bind:src="img4" height="23px"></Icon>
       Measure and execute
     </Header>
   </div>
@@ -53,11 +53,19 @@
 
 <script>
 import Header from '../../components/atomic/Header.vue'
+import Icon from '../../components/atomic/Icon.vue'
 
 export default {
   name: "Vision",
   components: {
-    Header
+    Header,
+    Icon
+  },
+  computed: {
+    img1: () => require("../../../data/img/landingpage/step1.svg"),
+    img2: () => require("../../../data/img/landingpage/step2.svg"),
+    img3: () => require("../../../data/img/landingpage/step3.svg"),
+    img4: () => require("../../../data/img/landingpage/step4.svg")
   }
 }
 </script>
