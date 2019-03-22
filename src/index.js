@@ -8,6 +8,7 @@ import Privacy from "./pages/Privacy";
 import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
 import Workspace from "./pages/Workspace";
+import Onboarding from "./pages/Onboarding";
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -18,6 +19,7 @@ const routes = [
   { path: "/workspace", component: Workspace },
   { path: "/privacy", component: Privacy },
   { path: "/components", component: Components },
+  { path: "/onboarding", component: Onboarding },
   { path: "*", component: NotFound }
 ];
 
