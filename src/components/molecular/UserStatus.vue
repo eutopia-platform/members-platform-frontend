@@ -1,6 +1,6 @@
 <template>
   <div class="user-status">
-    <img class="profile-picture" src="https://via.placeholder.com/150"/>
+    <Icon src="https://via.placeholder.com/150" height="50px" height="50px">test</Icon>
     <div class="text-section">
       <Paragraph class="name">
         John Doe
@@ -15,12 +15,14 @@
 <script>
 import Paragraph from '../atomic/Paragraph.vue'
 import Small from '../atomic/Small.vue'
+import Icon from '../atomic/Icon.vue'
 
 export default {
   name: "UserStatus",
   components: {
     Paragraph,
-    Small
+    Small,
+    Icon
   }
 }
 </script>
@@ -31,11 +33,7 @@ export default {
   height: 50px;
   display: flex;
   flex-direction: row;
-
-  .profile-picture {
-    height: 50px;
-    width: 50px;
-  }
+  margin-bottom: 1rem;
 
   .text-section {
     display: flex;

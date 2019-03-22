@@ -7,7 +7,7 @@
 
 <script>
 import Header from '../components/atomic/Header.vue'
-import MenuSidebar from '../components/molecular/MenuSidebar.vue'
+import MenuSidebar from './workspace/Sidebar.vue'
 import Initiative from './workspace/Initiative.vue'
 
 export default {

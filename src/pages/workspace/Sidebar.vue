@@ -1,20 +1,22 @@
 <template>
-  <div class="menu-sidebar">
+  <div class="sidebar">
     <div class="title">
       <Header type="tertiary" color="accent">ProjectCube.io</Header>
     </div>
     <LineHorizontal></LineHorizontal>
     <div class="content">
       <UserStatus></UserStatus>
+      <IniList></IniList>
     </div>
   </div>
 </template>
 
 <script>
-import Paragraph from '../atomic/Paragraph.vue'
-import Header from '../atomic/Header.vue'
-import LineHorizontal from '../atomic/LineHorizontal.vue'
-import UserStatus from './UserStatus.vue'
+import Paragraph from '../../components/atomic/Paragraph.vue'
+import Header from '../../components/atomic/Header.vue'
+import LineHorizontal from '../../components/atomic/LineHorizontal.vue'
+import UserStatus from '../../components/molecular/UserStatus.vue'
+import IniList from './IniList.vue'
 
 export default {
   name: "MenuSidebar",
@@ -22,15 +24,16 @@ export default {
     Paragraph,
     Header,
     LineHorizontal,
-    UserStatus
+    UserStatus,
+    IniList
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/shadows.scss";
+@import "../../components/sharedStyles/shadows.scss";
 
-.menu-sidebar {
+.sidebar {
   width: 20rem;
   height: 100vh;
   background-color: white;
