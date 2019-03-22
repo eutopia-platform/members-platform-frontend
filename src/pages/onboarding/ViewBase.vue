@@ -18,6 +18,7 @@
 import Logo from '../../components/atomic/Logo.vue'
 import Header from '../../components/atomic/Header.vue'
 import Paragraph from '../../components/atomic/Paragraph.vue'
+import Small from '../../components/atomic/Small.vue'
 import Input from '../../components/atomic/Input.vue'
 import Button from '../../components/atomic/Button.vue'
 
@@ -32,16 +33,19 @@ export default {
   },
   props: {
     img: String,
-    info: String
+    info: Object
   },
   data: () => ({
     text: String
   }),
   methods: {
-    onSubmit: function() { this.$emit('next', this.text.value) },
+    onSubmit: function() { this.$emit('next', this.$data) },
     onInputValueChange: function(payload) {
       this.text = payload
     }
+  },
+  computed: {
+    inputValid: comp => comp.text.value && comp.text.value.length > 0
   }
 }
 </script>
@@ -82,7 +86,9 @@ export default {
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    max-width: 40ch;
+    width: 41ch;
+    max-height: 80vh;
+    overflow: scroll;
   }
 
   .input-wrap {
@@ -92,7 +98,7 @@ export default {
     * {
       width: 100%;
       box-sizing: border-box;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       max-width: none;
     }
   }

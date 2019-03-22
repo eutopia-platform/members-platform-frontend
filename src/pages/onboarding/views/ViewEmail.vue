@@ -5,8 +5,8 @@
         Let's create your workspace
       </Header>
       <div class="input-wrap">
-        <Input look="blend" placeholder="you-are-awesome@example.com"></Input>
-        <Button @click="onSubmit">
+        <Input look="blend" @valueChange="onInputValueChange" placeholder="you-are-awesome@example.com"></Input>
+        <Button @click="onSubmit" :disabled="!inputValid">
           Next
         </Button>
       </div>
@@ -24,7 +24,7 @@ export default {
     ViewBase
   },
   computed: {
-    image: () => require("../../../../data/img/onboarding/view-email.png")
+    image: () => require("../../../../data/img/onboarding/view-email.png"),
   }
 }
 </script>

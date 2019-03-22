@@ -9,7 +9,7 @@
       </Paragraph>
       <div class="input-wrap">
         <Input look="blend" @valueChange="onInputValueChange" placeholder="Your next big thing"></Input>
-        <Button @click="onSubmit">
+        <Button @click="onSubmit" :disabled="!inputValid">
           Next
         </Button>
       </div>
@@ -27,7 +27,7 @@ export default {
     ViewBase
   },
   computed: {
-    image: () => require("../../../../data/img/onboarding/view-email.png")
+    image: () => require("../../../../data/img/onboarding/dashboard-2.svg")
   }
 }
 </script>

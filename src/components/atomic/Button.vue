@@ -1,7 +1,8 @@
 <template>
   <button class="button v" v-bind:class="{
     'bt-request': this.type === 'request',
-    'bt-pc-request': this.type === 'pc-request'
+    'bt-pc-request': this.type === 'pc-request',
+    'text': this.type === 'text'
     }"
     @click="onClick">
     <slot />
@@ -25,6 +26,7 @@ export default {
 <style lang="scss" scoped>
 @import "../sharedStyles/colors.scss";
 @import "../sharedStyles/shapes.scss";
+@import "../sharedStyles/text.scss";
 
 .button {
   background-color: $c-primary-light;
@@ -86,6 +88,20 @@ export default {
 
   &:active {
     box-shadow: none;
+  }
+}
+
+.text {
+  background: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  color: black;
+  font-size: $fs-small;
+
+  &:hover {
+    box-shadow: none;
+    transform: none;
   }
 }
 </style>

@@ -2,7 +2,7 @@
   <ViewBase v-bind:img="image">
     <div>
       <Header type="secondary">
-        That was easy!<br/>Find your teams first initiative:<br/>
+        That was easy!<br/>Find your teams first initiative: {{info.milestone}}
       </Header>
       <Paragraph>
         A milestone brings together the key aspects of a successful initiative - your teammates, objectives, key results, toolkits and frameworks so you and your team achieve more, important goals.
@@ -26,7 +26,7 @@ export default {
     ViewBase
   },
   computed: {
-    image: () => require("../../../../data/img/onboarding/view-email.png")
+    image: () => require("../../../../data/img/onboarding/dashboard-3.svg")
   }
 }
 </script>

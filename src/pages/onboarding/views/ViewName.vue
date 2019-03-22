@@ -6,7 +6,7 @@
       </Header>
       <div class="input-wrap">
         <Input look="blend" @valueChange="onInputValueChange" placeholder="Are you the next Google?"></Input>
-        <Button @click="onSubmit">
+        <Button @click="onSubmit" :disabled="!inputValid">
           Next
         </Button>
       </div>
