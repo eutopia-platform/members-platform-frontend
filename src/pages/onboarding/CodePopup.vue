@@ -16,8 +16,8 @@
           Keep this tab open to enter your code. If you didn't receive an email,
           check your spam folder.
         </Paragraph>
-        <div class="icon-wrap">
-          <Icon :src="img" height="60px"></Icon>
+        <div class="icon-wrap" :src="img">
+          <Icon :src="img" size="5rem"></Icon>
         </div>
       </div>
     </Popup>
@@ -56,7 +56,9 @@ export default {
 
 <style lang="scss" scoped>
 .code-wrap {
-  width: 38ch;
+  width: 40ch;
+  padding-left: 3rem;
+  padding-right: 3rem;
   padding-bottom: 3rem;
 
   .input-wrap {

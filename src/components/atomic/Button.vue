@@ -2,10 +2,13 @@
   <button class="button v" v-bind:class="{
     'bt-request': this.type === 'request',
     'bt-pc-request': this.type === 'pc-request',
-    'text': this.type === 'text'
+    'text': this.type === 'text',
+    'icon': this.type === 'icon'
     }"
-    @click="onClick">
+    @click="onClick"
+    >
     <slot />
+    <img v-if="type === 'icon'" :src="img"></img>
   </button>
 </template>
 
@@ -13,7 +16,8 @@
 export default {
   name: "Button",
   props: {
-    type: String
+    type: String,
+    img: String
   },
   methods: {
     onClick() {
@@ -103,5 +107,9 @@ export default {
     box-shadow: none;
     transform: none;
   }
+}
+
+.icon {
+
 }
 </style>

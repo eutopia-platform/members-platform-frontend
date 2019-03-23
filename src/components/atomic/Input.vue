@@ -1,17 +1,14 @@
 <template>
-    <input
-      v-model="value"
-      class="input"
-      :name="name"
-      :type="type"
-      :placeholder="placeholder"
-      @input="onChange"
-      @keyup.enter="onEnter"
-      v-bind:class="styleClass"
-    >
+  <div class="input-wrap">
+    <input v-model="value" class="input" :name="name" :type="type"
+      :placeholder="placeholder" @input="onChange" @keyup.enter="onEnter"
+      v-bind:class="styleClass" :autocomplete="type === 'password' ? 'new-password': 'true'">
+  </div>
 </template>
 
 <script>
+import Button from './Button.vue'
+
 export default {
   name: "Input",
   props: {
@@ -35,6 +32,9 @@ export default {
       default: false,
       type: Boolean
     }
+  },
+  components: {
+    Button
   },
   data: () => ({
     value: ""
@@ -66,10 +66,13 @@ export default {
 @import "../sharedStyles/shapes.scss";
 @import "../sharedStyles/text.scss";
 
+.input-wrap {
+  max-width: 40vw;
+}
+
 .input {
-  display: block;
+  display: inline-block;
   width: 100%;
-  max-width: 30vw;
   background-color: $c-primary-foreground;
   color: $c-text-primary;
   border: $border;

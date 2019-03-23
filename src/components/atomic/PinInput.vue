@@ -3,7 +3,7 @@
     <div v-for="(_, i) in groups" class="pin-group">
       <input v-for="(_, e) in digits" v-for type="text" :name="i*digits+e"
         maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-        @keyup="onKey" :autofocus="i * digits + e === 0"/>
+        @keyup="onKey" :autofocus="i * digits + e === 0" autocomplete="off"/>
     </div>
   </form>
 </template>

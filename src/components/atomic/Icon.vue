@@ -1,7 +1,5 @@
 <template>
-  <div class="icon">
-    <img v-bind:src="src" v-bind:height="height" v-bind:width="width"/>
-  </div>
+  <div class="icon" :style="styleObject"></div>
 </template>
 
 <script>
@@ -9,14 +7,17 @@ export default {
   name: "Icon",
   props: {
     src: String,
-    width: {
-      type: String,
-      default: "initial"
-    },
-    height: {
+    size: {
       type: String,
       default: "initial"
     }
+  },
+  computed: {
+    styleObject: comp => ({
+      'background-image': `url(${comp.src})`,
+      'width': comp.size,
+      'height': comp.size
+    })
   }
 }
 </script>
@@ -24,8 +25,9 @@ export default {
 <style lang="scss" scoped>
 .icon {
   display: inline-block;
-  img {
-    display: block;
-  }
+  min-height: 1rem;
+  min-width: 1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 </style>

@@ -4,6 +4,7 @@
     v-bind:is="currentView" ref="view"
   ></component>
   <CodePopup v-if="showCodePopup" :info="userInfo" @submit="onCodeSubmit"></CodePopup>
+  <PasswordPopup v-if="showPasswordPopup" @submit="onPasswordSubmit"></PasswordPopup>
 </div>
 </template>
 
@@ -14,6 +15,7 @@ import ViewMembers from './onboarding/views/ViewMembers.vue'
 import ViewMilestone from './onboarding/views/ViewMilestone.vue'
 import ViewFinal from './onboarding/views/ViewFinal.vue'
 import CodePopup from './onboarding/CodePopup.vue'
+import PasswordPopup from './onboarding/PasswordPopup.vue'
 
 export default {
   name: "Onboarding",
@@ -23,7 +25,8 @@ export default {
     ViewMembers,
     ViewMilestone,
     ViewFinal,
-    CodePopup
+    CodePopup,
+    PasswordPopup
   },
   data: () => ({
     counter: 0,
@@ -35,7 +38,8 @@ export default {
       members: [],
       milestone: ""
     },
-    showCodePopup: false
+    showCodePopup: false,
+    showPasswordPopup: false
   }),
   computed: {
     currentView: comp => comp.views[comp.counter],
@@ -66,16 +70,17 @@ export default {
         window.open('/workspace', '_self')
     },
     queryCode: function(email) {
-      this.userInfo.email = email;
+      this.userInfo.email = email
       this.showCodePopup = true
     },
     onCodeSubmit: function() {
-      this.showCodePopup = false;
+      this.showCodePopup = false
+      this.showPasswordPopup = true
+    },
+    onPasswordSubmit: function() {
+      this.showPasswordPopup = false
       this.$refs.view.onQueryFinal()
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
