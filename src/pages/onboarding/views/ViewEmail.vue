@@ -26,6 +26,11 @@ export default {
   },
   computed: {
     image: () => require("../../../../data/img/onboarding/view-email.png"),
+  },
+  methods: {
+    onSubmit: function() {
+      this.$emit('queryCode') 
+    }
   }
 }
 </script>

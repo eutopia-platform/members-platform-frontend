@@ -1,8 +1,9 @@
 <template>
 <div class="onboarding">
-  <component @next="onNext" v-bind:info="userInfo"
+  <component @next="onNext" @queryCode="queryCode" v-bind:info="userInfo"
     v-bind:is="currentView"
   ></component>
+  <CodePopup v-if="showCodePopup"></CodePopup>
 </div>
 </template>
 
@@ -12,6 +13,7 @@ import ViewName from './onboarding/views/ViewName.vue'
 import ViewMembers from './onboarding/views/ViewMembers.vue'
 import ViewMilestone from './onboarding/views/ViewMilestone.vue'
 import ViewFinal from './onboarding/views/ViewFinal.vue'
+import CodePopup from './onboarding/CodePopup.vue'
 
 export default {
   name: "Onboarding",
@@ -20,7 +22,8 @@ export default {
     ViewName,
     ViewMembers,
     ViewMilestone,
-    ViewFinal
+    ViewFinal,
+    CodePopup
   },
   data: () => ({
     counter: 0,
@@ -31,10 +34,11 @@ export default {
       organization: "",
       members: [],
       milestone: ""
-    }
+    },
+    showCodePopup: false
   }),
   computed: {
-    currentView: comp => comp.views[comp.counter]
+    currentView: comp => comp.views[comp.counter],
   },
   methods: {
     onNext: function(payload) {
@@ -60,6 +64,9 @@ export default {
         this.counter++
       else
         window.open('/workspace', '_self')
+    },
+    queryCode: function() {
+      this.showCodePopup = true
     }
   }
 }

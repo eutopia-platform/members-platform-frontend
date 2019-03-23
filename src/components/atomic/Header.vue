@@ -38,6 +38,11 @@ export default {
   font-weight: bold;
   margin-top: .5em;
   margin-bottom: .5em;
+  display: inline-block;
+
+  &::after {
+    content: "\A"; // for line break after header despite "display: inline-block"
+  }
 
   img {
     height: 1.5em;
