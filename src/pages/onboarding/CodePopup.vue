@@ -9,7 +9,16 @@
           We have send you a 6 digit confirmation code to {{info.email}}. It
           will expire shortly, so please enter your code soon.
         </Paragraph>
-        <PinInput @submit="onSubmit"></PinInput>
+        <div class="input-wrap">
+          <PinInput @submit="onSubmit"></PinInput>
+        </div>
+        <Paragraph>
+          Keep this tab open to enter your code. If you didn't receive an email,
+          check your spam folder.
+        </Paragraph>
+        <div class="icon-wrap">
+          <Icon :src="img" height="60px"></Icon>
+        </div>
       </div>
     </Popup>
   </div>
@@ -20,6 +29,7 @@ import Popup from '../../components/molecular/Popup.vue'
 import Header from '../../components/atomic/Header.vue'
 import Paragraph from '../../components/atomic/Paragraph.vue'
 import PinInput from '../../components/atomic/PinInput.vue'
+import Icon from '../../components/atomic/Icon.vue'
 
 export default {
   name: "CodePopup",
@@ -27,7 +37,8 @@ export default {
     Popup,
     Header,
     Paragraph,
-    PinInput
+    PinInput,
+    Icon
   },
   props: {
     info: Object
@@ -36,6 +47,9 @@ export default {
     onSubmit: function() {
       this.$emit('submit')
     }
+  },
+  computed: {
+    img: () => require('../../../data/img/onboarding/inbox.svg')
   }
 }
 </script>
@@ -43,5 +57,17 @@ export default {
 <style lang="scss" scoped>
 .code-wrap {
   width: 38ch;
+  padding-bottom: 3rem;
+
+  .input-wrap {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .icon-wrap {
+    margin-top: 2rem;
+    text-align: center;
+  }
 }
 </style>

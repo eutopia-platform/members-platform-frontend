@@ -1,8 +1,9 @@
 <template>
   <form class="pin-input">
     <div v-for="(_, i) in groups" class="pin-group">
-      <input v-for="(_, e) in digits" v-for type="text" :name="i*digits+e" maxlength="1"
-        oninput="this.value=this.value.replace(/[^0-9]/g,'')" @keyup="onKey"/>
+      <input v-for="(_, e) in digits" v-for type="text" :name="i*digits+e"
+        maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+        @keyup="onKey" :autofocus="i * digits + e === 0"/>
     </div>
   </form>
 </template>
@@ -27,6 +28,7 @@ export default {
   },
   methods: {
     onKey: function(e) {
+      if (isNaN(e.key) || e.key === ' ') return
       const current = document.activeElement.name
       if (current >= this.groups * this.digits - 1)
         this.$emit('submit')
@@ -70,6 +72,10 @@ export default {
     &:last-child {
       border-top-right-radius: $border-radius;
       border-bottom-right-radius: $border-radius;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }
