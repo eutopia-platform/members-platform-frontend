@@ -5,7 +5,8 @@
         What is the name of your company or startup?
       </Header>
       <div class="input-wrap">
-        <Input look="blend" @valueChange="onInputValueChange" placeholder="Are you the next Google?"></Input>
+        <Input look="blend" @valueChange="onInputValueChange" @submit="onSubmit"
+          placeholder="Are you the next Google?" :focus="true"></Input>
         <Button @click="onSubmit" :disabled="!inputValid">
           Next
         </Button>

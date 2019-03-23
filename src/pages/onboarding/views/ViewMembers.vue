@@ -6,7 +6,7 @@
       </Header>
       <div class="input-wrap">
         <Input v-for="(_, i) in members" look="blend" :name="String(i)" :placeholder=
-          "placeholders[i % 3]" @valueChange="onInputValueChange"></Input>
+          "placeholders[i % 3]" @valueChange="onInputValueChange" :focus="i === 0"></Input>
         <Button type="text" @click="addInput">+ add more team members</Button>
         <Button @click="onSubmit" :disabled="!inputValid">
           Next

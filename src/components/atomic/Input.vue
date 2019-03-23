@@ -6,6 +6,7 @@
       :type="type"
       :placeholder="placeholder"
       @input="onChange"
+      @keyup.enter="onEnter"
       v-bind:class="styleClass"
     >
 </template>
@@ -29,6 +30,10 @@ export default {
     look: {
       default: "default",
       type: String
+    },
+    focus: {
+      default: false,
+      type: Boolean
     }
   },
   data: () => ({
@@ -44,7 +49,14 @@ export default {
         value: this.value
       };
       this.$emit("valueChange", payload);
+    },
+    onEnter() {
+      this.$emit("submit")
     }
+  },
+  mounted: function() {
+    if (this.focus)
+      this.$el.focus()
   }
 };
 </script>

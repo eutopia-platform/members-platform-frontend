@@ -137,6 +137,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../components/sharedStyles/colors.scss";
+@import "../../components/sharedStyles/responsive.scss";
 
 .view {
   width: 100vw;
