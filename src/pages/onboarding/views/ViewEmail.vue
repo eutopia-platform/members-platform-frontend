@@ -29,7 +29,10 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      this.$emit('queryCode') 
+      this.$emit('queryCode', this.text.value)
+    },
+    onQueryFinal: function() {
+      this.$emit('next', this.$data)
     }
   }
 }

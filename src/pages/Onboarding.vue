@@ -1,9 +1,9 @@
 <template>
 <div class="onboarding">
   <component @next="onNext" @queryCode="queryCode" v-bind:info="userInfo"
-    v-bind:is="currentView"
+    v-bind:is="currentView" ref="view"
   ></component>
-  <CodePopup v-if="showCodePopup"></CodePopup>
+  <CodePopup v-if="showCodePopup" :info="userInfo" @submit="onCodeSubmit"></CodePopup>
 </div>
 </template>
 
@@ -65,8 +65,13 @@ export default {
       else
         window.open('/workspace', '_self')
     },
-    queryCode: function() {
+    queryCode: function(email) {
+      this.userInfo.email = email;
       this.showCodePopup = true
+    },
+    onCodeSubmit: function() {
+      this.showCodePopup = false;
+      this.$refs.view.onQueryFinal()
     }
   }
 }

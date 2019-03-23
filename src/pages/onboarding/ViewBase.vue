@@ -1,5 +1,5 @@
 <template>
-  <div class="view">
+  <div>
     <Logo></Logo>
     <div class="view">
       <div class="content-half">
@@ -139,6 +139,13 @@ export default {
 @import "../../components/sharedStyles/colors.scss";
 @import "../../components/sharedStyles/responsive.scss";
 
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 2rem;
+}
+
 .view {
   width: 100vw;
   height: 100vh;
@@ -161,13 +168,6 @@ export default {
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
     }
-  }
-
-  .logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 2rem;
   }
 
   .content-section {
