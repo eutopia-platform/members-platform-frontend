@@ -14,6 +14,12 @@
         </Button>
       </div>
     </div>
+    <template v-slot:dashboard>
+      <div>
+        <Paragraph class="email">{{info.emailShort}}</Paragraph>
+        <Paragraph class="organization">{{info.organization}}</Paragraph>
+      </div>
+    </template>
   </ViewBase>
 </template>
 
@@ -27,7 +33,7 @@ export default {
     ViewBase
   },
   computed: {
-    image: () => require("../../../../data/img/onboarding/dashboard-2.svg")
+    image: () => require("../../../../data/img/onboarding/dashboard-1.svg")
   }
 }
 </script>

@@ -89,7 +89,7 @@ export default {
   border: none;
   box-shadow: none;
   border-radius: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $c-text-primary-light;
   padding: .5rem;
   padding-left: .5rem;
   font-size: $fs-base;

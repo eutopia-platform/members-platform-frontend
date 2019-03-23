@@ -24,9 +24,10 @@ export default {
   },
   data: () => ({
     counter: 0,
-    views: ['ViewEmail', 'ViewName', 'ViewMembers', 'ViewMilestone', 'ViewFinal'],
+    views: ['ViewEmail', 'ViewName', 'ViewMilestone', 'ViewMembers', 'ViewFinal'],
     userInfo: {
       email: "",
+      emailShort: "",
       organization: "",
       members: [],
       milestone: ""
@@ -43,6 +44,7 @@ export default {
       switch (this.views[this.counter]) {
         case 'ViewEmail':
           this.userInfo.email = payload.text.value
+          this.userInfo.emailShort = payload.text.value.split('@')[0]
           break
         case 'ViewName':
           this.userInfo.organization = payload.text.value

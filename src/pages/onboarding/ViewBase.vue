@@ -9,6 +9,9 @@
       </div>
       <div class="image-wrap">
         <img v-bind:src="img"/>
+        <div class="dashboard">
+          <slot name="dashboard"></slot>
+        </div>
       </div>
     </div>
   </div>
@@ -46,11 +49,91 @@ export default {
   },
   computed: {
     inputValid: comp => comp.text.value && comp.text.value.length > 0
+  },
+  mounted: function() {
+
+    const drawDashboard = () => {
+      const img = this.$el.querySelector('img')
+      const iw = img.offsetWidth / 100;
+      const ih = img.offsetHeight / 100;
+
+      if (!img.offsetWidth || !img.offsetHeight) return
+
+      // position & size dashboard
+      const dashboard = this.$el.querySelector('.dashboard')
+      dashboard.setAttribute('style', `
+        left: ${img.offsetLeft - img.offsetWidth / 2}px;
+        top: ${img.offsetTop - img.offsetHeight / 2}px;
+        width: ${img.offsetWidth}px;
+        height: ${img.offsetHeight}px;
+      `)
+
+      // position dashboard elements
+      const orga = this.$el.querySelector('.organization')
+      if (orga) {
+        orga.setAttribute('style', `
+          left: ${4.3 * iw}px;
+          top: ${11 * ih}px;
+          font-size: ${5 * ih}px;
+          visibility: visible;
+        `)
+      }
+      const email = this.$el.querySelector('.email')
+      if (email) {
+        email.setAttribute('style', `
+          left: ${15 * iw}px;
+          top: ${21 * ih}px;
+          font-size: ${4 * ih}px;
+          visibility: visible;
+        `)
+      }
+      const ini_title = this.$el.querySelector('.ini-title')
+      if (ini_title) {
+        ini_title.setAttribute('style', `
+          left: ${45 * iw}px;
+          top: ${9 * ih}px;
+          font-size: ${5 * ih}px;
+          visibility: visible;
+        `)
+      }
+      const ini_icon = this.$el.querySelector('.ini-icon')
+      if (ini_icon) {
+        ini_icon.setAttribute('style', `
+          left: ${12 * iw}px;
+          top: ${32.2 * ih}px;
+          font-size: ${3 * ih}px;
+          visibility: visible;
+        `)
+      }
+      const member_title = this.$el.querySelector('.member-title')
+      if (member_title) {
+        member_title.setAttribute('style', `
+          left: ${5 * iw}px;
+          top: ${67 * ih}px;
+          font-size: ${3.5 * ih}px;
+          visibility: visible;
+        `)
+      }
+      const members = this.$el.querySelector('.members')
+      if (members) {
+        members.setAttribute('style', `
+          left: ${7 * iw}px;
+          top: ${67 * ih}px;
+          font-size: ${3 * ih}px;
+          visibility: visible;
+        `)
+      }
+    }
+
+    setTimeout(drawDashboard, 100)
+    window.addEventListener('resize', drawDashboard)
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import "../../components/sharedStyles/colors.scss";
+
 .view {
   width: 100vw;
   height: 100vh;
@@ -100,6 +183,31 @@ export default {
       box-sizing: border-box;
       margin-bottom: 1.5rem;
       max-width: none;
+    }
+  }
+}
+
+.dashboard {
+  $side-ratio: 424 / 530;
+  $img-unit: 40vw / 100;
+  $img-left: 40vw;
+
+  position: absolute;
+
+  & * :not(li) {
+    position: absolute;
+    visibility: hidden;
+    transform: translateY(-100%);
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    transform: none;
+
+    li {
+      margin-bottom: .2rem;
+      color: $c-text-primary;
     }
   }
 }
