@@ -1,7 +1,7 @@
 <template>
   <div class="view">
+    <Logo></Logo>
     <div class="view">
-      <Logo></Logo>
       <div class="content-half">
         <div class="content-section">
           <slot></slot>
@@ -165,6 +165,8 @@ export default {
 
   .logo {
     position: absolute;
+    top: 0;
+    left: 0;
     margin: 2rem;
   }
 
@@ -189,6 +191,29 @@ export default {
       margin-bottom: 1.5rem;
       max-width: none;
     }
+  }
+}
+
+@media screen and (max-width: $break-mobile) {
+  .view {
+    flex-direction: column-reverse;
+  }
+
+  .content-half, .image-wrap {
+    width: 100vw !important;
+  }
+
+  .content-half {
+    flex-grow: 2;
+  }
+
+  .image-wrap {
+    flex-grow: 1;
+  }
+
+  .logo {
+    margin: 0 !important;
+    transform: scale(.5);
   }
 }
 
