@@ -74,7 +74,8 @@ export default {
         orga.setAttribute('style', `
           left: ${4.3 * iw}px;
           top: ${11 * ih}px;
-          font-size: ${5 * ih}px;
+          font-size: ${orga.textContent.length < 18 ? 5 * ih :
+            18.0 / orga.textContent.length * 5 * ih}px;
           visibility: visible;
         `)
       }
@@ -83,7 +84,8 @@ export default {
         email.setAttribute('style', `
           left: ${15 * iw}px;
           top: ${21 * ih}px;
-          font-size: ${4 * ih}px;
+          font-size: ${email.textContent.length < 14 ? 4 * ih :
+            14.0 / email.textContent.length * 4 * ih}px;
           visibility: visible;
         `)
       }
@@ -92,7 +94,8 @@ export default {
         ini_title.setAttribute('style', `
           left: ${45 * iw}px;
           top: ${9 * ih}px;
-          font-size: ${5 * ih}px;
+          font-size: ${ini_title.textContent.length < 30 ? 5 * ih :
+            30.0 / ini_title.textContent.length * 5 * ih}px;
           visibility: visible;
         `)
       }
@@ -101,7 +104,8 @@ export default {
         ini_icon.setAttribute('style', `
           left: ${12 * iw}px;
           top: ${32.2 * ih}px;
-          font-size: ${3 * ih}px;
+          font-size: ${ini_icon.textContent.length < 24 ? 3 * ih :
+            24.0 / ini_icon.textContent.length * 3 * ih}px;
           visibility: visible;
         `)
       }
