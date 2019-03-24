@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
+import VueApollo from "vue-apollo"
+import ApolloClient from "apollo-boost"
 import App from "./App.vue";
 import LandingPage from "./pages/LandingPage";
 import ProjectHub from "./pages/ProjectHub";
@@ -9,24 +11,18 @@ import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
 import Workspace from "./pages/Workspace";
 import Onboarding from "./pages/Onboarding";
-import VueApollo from "vue-apollo"
-
-import ApolloClient from "apollo-boost"
 
 const apolloClient = new ApolloClient({
-  // You should use an absolute URL here
-  uri: "http://192.168.8.107:5000/auth"
+  uri: "http://192.168.43.242:5000/auth"
+})
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
 })
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueApollo)
 Vue.http.options.emulateJSON = true;
-
-const apolloProvider = new VueApollo({
-  defaultClient: apolloClient,
-})
-
 
 const routes = [
   { path: "/", component: LandingPage },

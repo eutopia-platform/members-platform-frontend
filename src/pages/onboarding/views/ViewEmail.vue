@@ -17,6 +17,7 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
+import gql from 'graphql-tag'
 
 export default {
   name: "ViewEmail",
@@ -29,11 +30,37 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      this.$emit('queryCode', this.text.value)
+      this.addEmail().then(() =>
+        this.$emit('queryCode', this.text.value)
+      ).catch(data => alert(data.msg))
     },
     onQueryFinal: function() {
       this.$emit('next', this.$data)
-    }
-  }
+    },
+
+    addEmail: function(self = this) {
+      return new Promise(function(resolve, reject) {
+        self.$apollo.mutate({
+        mutation: gql`
+          mutation {
+            registerEmail(email: "${self.text.value}") {
+              msg
+              exitcode
+            }
+          }
+        `
+      }).then(data => {
+        const exitcode = data.data.registerEmail.exitcode
+        const msg = data.data.registerEmail.msg
+        if (exitcode == 0)
+          resolve()
+        else
+          reject(data.data.registerEmail)
+      }).catch(data => {
+        console.error(data)
+        reject(data)
+      })
+    })
+  }}
 }
 </script>
