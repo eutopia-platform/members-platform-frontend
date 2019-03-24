@@ -5,9 +5,9 @@
         That was easy!<br/>Find your teams first initiative: {{info.milestone}}
       </Header>
       <Paragraph>
-        A milestone brings together the key aspects of a successful initiative - your teammates, objectives, key results, toolkits and frameworks so you and your team achieve more, important goals.
+        Validate your assumptions, become clear about the user, the problem you are solving so you get to product market fit asap - all with powerful product toolkits. Time to scale your startup!
       </Paragraph>
-      <div class="input-wrap">
+      <div class="input-wrap" >
         <Button @click="onSubmit">
           Find your initiative in Cubed
         </Button>

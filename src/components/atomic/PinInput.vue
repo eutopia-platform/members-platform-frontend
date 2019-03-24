@@ -30,8 +30,11 @@ export default {
     onKey: function(e) {
       if (isNaN(e.key) || e.key === ' ') return
       const current = document.activeElement.name
-      if (current >= this.groups * this.digits - 1)
-        this.$emit('submit')
+      if (current >= this.groups * this.digits - 1) {
+        const pin = Array.from(this.$el.getElementsByTagName('input'))
+          .map(i => parseInt(i.value, 10)).filter(i => !isNaN(i)).join('')
+        this.$emit('submit', pin)
+      }
       else
         this.$el.querySelector(`input[name='${(parseInt(current, 10)+1)}']`).focus()
     }

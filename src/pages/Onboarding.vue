@@ -4,7 +4,7 @@
     v-bind:is="currentView" ref="view"
   ></component>
   <CodePopup v-if="showCodePopup" :info="userInfo" @submit="onCodeSubmit"></CodePopup>
-  <PasswordPopup v-if="showPasswordPopup" @submit="onPasswordSubmit"></PasswordPopup>
+  <PasswordPopup v-if="showPasswordPopup" :info="userInfo" @submit="onPasswordSubmit"></PasswordPopup>
 </div>
 </template>
 
@@ -35,6 +35,7 @@ export default {
       email: "",
       emailShort: "",
       organization: "",
+      code: "",
       members: [],
       milestone: ""
     },
@@ -73,7 +74,8 @@ export default {
       this.userInfo.email = email
       this.showCodePopup = true
     },
-    onCodeSubmit: function() {
+    onCodeSubmit: function(code) {
+      this.userInfo.code = code
       this.showCodePopup = false
       this.showPasswordPopup = true
     },

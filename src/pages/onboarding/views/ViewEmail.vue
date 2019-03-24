@@ -30,37 +30,36 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      this.addEmail().then(() =>
+      this.submitEmail().then(msg => {
+        if (msg) alert(msg)
         this.$emit('queryCode', this.text.value)
-      ).catch(data => alert(data.msg))
+      }).catch(msg => alert(msg))
     },
     onQueryFinal: function() {
       this.$emit('next', this.$data)
     },
-
-    addEmail: function(self = this) {
+    submitEmail: function(self = this) {
       return new Promise(function(resolve, reject) {
         self.$apollo.mutate({
-        mutation: gql`
-          mutation {
+          mutation: gql`mutation {
             registerEmail(email: "${self.text.value}") {
               msg
               exitcode
-            }
-          }
-        `
-      }).then(data => {
-        const exitcode = data.data.registerEmail.exitcode
-        const msg = data.data.registerEmail.msg
-        if (exitcode == 0)
-          resolve()
-        else
-          reject(data.data.registerEmail)
-      }).catch(data => {
-        console.error(data)
-        reject(data)
+            }}`
+        }).then(data => {
+          const code = data.data.registerEmail.exitcode
+          if (code === 0 || code === 4)
+            resolve()
+          else if (code === 500) // needs new code
+            ;
+          else
+            reject(data.data.registerEmail.msg)
+       }).catch(data => {
+          console.error(data)
+          reject(data)
+        })
       })
-    })
-  }}
+    }
+  }
 }
 </script>
