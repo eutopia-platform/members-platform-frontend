@@ -9,10 +9,24 @@ import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
 import Workspace from "./pages/Workspace";
 import Onboarding from "./pages/Onboarding";
+import VueApollo from "vue-apollo"
+
+import ApolloClient from "apollo-boost"
+
+const apolloClient = new ApolloClient({
+  // You should use an absolute URL here
+  uri: "http://192.168.8.107:5000/auth"
+})
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(VueApollo)
 Vue.http.options.emulateJSON = true;
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
+
 
 const routes = [
   { path: "/", component: LandingPage },
@@ -33,6 +47,7 @@ Vue.prototype.$eventBus = new Vue()
 
 new Vue({
   el: "#app",
+  apolloProvider,
   router,
-  render: h => h(App)
+  render: h => h(App),
 });
