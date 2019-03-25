@@ -41,7 +41,9 @@ export default {
   display: inline-block;
 
   &::after {
-    content: "\A"; // for line break after header despite "display: inline-block"
+    content: "\A";
+    white-space: pre;
+    word-wrap: break-word;
   }
 
   img {

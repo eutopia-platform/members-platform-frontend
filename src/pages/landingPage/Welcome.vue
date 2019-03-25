@@ -1,17 +1,10 @@
 <template>
   <div class="lp-welcome">
     <Header type="primary">
-      Proven frameworks to scale your projects.
+      Build. Measure. Learn.<br/>
+      Lean startups made easy.
     </Header>
-    <p>
-      Tools for you and your teams, so you achieve the right goals, over and
-      over again.
-    </p>
-    <div class="bt-wrap">
-      <Button type="request" @click="scrollToSignup">
-        Request Access
-      </Button>
-    </div>
+    <Button @click="signup">Setup workspace</Button>
   </div>
 </template>
 
@@ -29,6 +22,7 @@ export default {
     scrollToSignup: function() {
       this.$eventBus.$emit('scroll-to-email')
     },
+    signup: () => window.open('/onboarding', '_self')
   }
 }
 </script>
@@ -46,20 +40,10 @@ export default {
     position: relative;
     margin-bottom: 5em;
 
-    p {
-      font-size: 1.2rem;
-      margin-top: 2em;
-      margin-bottom: 2em;
-    }
+    // text-align: center;
+  }
 
-    .bt-wrap {
-      display: inline-block;
-      margin-top: 1.5em;
-      padding: 0;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
+  .button {
+    margin-top: 2rem;
   }
 </style>

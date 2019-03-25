@@ -7,6 +7,7 @@
       <p class="pc-price">
         {{price}}
       </p>
+      <Small>when billed annually</Small>
       <slot class="pc-image">
       </slot>
       <ul>
@@ -21,6 +22,7 @@
 
 <script>
 import Header from '../atomic/Header.vue'
+import Small from '../atomic/Small.vue'
 import Button from '../atomic/Button.vue'
 
 export default {
@@ -32,6 +34,7 @@ export default {
   },
   components: {
     Header,
+    Small,
     Button
   },
   methods: {
@@ -50,7 +53,7 @@ export default {
 .pricing-card {
 
   width: 18em;
-  height: 33em;
+  height: 32em;
   margin: 1em;
   text-align: center;
   box-sizing: border-box;
@@ -85,6 +88,12 @@ export default {
   .pc-price {
     margin: .4em;
     font-size: .9em;
+  }
+
+  .small {
+    margin: .4em;
+    margin-bottom: 1rem;
+    display: block;
   }
 
   img {

@@ -2,15 +2,15 @@
   <div class="lp-pricing">
     <div class="section-title">
       <Header type="primary">
-        Pricing options
+        Reduce waste and build lean products
       </Header>
     </div>
     <div class="pricing-list">
       <PricingCard @request="scrollToSignup"
-        title="Product Pad for Entrepreneurs" price="free"
+        title="Productcube for Startups" price="15 / month per user"
         v-bind:feats="[
-          'Project Starter-Bundle', 'Access to project dashboard',
-          'Up to 3 team members', 'Manage up to 3 projects', '1 mentorship session free'
+          'Setup one workspace', 'Run unlimited experiments',
+          'Create your own toolkits', '1 mentorship session per month'
           ]">
         <template>
         <img class="image-right" src="../../../data/img/landingpage/card1.png">
@@ -18,11 +18,10 @@
       </PricingCard>
 
       <PricingCard @request="scrollToSignup"
-        title="Product Pad for Scaleups" price="€189 / month"
+        title="Productcube for Corporates" price="25 / month per user"
         v-bind:feats="[
-          'Unlimited project toolkits', 'Access to project dashboard',
-          'Unlimited team members', 'Manage unlimited projects',
-          'Two mentorship sessions per month', 'Project recommendations'
+          'Setup multiple workspaces', 'Run unlimited experiments',
+          'Create your own toolkits', 'Organize user tests'
           ]">
         <template>
         <img class="image-right" src="../../../data/img/landingpage/card2.png">

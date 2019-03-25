@@ -1,6 +1,9 @@
 <template>
-  <!-- Welcome -->
   <div class="landing-page">
+
+    <Logo></Logo>
+
+    <!-- Welcome -->
     <PageSlide>
       <template v-slot>
         <SplitViewHorizontal>
@@ -8,7 +11,7 @@
             <Welcome></Welcome>
           </template>
           <template v-slot:right>
-            <img class="image-right" src="../../data/img/landingpage/slide1.svg">
+            <img class="image-right" src="../../data/img/landingpage/slide2.svg">
           </template>
         </SplitViewHorizontal>
       </template>
@@ -47,6 +50,7 @@
 
 <script>
 import PageSlide from "../components/atomic/PageSlide";
+import Logo from "../components/atomic/Logo";
 import Header from "../components/atomic/Header";
 import Button from "../components/atomic/Button";
 import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue';
@@ -59,6 +63,7 @@ import Footer from './landingPage/Footer.vue'
 export default {
   name: "LandingPage",
   components: {
+    Logo,
     PageSlide,
     Header,
     Button,

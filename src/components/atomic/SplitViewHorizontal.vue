@@ -63,7 +63,7 @@ export default {
     }
 
     .half-right {
-      background-color: $c-primary-light;
+      background-color: white;
 
       @media screen and (max-width: $break-mobile) {
         height: 50vh;

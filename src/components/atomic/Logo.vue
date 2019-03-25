@@ -1,7 +1,7 @@
 <template>
   <div class="logo">
     <Header type="secondary">
-      cubed
+      Productcube
     </Header>
   </div>
 </template>
@@ -18,10 +18,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../sharedStyles/responsive.scss";
+
 .logo {
-  margin: 0;
+  position: absolute;
+  margin-top: 1rem;
+  margin-left: 4rem;
+
   * {
     margin: 0;
+  }
+
+  @media screen and (max-width: $break-mobile) {
+    margin-top: 0;
+    margin-left: 0;
+
+    & * {
+      transform: scale(.5);
+    }
   }
 }
 </style>
