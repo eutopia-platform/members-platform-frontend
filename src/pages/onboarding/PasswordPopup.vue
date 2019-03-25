@@ -42,7 +42,6 @@ export default {
     onSubmit: function() {
       console.log(this.$el.querySelector('input').value)
       this.submitPassword(this.$el.querySelector('input').value).then(token => {
-        console.log('success', token)
         this.$emit('submit')
       }).catch(msg => console.log(msg))
     },

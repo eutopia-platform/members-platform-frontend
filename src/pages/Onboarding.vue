@@ -45,6 +45,15 @@ export default {
   computed: {
     currentView: comp => comp.views[comp.counter],
   },
+  mounted: function() {
+    // skip parts of signup depending on url 'stage' param; e.g. stage=members => ViewMembers
+    const stage = this.$route.query.stage ? this.$route.query.stage.toLowerCase() : undefined
+    if (!stage) return
+    if (this.views.map(v => v.replace('View', '').toLowerCase()).includes(stage)) {
+      console.log('skip to ' + stage)
+      this.counter = this.views.map(v => v.replace('View', '').toLowerCase()).indexOf(stage)
+    }
+  },
   methods: {
     onNext: function(payload) {
       if (this.views[this.counter] == 'ViewEmail')

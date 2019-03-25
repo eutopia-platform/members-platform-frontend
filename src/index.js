@@ -13,7 +13,8 @@ import Workspace from "./pages/Workspace";
 import Onboarding from "./pages/Onboarding";
 
 const apolloClient = new ApolloClient({
-  uri: "http://192.168.8.104:5000/auth"
+  // uri: "http://ec2-52-91-115-92.compute-1.amazonaws.com/auth"
+  uri: "http://localhost:5000/auth"
 })
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
