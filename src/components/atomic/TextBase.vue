@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text">
     <slot></slot>
   </div>
 </template>
@@ -22,6 +22,10 @@ export default {
 <style lang="scss" scoped>
 @import "../sharedStyles/text.scss";
 @import "../sharedStyles/colors.scss";
+
+.text {
+  display: inline-block;
+}
 
 .color-primary {
   color: $c-text-primary;

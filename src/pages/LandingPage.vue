@@ -1,4 +1,5 @@
 <template>
+  <!-- Welcome -->
   <div class="landing-page">
     <PageSlide>
       <template v-slot>
@@ -13,17 +14,16 @@
       </template>
     </PageSlide>
 
+    <!-- Intro -->
     <PageSlide>
       <SplitViewHorizontal>
         <template v-slot:left>
-          <Vision></Vision>
-        </template>
-        <template v-slot:right>
-          <img class="image-right" src="../../data/img/landingpage/slide2.svg">
+          <Introduction></Introduction>
         </template>
       </SplitViewHorizontal>
     </PageSlide>
 
+    <!-- Pricing -->
     <PageSlide>
       <SplitViewHorizontal>
         <template v-slot:left>
@@ -35,10 +35,12 @@
       </SplitViewHorizontal>
     </PageSlide>
 
+    <!-- Contact -->
     <PageSlide>
       <Contact></Contact>
     </PageSlide>
 
+    <!-- Footer -->
     <Footer></Footer>
   </div>
 </template>
@@ -49,7 +51,7 @@ import Header from "../components/atomic/Header";
 import Button from "../components/atomic/Button";
 import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue';
 import Welcome from './landingPage/Welcome.vue'
-import Vision from './landingPage/Vision.vue'
+import Introduction from './LandingPage/Introduction.vue'
 import Contact from './landingPage/Contact.vue'
 import Pricing from './landingPage/Pricing.vue'
 import Footer from './landingPage/Footer.vue'
@@ -62,7 +64,7 @@ export default {
     Button,
     SplitViewHorizontal,
     Welcome,
-    Vision,
+    Introduction,
     Contact,
     Footer,
     Pricing
