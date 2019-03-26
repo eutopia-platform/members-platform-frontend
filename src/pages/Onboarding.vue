@@ -4,7 +4,7 @@
     v-bind:is="currentView" ref="view"
   ></component>
   <CodePopup v-if="showCodePopup" :info="userInfo" @submit="onCodeSubmit"></CodePopup>
-  <PasswordPopup v-if="showPasswordPopup" @submit="onPasswordSubmit"></PasswordPopup>
+  <PasswordPopup v-if="showPasswordPopup" :info="userInfo" @submit="onPasswordSubmit"></PasswordPopup>
 </div>
 </template>
 
@@ -35,6 +35,7 @@ export default {
       email: "",
       emailShort: "",
       organization: "",
+      code: "",
       members: [],
       milestone: ""
     },
@@ -43,6 +44,15 @@ export default {
   }),
   computed: {
     currentView: comp => comp.views[comp.counter],
+  },
+  mounted: function() {
+    // skip parts of signup depending on url 'stage' param; e.g. stage=members => ViewMembers
+    const stage = this.$route.query.stage ? this.$route.query.stage.toLowerCase() : undefined
+    if (!stage) return
+    if (this.views.map(v => v.replace('View', '').toLowerCase()).includes(stage)) {
+      console.log('skip to ' + stage)
+      this.counter = this.views.map(v => v.replace('View', '').toLowerCase()).indexOf(stage)
+    }
   },
   methods: {
     onNext: function(payload) {
@@ -73,7 +83,8 @@ export default {
       this.userInfo.email = email
       this.showCodePopup = true
     },
-    onCodeSubmit: function() {
+    onCodeSubmit: function(code) {
+      this.userInfo.code = code
       this.showCodePopup = false
       this.showPasswordPopup = true
     },

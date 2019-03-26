@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
+import VueApollo from "vue-apollo"
+import ApolloClient from "apollo-boost"
 import App from "./App.vue";
 import LandingPage from "./pages/LandingPage";
 import ProjectHub from "./pages/ProjectHub";
@@ -9,9 +11,18 @@ import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
 import Workspace from "./pages/Workspace";
 import Onboarding from "./pages/Onboarding";
+import Login from "./pages/Login";
+
+const apolloClient = new ApolloClient({
+  uri: "http://ec2-52-91-115-92.compute-1.amazonaws.com/auth"
+})
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+Vue.use(VueApollo)
 Vue.http.options.emulateJSON = true;
 
 const routes = [
@@ -20,6 +31,7 @@ const routes = [
   { path: "/privacy", component: Privacy },
   { path: "/components", component: Components },
   { path: "/onboarding", component: Onboarding },
+  { path: "/login", component: Login },
   { path: "*", component: NotFound }
 ];
 
@@ -33,6 +45,7 @@ Vue.prototype.$eventBus = new Vue()
 
 new Vue({
   el: "#app",
+  apolloProvider,
   router,
-  render: h => h(App)
+  render: h => h(App),
 });

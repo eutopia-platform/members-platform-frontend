@@ -16,6 +16,9 @@ export default {
     Header,
     MenuSidebar,
     Initiative
+  },
+  mounted: function() {
+    console.log(document.cookie)
   }
 }
 </script>

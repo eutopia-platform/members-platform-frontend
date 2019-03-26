@@ -24,6 +24,7 @@ import Header from '../../components/atomic/Header.vue'
 import Input from '../../components/atomic/Input.vue'
 import Button from '../../components/atomic/Button.vue'
 import Icon from '../../components/atomic/Icon.vue'
+import gql from 'graphql-tag'
 
 export default {
   name: "PasswordPopup",
@@ -34,9 +35,33 @@ export default {
     Button,
     Icon
   },
+  props: {
+    info: Object
+  },
   methods: {
     onSubmit: function() {
-      this.$emit('submit')
+      console.log(this.$el.querySelector('input').value)
+      this.submitPassword(this.$el.querySelector('input').value).then(token => {
+        this.$emit('submit')
+      }).catch(msg => console.log(msg))
+    },
+    submitPassword: function(password, self = this) {
+      return new Promise(function(resolve, reject) {
+        self.$apollo.mutate({
+          mutation: gql`mutation {
+            verifyCode(email: "${self.info.email}", code: "${self.info.code}",
+              password: "${password}") {
+              token
+              msg
+              exitcode
+            }}`
+        }).then(data => {
+          console.log(data)
+          resolve(data.data.verifyCode.token)
+        }).catch(data => {
+          reject(data)
+        })
+      })
     }
   },
   computed: {

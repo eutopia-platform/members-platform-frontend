@@ -30,6 +30,7 @@ import Header from '../../components/atomic/Header.vue'
 import Paragraph from '../../components/atomic/Paragraph.vue'
 import PinInput from '../../components/atomic/PinInput.vue'
 import Icon from '../../components/atomic/Icon.vue'
+import gql from 'graphql-tag'
 
 export default {
   name: "CodePopup",
@@ -44,8 +45,27 @@ export default {
     info: Object
   },
   methods: {
-    onSubmit: function() {
-      this.$emit('submit')
+    onSubmit: function(pin) {
+      this.submitCode(pin).then(valid => {
+        if (valid)
+          this.$emit('submit', pin)
+        else
+          alert('not valid')
+      }).catch(data => alert(data.msg))
+    },
+    submitCode: function(pin, self = this) {
+      return new Promise(function(resolve, reject) {
+        self.$apollo.mutate({
+          mutation: gql`mutation {
+            isCodeValid(email: "${self.info.email}", code: "${pin}") {
+              isvalid
+            }}`
+        }).then(data => {
+          resolve(data.data.isCodeValid.isvalid)
+        }).catch(data => {
+          reject(data)
+        })
+      })
     }
   },
   computed: {

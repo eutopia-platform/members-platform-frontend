@@ -51,7 +51,6 @@ export default {
     inputValid: comp => comp.text.value && comp.text.value.length > 0
   },
   mounted: function() {
-
     const drawDashboard = () => {
       const img = this.$el.querySelector('img')
       const iw = img.offsetWidth / 100;
