@@ -7,6 +7,7 @@
       <Header type="quaternary">
         {{name}}
       </Header>
+      <img :src="img"/>
     </div>
   </div>
 </template>
@@ -19,7 +20,8 @@ export default {
   name: "ToolkitCard",
   props: {
     name: String,
-    banner: String
+    banner: String,
+    img: String
   },
   components: {
     Header,
@@ -49,6 +51,14 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
+    & * {
+      display: block;
+    }
+    img {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   .banner {

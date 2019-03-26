@@ -7,7 +7,8 @@
     </Tagline>
     <div class="lean-tool">
       <Paragraph>So you want to build a lean startup?</Paragraph>
-      <ToolkitCard name="Lean Startup Toolkit" banner="full cycle program"></ToolkitCard>
+      <ToolkitCard name="Lean Startup Toolkit" banner="full cycle program"
+        :img="img"></ToolkitCard>
     </div>
   </div>
 </template>
@@ -23,6 +24,9 @@ export default {
     Tagline,
     Paragraph,
     ToolkitCard
+  },
+  computed: {
+    img: () => require('../../../data/img/landingpage/lean-icon.svg')
   }
 }
 </script>
