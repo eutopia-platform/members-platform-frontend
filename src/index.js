@@ -11,6 +11,7 @@ import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
 import Workspace from "./pages/Workspace";
 import Onboarding from "./pages/Onboarding";
+import Login from "./pages/Login";
 
 const apolloClient = new ApolloClient({
   // uri: "http://ec2-52-91-115-92.compute-1.amazonaws.com/auth"
@@ -31,6 +32,7 @@ const routes = [
   { path: "/privacy", component: Privacy },
   { path: "/components", component: Components },
   { path: "/onboarding", component: Onboarding },
+  { path: "/login", component: Login },
   { path: "*", component: NotFound }
 ];
 
