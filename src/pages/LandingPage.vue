@@ -10,10 +10,7 @@
             <Welcome></Welcome>
           </template>
           <template v-slot:right>
-            <img
-              class="image-right"
-              src="../../data/img/landingpage/slide2.svg"
-            >
+            <img class="image-right" src="../../data/img/landingpage/slide2.svg">
           </template>
         </SplitViewHorizontal>
       </template>
@@ -42,10 +39,7 @@
           <Pricing></Pricing>
         </template>
         <template v-slot:right>
-          <img
-            class="image-right"
-            src="../../data/img/landingpage/slide3.svg"
-          >
+          <img class="image-right" src="../../data/img/landingpage/slide3.svg">
         </template>
       </SplitViewHorizontal>
     </PageSlide>
@@ -67,7 +61,7 @@ import Header from "../components/atomic/Header";
 import Button from "../components/atomic/Button";
 import SplitViewHorizontal from "../components/atomic/SplitViewHorizontal.vue";
 import Welcome from "./landingPage/Welcome.vue";
-import Introduction from "./LandingPage/Introduction.vue";
+import Introduction from "./landingPage/Introduction.vue";
 import Contact from "./landingPage/Contact.vue";
 import Pricing from "./landingPage/Pricing.vue";
 import Footer from "./landingPage/Footer.vue";
