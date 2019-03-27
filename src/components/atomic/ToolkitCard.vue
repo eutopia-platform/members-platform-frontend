@@ -1,36 +1,33 @@
 <template>
   <div class="toolkit-card">
     <div class="banner">
-      <Paragraph type="sub"
-color="secondary">
-        {{ banner }}
-      </Paragraph>
+      <Paragraph type="sub" color="secondary">{{banner}}</Paragraph>
     </div>
     <div class="content">
       <Header type="quaternary">
-        {{ name }}
+        {{name}}
       </Header>
-      <img :src="img" />
+      <img :src="img"/>
     </div>
   </div>
 </template>
 
 <script>
-import Header from "./Header.vue";
-import Paragraph from "./Paragraph.vue";
+import Header from './Header.vue'
+import Paragraph from './Paragraph.vue'
 
 export default {
   name: "ToolkitCard",
-  components: {
-    Header,
-    Paragraph
-  },
   props: {
     name: String,
     banner: String,
     img: String
+  },
+  components: {
+    Header,
+    Paragraph
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -69,7 +66,7 @@ export default {
     background: $c-primary-dark;
     top: 0;
     right: 0;
-    padding: 0.25rem;
+    padding: .25rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }

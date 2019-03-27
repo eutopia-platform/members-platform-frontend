@@ -1,9 +1,6 @@
 <template>
   <div class="user-status">
-    <Icon src="https://via.placeholder.com/150"
-height="50px" height="50px">
-      test
-    </Icon>
+    <Icon src="https://via.placeholder.com/150" height="50px" height="50px">test</Icon>
     <div class="text-section">
       <Paragraph class="name">
         John Doe
@@ -16,9 +13,9 @@ height="50px" height="50px">
 </template>
 
 <script>
-import Paragraph from "../atomic/Paragraph.vue";
-import Small from "../atomic/Small.vue";
-import Icon from "../atomic/Icon.vue";
+import Paragraph from '../atomic/Paragraph.vue'
+import Small from '../atomic/Small.vue'
+import Icon from '../atomic/Icon.vue'
 
 export default {
   name: "UserStatus",
@@ -27,7 +24,7 @@ export default {
     Small,
     Icon
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

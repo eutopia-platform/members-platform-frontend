@@ -2,11 +2,11 @@
   <div class="code-popup">
     <Popup>
       <div class="code-wrap">
-        <Header type="secondary">
+        <Header type='secondary'>
           Find a secret in your email
         </Header>
         <Paragraph>
-          We have send you a 6 digit confirmation code to {{ info.email }}. It
+          We have send you a 6 digit confirmation code to {{info.email}}. It
           will expire shortly, so please enter your code soon.
         </Paragraph>
         <div class="input-wrap">
@@ -16,10 +16,8 @@
           Keep this tab open to enter your code. If you didn't receive an email,
           check your spam folder.
         </Paragraph>
-        <div class="icon-wrap"
-:src="img">
-          <Icon :src="img"
-size="5rem"></Icon>
+        <div class="icon-wrap" :src="img">
+          <Icon :src="img" size="5rem"></Icon>
         </div>
       </div>
     </Popup>
@@ -27,12 +25,12 @@ size="5rem"></Icon>
 </template>
 
 <script>
-import Popup from "../../components/molecular/Popup.vue";
-import Header from "../../components/atomic/Header.vue";
-import Paragraph from "../../components/atomic/Paragraph.vue";
-import PinInput from "../../components/atomic/PinInput.vue";
-import Icon from "../../components/atomic/Icon.vue";
-import gql from "graphql-tag";
+import Popup from '../../components/molecular/Popup.vue'
+import Header from '../../components/atomic/Header.vue'
+import Paragraph from '../../components/atomic/Paragraph.vue'
+import PinInput from '../../components/atomic/PinInput.vue'
+import Icon from '../../components/atomic/Icon.vue'
+import gql from 'graphql-tag'
 
 export default {
   name: "CodePopup",
@@ -46,37 +44,34 @@ export default {
   props: {
     info: Object
   },
-  computed: {
-    img: () => require("../../../data/img/onboarding/inbox.svg")
-  },
   methods: {
     onSubmit: function(pin) {
-      this.submitCode(pin)
-        .then(valid => {
-          if (valid) this.$emit("submit", pin);
-          else alert("not valid");
-        })
-        .catch(data => alert(data.msg));
+      this.submitCode(pin).then(valid => {
+        if (valid)
+          this.$emit('submit', pin)
+        else
+          alert('not valid')
+      }).catch(data => alert(data.msg))
     },
     submitCode: function(pin, self = this) {
       return new Promise(function(resolve, reject) {
-        self.$apollo
-          .mutate({
-            mutation: gql`mutation {
+        self.$apollo.mutate({
+          mutation: gql`mutation {
             isCodeValid(email: "${self.info.email}", code: "${pin}") {
               isvalid
             }}`
-          })
-          .then(data => {
-            resolve(data.data.isCodeValid.isvalid);
-          })
-          .catch(data => {
-            reject(data);
-          });
-      });
+        }).then(data => {
+          resolve(data.data.isCodeValid.isvalid)
+        }).catch(data => {
+          reject(data)
+        })
+      })
     }
+  },
+  computed: {
+    img: () => require('../../../data/img/onboarding/inbox.svg')
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

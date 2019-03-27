@@ -3,12 +3,12 @@
     <EmailSignup @mySubmit="onSubmit"></EmailSignup>
     <div
       class="graphql-response-div"
-      :class="{
+      v-html="graphqlResponse.message"
+      v-bind:class="{
         success: this.graphqlResponse.successful,
         error: this.graphqlResponse.unsuccessful
       }"
-      v-html="graphqlResponse.message"
-    />
+    ></div>
   </div>
 </template>
 
@@ -35,45 +35,41 @@ export default {
   }),
 
   methods: {
-    handleResponce(payload) {
+    handleResponce (payload) {
       this.graphqlResponse.successful = payload.ok;
       this.graphqlResponse.unsuccessful = !payload.ok;
       if (payload.ok) {
-        this.graphqlResponse.message = "Success!";
+        this.graphqlResponse.message = "Success!"
       } else {
-        this.graphqlResponse.message = "Error. " /* + payload.msg*/;
+        this.graphqlResponse.message = "Error. "/* + payload.msg*/;
       }
     },
-    onSubmit(payload) {
+    onSubmit (payload) {
       const email = payload.email.value;
 
       //graphql ajax request
 
       //IMPORTANT: Quotes within the query must be double backslash escaped because neither JSON nor GraphQL allow single quotes.
-      const graphqlQueryString =
-        '{"query": "mutation { ' +
-        this.graphqlConnection.mutationName +
-        '(email: \\"' +
-        email +
-        '\\") { ' +
-        this.graphqlConnection.mutationQuery +
-        ' } }"}';
+      const graphqlQueryString = '{"query": "mutation { '
+        + this.graphqlConnection.mutationName
+        + '(email: \\"'
+        + email
+        + '\\") { '
+        + this.graphqlConnection.mutationQuery
+        + ' } }"}';
 
       this.ajaxRequest = true;
-      this.$http
-        .post(this.graphqlConnection.url, graphqlQueryString)
-        .then(result =>
-          this.handleResponce(
-            result.data.data[this.graphqlConnection.mutationName]
-          )
-        );
+      this.$http.post(
+        this.graphqlConnection.url,
+        graphqlQueryString
+      ).then(result => this.handleResponce(result.data.data[this.graphqlConnection.mutationName]));
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../../../components/sharedStyles/colors.scss";
+  @import "../../../components/sharedStyles/colors.scss";
 
 .graphql-response-div {
   margin-top: 1rem;
@@ -86,4 +82,5 @@ export default {
 .error {
   color: $c-error;
 }
+
 </style>

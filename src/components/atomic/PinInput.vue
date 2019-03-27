@@ -1,30 +1,18 @@
 <template>
   <form class="pin-input">
-    <div v-for="(_, i) in groups"
-class="pin-group">
-      <input
-        v-for="(_, e) in digits"
-        v-for
-        type="text"
-        :name="i * digits + e"
-        maxlength="1"
-        oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-        :autofocus="i * digits + e === 0"
-        autocomplete="off"
-        @keyup="onKey"
-      />
+    <div v-for="(_, i) in groups" class="pin-group">
+      <input v-for="(_, e) in digits" v-for type="text" :name="i*digits+e"
+        maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+        @keyup="onKey" :autofocus="i * digits + e === 0" autocomplete="off"/>
     </div>
   </form>
 </template>
 
 <script>
-import Paragraph from "./Paragraph.vue";
+import Paragraph from './Paragraph.vue'
 
 export default {
   name: "PinInput",
-  components: {
-    Paragraph
-  },
   props: {
     digits: {
       type: Number,
@@ -35,23 +23,23 @@ export default {
       default: 2
     }
   },
+  components: {
+    Paragraph
+  },
   methods: {
     onKey: function(e) {
-      if (isNaN(e.key) || e.key === " ") return;
-      const current = document.activeElement.name;
+      if (isNaN(e.key) || e.key === ' ') return
+      const current = document.activeElement.name
       if (current >= this.groups * this.digits - 1) {
-        const pin = Array.from(this.$el.getElementsByTagName("input"))
-          .map(i => parseInt(i.value, 10))
-          .filter(i => !isNaN(i))
-          .join("");
-        this.$emit("submit", pin);
-      } else
-        this.$el
-          .querySelector(`input[name='${parseInt(current, 10) + 1}']`)
-          .focus();
+        const pin = Array.from(this.$el.getElementsByTagName('input'))
+          .map(i => parseInt(i.value, 10)).filter(i => !isNaN(i)).join('')
+        this.$emit('submit', pin)
+      }
+      else
+        this.$el.querySelector(`input[name='${(parseInt(current, 10)+1)}']`).focus()
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +51,7 @@ export default {
 
     &:not(:last-child):after {
       font-size: 20px;
-      margin: 0.25rem;
+      margin: .25rem;
       content: "-";
     }
   }

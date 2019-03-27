@@ -1,33 +1,28 @@
 <template>
-  <TextBase class="header"
-v-bind:class="classObj">
-    <slot />
+  <TextBase class="header" v-bind:class="classObj">
+    <slot></slot>
   </TextBase>
 </template>
 
 <script>
-import TextBase from "./TextBase.vue";
+import TextBase from './TextBase.vue'
 
 export default {
   name: "Header",
+  extends: TextBase,
   components: {
     TextBase
   },
-  extends: TextBase,
   props: {
     type: String
   },
   computed: {
-    classObj: comp =>
-      Object.assign(
-        {
-          primary: comp.type === "primary",
-          secondary: comp.type === "secondary",
-          tertiary: comp.type === "tertiary",
-          quaternary: comp.type === "quarternary"
-        },
-        comp.colorClass
-      )
+    classObj: comp => Object.assign({
+      primary: comp.type === 'primary',
+      secondary: comp.type === 'secondary',
+      tertiary: comp.type === 'tertiary',
+      quaternary: comp.type === 'quarternary',
+    }, comp.colorClass)
   }
 };
 </script>
@@ -41,8 +36,8 @@ export default {
   padding: 0;
   font-size: 1rem;
   font-weight: bold;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: .5em;
+  margin-bottom: .5em;
   display: inline-block;
 
   &::after {
@@ -53,8 +48,8 @@ export default {
 
   img {
     height: 1.5em;
-    transform: translateY(0.25em);
-    margin-right: 0.5em;
+    transform: translateY(.25em);
+    margin-right: .5em;
     display: inline-block;
   }
 }

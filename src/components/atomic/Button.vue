@@ -1,19 +1,14 @@
 <template>
-  <button
-    class="button v"
-    :class="{
-      'bt-request': this.type === 'request',
-      'bt-pc-request': this.type === 'pc-request',
-      'text': this.type === 'text',
-      'icon': this.type === 'icon'
+  <button class="button v" v-bind:class="{
+    'bt-request': this.type === 'request',
+    'bt-pc-request': this.type === 'pc-request',
+    'text': this.type === 'text',
+    'icon': this.type === 'icon'
     }"
     @click="onClick"
-  >
+    >
     <slot />
-    <img
-      v-if="type === 'icon'"
-      :src="img"
-    ></img>
+    <img v-if="type === 'icon'" :src="img"></img>
   </button>
 </template>
 

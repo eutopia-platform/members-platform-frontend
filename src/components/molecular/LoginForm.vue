@@ -3,23 +3,17 @@
     <Header type="secondary">
       Login
     </Header>
-    <Input look="blend"
-placeholder="email" data-lpignore="true"></Input>
-    <Input
-      look="blend"
-      placeholder="password"
-      type="password"
-      data-lpignore="true"
-    ></Input>
+    <Input look="blend" placeholder="email" data-lpignore="true"></Input>
+    <Input look="blend" placeholder="password" type="password" data-lpignore="true"></Input>
     <Button>Submit</Button>
   </div>
 </template>
 
 <script>
-import Popup from "./Popup.vue";
-import Header from "../atomic/Header.vue";
-import Input from "../atomic/Input.vue";
-import Button from "../atomic/Button.vue";
+import Popup from './Popup.vue'
+import Header from '../atomic/Header.vue'
+import Input from '../atomic/Input.vue'
+import Button from '../atomic/Button.vue'
 
 export default {
   name: "LoginForm",
@@ -29,7 +23,7 @@ export default {
     Input,
     Button
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

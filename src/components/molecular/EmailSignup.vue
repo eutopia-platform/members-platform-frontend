@@ -1,23 +1,23 @@
 <template>
   <div class="contact-form">
     <div class="input-wrap">
-      <Input
-        disabled
-        placeholder="Email"
-        name="email"
+      <Input disabled
         @valueChange="onInputValueChange"
         @keyup.enter.native="onSubmit"
+        placeholder="Email"
+        name="email"
       ></Input>
-      <Button disabled @click="onSubmit">
+      <Button @click="onSubmit" disabled>
         Sign up
       </Button>
     </div>
+
   </div>
 </template>
 
 <script>
-import Input from "../atomic/Input.vue";
-import Button from "../atomic/Button.vue";
+import Input from "../atomic/Input.vue"
+import Button from "../atomic/Button.vue"
 
 export default {
   name: "EmailSignup",
@@ -32,15 +32,15 @@ export default {
   }),
 
   created() {
-    this.$eventBus.$on("scroll-to-email", () => {
-      const input = this.$el.querySelector("input");
+    this.$eventBus.$on('scroll-to-email', () => {
+      const input = this.$el.querySelector('input')
       if (input) {
         input.scrollIntoView({
-          behavior: "smooth"
-        });
-        setTimeout(() => input.focus(), 1000);
+          behavior: 'smooth'
+        })
+        setTimeout(() => input.focus(), 1000)
       }
-    });
+    })
   },
 
   methods: {
@@ -48,39 +48,39 @@ export default {
       //Only works because payload has the same name as the data
       this[payload.name].value = payload.value;
     },
-    onSubmit() {
+    onSubmit () {
       const payload = {
         email: this.email
       };
       this.$emit("mySubmit", payload);
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/colors.scss";
+  @import "../sharedStyles/colors.scss";
 
-.contact-form {
-  background-color: $c-primary;
-  display: block;
+  .contact-form {
+    background-color: $c-primary;
+    display: block;
 
-  width: 20em;
-  margin: auto;
+    width: 20em;
+    margin: auto;
 
-  .input-wrap {
-    display: flex;
-    flex-direction: row;
+    .input-wrap {
+      display: flex;
+      flex-direction: row;
 
-    input {
-      &::placeholder {
-        color: $c-primary-light;
+      input {
+        &::placeholder {
+          color: $c-primary-light;
+        }
+      }
+
+      button {
+        width: 7em;
       }
     }
-
-    button {
-      width: 7em;
-    }
   }
-}
 </style>

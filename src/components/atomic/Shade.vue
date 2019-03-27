@@ -1,11 +1,11 @@
 <template>
-  <div class="shade" />
+  <div class="shade"></div>
 </template>
 
 <script>
 export default {
   name: "Shade"
-};
+}
 </script>
 
 <style lang="scss" scoped>

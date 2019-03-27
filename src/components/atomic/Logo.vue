@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import Header from "./Header.vue";
+import Header from './Header.vue'
 
 export default {
   name: "Logo",
   components: {
     Header
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -34,7 +34,7 @@ export default {
     margin-left: 0;
 
     & * {
-      transform: scale(0.5);
+      transform: scale(.5);
     }
   }
 }
