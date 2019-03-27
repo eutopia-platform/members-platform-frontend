@@ -13,6 +13,7 @@
   "scripts": {
     "start": "parcel src/index.html --no-autoinstall",
     "build": "parcel build --public-url . src/index.html",
+    "now-build": "npm run build",
     "format:check": "prettier --check ./* ./**/*",
     "format:write": "prettier --write ./* ./**/*",
     "lint:check": "eslint ./src/ --ext .js,.vue",
