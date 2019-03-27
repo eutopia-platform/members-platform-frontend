@@ -1,6 +1,6 @@
 <template>
   <div class="text">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -14,9 +14,9 @@ export default {
     }
   },
   computed: {
-    colorClass: comp => ({['color-' + comp.color]: true})
+    colorClass: comp => ({ ["color-" + comp.color]: true })
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

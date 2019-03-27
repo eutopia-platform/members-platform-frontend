@@ -4,14 +4,16 @@
       type="email"
       name="email"
       placeholder="Email"
-      @valueChange="updateVal">
-      </Input>
+      @valueChange="updateVal"
+    >
+    </Input>
     <Input
       type="password"
       name="password"
       placeholder="Password"
-      @valueChange="updateVal">
-      </Input>
+      @valueChange="updateVal"
+    >
+    </Input>
     <Button @click="submit">
       Login
     </Button>

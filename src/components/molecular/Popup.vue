@@ -2,20 +2,20 @@
   <div class="popup">
     <Shade></Shade>
     <div class="content">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
-import Shade from '../atomic/Shade.vue'
+import Shade from "../atomic/Shade.vue";
 
 export default {
   name: "Popup",
   components: {
     Shade
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

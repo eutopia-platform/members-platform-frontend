@@ -5,7 +5,7 @@
     <router-link to="/">
       <Button>Go to landing page</Button>
     </router-link>
-    <LoginProvider />
+    <LoginProvider></LoginProvider>
   </div>
 </template>
 

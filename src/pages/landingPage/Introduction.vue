@@ -7,16 +7,19 @@
     </Tagline>
     <div class="lean-tool">
       <Paragraph>So you want to build a lean startup?</Paragraph>
-      <ToolkitCard name="Lean Startup Toolkit" banner="full cycle program"
-        :img="img"></ToolkitCard>
+      <ToolkitCard
+        name="Lean Startup Toolkit"
+        banner="full cycle program"
+        :img="img"
+      ></ToolkitCard>
     </div>
   </div>
 </template>
 
 <script>
-import Tagline from '../../components/atomic/Tagline'
-import Paragraph from '../../components/atomic/Paragraph'
-import ToolkitCard from '../../components/atomic/ToolkitCard'
+import Tagline from "../../components/atomic/Tagline";
+import Paragraph from "../../components/atomic/Paragraph";
+import ToolkitCard from "../../components/atomic/ToolkitCard";
 
 export default {
   name: "Introduction",
@@ -26,9 +29,9 @@ export default {
     ToolkitCard
   },
   computed: {
-    img: () => require('../../../data/img/landingpage/lean-icon.svg')
+    img: () => require("../../../data/img/landingpage/lean-icon.svg")
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

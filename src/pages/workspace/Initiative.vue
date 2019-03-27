@@ -1,13 +1,11 @@
 <template>
-  <div class="initiative">
-
-  </div>
+  <div class="initiative" />
 </template>
 
 <script>
 export default {
   name: "Initiative"
-}
+};
 </script>
 
 <style lang="scss" scoped>

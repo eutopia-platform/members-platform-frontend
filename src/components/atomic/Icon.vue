@@ -1,5 +1,6 @@
 <template>
-  <div class="icon" :style="styleObject"></div>
+  <div
+class="icon" :style="styleObject" />
 </template>
 
 <script>
@@ -14,12 +15,12 @@ export default {
   },
   computed: {
     styleObject: comp => ({
-      'background-image': `url(${comp.src})`,
-      'width': comp.size,
-      'height': comp.size
+      "background-image": `url(${comp.src})`,
+      width: comp.size,
+      height: comp.size
     })
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

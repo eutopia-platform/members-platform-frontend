@@ -1,29 +1,30 @@
 <template>
   <div class="ini-menuitem">
-    <Icon v-bind:src="img_path" height="16px"></Icon>
+    <Icon :src="img_path"
+height="16px"></Icon>
     <Paragraph>
-      {{name}}
+      {{ name }}
     </Paragraph>
   </div>
 </template>
 
 <script>
-import Icon from '../../components/atomic/Icon.vue'
-import Paragraph from '../../components/atomic/Paragraph.vue'
+import Icon from "../../components/atomic/Icon.vue";
+import Paragraph from "../../components/atomic/Paragraph.vue";
 
 export default {
   name: "IniMenuItem",
-  props: {
-    name: String
-  },
   components: {
     Icon,
     Paragraph
   },
+  props: {
+    name: String
+  },
   computed: {
     img_path: () => require("../../../data/img/ui/initiative.svg")
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

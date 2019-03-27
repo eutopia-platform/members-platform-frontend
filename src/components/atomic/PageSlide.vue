@@ -1,6 +1,7 @@
 <template>
   <div class="page-slide">
-  <slot></slot>
+    <slot />
+  </div>
 </template>
 
 <script>
@@ -15,12 +16,12 @@ export default {
 @import "../sharedStyles/responsive.scss";
 
 .page-slide {
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
 
-    @media screen and (max-width: $break-mobile) {
-      height: auto;
-    }
+  @media screen and (max-width: $break-mobile) {
+    height: auto;
+  }
 }
 </style>

@@ -1,7 +1,10 @@
 <template>
   <div class="sidebar">
     <div class="title">
-      <Header type="tertiary" color="accent">ProjectCube.io</Header>
+      <Header type="tertiary"
+color="accent">
+        ProjectCube.io
+      </Header>
     </div>
     <LineHorizontal></LineHorizontal>
     <div class="content">
@@ -12,11 +15,11 @@
 </template>
 
 <script>
-import Paragraph from '../../components/atomic/Paragraph.vue'
-import Header from '../../components/atomic/Header.vue'
-import LineHorizontal from '../../components/atomic/LineHorizontal.vue'
-import UserStatus from '../../components/molecular/UserStatus.vue'
-import IniList from './IniList.vue'
+import Paragraph from "../../components/atomic/Paragraph.vue";
+import Header from "../../components/atomic/Header.vue";
+import LineHorizontal from "../../components/atomic/LineHorizontal.vue";
+import UserStatus from "../../components/molecular/UserStatus.vue";
+import IniList from "./IniList.vue";
 
 export default {
   name: "MenuSidebar",
@@ -27,7 +30,7 @@ export default {
     UserStatus,
     IniList
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -56,6 +59,4 @@ export default {
     padding-left: 1rem;
   }
 }
-
-
 </style>

@@ -1,13 +1,18 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
       <Header type="secondary">
         What is the name of your company or startup?
       </Header>
       <div class="input-wrap">
-        <Input look="blend" @valueChange="onInputValueChange" @submit="onSubmit"
-          placeholder="Are you the next Google?" :focus="true"></Input>
-        <Button @click="onSubmit" :disabled="!inputValid">
+        <Input
+          look="blend"
+          placeholder="Are you the next Google?"
+          :focus="true"
+          @valueChange="onInputValueChange"
+          @submit="onSubmit"
+        ></Input>
+        <Button :disabled="!inputValid" @click="onSubmit">
           Next
         </Button>
       </div>
@@ -16,16 +21,16 @@
 </template>
 
 <script>
-import ViewBase from '../ViewBase.vue'
+import ViewBase from "../ViewBase.vue";
 
 export default {
   name: "ViewName",
-  extends: ViewBase,
   components: {
     ViewBase
   },
+  extends: ViewBase,
   computed: {
     image: () => require("../../../../data/img/onboarding/view-name.png")
   }
-}
+};
 </script>

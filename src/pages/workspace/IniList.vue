@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import IniMenuItem from './IniMenuItem.vue'
+import IniMenuItem from "./IniMenuItem.vue";
 
 export default {
   name: "IniList",
   components: {
     IniMenuItem
   }
-}
+};
 </script>
