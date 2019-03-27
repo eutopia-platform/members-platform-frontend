@@ -13,6 +13,7 @@
   "scripts": {
     "start": "parcel src/index.html --no-autoinstall",
     "build": "parcel build --public-url . src/index.html",
+    "now-build": "npm run build",
     "format:check": "prettier --check ./* ./**/*",
     "format:write": "prettier --write ./* ./**/*",
     "lint:check": "eslint ./src/ --ext .js,.vue",
@@ -30,7 +31,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-vue": "^5.2.2",
     "graphql": "^14.1.1",
-    "parcel-bundler": "^1.11.0",
+    "parcel-bundler": "^1.12.3",
     "prettier": "^1.16.4",
     "sass": "^1.17.2",
     "vue-apollo": "^3.0.0-beta.28",
