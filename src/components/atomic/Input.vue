@@ -73,8 +73,9 @@ export default {
 .input {
   display: inline-block;
   width: 100%;
-  background-color: $c-primary-foreground;
-  color: $c-text-primary;
+  // background-color: $c-primary-foreground;
+  // background-color: map-get($colors, neutral-back);
+  // color: $c-text-primary;
   border: $border;
   border-radius: $border-radius;
   box-shadow: $shadow-default;
@@ -94,17 +95,13 @@ export default {
   &:disabled {
     cursor: not-allowed;
   }
-
-  &::placeholder {
-    color: $c-text-primary-light;
-  }
 }
 
 .style-blend {
   border: none;
   box-shadow: none;
   border-radius: 0;
-  border-bottom: 1px solid $c-text-primary-light;
+  border-bottom: 1px solid #8ca8a8;
   padding: .5rem;
   padding-left: .5rem;
   font-size: $fs-base;

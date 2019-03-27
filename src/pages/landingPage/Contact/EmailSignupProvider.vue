@@ -76,11 +76,11 @@ export default {
 }
 
 .success {
-  color: $c-success;
+  color: green;
 }
 
 .error {
-  color: $c-error;
+  color: red;
 }
 
 </style>
