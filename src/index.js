@@ -5,7 +5,6 @@ import VueApollo from "vue-apollo"
 import ApolloClient from "apollo-boost"
 import App from "./App.vue";
 import LandingPage from "./pages/LandingPage";
-import ProjectHub from "./pages/ProjectHub";
 import Privacy from "./pages/Privacy";
 import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
@@ -41,7 +40,7 @@ const router = new VueRouter({
 });
 
 // event bus for communication of unrelated components
-Vue.prototype.$eventBus = new Vue()
+Vue.prototype.$eventBus = new Vue();
 
 new Vue({
   el: "#app",
