@@ -1,28 +1,17 @@
 <template>
-  <TextBase class="header" v-bind:class="classObj">
+  <div class="header" v-bind:class="classObj">
     <slot></slot>
-  </TextBase>
+  </div>
 </template>
 
 <script>
-import TextBase from './TextBase.vue'
-
 export default {
   name: "Header",
-  extends: TextBase,
-  components: {
-    TextBase
-  },
   props: {
     type: String
   },
   computed: {
-    classObj: comp => Object.assign({
-      primary: comp.type === 'primary',
-      secondary: comp.type === 'secondary',
-      tertiary: comp.type === 'tertiary',
-      quaternary: comp.type === 'quarternary',
-    }, comp.colorClass)
+    classObj: comp => ({[comp.type]: true})
   }
 };
 </script>

@@ -50,12 +50,10 @@
       </SplitViewHorizontal>
     </PageSlide>
 
-    <!-- Contact -->
     <PageSlide>
       <Contact></Contact>
     </PageSlide>
 
-    <!-- Footer -->
     <Footer></Footer>
   </div>
 </template>
@@ -90,6 +88,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../components/sharedStyles/colors.scss";
+
 .image-right {
   height: 100vh;
 }

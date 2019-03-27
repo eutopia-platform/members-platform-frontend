@@ -1,17 +1,12 @@
 <template>
-  <TextBase class="small" v-bind:class="colorClass">
+  <div class="small">
     <slot></slot>
-  </TextBase>
+  </div>
 </template>
 
 <script>
-import TextBase from './TextBase.vue'
 export default {
-  name: "Small",
-  extends: TextBase,
-  components: {
-    TextBase
-  }
+  name: "Small"
 }
 </script>
 

@@ -15,6 +15,5 @@ hr {
   height: 1px;
   margin-bottom: 1em;
   border: none;
-  background-color: $c-background;
 }
 </style>

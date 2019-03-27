@@ -104,7 +104,6 @@ export default {
         margin-top: 2em;
         margin-bottom: 2em;
         border: none;
-        background-color: $c-primary;
     }
 }
 </style>

@@ -1,19 +1,39 @@
 $c-primary-foreground: #ffffff;
 
-$c-primary-light: #6BC1FF;
-$c-primary: rgb(89, 109, 238);
-$c-primary-dark: rgb(37, 61, 188);
+// $c-primary-light: #6bc1ff;
+// $c-primary: #596dee;
+// $c-primary-dark: #253dbc;
 
-$c-background: #edf2fa;
-$c-accent: #109CF1;
+$c-accent: #109cf1;
 
 $c-success: green;
 $c-error: red;
 
 $c-shadow: rgba(gray, 0.5);
 
-$c-text-primary: #334D6E;
+$c-text-primary: #334d6e;
 $c-text-secondary: white;
 
 $c-text-primary-light: #8ca8a8;
 $c-text-accent: $c-accent;
+
+//----------------------
+
+$colors: (
+  neutral-back: white,
+  neutral-font: #334d6e,
+
+  primary-back: #596dee,
+  primary-font: #ffffff,
+
+  secondary-back: #e9f5fd,
+  secondary-font: #334d6e,
+
+  tertiary-back: #253dbc,
+  tertiary-font: #ffffff,
+);
+
+@mixin colorScheme($scheme) {
+  background-color: map-get($colors, $scheme + '-back');
+  color: map-get($colors, $scheme + '-font');
+}

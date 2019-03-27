@@ -1,7 +1,7 @@
 <template>
-  <div class="lp-contact">
+  <div class="contact">
     <div class="signup-wrap">
-      <Header type="primary" color="secondary">
+      <Header type="primary">
         Try productcube with your team for free
       </Header><br />
       <Button @click="signup">Sign me up</Button>
@@ -29,12 +29,13 @@
 <style lang="scss" scoped>
   @import "../../components/sharedStyles/colors.scss";
 
-  .lp-contact {
+  .contact {
+    @include colorScheme('primary');
+
     box-sizing: border-box;
     width: 100%;
     height: 100vh;
     margin: 0;
-    background-color: $c-primary;
     padding: 3em;
     text-align: center;
 

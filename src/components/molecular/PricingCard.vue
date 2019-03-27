@@ -82,7 +82,6 @@ export default {
 
   .title {
     margin-top: 1.5em;
-    color: $c-primary-light;
   }
 
   .pc-price {

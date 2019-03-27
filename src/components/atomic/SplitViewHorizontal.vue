@@ -11,14 +11,14 @@
 
 <script>
 export default {
-  name: "SplitViewHorizontal"
-};
+  name: 'SplitViewHorizontal'
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/colors.scss";
-@import "../sharedStyles/shapes.scss";
-@import "../sharedStyles/responsive.scss";
+@import '../sharedStyles/colors.scss';
+@import '../sharedStyles/shapes.scss';
+@import '../sharedStyles/responsive.scss';
 
 .splitview-horizontal {
     width: 100%;
@@ -62,12 +62,11 @@ export default {
       z-index: 5;
     }
 
-    .half-right {
-      background-color: white;
-
-      @media screen and (max-width: $break-mobile) {
-        height: 50vh;
-      }
+  .half-right {
+    @media screen and (max-width: $break-mobile) {
+      height: 50vh;
     }
+
+  }
 }
 </style>

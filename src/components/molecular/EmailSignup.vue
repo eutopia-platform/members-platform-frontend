@@ -62,7 +62,7 @@ export default {
   @import "../sharedStyles/colors.scss";
 
   .contact-form {
-    background-color: $c-primary;
+    background-color: map-get($colors, primary-back);
     display: block;
 
     width: 20em;
@@ -74,7 +74,7 @@ export default {
 
       input {
         &::placeholder {
-          color: $c-primary-light;
+          color: map-get($colors, secondary-back);
         }
       }
 

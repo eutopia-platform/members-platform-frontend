@@ -33,8 +33,8 @@ export default {
 @import "../sharedStyles/text.scss";
 
 .button {
-  background-color: $c-primary-light;
-  color: $c-primary-foreground;
+  background-color: #6bc1ff;
+  color: #ffffff;
   border: none;
   border-radius: $border-radius;
   box-shadow: $shadow-default;

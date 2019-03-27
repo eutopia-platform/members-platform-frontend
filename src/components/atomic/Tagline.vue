@@ -1,18 +1,12 @@
 <template>
-  <TextBase class="tagline" v-bind:class="classObj">
+  <div class="tagline" v-bind:class="classObj">
     <slot></slot>
-  </TextBase>
+  </div>
 </template>
 
 <script>
-import TextBase from './TextBase.vue'
-
 export default {
   name: "Tagline",
-  extends: TextBase,
-  components: {
-    TextBase
-  },
   props: {
     type: {
       default: 'main',
@@ -20,10 +14,7 @@ export default {
     }
   },
   computed: {
-    classObj: comp => Object.assign({
-      main: comp.type === 'main',
-      sub: comp.type === 'sub'
-    }, comp.colorClass)
+    classObj: comp => ({[comp.type]: true})
   }
 }
 </script>

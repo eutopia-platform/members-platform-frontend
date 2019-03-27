@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="title">
-      <Header type="tertiary" color="accent">ProjectCube.io</Header>
+      <Header type="tertiary">ProjectCube.io</Header>
     </div>
     <LineHorizontal></LineHorizontal>
     <div class="content">
@@ -36,7 +36,6 @@ export default {
 .sidebar {
   width: 20rem;
   height: 100vh;
-  background-color: white;
   position: fixed;
   float: left;
   left: 0;
@@ -46,10 +45,6 @@ export default {
 
   .title {
     margin-left: 20px;
-  }
-
-  p {
-    color: white;
   }
 
   .content {

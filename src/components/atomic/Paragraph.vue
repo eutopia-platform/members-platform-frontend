@@ -1,18 +1,12 @@
 <template>
-  <TextBase class="paragraph" v-bind:class="colorClass">
+  <div class="paragraph">
     <slot></slot>
-  </TextBase>
+  </div>
 </template>
 
 <script>
-import TextBase from './TextBase.vue'
-
 export default {
   name: "Paragraph",
-  extends: TextBase,
-  components: {
-    TextBase
-  }
 }
 </script>
 

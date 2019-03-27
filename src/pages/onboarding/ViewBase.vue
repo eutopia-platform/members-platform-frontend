@@ -236,7 +236,6 @@ export default {
 
     li {
       margin-bottom: .2rem;
-      color: $c-text-primary;
     }
   }
 }

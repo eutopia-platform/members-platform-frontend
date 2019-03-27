@@ -17,6 +17,6 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba($c-primary-light, 50%);
+  background-color: rgba(map-get($colors, secondary-back), 50%);
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="toolkit-card">
     <div class="banner">
-      <Paragraph type="sub" color="secondary">{{banner}}</Paragraph>
+      <Paragraph type="sub">{{banner}}</Paragraph>
     </div>
     <div class="content">
       <Header type="quaternary">
@@ -63,7 +63,8 @@ export default {
 
   .banner {
     position: absolute;
-    background: $c-primary-dark;
+    background-color: map-get($colors, primary-back);
+    color: white;
     top: 0;
     right: 0;
     padding: .25rem;

@@ -1,5 +1,5 @@
 <template>
-  <div class="lp-footer">
+  <div class="footer">
     <div class="foot1">
       <p>
         &copy; 2019 Projectpad
@@ -26,49 +26,49 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../components/sharedStyles/colors.scss";
+@import "../../components/sharedStyles/colors.scss";
 
-  .lp-footer {
-    box-sizing: border-box;
-    width: 100%;
-    min-height: 100px;
-    background-color: $c-primary-dark;
-    width: 100%;
-    padding-left: 2em;
-    padding-right: 2em;
+.footer {
+  @include colorScheme('tertiary');
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100px;
+  width: 100%;
+  padding-left: 2em;
+  padding-right: 2em;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  align-items: center;
+
+  .foot1, .foot2 {
+    height: 80px;
     display: flex;
-    flex-wrap: wrap-reverse;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
+  }
 
-    .foot1, .foot2 {
-      height: 80px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-    }
+  p, a {
+    color: inherit;
+    text-decoration: none;
+    margin: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    float: left;
+    text-align: center;
+    white-space: nowrap;
+  }
 
-    p, a {
-      text-decoration: none;
-      margin: 1em;
-      margin-top: 0;
-      margin-bottom: 0;
-      color: white;
-      float: left;
-      text-align: center;
-      white-space: nowrap;
-    }
+  img {
+    height: 2.5em;
+    margin-left: .5em;
+    filter: invert(100%); // TODO: get logos in right color
 
-    img {
-      height: 2.5em;
-      color: white;
-      margin-left: .5em;
-      filter: invert(100%); // TODO: get logos in right color
-
-      &:nth-of-type(3) { // TODO: resize facebook logo
-        height: calc(2.5em * 0.85);
-      }
+    &:nth-of-type(3) { // TODO: resize facebook logo
+      height: calc(2.5em * 0.85);
     }
   }
+}
 </style>
