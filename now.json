@@ -5,5 +5,6 @@
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "routes": [
     { "src": "/(?!.*\\.(css|js|html|png|svg|jpg|gif)$)(.*)", "dest": "/" }
-  ]
+  ],
+  "scope": "eutopia"
 }
