@@ -13,7 +13,7 @@ import Onboarding from "./pages/Onboarding";
 import Login from "./pages/Login";
 
 const apolloClient = new ApolloClient({
-  uri: "http://ec2-52-91-115-92.compute-1.amazonaws.com/auth"
+  uri: "https://api.productcube.io/auth"
 });
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
