@@ -42,7 +42,6 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      console.log(this.hasAgreed);
       if (!this.isFormValid) return;
 
       this.submitEmail()
