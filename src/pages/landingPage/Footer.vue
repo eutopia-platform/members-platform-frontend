@@ -1,12 +1,8 @@
 <template>
   <div class="footer">
     <div class="foot1">
-      <p>
-        &copy; 2019 Projectpad
-      </p>
-      <router-link to="/privacy">
-        Privacy Policy
-      </router-link>
+      <p>&copy; 2019 Projectcube</p>
+      <router-link to="/privacy">Privacy Policy</router-link>
     </div>
     <div class="foot2">
       <img class="image-right" src="../../../data/img/social/medium.svg">
@@ -18,18 +14,17 @@
 </template>
 
 <script>
-  export default {
-    name: "Footer",
-    components: {
-    }
-  }
+export default {
+  name: "Footer",
+  components: {}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "../../components/sharedStyles/colors.scss";
 
 .footer {
-  @include colorScheme('tertiary');
+  @include colorScheme("tertiary");
 
   box-sizing: border-box;
   width: 100%;
@@ -42,7 +37,8 @@
   justify-content: space-between;
   align-items: center;
 
-  .foot1, .foot2 {
+  .foot1,
+  .foot2 {
     height: 80px;
     display: flex;
     flex-direction: row;
@@ -50,7 +46,8 @@
     align-items: center;
   }
 
-  p, a {
+  p,
+  a {
     color: inherit;
     text-decoration: none;
     margin: 1em;
@@ -63,10 +60,11 @@
 
   img {
     height: 2.5em;
-    margin-left: .5em;
+    margin-left: 0.5em;
     filter: invert(100%); // TODO: get logos in right color
 
-    &:nth-of-type(3) { // TODO: resize facebook logo
+    &:nth-of-type(3) {
+      // TODO: resize facebook logo
       height: calc(2.5em * 0.85);
     }
   }
