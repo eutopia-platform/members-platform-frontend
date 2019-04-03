@@ -19,6 +19,7 @@
           data-lpignore="true"
           v-model="pw2"
         ></Input>
+        <Paragraph class="error" v-if="errorMessage">{{errorMessage}}</Paragraph>
         <div class="bt-wrap">
           <Button type="icon" @click="onSubmit" :disabled="!isFormValid">Next</Button>
         </div>
@@ -36,6 +37,7 @@ import Header from "../../components/atomic/Header.vue";
 import Input from "../../components/atomic/Input.vue";
 import Button from "../../components/atomic/Button.vue";
 import Icon from "../../components/atomic/Icon.vue";
+import Paragraph from "~/components/atomic/Paragraph";
 import gql from "graphql-tag";
 
 export default {
@@ -45,17 +47,17 @@ export default {
     Header,
     Input,
     Button,
-    Icon
+    Icon,
+    Paragraph
   },
   props: {
     info: Object
   },
-  data: function() {
-    return {
-      pw1: "",
-      pw2: ""
-    };
-  },
+  data: () => ({
+    pw1: "",
+    pw2: "",
+    errorMessage: ""
+  }),
   computed: {
     img: () => require("../../../data/img/onboarding/shield.svg"),
     isFormValid: function() {
@@ -64,11 +66,11 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      this.submitPassword(this.$el.querySelector("input").value)
+      this.submitPassword(this.email)
         .then(token => {
           this.$emit("submit");
         })
-        .catch(msg => console.log(msg));
+        .catch(msg => (this.errorMessage = msg));
     },
     submitPassword: function(password, self = this) {
       return new Promise(function(resolve, reject) {
@@ -82,9 +84,12 @@ export default {
               exitcode
             }}`
           })
-          .then(data => {
-            console.log(data);
-            resolve(data.data.verifyCode.token);
+          .then(response => {
+            if (response.data.verifyCode.exitcode !== 0) {
+              reject(response.data.verifyCode.msg);
+              return;
+            }
+            resolve(response.data.verifyCode.token);
           })
           .catch(data => {
             reject(data);
@@ -113,6 +118,10 @@ export default {
   .icon-wrap {
     margin-top: 2rem;
     text-align: center;
+  }
+
+  .error {
+    color: red;
   }
 }
 
