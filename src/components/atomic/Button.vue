@@ -1,14 +1,16 @@
 <template>
-  <button class="button v" v-bind:class="{
+  <button
+    class="button v"
+    v-bind:class="{
     'bt-request': this.type === 'request',
     'bt-pc-request': this.type === 'pc-request',
     'text': this.type === 'text',
     'icon': this.type === 'icon'
     }"
     @click="onClick"
-    >
-    <slot />
-    <img v-if="type === 'icon'" :src="img"></img>
+  >
+    <slot></slot>
+    <img v-if="type === 'icon'" :src="img">
   </button>
 </template>
 
@@ -43,7 +45,7 @@ export default {
   outline: none;
   transition: box-shadow 0.2s, transform 0.2s;
   transform: translate(0, 0px);
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 1rem;
   box-sizing: border-box;
 
@@ -60,6 +62,12 @@ export default {
 
   &:disabled {
     cursor: not-allowed;
+    background-color: lightgrey; // TODO use official color here
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+    }
   }
 }
 
@@ -68,7 +76,7 @@ export default {
   border-radius: 1.5em;
   padding-left: 3em;
   padding-right: 3em;
-  background: linear-gradient(to right, #8521BA, #5AAAFA);
+  background: linear-gradient(to right, #8521ba, #5aaafa);
 }
 
 .bt-pc-request {
@@ -77,7 +85,7 @@ export default {
   border-radius: 0;
   padding-left: 3em;
   padding-right: 3em;
-  background: linear-gradient(to right, #8521BA, #5AAAFA);
+  background: linear-gradient(to right, #8521ba, #5aaafa);
   box-shadow: none;
 
   $bt-pc-shape: polygon(0 0, 100px 100px, 100% 100px, 100% 0);
@@ -110,6 +118,5 @@ export default {
 }
 
 .icon {
-
 }
 </style>
