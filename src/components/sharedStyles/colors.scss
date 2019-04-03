@@ -1,0 +1,22 @@
+$c-accent: #109cf1;
+
+//----------------------
+
+$colors: (
+  neutral-back: white,
+  neutral-font: #334d6e,
+
+  primary-back: #596dee,
+  primary-font: #ffffff,
+
+  secondary-back: #e9f5fd,
+  secondary-font: #334d6e,
+
+  tertiary-back: #253dbc,
+  tertiary-font: #ffffff,
+);
+
+@mixin colorScheme($scheme) {
+  background-color: map-get($colors, $scheme + '-back');
+  color: map-get($colors, $scheme + '-font');
+}

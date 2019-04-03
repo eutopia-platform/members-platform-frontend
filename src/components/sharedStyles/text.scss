@@ -1,0 +1,18 @@
+@import "./utils.scss";
+
+// fonts
+$font-primary: 'Nunito', sans-serif;
+
+// font sizes
+$fs-base: 16px;
+$fs-step: 1.4;
+
+$fs-header-1: $fs-base * pow($fs-step, 3);
+$fs-header-2: $fs-base * pow($fs-step, 2);
+$fs-header-3: $fs-base * pow($fs-step, 1);
+$fs-header-4: $fs-base * pow($fs-step, 0);
+
+$fs-tagline-1: $fs-base * pow($fs-step, 2);
+$fs-tagline-2: $fs-base * pow($fs-step, 1);
+
+$fs-small: $fs-base * pow(1 + ($fs-step - 1) / 2, -1);
