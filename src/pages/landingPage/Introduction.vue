@@ -1,12 +1,10 @@
 <template>
   <div class="intro">
-    <Tagline type="sub">
-      Productcube guides you through the build measure learn cycle, helps you
-      manage experiments and ultimately empowers you to build products that
-      people will love.
-    </Tagline>
+    <Header type="primary">
+      Start building lean products
+    </Header>
+      <Tagline type="sub">Productcube provides you with guiding processes and the toolkits you need to develop products people will love.</Tagline>
     <div class="lean-tool">
-      <Paragraph>So you want to build a lean startup?</Paragraph>
       <ToolkitCard name="Lean Startup Toolkit" banner="full cycle program"
         :img="img"></ToolkitCard>
     </div>
@@ -14,6 +12,7 @@
 </template>
 
 <script>
+import Header from '../../components/atomic/Header'
 import Tagline from '../../components/atomic/Tagline'
 import Paragraph from '../../components/atomic/Paragraph'
 import ToolkitCard from '../../components/atomic/ToolkitCard'
@@ -21,6 +20,7 @@ import ToolkitCard from '../../components/atomic/ToolkitCard'
 export default {
   name: "Introduction",
   components: {
+    Header,
     Tagline,
     Paragraph,
     ToolkitCard
