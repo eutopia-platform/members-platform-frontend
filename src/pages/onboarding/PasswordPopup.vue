@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import Popup from '../../components/molecular/Popup.vue'
-import Header from '../../components/atomic/Header.vue'
-import Input from '../../components/atomic/Input.vue'
-import Button from '../../components/atomic/Button.vue'
-import Icon from '../../components/atomic/Icon.vue'
-import gql from 'graphql-tag'
+import Popup from "../../components/molecular/Popup.vue";
+import Header from "../../components/atomic/Header.vue";
+import Input from "../../components/atomic/Input.vue";
+import Button from "../../components/atomic/Button.vue";
+import Icon from "../../components/atomic/Icon.vue";
+import gql from "graphql-tag";
 
 export default {
   name: "PasswordPopup",
@@ -40,34 +40,38 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      console.log(this.$el.querySelector('input').value)
-      this.submitPassword(this.$el.querySelector('input').value).then(token => {
-        this.$emit('submit')
-      }).catch(msg => console.log(msg))
+      this.submitPassword(this.$el.querySelector("input").value)
+        .then(token => {
+          this.$emit("submit");
+        })
+        .catch(msg => console.log(msg));
     },
     submitPassword: function(password, self = this) {
       return new Promise(function(resolve, reject) {
-        self.$apollo.mutate({
-          mutation: gql`mutation {
+        self.$apollo
+          .mutate({
+            mutation: gql`mutation {
             verifyCode(email: "${self.info.email}", code: "${self.info.code}",
               password: "${password}") {
               token
               msg
               exitcode
             }}`
-        }).then(data => {
-          console.log(data)
-          resolve(data.data.verifyCode.token)
-        }).catch(data => {
-          reject(data)
-        })
-      })
+          })
+          .then(data => {
+            console.log(data);
+            resolve(data.data.verifyCode.token);
+          })
+          .catch(data => {
+            reject(data);
+          });
+      });
     }
   },
   computed: {
-    img: () => require('../../../data/img/onboarding/shield.svg')
+    img: () => require("../../../data/img/onboarding/shield.svg")
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
