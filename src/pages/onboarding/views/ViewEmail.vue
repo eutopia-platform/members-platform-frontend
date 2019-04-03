@@ -10,7 +10,10 @@
           placeholder="you-are-awesome@example.com"
           :focus="true"
         ></Input>
-        <Checkbox v-model="hasAgreed">I agree to the AGB and Privacy Policy</Checkbox>
+        <Checkbox v-model="hasAgreed">
+          I agree to the
+          <router-link to="/privacy">Privacy Policy</router-link>
+        </Checkbox>
         <Button @click="onSubmit" :disabled="!isFormValid">Next</Button>
       </div>
     </div>
