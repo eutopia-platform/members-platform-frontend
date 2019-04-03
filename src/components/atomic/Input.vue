@@ -1,13 +1,21 @@
 <template>
   <div class="input-wrap">
-    <input v-model="value" class="input" :name="name" :type="type"
-      :placeholder="placeholder" @input="onChange" @keyup.enter="onEnter"
-      v-bind:class="styleClass" :autocomplete="type === 'password' ? 'new-password': 'true'">
+    <input
+      v-model="value"
+      class="input"
+      :name="name"
+      :type="type"
+      :placeholder="placeholder"
+      @input="onInput"
+      @keyup.enter="onEnter"
+      v-bind:class="styleClass"
+      :autocomplete="type === 'password' ? 'new-password': 'true'"
+    >
   </div>
 </template>
 
 <script>
-import Button from './Button.vue'
+import Button from "./Button.vue";
 
 export default {
   name: "Input",
@@ -40,9 +48,12 @@ export default {
     value: ""
   }),
   computed: {
-    styleClass: comp => 'style-' + comp.look
+    styleClass: comp => "style-" + comp.look
   },
   methods: {
+    onInput(e) {
+      this.$emit("input", e.target.value);
+    },
     onChange() {
       const payload = {
         name: this.name,
@@ -51,12 +62,11 @@ export default {
       this.$emit("valueChange", payload);
     },
     onEnter() {
-      this.$emit("submit")
+      this.$emit("submit");
     }
   },
   mounted: function() {
-    if (this.focus)
-      this.$el.focus()
+    if (this.focus) this.$el.focus();
   }
 };
 </script>
@@ -102,8 +112,8 @@ export default {
   box-shadow: none;
   border-radius: 0;
   border-bottom: 1px solid #8ca8a8;
-  padding: .5rem;
-  padding-left: .5rem;
+  padding: 0.5rem;
+  padding-left: 0.5rem;
   font-size: $fs-base;
 
   &:active {

@@ -5,10 +5,22 @@
         <legend>
           <Header type="secondary">Set your password</Header>
         </legend>
-        <Input look="blend" placeholder="set your password" type="password" data-lpignore="true"></Input>
-        <Input look="blend" placeholder="retype your password" type="password" data-lpignore="true"></Input>
+        <Input
+          look="blend"
+          placeholder="set your password"
+          type="password"
+          data-lpignore="true"
+          v-model="pw1"
+        ></Input>
+        <Input
+          look="blend"
+          placeholder="retype your password"
+          type="password"
+          data-lpignore="true"
+          v-model="pw2"
+        ></Input>
         <div class="bt-wrap">
-          <Button type="icon" @click="onSubmit">Next</Button>
+          <Button type="icon" @click="onSubmit" :disabled="!isFormValid">Next</Button>
         </div>
         <div class="icon-wrap" :src="img">
           <Icon :src="img" size="5rem"></Icon>
@@ -37,6 +49,18 @@ export default {
   },
   props: {
     info: Object
+  },
+  data: function() {
+    return {
+      pw1: "",
+      pw2: ""
+    };
+  },
+  computed: {
+    img: () => require("../../../data/img/onboarding/shield.svg"),
+    isFormValid: function() {
+      return this.pw1 !== "" && this.pw1 === this.pw2;
+    }
   },
   methods: {
     onSubmit: function() {
@@ -67,9 +91,6 @@ export default {
           });
       });
     }
-  },
-  computed: {
-    img: () => require("../../../data/img/onboarding/shield.svg")
   }
 };
 </script>
