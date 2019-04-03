@@ -45,12 +45,12 @@ export default {
       console.log(this.hasAgreed);
       if (!this.isFormValid) return;
 
-      // this.submitEmail()
-      //   .then(msg => {
-      //     if (msg) alert(msg);
-      //     else this.$emit("queryCode", this.text.value);
-      //   })
-      //   .catch(msg => alert(msg));
+      this.submitEmail()
+        .then(msg => {
+          if (msg) alert(msg);
+          else this.$emit("queryCode", this.text.value);
+        })
+        .catch(msg => alert(msg));
     },
     onQueryFinal: function() {
       this.$emit("next", this.$data);
