@@ -1,9 +1,9 @@
 <template>
   <div class="intro">
     <Header type="primary">
-      Start building lean products
+      From idea to product
     </Header>
-      <Tagline type="sub">Productcube provides you with guiding processes and the toolkits you need to develop products people will love.</Tagline>
+      <Tagline type="sub">Here you find the processes and toolkits you need to turn your ideas into products people want.</Tagline>
     <div class="lean-tool">
       <ToolkitCard name="Lean Startup Toolkit" banner="full cycle program"
         :img="img"></ToolkitCard>
