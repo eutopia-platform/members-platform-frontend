@@ -2,7 +2,7 @@
   <div class="lp-welcome">
     <Header type="primary">
       Build. Measure. Learn.<br/>
-      Lean startups made easy.
+      Product development streamlined.
     </Header>
     <Button @click="signup">Setup workspace</Button>
   </div>
