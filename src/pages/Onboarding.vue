@@ -61,13 +61,14 @@ export default {
       ? this.$route.query.stage.toLowerCase()
       : undefined;
     if (!stage) return;
-    if (
-      this.views.map(v => v.replace("View", "").toLowerCase()).includes(stage)
-    ) {
+
+    const lowercaseViewNames = this.view.map(v =>
+      v.replace("View", "").toLowerCase()
+    );
+
+    if (lowercaseViewNames.includes(stage)) {
       console.log("skip to " + stage);
-      this.counter = this.views
-        .map(v => v.replace("View", "").toLowerCase())
-        .indexOf(stage);
+      this.counter = lowercaseViewNames.indexOf(stage);
     }
   },
   methods: {
