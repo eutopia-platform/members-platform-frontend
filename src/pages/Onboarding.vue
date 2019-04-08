@@ -73,10 +73,11 @@ export default {
   },
   methods: {
     onNext: function(payload) {
-      if (this.views[this.counter] == "ViewEmail")
-        this.email = payload.text.value;
+      const currentView = this.views[this.counter];
 
-      switch (this.views[this.counter]) {
+      if (currentView == "ViewEmail") this.email = payload.text.value;
+
+      switch (currentView) {
         case "ViewEmail":
           this.userInfo.email = payload.text.value;
           this.userInfo.emailShort = payload.text.value.split("@")[0];
