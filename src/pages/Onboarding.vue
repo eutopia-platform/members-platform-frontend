@@ -62,7 +62,7 @@ export default {
       : undefined;
     if (!stage) return;
 
-    const lowercaseViewNames = this.view.map(v =>
+    const lowercaseViewNames = this.views.map(v =>
       v.replace("View", "").toLowerCase()
     );
 
