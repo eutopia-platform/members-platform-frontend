@@ -109,7 +109,7 @@ export default {
     },
     onPasswordSubmit: function() {
       this.showPasswordPopup = false;
-      this.$refs.view.onQueryFinal();
+      this.currentViewIndex = 1;
     }
   }
 };
