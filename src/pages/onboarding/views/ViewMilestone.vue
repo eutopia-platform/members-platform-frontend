@@ -6,12 +6,13 @@
       <div class="input-wrap">
         <Input
           look="blend"
+          v-model="milestone"
           @valueChange="onInputValueChange"
           @submit="onSubmit"
           placeholder="Your next big thing"
           :focus="true"
         ></Input>
-        <Button @click="onSubmit" :disabled="!inputValid">Next</Button>
+        <Button @click="onSubmit" :disabled="!(milestone !== '')">Next</Button>
       </div>
     </div>
     <template v-slot:dashboard>
@@ -32,6 +33,9 @@ export default {
   components: {
     ViewBase
   },
+  data: () => ({
+    milestone: ""
+  }),
   computed: {
     image: () => require("../../../../data/img/onboarding/dashboard-1.svg")
   }
