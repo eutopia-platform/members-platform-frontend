@@ -33,7 +33,7 @@ export default {
     PasswordPopup
   },
   data: () => ({
-    counter: 0,
+    currentViewIndex: 0,
     views: [
       "ViewEmail",
       "ViewName",
@@ -53,7 +53,7 @@ export default {
     showPasswordPopup: false
   }),
   computed: {
-    currentView: comp => comp.views[comp.counter]
+    currentView: comp => comp.views[comp.currentViewIndex]
   },
   mounted: function() {
     // skip parts of signup depending on url 'stage' param; e.g. stage=members => ViewMembers
@@ -68,12 +68,12 @@ export default {
 
     if (lowercaseViewNames.includes(stage)) {
       console.log("skip to " + stage);
-      this.counter = lowercaseViewNames.indexOf(stage);
+      this.currentViewIndex = lowercaseViewNames.indexOf(stage);
     }
   },
   methods: {
     onNext: function(payload) {
-      const currentView = this.views[this.counter];
+      const currentView = this.views[this.currentViewIndex];
 
       if (currentView == "ViewEmail") this.email = payload.text.value;
 
@@ -94,7 +94,8 @@ export default {
           this.userInfo.milestone = payload.text.value;
       }
 
-      if (this.counter < this.views.length - 1) this.counter++;
+      if (this.currentViewIndex < this.views.length - 1)
+        this.currentViewIndex++;
       else window.open("/workspace", "_self");
     },
     queryCode: function(email) {
