@@ -12,8 +12,13 @@ import Workspace from "./pages/Workspace";
 import Onboarding from "./pages/Onboarding";
 import Login from "./pages/Login";
 
+const authUrl =
+  process.env.NODE_ENV !== "development"
+    ? "https://api.productcube.io/auth"
+    : "http://localhost:3000/auth";
+
 const apolloClient = new ApolloClient({
-  uri: "https://api.productcube.io/auth"
+  uri: authUrl
 });
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
