@@ -45,7 +45,7 @@ export default {
   computed: {
     currentView: comp => comp.views[comp.counter],
   },
-  mounted: function() {
+  created: function() {
     // skip parts of signup depending on url 'stage' param; e.g. stage=members => ViewMembers
     const stage = this.$route.query.stage ? this.$route.query.stage.toLowerCase() : undefined
     if (!stage) return

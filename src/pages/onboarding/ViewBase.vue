@@ -53,12 +53,19 @@ export default {
     inputValid: comp => comp.text.value && comp.text.value.length > 0
   },
   mounted: function() {
-    const drawDashboard = () => {
-      const img = this.$el.querySelector("img");
+    if (this.$options.name === 'ViewBase') return // only render dashboard in child component
+
+    const drawDashboard = (self = this) => {
+      const img = this.$el.querySelector('img');
       const iw = img.offsetWidth / 100;
       const ih = img.offsetHeight / 100;
 
-      if (!img.offsetWidth || !img.offsetHeight) return;
+      if (!img || !img.offsetWidth || !img.offsetHeight) {
+        setTimeout(drawDashboard, 100)  // try again later
+        return
+      }
+
+      console.log('render dashboard in ' + this.$options.name)
 
       // position & size dashboard
       const dashboard = this.$el.querySelector(".dashboard");
@@ -163,7 +170,7 @@ export default {
       }
     };
 
-    setTimeout(drawDashboard, 100);
+    drawDashboard()
     window.addEventListener("resize", drawDashboard);
   }
 };
