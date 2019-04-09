@@ -32,12 +32,12 @@ export default {
     counter: 0,
     views: ['ViewEmail', 'ViewName', 'ViewMilestone', 'ViewMembers', 'ViewFinal'],
     userInfo: {
-      email: "",
-      emailShort: "",
-      organization: "",
-      code: "",
+      email: "no.email@submitted.com",
+      emailShort: "no.email",
+      organization: "unknown",
+      code: "unknown",
       members: [],
-      milestone: ""
+      milestone: "unknown"
     },
     showCodePopup: false,
     showPasswordPopup: false
