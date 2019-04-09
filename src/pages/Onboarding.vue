@@ -1,10 +1,12 @@
 <template>
 <div class="onboarding">
   <component @next="onNext" @queryCode="queryCode" v-bind:info="userInfo"
-    v-bind:is="currentView" ref="view"
+    v-bind:is="currentView" ref="view" :submit="submit"
   ></component>
-  <CodePopup v-if="showCodePopup" :info="userInfo" @submit="onCodeSubmit"></CodePopup>
-  <PasswordPopup v-if="showPasswordPopup" :info="userInfo" @submit="onPasswordSubmit"></PasswordPopup>
+  <CodePopup v-if="showCodePopup" :info="userInfo" @submit="onCodeSubmit"
+    :submit="submit"></CodePopup>
+  <PasswordPopup v-if="showPasswordPopup" :info="userInfo"
+    @submit="onPasswordSubmit" :submit="submit"></PasswordPopup>
 </div>
 </template>
 
@@ -34,18 +36,20 @@ export default {
     userInfo: {
       email: "no.email@submitted.com",
       emailShort: "no.email",
-      organization: "unknown",
-      code: "unknown",
+      organization: "unknown organization",
+      code: "",
       members: [],
-      milestone: "unknown"
+      milestone: "unknown milestone"
     },
     showCodePopup: false,
-    showPasswordPopup: false
+    showPasswordPopup: false,
+    submit: true
   }),
   computed: {
     currentView: comp => comp.views[comp.counter],
   },
   created: function() {
+    this.submit = this.$route.query.nosubmit === undefined
     // skip parts of signup depending on url 'stage' param; e.g. stage=members => ViewMembers
     const stage = this.$route.query.stage ? this.$route.query.stage.toLowerCase() : undefined
     if (!stage) return

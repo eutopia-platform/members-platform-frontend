@@ -36,10 +36,18 @@ export default {
     Icon
   },
   props: {
-    info: Object
+    info: Object,
+    submit: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
     onSubmit: function() {
+      if (!this.submit) {
+        this.$emit('submit')
+        return
+      }
       console.log(this.$el.querySelector('input').value)
       this.submitPassword(this.$el.querySelector('input').value).then(token => {
         this.$emit('submit')

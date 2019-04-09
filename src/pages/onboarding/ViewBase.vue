@@ -36,7 +36,11 @@ export default {
   },
   props: {
     img: String,
-    info: Object
+    info: Object,
+    submit: {
+      type: Boolean,
+      default: true
+    }
   },
   data: () => ({
     text: String
