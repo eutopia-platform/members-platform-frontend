@@ -11,6 +11,7 @@
         <Button @click="onSubmit" :disabled="!inputValid">
           Next
         </Button>
+        <Button type="text" class="skip" @click="onSubmit">Or, skip for now</Button>
       </div>
     </div>
     <template v-slot:dashboard>
@@ -53,7 +54,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.text {
+.text:not(.skip) {
+
   width: initial !important;
   position: relative;
   left: 100%;

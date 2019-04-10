@@ -2,7 +2,7 @@
   <div class="lp-pricing">
     <div class="section-title">
       <Header type="primary">
-        Reduce waste and build lean products
+        Reduce the risk and scale your lean startup
       </Header>
     </div>
     <div class="pricing-list">

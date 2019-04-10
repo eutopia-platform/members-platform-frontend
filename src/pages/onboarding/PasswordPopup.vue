@@ -51,7 +51,11 @@ export default {
     Paragraph
   },
   props: {
-    info: Object
+    info: Object,
+    submit: {
+      type: Boolean,
+      default: true
+    }
   },
   data: () => ({
     pw1: "",
@@ -66,6 +70,10 @@ export default {
   },
   methods: {
     onSubmit: function() {
+      if (!this.submit) {
+        this.$emit('submit')
+        return
+      }
       this.submitPassword(this.email)
         .then(token => {
           this.$emit("submit");
