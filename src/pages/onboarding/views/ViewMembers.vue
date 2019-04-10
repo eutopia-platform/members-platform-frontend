@@ -8,7 +8,7 @@
         <Input v-for="(_, i) in members" look="blend" :name="String(i)" :placeholder=
           "placeholders[i % 3]" @valueChange="onInputValueChange" :focus="i === 0"></Input>
         <Button type="text" @click="addInput">+ add more team members</Button>
-        <Button @click="onSubmit" :disabled="!inputValid">
+        <Button @click="onSubmit" :disabled="!isValid">
           Next
         </Button>
         <Button type="text" class="skip" @click="onSubmit">Or, skip for now</Button>
@@ -33,6 +33,7 @@ export default {
   extends: ViewBase,
   data: () => ({
     members: ["", "", ""],
+    isValid: false,
     placeholders: ['awesome-cofounder@example.com', 'awesome-colleague@example.com', 'awesome-mentor@example.com']
   }),
   components: {
@@ -48,6 +49,7 @@ export default {
     onInputValueChange: function(payload) {
       this.text = payload // required for unblocking button
       this.members[parseInt(payload.name, 10)] = payload.value
+      this.isValid = this.members.find(m => m.length > 0) !== undefined
     }
   }
 }
