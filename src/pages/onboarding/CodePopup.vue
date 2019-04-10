@@ -51,7 +51,7 @@ export default {
   methods: {
     onSubmit: function(pin) {
       if (!this.submit) {
-        this.$emit('submit')
+        this.$emit('submit', pin)
         return
       }
       this.submitCode(pin).then(valid => {

@@ -17,7 +17,7 @@
   <PasswordPopup
     v-if="showPasswordPopup"
     :info="userInfo"
-    @submit="onPasswordSubmit" 
+    @submit="onPasswordSubmit"
     :submit="submit"
   ></PasswordPopup>
 </div>
@@ -88,15 +88,9 @@ export default {
     onNext: function(payload) {
       const currentView = this.views[this.currentViewIndex];
 
-      if (currentView == "ViewEmail") this.email = payload.text.value;
-
       switch (currentView) {
-        case "ViewEmail":
-          this.userInfo.email = payload.text.value;
-          this.userInfo.emailShort = payload.text.value.split("@")[0];
-          break;
         case "ViewName":
-          this.userInfo.organization = payload.text.value;
+          this.userInfo.organization = payload.name;
           break;
         case "ViewMembers":
           this.userInfo.members = payload.members.filter(
@@ -104,7 +98,7 @@ export default {
           );
           break;
         case "ViewMilestone":
-          this.userInfo.milestone = payload.text.value;
+          this.userInfo.milestone = payload.milestone;
       }
 
       if (this.currentViewIndex < this.views.length - 1)
@@ -113,6 +107,7 @@ export default {
     },
     queryCode: function(email) {
       this.userInfo.email = email;
+      this.userInfo.emailShort = email.split('@')[0]
       this.showCodePopup = true;
     },
     onCodeSubmit: function(code) {

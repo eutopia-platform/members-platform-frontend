@@ -51,7 +51,7 @@ export default {
   methods: {
     onSubmit: function() {
       if (!this.submit) {
-        this.$emit('queryCode')
+        this.$emit('queryCode', this.email)
         return
       }
       if (!this.isFormValid) return;
