@@ -3,7 +3,7 @@
     <Popup>
       <div class="create-password">
         <legend>
-          <Header type="secondary">Set your password</Header>
+          <Header secondary>Set your password</Header>
         </legend>
         <Input
           look="blend"

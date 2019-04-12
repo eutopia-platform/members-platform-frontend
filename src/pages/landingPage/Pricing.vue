@@ -1,7 +1,7 @@
 <template>
   <div class="lp-pricing">
     <div class="section-title">
-      <Header type="primary">
+      <Header primary>
         Reduce the risk and scale your lean startup
       </Header>
     </div>

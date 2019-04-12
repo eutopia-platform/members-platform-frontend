@@ -1,6 +1,6 @@
 <template>
   <div class="lp-welcome">
-    <Header type="primary">
+    <Header primary>
       Build. Measure. Learn.<br/>
       Product development streamlined.
     </Header>

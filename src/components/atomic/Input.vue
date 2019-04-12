@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Button from "./Button.vue";
+import Button from "./Button.vue"
 
 export default {
   name: "Input",
@@ -84,9 +84,6 @@ export default {
 .input {
   display: inline-block;
   width: 100%;
-  // background-color: $c-primary-foreground;
-  // background-color: map-get($colors, neutral-back);
-  // color: $c-text-primary;
   border: $border;
   border-radius: $border-radius;
   box-shadow: $shadow-default;

@@ -1,7 +1,7 @@
 <template>
   <div class="pricing-card">
     <div class="pc-shape">
-      <Header type="quaternary" class="title">
+      <Header quaternary class="title">
         {{title}}
       </Header>
       <p class="pc-price">

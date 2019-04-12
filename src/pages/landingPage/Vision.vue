@@ -1,12 +1,12 @@
 <template>
 <div class="lp-vision">
   <div class="section-title">
-    <Header type="primary">
+    <Header primary>
       A toolkit for every aspect of your project.
     </Header>
   </div>
   <div class="vision-title">
-    <Header type="secondary">
+    <Header secondary>
       <Icon v-bind:src="img1" height="23px"></Icon>
       Setup your vision
     </Header>
@@ -17,7 +17,7 @@
   </p>
   <hr />
   <div class="vision-title">
-    <Header type="secondary">
+    <Header secondary>
       <Icon v-bind:src="img2" height="23px"></Icon>
       Develop your strategy
     </Header>
@@ -28,7 +28,7 @@
   </p>
   <hr />
   <div class="vision-title">
-    <Header type="secondary">
+    <Header secondary>
       <Icon v-bind:src="img3" height="23px"></Icon>
       Define your roadmap
     </Header>
@@ -39,7 +39,7 @@
   </p>
   <hr />
   <div class="vision-title">
-    <Header type="secondary">
+    <Header secondary>
       <Icon v-bind:src="img4" height="23px"></Icon>
       Measure and execute
     </Header>

@@ -1,7 +1,7 @@
 <template>
   <ViewBase v-bind:img="image">
     <div>
-      <Header type="secondary">
+      <Header secondary>
         That was easy!<br/>Find your teams first initiative: {{info.milestone}}
       </Header>
       <Paragraph>

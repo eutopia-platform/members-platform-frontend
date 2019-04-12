@@ -1,7 +1,7 @@
 <template>
   <ViewBase v-bind:img="image">
     <div>
-      <Header type="secondary">
+      <Header secondary>
         Who else is working at {{ info.organization }}?
       </Header>
       <div class="input-wrap">

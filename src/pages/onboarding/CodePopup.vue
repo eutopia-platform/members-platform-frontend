@@ -2,7 +2,7 @@
   <div class="code-popup">
     <Popup>
       <div class="code-wrap">
-        <Header type='secondary'>
+        <Header secondary>
           Find a secret in your email
         </Header>
         <Paragraph>

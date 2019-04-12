@@ -1,17 +1,19 @@
 <template>
-  <div class="header" v-bind:class="classObj">
+  <div class="header" :class="getClass">
     <slot></slot>
   </div>
 </template>
 
 <script>
+const types = ['primary', 'secondary', 'tertiary', 'quaternary']
 export default {
-  name: "Header",
-  props: {
-    type: String
-  },
+  name: 'Header',
+  props: Object.fromEntries(types.map(t => [t, Boolean])),
   computed: {
-    classObj: comp => ({[comp.type]: true})
+    getClass: (self = this) =>
+      types.map(t => self[t]).includes(true)
+        ? Object.fromEntries(types.map(t => [t, self[t]]))
+        : {[types[0]]: true}
   }
 };
 </script>
@@ -27,13 +29,7 @@ export default {
   font-weight: bold;
   margin-top: .5em;
   margin-bottom: .5em;
-  display: inline-block;
-
-  &::after {
-    content: "\A";
-    white-space: pre;
-    word-wrap: break-word;
-  }
+  display: block;
 
   img {
     height: 1.5em;

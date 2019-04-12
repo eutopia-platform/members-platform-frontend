@@ -3,7 +3,7 @@
     <div class="container">
       <SplitViewHorizontal class="splitViewHorizontal">
         <template v-slot:left>
-          <Header type="primary">Oops! You arrived early to the party.</Header>
+          <Header primary>Oops! You arrived early to the party.</Header>
           <Tagline type="sub">
             We are busy at work, check back with us a few days
             later to start your lean product development

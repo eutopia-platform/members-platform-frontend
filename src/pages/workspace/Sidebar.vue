@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="title">
-      <Header type="tertiary">ProjectCube.io</Header>
+      <Header tertiary>ProjectCube.io</Header>
     </div>
     <LineHorizontal></LineHorizontal>
     <div class="content">

@@ -1,7 +1,7 @@
 <template>
   <ViewBase v-bind:img="image">
     <div>
-      <Header type="secondary">What is the name of your company or startup?</Header>
+      <Header secondary>What is the name of your company or startup?</Header>
       <div class="input-wrap">
         <Input
           look="blend"

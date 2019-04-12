@@ -4,7 +4,7 @@
       <Paragraph type="sub">{{banner}}</Paragraph>
     </div>
     <div class="content">
-      <Header type="quaternary">
+      <Header quaternary>
         {{name}}
       </Header>
       <img :src="img"/>

@@ -1,7 +1,7 @@
 <template>
   <ViewBase v-bind:img="image">
     <div>
-      <Header type="secondary">Let's create your workspace</Header>
+      <Header secondary>Let's create your workspace</Header>
       <div class="input-wrap">
         <Input
           look="blend"
