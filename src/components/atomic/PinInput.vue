@@ -1,9 +1,21 @@
 <template>
   <form class="pin-input">
     <div v-for="(_, i) in groups" class="pin-group">
-      <input v-for="(_, e) in digits" v-for type="text" :name="i*digits+e"
-        maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-        @keyup="onKey" :autofocus="i * digits + e === 0" autocomplete="off"/>
+      <input
+        v-for="(_, e) in digits"
+        v-for type="text"
+        :name="i*digits+e"
+        maxlength="1"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+        @keydown="onKey"
+        @keydown.delete="onDelete"
+        @keydown.left="onLeft"
+        @keydown.right="onRight"
+        :autofocus="i * digits + e === 0"
+        autocomplete="off"
+        onclick="this.select()"
+        onfocus="setTimeout(() => this.select(), 0)"
+      />
     </div>
   </form>
 </template>
@@ -36,9 +48,29 @@ export default {
         this.$emit('submit', pin)
       }
       else {
-        if (this.$el.querySelector(`input[name='${(parseInt(current, 10))}']`).value)
-          this.$el.querySelector(`input[name='${(parseInt(current, 10)+1)}']`).focus()
+        // write input to current field and focus next
+        this.$el.querySelector(`input[name='${(parseInt(current, 10))}']`).value = e.key
+        e.preventDefault()
+        this.$el.querySelector(`input[name='${(parseInt(current, 10)+1)}']`).focus()
       }
+    },
+    onDelete: function(e) {
+      const current = document.activeElement.name
+      this.$el.querySelector(`input[name='${(parseInt(current, 10))}']`).value = ''
+      if (current !== '0')
+        this.$el.querySelector(`input[name='${(parseInt(current, 10)-1)}']`).focus()
+    },
+    onLeft: function(e) {
+      e.preventDefault()
+      const current = parseInt(document.activeElement.name, 10)
+      if (current > 0)
+        this.$el.querySelector(`input[name='${(current - 1)}']`).focus()
+    },
+    onRight: function(e) {
+      e.preventDefault()
+      const current = parseInt(document.activeElement.name, 10)
+      if (current < this.groups * this.digits - 1)
+        this.$el.querySelector(`input[name='${(current + 1)}']`).focus()
     }
   }
 }
