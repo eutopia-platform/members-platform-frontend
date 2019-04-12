@@ -1,7 +1,7 @@
 <template>
-  <div class="paragraph">
-    <slot></slot>
-  </div>
+  <p class="paragraph">
+    <slot/>
+  </p>
 </template>
 
 <script>
