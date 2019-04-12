@@ -35,8 +35,10 @@ export default {
           .map(i => parseInt(i.value, 10)).filter(i => !isNaN(i)).join('')
         this.$emit('submit', pin)
       }
-      else
-        this.$el.querySelector(`input[name='${(parseInt(current, 10)+1)}']`).focus()
+      else {
+        if (this.$el.querySelector(`input[name='${(parseInt(current, 10))}']`).value)
+          this.$el.querySelector(`input[name='${(parseInt(current, 10)+1)}']`).focus()
+      }
     }
   }
 }
