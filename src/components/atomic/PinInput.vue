@@ -1,5 +1,5 @@
 <template>
-  <form class="pin-input">
+  <form class="pin-input" @paste="onPaste">
     <div v-for="(_, i) in groups" class="pin-group">
       <input
         v-for="(_, e) in digits"
@@ -39,13 +39,16 @@ export default {
     Paragraph
   },
   methods: {
+    submit: function(e) {
+      const pin = Array.from(this.$el.getElementsByTagName('input'))
+        .map(i => parseInt(i.value, 10)).filter(i => !isNaN(i)).join('')
+      this.$emit('submit', pin)
+    },
     onKey: function(e) {
       if (isNaN(e.key) || e.key === ' ') return
       const current = document.activeElement.name
       if (current >= this.groups * this.digits - 1) {
-        const pin = Array.from(this.$el.getElementsByTagName('input'))
-          .map(i => parseInt(i.value, 10)).filter(i => !isNaN(i)).join('')
-        this.$emit('submit', pin)
+        this.submit()
       }
       else {
         // write input to current field and focus next
@@ -71,6 +74,15 @@ export default {
       const current = parseInt(document.activeElement.name, 10)
       if (current < this.groups * this.digits - 1)
         this.$el.querySelector(`input[name='${(current + 1)}']`).focus()
+    },
+    onPaste: function(e) {
+      e.preventDefault()
+      const paste = (event.clipboardData || window.clipboardData).getData('text').trim()
+      if (paste.length !== 6 || !/^\d+$/.test(paste)) return
+      Array.from(this.$el.getElementsByTagName('input')).forEach(i =>
+        i.value = paste[parseInt(i.name, 10)])
+      this.$el.querySelector(`input[name='${this.groups * this.digits - 1}']`).focus()
+      this.submit()
     }
   }
 }
