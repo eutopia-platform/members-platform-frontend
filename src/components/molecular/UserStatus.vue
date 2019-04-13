@@ -31,9 +31,9 @@ export default {
 <style lang="scss" scoped>
 .user-status {
   height: 3rem;
-
   display: flex;
   flex-direction: row;
+  white-space: nowrap;
 
   .user-icon {
     height: 100%;

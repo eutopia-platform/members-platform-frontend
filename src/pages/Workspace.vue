@@ -42,6 +42,11 @@ export default {
     min-height: 100vh;
     box-sizing: border-box;
     padding: 1rem;
+
+    @media screen and (min-width: 1150px) {
+      margin-left: 345px;
+      width: calc(100vw - 345px);
+    }
   }
 }
 </style>

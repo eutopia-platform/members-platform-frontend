@@ -61,6 +61,11 @@ export default {
   box-sizing: border-box;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  border-right: #444 solid 1px;
+
+  @media screen and (min-width: 1150px) {
+    width: 345px;
+  }
 
   @include colorScheme('neutral');
 
