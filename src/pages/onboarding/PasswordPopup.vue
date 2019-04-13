@@ -21,10 +21,10 @@
         ></Input>
         <Paragraph class="error" v-if="errorMessage">{{errorMessage}}</Paragraph>
         <div class="bt-wrap">
-          <Button type="icon" @click="onSubmit" :disabled="!isFormValid">Next</Button>
+          <Button @click="onSubmit" :disabled="!isFormValid">Next</Button>
         </div>
         <div class="icon-wrap" :src="img">
-          <Icon :src="img" size="5rem"></Icon>
+          <Icon :src="img" class="icon"></Icon>
         </div>
       </div>
     </Popup>
@@ -135,5 +135,9 @@ export default {
 
 .bt-wrap {
   margin-top: 3rem;
+}
+
+.icon {
+  height: 5rem;
 }
 </style>

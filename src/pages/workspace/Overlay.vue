@@ -52,7 +52,7 @@ export default {
 
     position: relative;
     top: 5rem;
-    max-width: 70%;
+    max-width: 50rem;
     max-height: 80%;
     padding: 2rem 0 0 4rem;
 

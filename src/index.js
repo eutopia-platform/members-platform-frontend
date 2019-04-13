@@ -11,6 +11,9 @@ import NotFound from "./pages/NotFound";
 import Workspace from "./pages/Workspace";
 import Onboarding from "./pages/Onboarding";
 import Login from "./pages/Login";
+import Dashboard from './pages/workspace/Dashboard'
+import Toolkits from './pages/workspace/Toolkits'
+import Settings from './pages/workspace/Settings'
 
 const authUrl =
   process.env.NODE_ENV !== "development"
@@ -31,7 +34,22 @@ Vue.http.options.emulateJSON = true;
 
 const routes = [
   { path: "/", component: LandingPage },
-  { path: "/workspace", component: Workspace },
+  { path: '/workspace/', component: Workspace,
+    children: [
+      {
+        path: '/',
+        component: Dashboard
+      },
+      {
+        path: 'toolkits',
+        component: Toolkits
+      },
+      {
+        path: 'settings',
+        component: Settings
+      }
+    ]
+  },
   { path: "/privacy", component: Privacy },
   { path: "/components", component: Components },
   { path: "/onboarding", component: Onboarding },

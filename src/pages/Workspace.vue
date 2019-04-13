@@ -1,41 +1,47 @@
 <template>
-  <div class="workspace">
-    <MenuSidebar></MenuSidebar>
-    <Initiative></Initiative>
-    <Overlay v-if="showOverlay"></Overlay>
+  <div class='workspace'>
+    <Overlay v-if='showOverlay'></Overlay>
+    <Navbar></Navbar>
+    <router-view class='page'></router-view>
   </div>
 </template>
 
 <script>
-import Header from "../components/atomic/Header.vue";
-import MenuSidebar from "./workspace/Sidebar.vue";
-import Initiative from "./workspace/Initiative.vue";
-import Overlay from "./workspace/Overlay";
+import Overlay from './workspace/Overlay'
+import Navbar from './workspace/NavigationBar'
+import Dashboard from './workspace/Dashboard'
+import Settings from './workspace/Settings'
 
 export default {
-  name: "Workspace",
+  name: 'Workspace',
   components: {
-    Header,
-    MenuSidebar,
-    Initiative,
-    Overlay
+    Overlay,
+    Navbar,
+    Dashboard,
+    Settings
   },
   data: function() {
     return {
-      showOverlay: !(this.$route.query.withoutOverlay === null)
-    };
+      showOverlay: process.env.NODE_ENV === 'production' && !(this.$route.query.withoutOverlay === null)
+    }
   },
-  mounted: function() {
-    console.log(document.cookie);
+  computed: {
+    activePage: () => Dashboard
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
+@import 'src/components/sharedStyles/colors.scss';
+
 .workspace {
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  .page {
+    @include colorScheme('secondary');
+    width: 70vw;
+    margin-left: 30vw;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
 }
 </style>

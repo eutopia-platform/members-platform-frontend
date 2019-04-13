@@ -69,8 +69,6 @@ export default {
         return
       }
 
-      console.log('render dashboard in ' + this.$options.name)
-
       // position & size dashboard
       const dashboard = this.$el.querySelector(".dashboard");
       dashboard.setAttribute(

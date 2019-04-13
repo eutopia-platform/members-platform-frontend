@@ -1,13 +1,9 @@
 <template>
   <div class="user-status">
-    <Icon src="https://via.placeholder.com/150" height="50px" height="50px">test</Icon>
-    <div class="text-section">
-      <Paragraph class="name">
-        John Doe
-      </Paragraph>
-      <Small class="email">
-        john.doe@foo.com
-      </Small>
+    <Icon :src='pic' class='user-icon' height='100px' height='100px'></Icon>
+    <div class='right'>
+      <Paragraph>{{name}}</Paragraph>
+      <Small>{{email}}</Small>
     </div>
   </div>
 </template>
@@ -18,7 +14,12 @@ import Small from '../atomic/Small.vue'
 import Icon from '../atomic/Icon.vue'
 
 export default {
-  name: "UserStatus",
+  name: 'UserStatus',
+  data: () => ({
+    name: 'unknown name',
+    email: 'unknown email',
+    pic: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcvm7dfwAHSwMUPdgKUQAAAABJRU5ErkJggg=='
+  }),
   components: {
     Paragraph,
     Small,
@@ -29,17 +30,30 @@ export default {
 
 <style lang="scss" scoped>
 .user-status {
-  width: 15rem;
-  height: 50px;
+  height: 3rem;
+
   display: flex;
   flex-direction: row;
-  margin-bottom: 1rem;
 
-  .text-section {
+  .user-icon {
+    height: 100%;
+    width: 3rem;
+  }
+
+  .right {
+    margin-left: 1rem;
+    height: 100%;
+    box-sizing: border-box;
+    padding: .2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-left: 1rem;
+
+    * {
+      margin: 0;
+      flex-grow: 1;
+      display: border-box;
+    }
   }
 }
+
 </style>
