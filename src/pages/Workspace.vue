@@ -41,11 +41,13 @@ export default {
     margin-left: 30vw;
     min-height: 100vh;
     box-sizing: border-box;
-    padding: 1rem;
+    padding: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
 
-    @media screen and (min-width: 1150px) {
-      margin-left: 345px;
-      width: calc(100vw - 345px);
+    @media screen and (min-width: 1000px) {
+      margin-left: 300px;
+      width: calc(100vw - 300px);
     }
   }
 }

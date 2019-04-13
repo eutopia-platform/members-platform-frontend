@@ -12,8 +12,9 @@ export default {
 @import '../sharedStyles/colors.scss';
 
 hr {
-  height: 1px;
+  height: 2px;
   margin-bottom: 1em;
   border: none;
+  @include colorScheme('secondary')
 }
 </style>

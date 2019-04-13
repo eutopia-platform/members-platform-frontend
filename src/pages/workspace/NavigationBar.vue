@@ -1,5 +1,5 @@
 <template>
-  <div class='navigation'>
+  <aside class='navigation'>
     <Brand></Brand>
     <UserStatus class='status'></UserStatus>
     </ul>
@@ -9,7 +9,7 @@
         {{item.name}}
       </Item>
     </ul>
-  </div>
+  </aside>
 </template>
 
 <script>
@@ -61,10 +61,9 @@ export default {
   box-sizing: border-box;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  border-right: #444 solid 1px;
 
-  @media screen and (min-width: 1150px) {
-    width: 345px;
+  @media screen and (min-width: 1000px) {
+    width: 300px;
   }
 
   @include colorScheme('neutral');
