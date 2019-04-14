@@ -47,8 +47,6 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2rem;
 
-    transition: all 1s;
-
     * {
       height: 100%;
       @media screen and (max-width: 1200px) {
