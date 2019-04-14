@@ -1,6 +1,5 @@
 <template>
   <div class='card'>
-    <!-- asdf -->
     <slot/>
   </div>
 </template>
@@ -22,7 +21,6 @@ export default {
   padding: 1rem;
   box-sizing: border-box;
   display: table;
-
   box-shadow: $shadow-default;
 }
 </style>

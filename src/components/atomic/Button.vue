@@ -51,7 +51,7 @@ export default {
 
   &:hover {
     box-shadow: $shadow-hover;
-    transform: translate(0, -1px);
+    // transform: translate(0, -1px);
   }
 
   &:active {
@@ -118,5 +118,11 @@ export default {
 }
 
 .icon {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  &:hover {
+    box-shadow: none;
+  }
 }
 </style>

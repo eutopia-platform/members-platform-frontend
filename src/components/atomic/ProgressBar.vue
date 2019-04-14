@@ -5,11 +5,6 @@
 </template>
 
 <script>
-const interpolate = (cl1, cl2, n) =>
-  ((cl1 >> 16) + ((cl2 >> 16) - (cl1 >> 16)) * n << 16) +
-  ((cl1 >> 8 & 0xFF) + ((cl2 >> 8 & 0xFF) - (cl1 >> 8 & 0xFF)) * n << 8) +
-  ((cl1 & 0xFF) + ((cl2 & 0xFF) - (cl1 & 0xFF)) * n | 0)
-
 export default {
   name: 'ProgressBar',
   props: {

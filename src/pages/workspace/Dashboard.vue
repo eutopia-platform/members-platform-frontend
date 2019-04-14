@@ -4,9 +4,10 @@
       Dashboard
     </Header>
     <div class='content'>
+      <WelcomeInfo class='welcome'></WelcomeInfo>
       <ToolkitStatus></ToolkitStatus>
-      <Card>b</Card>
-      <Card class='full'>c</Card>
+      <Validation></Validation>
+      <Process class='process'></Process>
     </div>
   </div>
 </template>
@@ -15,13 +16,19 @@
 import Card from '/components/atomic/Card'
 import Header from '/components/atomic/Header'
 import ToolkitStatus from './dashboard/ToolkitStatus'
+import Validation from './dashboard/Validation'
+import Process from './dashboard/Process'
+import WelcomeInfo from './dashboard/WelcomeInfo'
 
 export default {
   name: 'Dashboard',
   components: {
     Header,
     Card,
-    ToolkitStatus
+    ToolkitStatus,
+    Validation,
+    Process,
+    WelcomeInfo
   }
 }
 </script>
@@ -40,11 +47,13 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2rem;
 
+    transition: all 1s;
+
     * {
       height: 100%;
     }
 
-    .full {
+    .process, .welcome {
       grid-column-start: span 2;
     }
   }
