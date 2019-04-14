@@ -51,6 +51,9 @@ export default {
 
     * {
       height: 100%;
+      @media screen and (max-width: 1200px) {
+        grid-column-start: span 2;
+      }
     }
 
     .process, .welcome {
