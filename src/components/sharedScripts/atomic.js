@@ -6,8 +6,11 @@ export default class Atomic {
     for (let prop in def) {
       if (prop === 'data') {
         assert(() => typeof(def[prop]) === 'object', 'data must be object')
-        this.addData(def[prop])
+        this._addData(def[prop])
         continue
+      }
+      if (prop === 'components') {
+        assert(() => !Object.keys(def[prop]).length, 'atomic component can\'t include other atomic components')
       }
       this[prop] = def[prop]
     }
@@ -28,13 +31,13 @@ export default class Atomic {
       }
 
       // add type array to data
-      this.addData({ types: this.types })
+      this._addData({ types: this.types })
 
       // add tag list and computed tag property if tags array is defined & valid
       if (this.tags) {
         assert(Array.isArray(this.tags), 'tags must be array')
         assert(this.tags.length === this.types.length, 'number of tags must be equal to number of types')
-        this.addData({ tags: this.tags })
+        this._addData({ tags: this.tags })
         this.computed['tag'] = function() {
           return this.tags[this.types.indexOf(this.type)]
         }
@@ -49,7 +52,7 @@ export default class Atomic {
     }
   }
 
-  addData(...data) {
+  _addData(...data) {
     for (let prop of data) {
       const dataOld = this.data ? this.data() : {}
       this.data = () => ({

@@ -164,7 +164,7 @@ export default {
           "style",
           `
           left: ${7 * iw}px;
-          top: ${67 * ih}px;
+          top: ${68 * ih}px;
           font-size: ${3 * ih}px;
           visibility: visible;
         `
@@ -272,6 +272,7 @@ export default {
     position: absolute;
     visibility: hidden;
     transform: translateY(-100%);
+    margin-top: 0;
   }
 
   ul {

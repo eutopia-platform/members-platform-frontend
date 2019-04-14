@@ -7,11 +7,11 @@
       <div class="input-wrap">
         <Input v-for="(_, i) in members" look="blend" :name="String(i)" :placeholder=
           "placeholders[i % 3]" @valueChange="onInputValueChange" :focus="i === 0"></Input>
-        <Button type="text" @click="addInput">+ add more team members</Button>
-        <Button @click="onSubmit" :disabled="!isValid">
+        <Button text @click="addInput">+ add more team members</Button>
+        <Button big @click="onSubmit" :disabled="!isValid">
           Next
         </Button>
-        <Button type="text" class="skip" @click="onSubmit">Or, skip for now</Button>
+        <Button text class="skip" @click="onSubmit">Or, skip for now</Button>
       </div>
     </div>
     <template v-slot:dashboard>
@@ -56,15 +56,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.text:not(.skip) {
+@import '/components/sharedStyles/colors';
 
-  width: initial !important;
-  position: relative;
-  left: 100%;
-  transform: translateX(-100%);
-
-  &:hover {
-    transform: translateX(-100%);
-  }
+.button.text {
+  color: map-get($colors, 'neutral-font');
+  font-size: .7rem;
 }
 </style>

@@ -8,7 +8,7 @@
         Validate your assumptions, become clear about the user, the problem you are solving so you get to product market fit asap - all with powerful product toolkits. Time to scale your startup!
       </Paragraph>
       <div class="input-wrap" >
-        <Button @click="onSubmit">
+        <Button big @click="onSubmit">
           Find your initiative in Cubed
         </Button>
       </div>

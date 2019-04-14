@@ -8,7 +8,7 @@
         <Break></Break>
         Manage toolkits and processes and always stay on top of the progress your team is making.
       </Paragraph>
-      <Button @click='close' class='close' type='icon' :img='iconClose'></Button>
+      <Button icon @click='close' class='close' type='icon' :img='iconClose'></Button>
     </div>
   </Card>
 </template>

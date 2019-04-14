@@ -15,7 +15,7 @@
           I agree to the
           <router-link to="/privacy">Privacy Policy</router-link>
         </Checkbox>
-        <Button @click="onSubmit" :disabled="!isFormValid">Next</Button>
+        <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
       </div>
     </div>
   </ViewBase>

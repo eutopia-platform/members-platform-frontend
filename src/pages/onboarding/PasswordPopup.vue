@@ -20,9 +20,7 @@
           v-model="pw2"
         ></Input>
         <Paragraph class="error" v-if="errorMessage">{{errorMessage}}</Paragraph>
-        <div class="bt-wrap">
-          <Button @click="onSubmit" :disabled="!isFormValid">Next</Button>
-        </div>
+        <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
         <div class="icon-wrap" :src="img">
           <Icon :src="img" class="icon"></Icon>
         </div>
@@ -131,10 +129,6 @@ export default {
   .error {
     color: red;
   }
-}
-
-.bt-wrap {
-  margin-top: 3rem;
 }
 
 .icon {

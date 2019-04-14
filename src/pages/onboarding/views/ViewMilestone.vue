@@ -12,7 +12,7 @@
           placeholder="Your next big thing"
           :focus="true"
         ></Input>
-        <Button @click="onSubmit" :disabled="!(milestone !== '')">Next</Button>
+        <Button big @click="onSubmit" :disabled="!(milestone !== '')">Next</Button>
       </div>
     </div>
     <template v-slot:dashboard>

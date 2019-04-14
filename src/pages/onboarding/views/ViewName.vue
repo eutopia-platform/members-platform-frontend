@@ -11,7 +11,7 @@
           placeholder="Are you the next Google?"
           :focus="true"
         ></Input>
-        <Button @click="onSubmit" :disabled="!(name !== '')">Next</Button>
+        <Button big @click="onSubmit" :disabled="!(name !== '')">Next</Button>
       </div>
     </div>
   </ViewBase>
