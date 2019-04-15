@@ -64,6 +64,6 @@ export default class Component {
     const num_types = this.types.map(t => this[t]).filter(t => t).length
     if (this.types.includes('default') && !num_types) return
     assert(() => num_types > 0, this.$options.name + ' must have a type')
-    assert(() => num_types < 2, this.$options.name + ' must can\'t have multiple types')
+    assert(() => num_types < 2, this.$options.name + ' must not have multiple types')
   }
 }

@@ -4,8 +4,7 @@
       Toolkits
     </Header>
     <div class='grid'>
-      <!-- <Card v-for='i in 100'>{{i}}</Card> -->
-      <Toolkit v-for='i in 100'>{{i}}</Toolkit>
+      <Toolkit v-for='i in 100' name='Toolkit'>{{i}}</Toolkit>
     </div>
   </div>
 </template>

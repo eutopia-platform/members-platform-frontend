@@ -1,3 +1,5 @@
+const ALLOW_EVALUATED = true
+
 /*
   ASSERTION FUNCTION - exception will be raised on failure
   if condition is passed as function, it will not be evaluated in production mode
@@ -11,5 +13,3 @@ export const assert = process.env.NODE_ENV === 'development'
       throw new Error(msg || 'assertion failed' + (typeof(expr) === 'function' ? `: ${expr}` : ''))
     }
   : () => true
-
-const ALLOW_EVALUATED = true
