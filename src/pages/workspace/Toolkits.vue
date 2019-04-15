@@ -4,7 +4,8 @@
       Toolkits
     </Header>
     <div class='grid'>
-      <Card v-for='i in 100'>{{i}}</Card>
+      <!-- <Card v-for='i in 100'>{{i}}</Card> -->
+      <Toolkit v-for='i in 100'>{{i}}</Toolkit>
     </div>
   </div>
 </template>
@@ -12,12 +13,14 @@
 <script>
 import Header from '/components/atomic/Header'
 import Card from '/components/atomic/Card'
+import Toolkit from '/components/molecular/ToolkitCard'
 
 export default {
   name: 'Toolkits',
   components: {
     Header,
-    Card
+    Card,
+    Toolkit
   }
 }
 </script>

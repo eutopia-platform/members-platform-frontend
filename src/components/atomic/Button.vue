@@ -7,7 +7,6 @@
 
 <script>
 import Atomic from '/components/sharedScripts/atomic'
-import Icon from './Icon.vue'
 
 export default new Atomic({
   name: 'Button',
@@ -28,7 +27,7 @@ export default new Atomic({
   min-width: 2rem;
 
   &:not(.icon) {
-    border-radius: .25rem;
+    border-radius: 1rem;
   }
 
   &:not(.text) {
@@ -37,8 +36,12 @@ export default new Atomic({
     vertical-align: top;
   }
 
-  padding-left: .5rem;
-  padding-right: .5rem;
+  &:not(.text):not(.icon) {
+    box-shadow: $shadow-default;
+  }
+
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: .2rem;
   padding-bottom: .2rem;
   margin-top: 1rem;
@@ -59,14 +62,18 @@ export default new Atomic({
 }
 
 .big {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-top: .8rem;
   padding-bottom: .8rem;
+  border-radius: 1.6rem !important;
 }
 
 .icon {
   background-color: inherit;
   padding: 0;
+  * {
+    margin: 0;
+  }
 }
 </style>
