@@ -1,24 +1,20 @@
 <template>
   <div class="toolkits">
-    <Header tertiary>
-      Toolkits
-    </Header>
+    <Header tertiary>Toolkits</Header>
     <div class="grid">
-      <Toolkit v-for="i in 100" name="Toolkit">{{ i }}</Toolkit>
+      <Toolkit v-for="i in 100" :key="i" name="Toolkit">{{ i }}</Toolkit>
     </div>
   </div>
 </template>
 
 <script>
 import Header from '/components/atomic/Header'
-import Card from '/components/atomic/Card'
 import Toolkit from '/components/molecular/ToolkitCard'
 
 export default {
   name: 'Toolkits',
   components: {
     Header,
-    Card,
     Toolkit,
   },
 }
