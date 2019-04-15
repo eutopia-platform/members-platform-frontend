@@ -2,9 +2,9 @@
   <div>
     <h1>Hello Project Hub!</h1>
     <p>This page was created with Vue!</p>
-    <router-link to="/">
+    <RouterLink to="/">
       <Button>Go to landing page</Button>
-    </router-link>
+    </RouterLink>
     <LoginProvider />
   </div>
 </template>

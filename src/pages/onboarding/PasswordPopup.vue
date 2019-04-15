@@ -6,23 +6,23 @@
           <Header secondary>Set your password</Header>
         </legend>
         <Input
+          v-model="pw1"
           look="blend"
           placeholder="set your password"
           type="password"
           data-lpignore="true"
-          v-model="pw1"
         ></Input>
         <Input
+          v-model="pw2"
           look="blend"
           placeholder="retype your password"
           type="password"
           data-lpignore="true"
-          v-model="pw2"
         ></Input>
-        <Paragraph class="error" v-if="errorMessage">{{
+        <Paragraph v-if="errorMessage" class="error">{{
           errorMessage
         }}</Paragraph>
-        <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
+        <Button big :disabled="!isFormValid" @click="onSubmit">Next</Button>
         <div class="icon-wrap" :src="img">
           <Icon :src="img" class="icon"></Icon>
         </div>

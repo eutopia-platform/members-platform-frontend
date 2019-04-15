@@ -15,17 +15,17 @@ import Icon from '../atomic/Icon.vue'
 
 export default {
   name: 'UserStatus',
+  components: {
+    Paragraph,
+    Small,
+    Icon,
+  },
   data: () => ({
     name: 'unknown name',
     email: 'unknown email',
     pic:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcvm7dfwAHSwMUPdgKUQAAAABJRU5ErkJggg==',
   }),
-  components: {
-    Paragraph,
-    Small,
-    Icon,
-  },
 }
 </script>
 

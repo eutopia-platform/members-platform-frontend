@@ -1,5 +1,5 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
       <Header secondary
         >What milestone are you working on at the moment?</Header
@@ -11,14 +11,14 @@
       >
       <div class="input-wrap">
         <Input
-          look="blend"
           v-model="milestone"
-          @valueChange="onInputValueChange"
-          @submit="onSubmit"
+          look="blend"
           placeholder="Your next big thing"
           :focus="true"
+          @valueChange="onInputValueChange"
+          @submit="onSubmit"
         ></Input>
-        <Button big @click="onSubmit" :disabled="!(milestone !== '')"
+        <Button big :disabled="!(milestone !== '')" @click="onSubmit"
           >Next</Button
         >
       </div>
@@ -37,10 +37,10 @@ import ViewBase from '../ViewBase.vue'
 
 export default {
   name: 'ViewMilestone',
-  extends: ViewBase,
   components: {
     ViewBase,
   },
+  extends: ViewBase,
   data: () => ({
     milestone: '',
   }),

@@ -1,17 +1,17 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
       <Header secondary>What is the name of your company or startup?</Header>
       <div class="input-wrap">
         <Input
-          look="blend"
           v-model="name"
-          @valueChange="onInputValueChange"
-          @submit="onSubmit"
+          look="blend"
           placeholder="Are you the next Google?"
           :focus="true"
+          @valueChange="onInputValueChange"
+          @submit="onSubmit"
         ></Input>
-        <Button big @click="onSubmit" :disabled="!(name !== '')">Next</Button>
+        <Button big :disabled="!(name !== '')" @click="onSubmit">Next</Button>
       </div>
     </div>
   </ViewBase>
@@ -24,13 +24,13 @@ import Button from '~/components/atomic/Button'
 
 export default {
   name: 'ViewName',
+  components: {
+    ViewBase,
+  },
   extends: ViewBase,
   data: () => ({
     name: '',
   }),
-  components: {
-    ViewBase,
-  },
   computed: {
     image: () => require('../../../../data/img/onboarding/view-name.png'),
   },

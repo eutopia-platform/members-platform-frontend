@@ -1,5 +1,5 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
       <Header secondary>
         That was easy!<br />Find your teams first initiative:
@@ -38,10 +38,10 @@ import ViewBase from '../ViewBase.vue'
 
 export default {
   name: 'ViewFinal',
-  extends: ViewBase,
   components: {
     ViewBase,
   },
+  extends: ViewBase,
   computed: {
     image: () => require('../../../../data/img/onboarding/dashboard-3.svg'),
   },

@@ -48,6 +48,9 @@ export default {
       default: true,
     },
   },
+  computed: {
+    img: () => require('../../../data/img/onboarding/inbox.svg'),
+  },
   methods: {
     onSubmit: function(pin) {
       if (!this.submit) {
@@ -78,9 +81,6 @@ export default {
           })
       })
     },
-  },
-  computed: {
-    img: () => require('../../../data/img/onboarding/inbox.svg'),
   },
 }
 </script>

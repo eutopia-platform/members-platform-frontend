@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="image-wrap">
-        <img v-bind:src="img" />
+        <img :src="img" />
         <div class="dashboard">
           <slot name="dashboard"></slot>
         </div>
@@ -45,14 +45,6 @@ export default {
   data: () => ({
     text: String,
   }),
-  methods: {
-    onSubmit: function() {
-      this.$emit('next', this.$data)
-    },
-    onInputValueChange: function(payload) {
-      this.text = payload
-    },
-  },
   computed: {
     inputValid: comp => comp.text.value && comp.text.value.length > 0,
   },
@@ -174,6 +166,14 @@ export default {
 
     drawDashboard()
     window.addEventListener('resize', drawDashboard)
+  },
+  methods: {
+    onSubmit: function() {
+      this.$emit('next', this.$data)
+    },
+    onInputValueChange: function(payload) {
+      this.text = payload
+    },
   },
 }
 </script>

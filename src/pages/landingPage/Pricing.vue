@@ -7,15 +7,15 @@
     </div>
     <div class="pricing-list">
       <PricingCard
-        @request="scrollToSignup"
         title="Productcube for Startups"
         price="15 / month per user"
-        v-bind:feats="[
+        :feats="[
           'Setup one workspace',
           'Run unlimited experiments',
           'Create your own toolkits',
           '1 mentorship session per month',
         ]"
+        @request="scrollToSignup"
       >
         <template>
           <img
@@ -26,15 +26,15 @@
       </PricingCard>
 
       <PricingCard
-        @request="scrollToSignup"
         title="Productcube for Corporates"
         price="25 / month per user"
-        v-bind:feats="[
+        :feats="[
           'Setup multiple workspaces',
           'Run unlimited experiments',
           'Create your own toolkits',
           'Organize user tests',
         ]"
+        @request="scrollToSignup"
       >
         <template>
           <img

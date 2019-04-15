@@ -6,10 +6,10 @@
       :name="name"
       :type="type"
       :placeholder="placeholder"
+      :class="styleClass"
+      :autocomplete="type === 'password' ? 'new-password' : 'true'"
       @input="onInput"
       @keyup.enter="onEnter"
-      v-bind:class="styleClass"
-      :autocomplete="type === 'password' ? 'new-password' : 'true'"
     />
   </div>
 </template>
@@ -19,6 +19,9 @@ import Button from './Button.vue'
 
 export default {
   name: 'Input',
+  components: {
+    Button,
+  },
   props: {
     name: {
       default: '',
@@ -41,14 +44,14 @@ export default {
       type: Boolean,
     },
   },
-  components: {
-    Button,
-  },
   data: () => ({
     value: '',
   }),
   computed: {
     styleClass: comp => 'style-' + comp.look,
+  },
+  mounted: function() {
+    if (this.focus) this.$el.focus()
   },
   methods: {
     onInput(e) {
@@ -65,9 +68,6 @@ export default {
     onEnter() {
       this.$emit('submit')
     },
-  },
-  mounted: function() {
-    if (this.focus) this.$el.focus()
   },
 }
 </script>

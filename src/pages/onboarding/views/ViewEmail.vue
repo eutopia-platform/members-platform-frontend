@@ -1,21 +1,21 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
       <Header secondary>Let's create your workspace</Header>
       <div class="input-wrap">
         <Input
-          look="blend"
-          @valueChange="onInputValueChange"
           v-model="email"
-          @submit="onSubmit"
+          look="blend"
           placeholder="you-are-awesome@example.com"
           :focus="true"
+          @valueChange="onInputValueChange"
+          @submit="onSubmit"
         ></Input>
         <Checkbox v-model="hasAgreed">
           I agree to the
-          <router-link to="/privacy">Privacy Policy</router-link>
+          <RouterLink to="/privacy">Privacy Policy</RouterLink>
         </Checkbox>
-        <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
+        <Button big :disabled="!isFormValid" @click="onSubmit">Next</Button>
       </div>
     </div>
   </ViewBase>
@@ -28,11 +28,11 @@ import Checkbox from '~/components/atomic/Checkbox'
 
 export default {
   name: 'ViewEmail',
-  extends: ViewBase,
   components: {
     ViewBase,
     Checkbox,
   },
+  extends: ViewBase,
   data: function() {
     return {
       hasAgreed: false,

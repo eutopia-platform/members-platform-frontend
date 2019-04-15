@@ -2,7 +2,7 @@
   <div class="workspace">
     <Overlay v-if="showOverlay"></Overlay>
     <Navbar></Navbar>
-    <router-view class="page"></router-view>
+    <RouterView class="page"></RouterView>
   </div>
 </template>
 

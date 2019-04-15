@@ -26,11 +26,6 @@ export default {
     Brand,
     Item,
   },
-  methods: {
-    openPage: function(link) {
-      this.$router.push(link)
-    },
-  },
   data: () => ({
     items: [
       {
@@ -50,6 +45,11 @@ export default {
       },
     ],
   }),
+  methods: {
+    openPage: function(link) {
+      this.$router.push(link)
+    },
+  },
 }
 </script>
 

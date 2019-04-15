@@ -8,14 +8,14 @@
         :name="i * digits + e"
         maxlength="1"
         oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-        @keydown="onKey"
-        @keydown.delete="onDelete"
-        @keydown.left="onLeft"
-        @keydown.right="onRight"
         :autofocus="i * digits + e === 0"
         autocomplete="off"
         onclick="this.select()"
         onfocus="setTimeout(() => this.select(), 0)"
+        @keydown="onKey"
+        @keydown.delete="onDelete"
+        @keydown.left="onLeft"
+        @keydown.right="onRight"
       />
     </div>
   </form>
@@ -26,6 +26,9 @@ import Paragraph from './Paragraph.vue'
 
 export default {
   name: 'PinInput',
+  components: {
+    Paragraph,
+  },
   props: {
     digits: {
       type: Number,
@@ -35,9 +38,6 @@ export default {
       type: Number,
       default: 2,
     },
-  },
-  components: {
-    Paragraph,
   },
   methods: {
     submit: function(e) {

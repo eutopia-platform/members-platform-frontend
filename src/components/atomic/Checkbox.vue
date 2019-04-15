@@ -1,6 +1,6 @@
 <template>
   <label>
-    <input type="checkbox" v-bind:value="value" @input="onInput" />
+    <input type="checkbox" :value="value" @input="onInput" />
     <slot></slot>
   </label>
 </template>

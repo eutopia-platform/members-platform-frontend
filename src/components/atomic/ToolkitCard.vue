@@ -18,14 +18,14 @@ import Paragraph from './Paragraph.vue'
 
 export default {
   name: 'ToolkitCard',
+  components: {
+    Header,
+    Paragraph,
+  },
   props: {
     name: String,
     banner: String,
     img: String,
-  },
-  components: {
-    Header,
-    Paragraph,
   },
 }
 </script>

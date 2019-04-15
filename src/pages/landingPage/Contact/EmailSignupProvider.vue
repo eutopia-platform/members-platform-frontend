@@ -3,11 +3,11 @@
     <EmailSignup @mySubmit="onSubmit"></EmailSignup>
     <div
       class="graphql-response-div"
-      v-html="graphqlResponse.message"
-      v-bind:class="{
+      :class="{
         success: this.graphqlResponse.successful,
         error: this.graphqlResponse.unsuccessful,
       }"
+      v-html="graphqlResponse.message"
     ></div>
   </div>
 </template>

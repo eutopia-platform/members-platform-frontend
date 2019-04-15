@@ -1,5 +1,5 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
       <Header secondary>
         Who else is working at {{ info.organization }}?
@@ -10,11 +10,11 @@
           look="blend"
           :name="String(i)"
           :placeholder="placeholders[i % 3]"
-          @valueChange="onInputValueChange"
           :focus="i === 0"
+          @valueChange="onInputValueChange"
         ></Input>
         <Button text @click="addInput">+ add more team members</Button>
-        <Button big @click="onSubmit" :disabled="!isValid">
+        <Button big :disabled="!isValid" @click="onSubmit">
           Next
         </Button>
         <Button text class="skip" @click="onSubmit">Or, skip for now</Button>
@@ -36,6 +36,9 @@ import ViewBase from '../ViewBase.vue'
 
 export default {
   name: 'ViewMembers',
+  components: {
+    ViewBase,
+  },
   extends: ViewBase,
   data: () => ({
     members: ['', '', ''],
@@ -46,9 +49,6 @@ export default {
       'awesome-mentor@example.com',
     ],
   }),
-  components: {
-    ViewBase,
-  },
   computed: {
     image: () => require('../../../../data/img/onboarding/dashboard-2.svg'),
   },

@@ -4,7 +4,7 @@
       Build. Measure. Learn.<br />
       Product development streamlined.
     </Header>
-    <Button @click="signup" big>Setup workspace</Button>
+    <Button big @click="signup">Setup workspace</Button>
   </div>
 </template>
 

@@ -28,15 +28,15 @@ import Button from '../atomic/Button.vue'
 
 export default {
   name: 'PricingCard',
-  props: {
-    title: String,
-    price: String,
-    feats: Array,
-  },
   components: {
     Header,
     Small,
     Button,
+  },
+  props: {
+    title: String,
+    price: String,
+    feats: Array,
   },
   methods: {
     handleRequest() {
