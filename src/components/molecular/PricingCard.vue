@@ -1,7 +1,7 @@
 <template>
   <div class="pricing-card">
     <div class="pc-shape">
-      <Header type="quaternary" class="title">
+      <Header quaternary class="title">
         {{title}}
       </Header>
       <p class="pc-price">
@@ -115,6 +115,28 @@ export default {
     position: absolute;
     left: 0;
     bottom: 0;
+
+    height: 3em;
+    width: 100%;
+    border-radius: 0;
+    padding-left: 3em;
+    padding-right: 3em;
+    background: linear-gradient(to right, #8521ba, #5aaafa);
+    box-shadow: none;
+
+    $bt-pc-shape: polygon(0 0, 100px 100px, 100% 100px, 100% 0);
+    shape-outside: $bt-pc-shape;
+    clip-path: $bt-pc-shape;
+    border-bottom-right-radius: 1.5em;
+
+    &:hover {
+      box-shadow: none;
+      transform: none;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
   }
 }
 </style>

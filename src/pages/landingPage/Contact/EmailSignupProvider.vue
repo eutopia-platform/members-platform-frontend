@@ -23,7 +23,10 @@ export default {
   data: () => ({
     email: "",
     graphqlConnection: {
-      url: "https://api.productcube.io/mail",
+      url:
+        process.env.NODE_ENV !== "development"
+          ? "https://api.productcube.io/mail"
+          : "http://localhost:3000/mail",
       mutationName: "addEmail",
       mutationQuery: "ok" //add msg here when it exists
     },

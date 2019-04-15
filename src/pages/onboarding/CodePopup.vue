@@ -2,7 +2,7 @@
   <div class="code-popup">
     <Popup>
       <div class="code-wrap">
-        <Header type='secondary'>
+        <Header secondary>
           Find a secret in your email
         </Header>
         <Paragraph>
@@ -42,10 +42,18 @@ export default {
     Icon
   },
   props: {
-    info: Object
+    info: Object,
+    submit: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
     onSubmit: function(pin) {
+      if (!this.submit) {
+        this.$emit('submit', pin)
+        return
+      }
       this.submitCode(pin).then(valid => {
         if (valid)
           this.$emit('submit', pin)

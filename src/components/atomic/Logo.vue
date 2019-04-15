@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <Header type="secondary">
+    <Header secondary>
       Productcube
     </Header>
   </div>

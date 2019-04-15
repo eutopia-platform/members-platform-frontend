@@ -1,6 +1,6 @@
 <template>
   <div class="login-form">
-    <Header type="secondary">
+    <Header secondary>
       Login
     </Header>
     <Input look="blend" placeholder="email" data-lpignore="true"></Input>

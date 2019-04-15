@@ -36,7 +36,11 @@ export default {
   },
   props: {
     img: String,
-    info: Object
+    info: Object,
+    submit: {
+      type: Boolean,
+      default: true
+    }
   },
   data: () => ({
     text: String
@@ -53,12 +57,17 @@ export default {
     inputValid: comp => comp.text.value && comp.text.value.length > 0
   },
   mounted: function() {
-    const drawDashboard = () => {
-      const img = this.$el.querySelector("img");
+    if (this.$options.name === 'ViewBase') return // only render dashboard in child component
+
+    const drawDashboard = (self = this) => {
+      const img = this.$el.querySelector('img');
       const iw = img.offsetWidth / 100;
       const ih = img.offsetHeight / 100;
 
-      if (!img.offsetWidth || !img.offsetHeight) return;
+      if (!img || !img.offsetWidth || !img.offsetHeight) {
+        setTimeout(drawDashboard, 100)  // try again later
+        return
+      }
 
       // position & size dashboard
       const dashboard = this.$el.querySelector(".dashboard");
@@ -155,7 +164,7 @@ export default {
           "style",
           `
           left: ${7 * iw}px;
-          top: ${67 * ih}px;
+          top: ${68 * ih}px;
           font-size: ${3 * ih}px;
           visibility: visible;
         `
@@ -163,7 +172,7 @@ export default {
       }
     };
 
-    setTimeout(drawDashboard, 100);
+    drawDashboard()
     window.addEventListener("resize", drawDashboard);
   }
 };
@@ -263,6 +272,7 @@ export default {
     position: absolute;
     visibility: hidden;
     transform: translateY(-100%);
+    margin-top: 0;
   }
 
   ul {

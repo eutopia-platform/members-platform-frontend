@@ -1,12 +1,15 @@
 <template>
-  <div class="paragraph">
-    <slot></slot>
-  </div>
+  <p class="paragraph" :class="{small: small}">
+    <slot/>
+  </p>
 </template>
 
 <script>
 export default {
   name: "Paragraph",
+  props: {
+    small: Boolean
+  }
 }
 </script>
 
@@ -16,5 +19,9 @@ export default {
 
 .paragraph {
   font-size: $fs-base;
+}
+
+.small {
+  font-size: 80%;
 }
 </style>

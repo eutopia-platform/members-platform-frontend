@@ -3,7 +3,7 @@
     <div class="container">
       <SplitViewHorizontal class="splitViewHorizontal">
         <template v-slot:left>
-          <Header type="primary">Oops! You arrived early to the party.</Header>
+          <Header primary>Oops! You arrived early to the party.</Header>
           <Tagline type="sub">
             We are busy at work, check back with us a few days
             later to start your lean product development
@@ -52,7 +52,7 @@ export default {
 
     position: relative;
     top: 5rem;
-    max-width: 70%;
+    max-width: 50rem;
     max-height: 80%;
     padding: 2rem 0 0 4rem;
 

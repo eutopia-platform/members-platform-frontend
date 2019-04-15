@@ -1,19 +1,17 @@
 <template>
-  <div class="header" v-bind:class="classObj">
-    <slot></slot>
-  </div>
+  <component :is="tag" :class="getClass">
+    <slot/>
+  </component>
 </template>
 
 <script>
-export default {
-  name: "Header",
-  props: {
-    type: String
-  },
-  computed: {
-    classObj: comp => ({[comp.type]: true})
-  }
-};
+import Atomic from '/components/sharedScripts/atomic'
+
+export default new Atomic({
+  name: 'Header',
+  types: ['primary', 'secondary', 'tertiary', 'quaternary'],
+  tags: ['h1', 'h2', 'h3', 'h4']
+})
 </script>
 
 <style lang="scss" scoped>
@@ -22,25 +20,9 @@ export default {
 @import "../sharedStyles/text.scss";
 
 .header {
-  padding: 0;
-  font-size: 1rem;
   font-weight: bold;
   margin-top: .5em;
   margin-bottom: .5em;
-  display: inline-block;
-
-  &::after {
-    content: "\A";
-    white-space: pre;
-    word-wrap: break-word;
-  }
-
-  img {
-    height: 1.5em;
-    transform: translateY(.25em);
-    margin-right: .5em;
-    display: inline-block;
-  }
 }
 
 .primary {

@@ -1,11 +1,12 @@
 <template>
   <ViewBase v-bind:img="image">
     <div>
-      <Header type="secondary">Let's create your workspace</Header>
+      <Header secondary>Let's create your workspace</Header>
       <div class="input-wrap">
         <Input
           look="blend"
           @valueChange="onInputValueChange"
+          v-model="email"
           @submit="onSubmit"
           placeholder="you-are-awesome@example.com"
           :focus="true"
@@ -14,7 +15,7 @@
           I agree to the
           <router-link to="/privacy">Privacy Policy</router-link>
         </Checkbox>
-        <Button @click="onSubmit" :disabled="!isFormValid">Next</Button>
+        <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
       </div>
     </div>
   </ViewBase>
@@ -34,23 +35,31 @@ export default {
   },
   data: function() {
     return {
-      hasAgreed: false
+      hasAgreed: false,
+      email: ""
     };
   },
   computed: {
     image: () => require("../../../../data/img/onboarding/view-email.png"),
+    isEmailValid: function() {
+      return this.email !== "";
+    },
     isFormValid: function() {
-      return this.hasAgreed && this.inputValid;
+      return this.hasAgreed && this.isEmailValid;
     }
   },
   methods: {
     onSubmit: function() {
+      if (!this.submit) {
+        this.$emit('queryCode', this.email)
+        return
+      }
       if (!this.isFormValid) return;
 
       this.submitEmail()
         .then(msg => {
           if (msg) alert(msg);
-          else this.$emit("queryCode", this.text.value);
+          else this.$emit("queryCode", this.email);
         })
         .catch(msg => alert(msg));
     },
@@ -62,7 +71,7 @@ export default {
         self.$apollo
           .mutate({
             mutation: gql`mutation {
-            registerEmail(email: "${self.text.value}") {
+            registerEmail(email: "${self.email}") {
               msg
               exitcode
             }}`

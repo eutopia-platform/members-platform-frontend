@@ -1,21 +1,36 @@
 <template>
 <div class="onboarding">
-  <component @next="onNext" @queryCode="queryCode" v-bind:info="userInfo"
-    v-bind:is="currentView" ref="view"
+  <component
+    @next="onNext"
+    @queryCode="queryCode"
+    :info="userInfo"
+    :is="currentView"
+    ref="view"
+    :submit="submit"
   ></component>
-  <CodePopup v-if="showCodePopup" :info="userInfo" @submit="onCodeSubmit"></CodePopup>
-  <PasswordPopup v-if="showPasswordPopup" :info="userInfo" @submit="onPasswordSubmit"></PasswordPopup>
+  <CodePopup
+    v-if="showCodePopup"
+    :info="userInfo"
+    @submit="onCodeSubmit"
+    :submit="submit"
+  ></CodePopup>
+  <PasswordPopup
+    v-if="showPasswordPopup"
+    :info="userInfo"
+    @submit="onPasswordSubmit"
+    :submit="submit"
+  ></PasswordPopup>
 </div>
 </template>
 
 <script>
-import ViewEmail from './onboarding/views/ViewEmail.vue'
-import ViewName from './onboarding/views/ViewName.vue'
-import ViewMembers from './onboarding/views/ViewMembers.vue'
-import ViewMilestone from './onboarding/views/ViewMilestone.vue'
-import ViewFinal from './onboarding/views/ViewFinal.vue'
-import CodePopup from './onboarding/CodePopup.vue'
-import PasswordPopup from './onboarding/PasswordPopup.vue'
+import ViewEmail from "./onboarding/views/ViewEmail.vue";
+import ViewName from "./onboarding/views/ViewName.vue";
+import ViewMembers from "./onboarding/views/ViewMembers.vue";
+import ViewMilestone from "./onboarding/views/ViewMilestone.vue";
+import ViewFinal from "./onboarding/views/ViewFinal.vue";
+import CodePopup from "./onboarding/CodePopup.vue";
+import PasswordPopup from "./onboarding/PasswordPopup.vue";
 
 export default {
   name: "Onboarding",
@@ -29,69 +44,81 @@ export default {
     PasswordPopup
   },
   data: () => ({
-    counter: 0,
-    views: ['ViewEmail', 'ViewName', 'ViewMilestone', 'ViewMembers', 'ViewFinal'],
+    currentViewIndex: 0,
+    views: [
+      "ViewEmail",
+      "ViewName",
+      "ViewMilestone",
+      "ViewMembers",
+      "ViewFinal"
+    ],
     userInfo: {
-      email: "",
-      emailShort: "",
-      organization: "",
+      email: "no.email@submitted.com",
+      emailShort: "no.email",
+      organization: "unknown organization",
       code: "",
       members: [],
-      milestone: ""
+      milestone: "unknown milestone"
     },
     showCodePopup: false,
-    showPasswordPopup: false
+    showPasswordPopup: false,
+    submit: true
   }),
   computed: {
-    currentView: comp => comp.views[comp.counter],
+    currentView: comp => comp.views[comp.currentViewIndex]
   },
-  mounted: function() {
+  created: function() {
+    this.submit = this.$route.query.nosubmit === undefined
     // skip parts of signup depending on url 'stage' param; e.g. stage=members => ViewMembers
-    const stage = this.$route.query.stage ? this.$route.query.stage.toLowerCase() : undefined
-    if (!stage) return
-    if (this.views.map(v => v.replace('View', '').toLowerCase()).includes(stage)) {
-      console.log('skip to ' + stage)
-      this.counter = this.views.map(v => v.replace('View', '').toLowerCase()).indexOf(stage)
+    const stage = this.$route.query.stage
+      ? this.$route.query.stage.toLowerCase()
+      : undefined;
+    if (!stage) return;
+
+    const lowercaseViewNames = this.views.map(v =>
+      v.replace("View", "").toLowerCase()
+    );
+
+    if (lowercaseViewNames.includes(stage)) {
+      console.log("skip to " + stage);
+      this.currentViewIndex = lowercaseViewNames.indexOf(stage);
     }
   },
   methods: {
     onNext: function(payload) {
-      if (this.views[this.counter] == 'ViewEmail')
-        this.email = payload.text.value
+      const currentView = this.views[this.currentViewIndex];
 
-      switch (this.views[this.counter]) {
-        case 'ViewEmail':
-          this.userInfo.email = payload.text.value
-          this.userInfo.emailShort = payload.text.value.split('@')[0]
-          break
-        case 'ViewName':
-          this.userInfo.organization = payload.text.value
-          break
-        case 'ViewMembers':
-          this.userInfo.members = payload.members.filter(member => member.length)
-          break
-        case 'ViewMilestone':
-          this.userInfo.milestone = payload.text.value
+      switch (currentView) {
+        case "ViewName":
+          this.userInfo.organization = payload.name;
+          break;
+        case "ViewMembers":
+          this.userInfo.members = payload.members.filter(
+            member => member.length
+          );
+          break;
+        case "ViewMilestone":
+          this.userInfo.milestone = payload.milestone;
       }
 
-      if (this.counter < this.views.length - 1)
-        this.counter++
-      else
-        window.open('/workspace', '_self')
+      if (this.currentViewIndex < this.views.length - 1)
+        this.currentViewIndex++;
+      else window.open("/workspace", "_self");
     },
     queryCode: function(email) {
-      this.userInfo.email = email
-      this.showCodePopup = true
+      this.userInfo.email = email;
+      this.userInfo.emailShort = email.split('@')[0]
+      this.showCodePopup = true;
     },
     onCodeSubmit: function(code) {
-      this.userInfo.code = code
-      this.showCodePopup = false
-      this.showPasswordPopup = true
+      this.userInfo.code = code;
+      this.showCodePopup = false;
+      this.showPasswordPopup = true;
     },
     onPasswordSubmit: function() {
-      this.showPasswordPopup = false
-      this.$refs.view.onQueryFinal()
+      this.showPasswordPopup = false;
+      this.currentViewIndex = 1;
     }
   }
-}
+};
 </script>

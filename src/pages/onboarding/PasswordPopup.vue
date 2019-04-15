@@ -3,15 +3,26 @@
     <Popup>
       <div class="create-password">
         <legend>
-          <Header type="secondary">Set your password</Header>
+          <Header secondary>Set your password</Header>
         </legend>
-        <Input look="blend" placeholder="set your password" type="password" data-lpignore="true"></Input>
-        <Input look="blend" placeholder="retype your password" type="password" data-lpignore="true"></Input>
-        <div class="bt-wrap">
-          <Button type="icon" @click="onSubmit">Next</Button>
-        </div>
+        <Input
+          look="blend"
+          placeholder="set your password"
+          type="password"
+          data-lpignore="true"
+          v-model="pw1"
+        ></Input>
+        <Input
+          look="blend"
+          placeholder="retype your password"
+          type="password"
+          data-lpignore="true"
+          v-model="pw2"
+        ></Input>
+        <Paragraph class="error" v-if="errorMessage">{{errorMessage}}</Paragraph>
+        <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
         <div class="icon-wrap" :src="img">
-          <Icon :src="img" size="5rem"></Icon>
+          <Icon :src="img" class="icon"></Icon>
         </div>
       </div>
     </Popup>
@@ -19,12 +30,13 @@
 </template>
 
 <script>
-import Popup from '../../components/molecular/Popup.vue'
-import Header from '../../components/atomic/Header.vue'
-import Input from '../../components/atomic/Input.vue'
-import Button from '../../components/atomic/Button.vue'
-import Icon from '../../components/atomic/Icon.vue'
-import gql from 'graphql-tag'
+import Popup from "../../components/molecular/Popup.vue";
+import Header from "../../components/atomic/Header.vue";
+import Input from "../../components/atomic/Input.vue";
+import Button from "../../components/atomic/Button.vue";
+import Icon from "../../components/atomic/Icon.vue";
+import Paragraph from "~/components/atomic/Paragraph";
+import gql from "graphql-tag";
 
 export default {
   name: "PasswordPopup",
@@ -33,41 +45,65 @@ export default {
     Header,
     Input,
     Button,
-    Icon
+    Icon,
+    Paragraph
   },
   props: {
-    info: Object
+    info: Object,
+    submit: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data: () => ({
+    pw1: "",
+    pw2: "",
+    errorMessage: ""
+  }),
+  computed: {
+    img: () => require("../../../data/img/onboarding/shield.svg"),
+    isFormValid: function() {
+      return this.pw1 !== "" && this.pw1 === this.pw2;
+    }
   },
   methods: {
     onSubmit: function() {
-      console.log(this.$el.querySelector('input').value)
-      this.submitPassword(this.$el.querySelector('input').value).then(token => {
+      if (!this.submit) {
         this.$emit('submit')
-      }).catch(msg => console.log(msg))
+        return
+      }
+      this.submitPassword(this.email)
+        .then(token => {
+          this.$emit("submit");
+        })
+        .catch(msg => (this.errorMessage = msg));
     },
     submitPassword: function(password, self = this) {
       return new Promise(function(resolve, reject) {
-        self.$apollo.mutate({
-          mutation: gql`mutation {
+        self.$apollo
+          .mutate({
+            mutation: gql`mutation {
             verifyCode(email: "${self.info.email}", code: "${self.info.code}",
               password: "${password}") {
               token
               msg
               exitcode
             }}`
-        }).then(data => {
-          console.log(data)
-          resolve(data.data.verifyCode.token)
-        }).catch(data => {
-          reject(data)
-        })
-      })
+          })
+          .then(response => {
+            if (response.data.verifyCode.exitcode !== 0) {
+              reject(response.data.verifyCode.msg);
+              return;
+            }
+            resolve(response.data.verifyCode.token);
+          })
+          .catch(data => {
+            reject(data);
+          });
+      });
     }
-  },
-  computed: {
-    img: () => require('../../../data/img/onboarding/shield.svg')
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -89,9 +125,13 @@ export default {
     margin-top: 2rem;
     text-align: center;
   }
+
+  .error {
+    color: red;
+  }
 }
 
-.bt-wrap {
-  margin-top: 3rem;
+.icon {
+  height: 5rem;
 }
 </style>

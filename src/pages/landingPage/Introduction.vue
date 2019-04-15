@@ -1,6 +1,6 @@
 <template>
   <div class="intro">
-    <Header type="primary">
+    <Header primary>
       From idea to product
     </Header>
       <Tagline type="sub">Here you find the processes and toolkits you need to turn your ideas into products people want.</Tagline>

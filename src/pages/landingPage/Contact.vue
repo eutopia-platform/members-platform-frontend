@@ -1,10 +1,10 @@
 <template>
   <div class="contact">
     <div class="signup-wrap">
-      <Header type="primary">
+      <Header primary>
         Try productcube with your team for free
       </Header><br />
-      <Button @click="signup">Sign me up</Button>
+      <Button @click="signup" big>Sign me up</Button>
     </div>
   </div>
 </template>
