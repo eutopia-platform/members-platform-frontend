@@ -22,31 +22,31 @@
 </template>
 
 <script>
-import ViewBase from "../ViewBase.vue";
-import gql from "graphql-tag";
-import Checkbox from "~/components/atomic/Checkbox";
+import ViewBase from '../ViewBase.vue'
+import gql from 'graphql-tag'
+import Checkbox from '~/components/atomic/Checkbox'
 
 export default {
-  name: "ViewEmail",
+  name: 'ViewEmail',
   extends: ViewBase,
   components: {
     ViewBase,
-    Checkbox
+    Checkbox,
   },
   data: function() {
     return {
       hasAgreed: false,
-      email: ""
-    };
+      email: '',
+    }
   },
   computed: {
-    image: () => require("../../../../data/img/onboarding/view-email.png"),
+    image: () => require('../../../../data/img/onboarding/view-email.png'),
     isEmailValid: function() {
-      return this.email !== "";
+      return this.email !== ''
     },
     isFormValid: function() {
-      return this.hasAgreed && this.isEmailValid;
-    }
+      return this.hasAgreed && this.isEmailValid
+    },
   },
   methods: {
     onSubmit: function() {
@@ -54,17 +54,17 @@ export default {
         this.$emit('queryCode', this.email)
         return
       }
-      if (!this.isFormValid) return;
+      if (!this.isFormValid) return
 
       this.submitEmail()
         .then(msg => {
-          if (msg) alert(msg);
-          else this.$emit("queryCode", this.email);
+          if (msg) alert(msg)
+          else this.$emit('queryCode', this.email)
         })
-        .catch(msg => alert(msg));
+        .catch(msg => alert(msg))
     },
     onQueryFinal: function() {
-      this.$emit("next", this.$data);
+      this.$emit('next', this.$data)
     },
     submitEmail: function(self = this) {
       return new Promise(function(resolve, reject) {
@@ -74,22 +74,22 @@ export default {
             registerEmail(email: "${self.email}") {
               msg
               exitcode
-            }}`
+            }}`,
           })
           .then(res => {
-            const code = res.data.registerEmail.exitcode;
-            if (code === 0 || code === 4) resolve();
+            const code = res.data.registerEmail.exitcode
+            if (code === 0 || code === 4) resolve()
             else if (
               code === 500 // needs new code
             );
-            else reject(res.data.registerEmail.msg);
+            else reject(res.data.registerEmail.msg)
           })
           .catch(data => {
-            console.error(data);
-            reject(data);
-          });
-      });
-    }
-  }
-};
+            console.error(data)
+            reject(data)
+          })
+      })
+    },
+  },
+}
 </script>

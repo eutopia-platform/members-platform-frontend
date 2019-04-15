@@ -1,5 +1,5 @@
 <template>
-  <div class='brand'>
+  <div class="brand">
     <Header tertiary>
       Productcube
     </Header>
@@ -12,13 +12,13 @@ import Header from '/components/atomic/Header'
 export default {
   name: 'Brand',
   components: {
-    Header
-  }
+    Header,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "/components/sharedStyles/colors";
+@import '/components/sharedStyles/colors';
 
 * {
   color: $c-accent;

@@ -9,73 +9,73 @@
       @input="onInput"
       @keyup.enter="onEnter"
       v-bind:class="styleClass"
-      :autocomplete="type === 'password' ? 'new-password': 'true'"
-    >
+      :autocomplete="type === 'password' ? 'new-password' : 'true'"
+    />
   </div>
 </template>
 
 <script>
-import Button from "./Button.vue"
+import Button from './Button.vue'
 
 export default {
-  name: "Input",
+  name: 'Input',
   props: {
     name: {
-      default: "",
-      type: String
+      default: '',
+      type: String,
     },
     placeholder: {
-      default: "",
-      type: String
+      default: '',
+      type: String,
     },
     type: {
-      default: "text",
-      type: String
+      default: 'text',
+      type: String,
     },
     look: {
-      default: "default",
-      type: String
+      default: 'default',
+      type: String,
     },
     focus: {
       default: false,
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   components: {
-    Button
+    Button,
   },
   data: () => ({
-    value: ""
+    value: '',
   }),
   computed: {
-    styleClass: comp => "style-" + comp.look
+    styleClass: comp => 'style-' + comp.look,
   },
   methods: {
     onInput(e) {
-      this.$emit("input", e.target.value);
+      this.$emit('input', e.target.value)
       this.onChange()
     },
     onChange() {
       const payload = {
         name: this.name,
-        value: this.value
-      };
-      this.$emit("valueChange", payload);
+        value: this.value,
+      }
+      this.$emit('valueChange', payload)
     },
     onEnter() {
-      this.$emit("submit");
-    }
+      this.$emit('submit')
+    },
   },
   mounted: function() {
-    if (this.focus) this.$el.focus();
-  }
-};
+    if (this.focus) this.$el.focus()
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/colors.scss";
-@import "../sharedStyles/shapes.scss";
-@import "../sharedStyles/text.scss";
+@import '../sharedStyles/colors.scss';
+@import '../sharedStyles/shapes.scss';
+@import '../sharedStyles/text.scss';
 
 .input-wrap {
   max-width: 40vw;

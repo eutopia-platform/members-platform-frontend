@@ -4,12 +4,12 @@
 
 <script>
 export default {
-  name: "Shade"
+  name: 'Shade',
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/colors.scss";
+@import '../sharedStyles/colors.scss';
 
 .shade {
   position: absolute;

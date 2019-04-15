@@ -1,9 +1,9 @@
 <template>
-  <Card :class='getClass'>
+  <Card :class="getClass">
     <div>
-      <Icon :src='img'></Icon>
+      <Icon :src="img"></Icon>
       <Header quaternary>
-        {{name}}
+        {{ name }}
       </Header>
     </div>
   </Card>
@@ -20,19 +20,18 @@ export default new Molecular({
   components: {
     Header,
     Icon,
-    Card
+    Card,
   },
   props: {
-    name: String
+    name: String,
   },
   computed: {
-    img: () => require('/../data/img/toolkits/placeholder.svg')
-  }
+    img: () => require('/../data/img/toolkits/placeholder.svg'),
+  },
 })
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .toolkit-card {
-
 }
 </style>

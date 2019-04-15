@@ -10,15 +10,15 @@
 import Header from './Header.vue'
 
 export default {
-  name: "Logo",
+  name: 'Logo',
   components: {
-    Header
-  }
+    Header,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/responsive.scss";
+@import '../sharedStyles/responsive.scss';
 
 .logo {
   position: absolute;
@@ -34,7 +34,7 @@ export default {
     margin-left: 0;
 
     & * {
-      transform: scale(.5);
+      transform: scale(0.5);
     }
   }
 }

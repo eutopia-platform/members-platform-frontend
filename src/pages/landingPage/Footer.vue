@@ -5,26 +5,26 @@
       <router-link to="/privacy">Privacy Policy</router-link>
     </div>
     <div class="foot2">
-      <img class="image-right" src="../../../data/img/social/medium.svg">
-      <img class="image-right" src="../../../data/img/social/twitter.svg">
-      <img class="image-right" src="../../../data/img/social/facebook.svg">
-      <img class="image-right" src="../../../data/img/social/linkedin.svg">
+      <img class="image-right" src="../../../data/img/social/medium.svg" />
+      <img class="image-right" src="../../../data/img/social/twitter.svg" />
+      <img class="image-right" src="../../../data/img/social/facebook.svg" />
+      <img class="image-right" src="../../../data/img/social/linkedin.svg" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Footer",
-  components: {}
-};
+  name: 'Footer',
+  components: {},
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../../components/sharedStyles/colors.scss";
+@import '../../components/sharedStyles/colors.scss';
 
 .footer {
-  @include colorScheme("tertiary");
+  @include colorScheme('tertiary');
 
   box-sizing: border-box;
   width: 100%;

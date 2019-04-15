@@ -5,8 +5,14 @@
         Who else is working at {{ info.organization }}?
       </Header>
       <div class="input-wrap">
-        <Input v-for="(_, i) in members" look="blend" :name="String(i)" :placeholder=
-          "placeholders[i % 3]" @valueChange="onInputValueChange" :focus="i === 0"></Input>
+        <Input
+          v-for="(_, i) in members"
+          look="blend"
+          :name="String(i)"
+          :placeholder="placeholders[i % 3]"
+          @valueChange="onInputValueChange"
+          :focus="i === 0"
+        ></Input>
         <Button text @click="addInput">+ add more team members</Button>
         <Button big @click="onSubmit" :disabled="!isValid">
           Next
@@ -16,10 +22,10 @@
     </div>
     <template v-slot:dashboard>
       <div>
-        <Paragraph class="email">{{info.emailShort}}</Paragraph>
-        <Paragraph class="organization">{{info.organization}}</Paragraph>
-        <Paragraph class="ini-title">{{info.milestone}}</Paragraph>
-        <Paragraph class="ini-icon">{{info.milestone}}</Paragraph>
+        <Paragraph class="email">{{ info.emailShort }}</Paragraph>
+        <Paragraph class="organization">{{ info.organization }}</Paragraph>
+        <Paragraph class="ini-title">{{ info.milestone }}</Paragraph>
+        <Paragraph class="ini-icon">{{ info.milestone }}</Paragraph>
       </div>
     </template>
   </ViewBase>
@@ -29,18 +35,22 @@
 import ViewBase from '../ViewBase.vue'
 
 export default {
-  name: "ViewMembers",
+  name: 'ViewMembers',
   extends: ViewBase,
   data: () => ({
-    members: ["", "", ""],
+    members: ['', '', ''],
     isValid: false,
-    placeholders: ['awesome-cofounder@example.com', 'awesome-colleague@example.com', 'awesome-mentor@example.com']
+    placeholders: [
+      'awesome-cofounder@example.com',
+      'awesome-colleague@example.com',
+      'awesome-mentor@example.com',
+    ],
   }),
   components: {
-    ViewBase
+    ViewBase,
   },
   computed: {
-    image: () => require("../../../../data/img/onboarding/dashboard-2.svg")
+    image: () => require('../../../../data/img/onboarding/dashboard-2.svg'),
   },
   methods: {
     addInput: function() {
@@ -50,8 +60,8 @@ export default {
       this.text = payload // required for unblocking button
       this.members[parseInt(payload.name, 10)] = payload.value
       this.isValid = this.members.find(m => m.length > 0) !== undefined
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -60,6 +70,6 @@ export default {
 
 .button.text {
   color: map-get($colors, 'neutral-font');
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 </style>

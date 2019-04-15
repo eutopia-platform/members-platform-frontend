@@ -5,12 +5,15 @@
         <template v-slot:left>
           <Header primary>Oops! You arrived early to the party.</Header>
           <Tagline type="sub">
-            We are busy at work, check back with us a few days
-            later to start your lean product development
+            We are busy at work, check back with us a few days later to start
+            your lean product development
           </Tagline>
         </template>
         <template v-slot:right>
-          <img src="~/../data/img/working_on_it.svg" alt="We're working on it.">
+          <img
+            src="~/../data/img/working_on_it.svg"
+            alt="We're working on it."
+          />
         </template>
       </SplitViewHorizontal>
     </div>
@@ -18,22 +21,22 @@
 </template>
 
 <script>
-import SplitViewHorizontal from "~/components/atomic/SplitViewHorizontal";
-import Header from "~/components/atomic/Header";
-import Tagline from "~/components/atomic/Tagline";
+import SplitViewHorizontal from '~/components/atomic/SplitViewHorizontal'
+import Header from '~/components/atomic/Header'
+import Tagline from '~/components/atomic/Tagline'
 
 export default {
-  name: "Overlay",
+  name: 'Overlay',
   components: {
     SplitViewHorizontal,
     Header,
-    Tagline
-  }
-};
+    Tagline,
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-@import "~/components/sharedStyles/shadows";
+@import '~/components/sharedStyles/shadows';
 
 .overlay {
   position: fixed;

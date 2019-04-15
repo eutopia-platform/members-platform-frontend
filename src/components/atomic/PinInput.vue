@@ -3,8 +3,9 @@
     <div v-for="(_, i) in groups" class="pin-group">
       <input
         v-for="(_, e) in digits"
-        v-for type="text"
-        :name="i*digits+e"
+        v-for
+        type="text"
+        :name="i * digits + e"
         maxlength="1"
         oninput="this.value=this.value.replace(/[^0-9]/g,'')"
         @keydown="onKey"
@@ -24,24 +25,26 @@
 import Paragraph from './Paragraph.vue'
 
 export default {
-  name: "PinInput",
+  name: 'PinInput',
   props: {
     digits: {
       type: Number,
-      default: 3
+      default: 3,
     },
     groups: {
       type: Number,
-      default: 2
-    }
+      default: 2,
+    },
   },
   components: {
-    Paragraph
+    Paragraph,
   },
   methods: {
     submit: function(e) {
       const pin = Array.from(this.$el.getElementsByTagName('input'))
-        .map(i => parseInt(i.value, 10)).filter(i => !isNaN(i)).join('')
+        .map(i => parseInt(i.value, 10))
+        .filter(i => !isNaN(i))
+        .join('')
       this.$emit('submit', pin)
     },
     onKey: function(e) {
@@ -49,47 +52,57 @@ export default {
       const current = document.activeElement.name
       if (current >= this.groups * this.digits - 1) {
         this.submit()
-      }
-      else {
+      } else {
         // write input to current field and focus next
-        this.$el.querySelector(`input[name='${(parseInt(current, 10))}']`).value = e.key
+        this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value =
+          e.key
         e.preventDefault()
-        this.$el.querySelector(`input[name='${(parseInt(current, 10)+1)}']`).focus()
+        this.$el
+          .querySelector(`input[name='${parseInt(current, 10) + 1}']`)
+          .focus()
       }
     },
     onDelete: function(e) {
       const current = document.activeElement.name
-      this.$el.querySelector(`input[name='${(parseInt(current, 10))}']`).value = ''
+      this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value =
+        ''
       if (current !== '0')
-        this.$el.querySelector(`input[name='${(parseInt(current, 10)-1)}']`).focus()
+        this.$el
+          .querySelector(`input[name='${parseInt(current, 10) - 1}']`)
+          .focus()
     },
     onLeft: function(e) {
       e.preventDefault()
       const current = parseInt(document.activeElement.name, 10)
       if (current > 0)
-        this.$el.querySelector(`input[name='${(current - 1)}']`).focus()
+        this.$el.querySelector(`input[name='${current - 1}']`).focus()
     },
     onRight: function(e) {
       e.preventDefault()
       const current = parseInt(document.activeElement.name, 10)
       if (current < this.groups * this.digits - 1)
-        this.$el.querySelector(`input[name='${(current + 1)}']`).focus()
+        this.$el.querySelector(`input[name='${current + 1}']`).focus()
     },
     onPaste: function(e) {
       e.preventDefault()
-      const paste = (event.clipboardData || window.clipboardData).getData('text').trim()
+      const paste = (event.clipboardData || window.clipboardData)
+        .getData('text')
+        .trim()
       if (paste.length !== 6 || !/^\d+$/.test(paste)) return
-      Array.from(this.$el.getElementsByTagName('input')).forEach(i =>
-        i.value = paste[parseInt(i.name, 10)])
-      this.$el.querySelector(`input[name='${this.groups * this.digits - 1}']`).focus()
+      Array.from(this.$el.getElementsByTagName('input')).forEach(
+        i => (i.value = paste[parseInt(i.name, 10)])
+      )
+      this.$el
+        .querySelector(`input[name='${this.groups * this.digits - 1}']`)
+        .focus()
       this.submit()
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/shapes.scss";
+@import '../sharedStyles/shapes.scss';
 
 .pin-input {
   .pin-group {
@@ -97,8 +110,8 @@ export default {
 
     &:not(:last-child):after {
       font-size: 20px;
-      margin: .25rem;
-      content: "-";
+      margin: 0.25rem;
+      content: '-';
     }
   }
 

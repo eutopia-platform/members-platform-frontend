@@ -1,8 +1,8 @@
 <template>
-  <div class='workspace'>
-    <Overlay v-if='showOverlay'></Overlay>
+  <div class="workspace">
+    <Overlay v-if="showOverlay"></Overlay>
     <Navbar></Navbar>
-    <router-view class='page'></router-view>
+    <router-view class="page"></router-view>
   </div>
 </template>
 
@@ -18,16 +18,18 @@ export default {
     Overlay,
     Navbar,
     Dashboard,
-    Settings
+    Settings,
   },
   data: function() {
     return {
-      showOverlay: process.env.NODE_ENV === 'production' && !(this.$route.query.withoutOverlay === null)
+      showOverlay:
+        process.env.NODE_ENV === 'production' &&
+        !(this.$route.query.withoutOverlay === null),
     }
   },
   computed: {
-    activePage: () => Dashboard
-  }
+    activePage: () => Dashboard,
+  },
 }
 </script>
 

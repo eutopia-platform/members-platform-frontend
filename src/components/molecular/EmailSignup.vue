@@ -1,7 +1,8 @@
 <template>
   <div class="contact-form">
     <div class="input-wrap">
-      <Input disabled
+      <Input
+        disabled
         @valueChange="onInputValueChange"
         @keyup.enter.native="onSubmit"
         placeholder="Email"
@@ -11,24 +12,23 @@
         Sign up
       </Button>
     </div>
-
   </div>
 </template>
 
 <script>
-import Input from "../atomic/Input.vue"
-import Button from "../atomic/Button.vue"
+import Input from '../atomic/Input.vue'
+import Button from '../atomic/Button.vue'
 
 export default {
-  name: "EmailSignup",
+  name: 'EmailSignup',
   components: {
     Input,
-    Button
+    Button,
   },
   data: () => ({
     email: {
-      value: ""
-    }
+      value: '',
+    },
   }),
 
   created() {
@@ -36,7 +36,7 @@ export default {
       const input = this.$el.querySelector('input')
       if (input) {
         input.scrollIntoView({
-          behavior: 'smooth'
+          behavior: 'smooth',
         })
         setTimeout(() => input.focus(), 1000)
       }
@@ -46,41 +46,41 @@ export default {
   methods: {
     onInputValueChange(payload) {
       //Only works because payload has the same name as the data
-      this[payload.name].value = payload.value;
+      this[payload.name].value = payload.value
     },
-    onSubmit () {
+    onSubmit() {
       const payload = {
-        email: this.email
-      };
-      this.$emit("mySubmit", payload);
-    }
-  }
+        email: this.email,
+      }
+      this.$emit('mySubmit', payload)
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-  @import "../sharedStyles/colors.scss";
+@import '../sharedStyles/colors.scss';
 
-  .contact-form {
-    background-color: map-get($colors, primary-back);
-    display: block;
+.contact-form {
+  background-color: map-get($colors, primary-back);
+  display: block;
 
-    width: 20em;
-    margin: auto;
+  width: 20em;
+  margin: auto;
 
-    .input-wrap {
-      display: flex;
-      flex-direction: row;
+  .input-wrap {
+    display: flex;
+    flex-direction: row;
 
-      input {
-        &::placeholder {
-          color: map-get($colors, secondary-back);
-        }
-      }
-
-      button {
-        width: 7em;
+    input {
+      &::placeholder {
+        color: map-get($colors, secondary-back);
       }
     }
+
+    button {
+      width: 7em;
+    }
   }
+}
 </style>

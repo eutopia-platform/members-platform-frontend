@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "LineHorizontal"
+  name: 'LineHorizontal',
 }
 </script>
 
@@ -15,6 +15,6 @@ hr {
   height: 2px;
   margin-bottom: 1em;
   border: none;
-  @include colorScheme('secondary')
+  @include colorScheme('secondary');
 }
 </style>

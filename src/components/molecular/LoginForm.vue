@@ -4,7 +4,12 @@
       Login
     </Header>
     <Input look="blend" placeholder="email" data-lpignore="true"></Input>
-    <Input look="blend" placeholder="password" type="password" data-lpignore="true"></Input>
+    <Input
+      look="blend"
+      placeholder="password"
+      type="password"
+      data-lpignore="true"
+    ></Input>
     <Button>Submit</Button>
   </div>
 </template>
@@ -16,18 +21,18 @@ import Input from '../atomic/Input.vue'
 import Button from '../atomic/Button.vue'
 
 export default {
-  name: "LoginForm",
+  name: 'LoginForm',
   components: {
     Popup,
     Header,
     Input,
-    Button
-  }
+    Button,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/shadows.scss";
+@import '../sharedStyles/shadows.scss';
 
 .login-form {
   width: 30rem;

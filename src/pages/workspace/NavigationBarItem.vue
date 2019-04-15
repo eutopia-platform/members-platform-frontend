@@ -1,8 +1,8 @@
 <template>
-  <li :style='style' @click="click">
-    <Icon :src='icon'></Icon>
+  <li :style="style" @click="click">
+    <Icon :src="icon"></Icon>
     <Paragraph>
-      <slot/>
+      <slot />
     </Paragraph>
   </li>
 </template>
@@ -16,28 +16,32 @@ export default {
   props: {
     icon: String,
     link: String,
-    active: Boolean
+    active: Boolean,
   },
   components: {
     Icon,
-    Paragraph
+    Paragraph,
   },
   computed: {
     // color blue if active
-    style: (self = this) => self.$route.path === self.$router.match(self.link).path
-      ? ({filter: "brightness(0) saturate(100%) invert(41%) sepia(97%) saturate(952%) hue-rotate(175deg) brightness(100%) contrast(90%)"})
-      : ({})
+    style: (self = this) =>
+      self.$route.path === self.$router.match(self.link).path
+        ? {
+            filter:
+              'brightness(0) saturate(100%) invert(41%) sepia(97%) saturate(952%) hue-rotate(175deg) brightness(100%) contrast(90%)',
+          }
+        : {},
   },
   methods: {
     click: function() {
       this.$emit('open', this.link)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "/components/sharedStyles/colors.scss";
+@import '/components/sharedStyles/colors.scss';
 
 li {
   margin-top: 1rem;
@@ -47,7 +51,7 @@ li {
 
   *:nth-child(2n) {
     margin-left: 1rem;
-    margin-top: .15rem;
+    margin-top: 0.15rem;
   }
 
   * {

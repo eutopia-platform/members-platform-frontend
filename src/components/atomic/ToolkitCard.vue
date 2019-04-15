@@ -1,13 +1,13 @@
 <template>
   <div class="toolkit-card">
     <div class="banner">
-      <Paragraph type="sub">{{banner}}</Paragraph>
+      <Paragraph type="sub">{{ banner }}</Paragraph>
     </div>
     <div class="content">
       <Header quaternary>
-        {{name}}
+        {{ name }}
       </Header>
-      <img :src="img"/>
+      <img :src="img" />
     </div>
   </div>
 </template>
@@ -17,22 +17,22 @@ import Header from './Header.vue'
 import Paragraph from './Paragraph.vue'
 
 export default {
-  name: "ToolkitCard",
+  name: 'ToolkitCard',
   props: {
     name: String,
     banner: String,
-    img: String
+    img: String,
   },
   components: {
     Header,
-    Paragraph
-  }
+    Paragraph,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/shadows.scss";
-@import "../sharedStyles/colors.scss";
+@import '../sharedStyles/shadows.scss';
+@import '../sharedStyles/colors.scss';
 
 .toolkit-card {
   min-width: 15rem;
@@ -67,7 +67,7 @@ export default {
     color: white;
     top: 0;
     right: 0;
-    padding: .25rem;
+    padding: 0.25rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }

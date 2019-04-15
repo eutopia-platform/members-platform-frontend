@@ -10,7 +10,10 @@
             <Welcome></Welcome>
           </template>
           <template v-slot:right>
-            <img class="image-right" src="../../data/img/landingpage/slide2.svg">
+            <img
+              class="image-right"
+              src="../../data/img/landingpage/slide2.svg"
+            />
           </template>
         </SplitViewHorizontal>
       </template>
@@ -27,7 +30,7 @@
             class="image-right"
             src="../../data/img/landingpage/laptop.svg"
             style="transform: translate(-40%, -50%)"
-          >
+          />
         </template>
       </SplitViewHorizontal>
     </PageSlide>
@@ -39,7 +42,10 @@
           <Pricing></Pricing>
         </template>
         <template v-slot:right>
-          <img class="image-right" src="../../data/img/landingpage/slide3.svg">
+          <img
+            class="image-right"
+            src="../../data/img/landingpage/slide3.svg"
+          />
         </template>
       </SplitViewHorizontal>
     </PageSlide>
@@ -53,19 +59,19 @@
 </template>
 
 <script>
-import PageSlide from "../components/atomic/PageSlide";
-import Logo from "../components/atomic/Logo";
-import Header from "../components/atomic/Header";
-import Button from "../components/atomic/Button";
-import SplitViewHorizontal from "../components/atomic/SplitViewHorizontal.vue";
-import Welcome from "./landingPage/Welcome.vue";
-import Introduction from "./landingPage/Introduction.vue";
-import Contact from "./landingPage/Contact.vue";
-import Pricing from "./landingPage/Pricing.vue";
-import Footer from "./landingPage/Footer.vue";
+import PageSlide from '../components/atomic/PageSlide'
+import Logo from '../components/atomic/Logo'
+import Header from '../components/atomic/Header'
+import Button from '../components/atomic/Button'
+import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue'
+import Welcome from './landingPage/Welcome.vue'
+import Introduction from './landingPage/Introduction.vue'
+import Contact from './landingPage/Contact.vue'
+import Pricing from './landingPage/Pricing.vue'
+import Footer from './landingPage/Footer.vue'
 
 export default {
-  name: "LandingPage",
+  name: 'LandingPage',
   components: {
     Logo,
     PageSlide,
@@ -76,13 +82,13 @@ export default {
     Introduction,
     Contact,
     Footer,
-    Pricing
-  }
-};
+    Pricing,
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../components/sharedStyles/colors.scss";
+@import '../components/sharedStyles/colors.scss';
 
 .image-right {
   height: 100vh;

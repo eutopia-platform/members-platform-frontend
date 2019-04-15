@@ -1,14 +1,21 @@
 <template>
   <Card>
-    <div class='info'>
-      <Icon :src='iconInfo'></Icon>
+    <div class="info">
+      <Icon :src="iconInfo"></Icon>
       <Paragraph>
         Welcome to the dashboard of your workspace &mdash; the new home of your
         project.
         <Break></Break>
-        Manage toolkits and processes and always stay on top of the progress your team is making.
+        Manage toolkits and processes and always stay on top of the progress
+        your team is making.
       </Paragraph>
-      <Button icon @click='close' class='close' type='icon' :img='iconClose'></Button>
+      <Button
+        icon
+        @click="close"
+        class="close"
+        type="icon"
+        :img="iconClose"
+      ></Button>
     </div>
   </Card>
 </template>
@@ -27,21 +34,21 @@ export default {
     Paragraph,
     Break,
     Button,
-    Icon
+    Icon,
   },
   methods: {
     close: function() {
       this.$el.style.display = 'none'
-    }
+    },
   },
   computed: {
     iconInfo: () => require('/../data/img/ui/info.svg'),
-    iconClose: () => require('/../data/img/ui/close.svg')
-  }
+    iconClose: () => require('/../data/img/ui/close.svg'),
+  },
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .info {
   position: relative;
   display: flex;
@@ -53,8 +60,8 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    margin-top: -.5rem;
-    margin-right: -.5rem;
+    margin-top: -0.5rem;
+    margin-right: -0.5rem;
   }
 }
 </style>

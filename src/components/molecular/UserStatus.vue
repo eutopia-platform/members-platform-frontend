@@ -1,9 +1,9 @@
 <template>
   <div class="user-status">
-    <Icon :src='pic' class='user-icon' height='100px' height='100px'></Icon>
-    <div class='right'>
-      <Paragraph>{{name}}</Paragraph>
-      <Small>{{email}}</Small>
+    <Icon :src="pic" class="user-icon" height="100px" height="100px"></Icon>
+    <div class="right">
+      <Paragraph>{{ name }}</Paragraph>
+      <Small>{{ email }}</Small>
     </div>
   </div>
 </template>
@@ -18,13 +18,14 @@ export default {
   data: () => ({
     name: 'unknown name',
     email: 'unknown email',
-    pic: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcvm7dfwAHSwMUPdgKUQAAAABJRU5ErkJggg=='
+    pic:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcvm7dfwAHSwMUPdgKUQAAAABJRU5ErkJggg==',
   }),
   components: {
     Paragraph,
     Small,
-    Icon
-  }
+    Icon,
+  },
 }
 </script>
 
@@ -44,7 +45,7 @@ export default {
     margin-left: 1rem;
     height: 100%;
     box-sizing: border-box;
-    padding: .2rem;
+    padding: 0.2rem;
     display: flex;
     flex-direction: column;
 
@@ -55,5 +56,4 @@ export default {
     }
   }
 }
-
 </style>

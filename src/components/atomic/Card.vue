@@ -1,18 +1,18 @@
 <template>
-  <div class='card'>
-    <slot/>
+  <div class="card">
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Card'
+  name: 'Card',
 }
 </script>
 
-<style lang='scss' scoped>
-@import "../sharedStyles/colors.scss";
-@import "../sharedStyles/shadows.scss";
+<style lang="scss" scoped>
+@import '../sharedStyles/colors.scss';
+@import '../sharedStyles/shadows.scss';
 
 .card {
   @include colorScheme('neutral');
