@@ -13,7 +13,7 @@ export default {
     Login,
   },
   methods: {
-    onSubmit(data) {
+    onSubmit() {
       //all login logic goes here
     },
   },
