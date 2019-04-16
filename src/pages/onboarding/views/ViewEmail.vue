@@ -10,7 +10,7 @@
           :focus="true"
           @valueChange="onInputValueChange"
           @submit="onSubmit"
-        ></Input>
+        />
         <Checkbox v-model="hasAgreed">
           I agree to the
           <RouterLink to="/privacy">Privacy Policy</RouterLink>
@@ -85,7 +85,6 @@ export default {
             else reject(res.data.registerEmail.msg)
           })
           .catch(data => {
-            console.error(data)
             reject(data)
           })
       })
