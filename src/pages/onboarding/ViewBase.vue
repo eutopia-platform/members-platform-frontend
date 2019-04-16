@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="image-wrap">
-        <img :src="img" />
+        <img :src="img">
         <div class="dashboard">
           <slot name="dashboard"></slot>
         </div>
@@ -51,7 +51,7 @@ export default {
   mounted: function() {
     if (this.$options.name === 'ViewBase') return // only render dashboard in child component
 
-    const drawDashboard = (self = this) => {
+    const drawDashboard = () => {
       const img = this.$el.querySelector('img')
       const iw = img.offsetWidth / 100
       const ih = img.offsetHeight / 100
