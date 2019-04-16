@@ -1,22 +1,19 @@
 <template>
   <ViewBase :img="image">
     <div>
-      <Header secondary>
-        Who else is working at {{ info.organization }}?
-      </Header>
+      <Header secondary>Who else is working at {{ info.organization }}?</Header>
       <div class="input-wrap">
         <Input
           v-for="(_, i) in members"
+          :key="i"
           look="blend"
           :name="String(i)"
           :placeholder="placeholders[i % 3]"
           :focus="i === 0"
           @valueChange="onInputValueChange"
-        ></Input>
+        />
         <Button text @click="addInput">+ add more team members</Button>
-        <Button big :disabled="!isValid" @click="onSubmit">
-          Next
-        </Button>
+        <Button big :disabled="!isValid" @click="onSubmit">Next</Button>
         <Button text class="skip" @click="onSubmit">Or, skip for now</Button>
       </div>
     </div>
