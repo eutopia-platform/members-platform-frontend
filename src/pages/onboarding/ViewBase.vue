@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="image-wrap">
-        <img :src="img">
+        <img :src="img" />
         <div class="dashboard">
           <slot name="dashboard"></slot>
         </div>
