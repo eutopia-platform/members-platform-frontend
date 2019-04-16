@@ -5,6 +5,7 @@
     <ul class="pages">
       <Item
         v-for="item in items"
+        :key="items.indexOf(item)"
         :icon="item.icon"
         :link="item.link"
         @open="openPage"
