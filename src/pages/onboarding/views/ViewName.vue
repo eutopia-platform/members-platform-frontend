@@ -10,7 +10,7 @@
           :focus="true"
           @valueChange="onInputValueChange"
           @submit="onSubmit"
-        ></Input>
+        />
         <Button big :disabled="!(name !== '')" @click="onSubmit">Next</Button>
       </div>
     </div>
@@ -26,6 +26,8 @@ export default {
   name: 'ViewName',
   components: {
     ViewBase,
+    Input,
+    Button,
   },
   extends: ViewBase,
   data: () => ({
