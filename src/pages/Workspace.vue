@@ -10,15 +10,12 @@
 import Overlay from './workspace/Overlay'
 import Navbar from './workspace/NavigationBar'
 import Dashboard from './workspace/Dashboard'
-import Settings from './workspace/Settings'
 
 export default {
   name: 'Workspace',
   components: {
     Overlay,
     Navbar,
-    Dashboard,
-    Settings,
   },
   data: function() {
     return {
