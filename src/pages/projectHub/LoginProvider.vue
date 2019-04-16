@@ -15,7 +15,6 @@ export default {
   methods: {
     onSubmit(data) {
       //all login logic goes here
-      console.log(data)
     },
   },
 }
