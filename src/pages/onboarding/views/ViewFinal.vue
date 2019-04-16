@@ -2,7 +2,9 @@
   <ViewBase :img="image">
     <div>
       <Header secondary>
-        That was easy!<br />Find your teams first initiative:
+        That was easy!
+        <br />
+        Find your teams first initiative:
         {{ info.milestone }}
       </Header>
       <Paragraph>
@@ -11,9 +13,7 @@
         product toolkits. Time to scale your startup!
       </Paragraph>
       <div class="input-wrap">
-        <Button big @click="onSubmit">
-          Find your initiative in Cubed
-        </Button>
+        <Button big @click="onSubmit">Find your initiative in Cubed</Button>
       </div>
     </div>
     <template v-slot:dashboard>
@@ -24,7 +24,10 @@
         <Paragraph class="ini-icon">{{ info.milestone }}</Paragraph>
         <Paragraph class="member-title">Team members</Paragraph>
         <ul class="members">
-          <li v-for="member in info.members">
+          <li
+            v-for="member in info.members"
+            :key="info.members.indexOf(member)"
+          >
             {{ member.split('@')[0] }}
           </li>
         </ul>
