@@ -18,8 +18,8 @@ export default {
     Paragraph,
   },
   props: {
-    icon: String,
-    link: String,
+    icon: { type: String, default: '' },
+    link: { type: String, default: '' },
     active: Boolean,
   },
   computed: {
