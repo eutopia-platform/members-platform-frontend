@@ -11,17 +11,17 @@
           placeholder="set your password"
           type="password"
           data-lpignore="true"
-        />
+        ></Input>
         <Input
           v-model="pw2"
           look="blend"
           placeholder="retype your password"
           type="password"
           data-lpignore="true"
-        />
-        <Paragraph v-if="errorMessage" class="error">
-          {{ errorMessage }}
-        </Paragraph>
+        ></Input>
+        <Paragraph v-if="errorMessage" class="error">{{
+          errorMessage
+        }}</Paragraph>
         <Button big :disabled="!isFormValid" @click="onSubmit">Next</Button>
         <div class="icon-wrap" :src="img">
           <Icon :src="img" class="icon"></Icon>
@@ -51,11 +51,11 @@ export default {
     Paragraph,
   },
   props: {
-    info: {
-      type: Object,
-      default: null,
+    info: Object,
+    submit: {
+      type: Boolean,
+      default: true,
     },
-    noSubmit: Boolean,
   },
   data: () => ({
     pw1: '',
@@ -70,12 +70,12 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      if (this.noSubmit) {
+      if (!this.submit) {
         this.$emit('submit')
         return
       }
       this.submitPassword(this.email)
-        .then(() => {
+        .then(token => {
           this.$emit('submit')
         })
         .catch(msg => (this.errorMessage = msg))
