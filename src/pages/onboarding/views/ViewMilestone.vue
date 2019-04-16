@@ -4,11 +4,11 @@
       <Header secondary
         >What milestone are you working on at the moment?</Header
       >
-      <Paragraph
-        >A milestone brings together the key aspects of a successful initiative
-        - your teammates, objectives, key results, toolkits and frameworks so
-        you and your team achieve more, important goals.</Paragraph
-      >
+      <Paragraph>
+        A milestone brings together the key aspects of a successful initiative -
+        your teammates, objectives, key results, toolkits and frameworks so you
+        and your team achieve more, important goals.
+      </Paragraph>
       <div class="input-wrap">
         <Input
           v-model="milestone"
@@ -17,7 +17,7 @@
           :focus="true"
           @valueChange="onInputValueChange"
           @submit="onSubmit"
-        ></Input>
+        />
         <Button big :disabled="!(milestone !== '')" @click="onSubmit"
           >Next</Button
         >
