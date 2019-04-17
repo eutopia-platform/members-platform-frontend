@@ -34,6 +34,9 @@ const status = {
 
 export default new Molecular({
   name: 'LoginForm',
+  apollo: {
+    $client: 'auth'
+  },
   components: {
     Popup,
     Header,
