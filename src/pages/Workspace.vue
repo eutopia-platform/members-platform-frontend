@@ -22,7 +22,7 @@ export default {
     Settings,
   },
   apollo: {
-    user: gql`{user}`
+    user: gql`{user { name }}`
   },
   data: function() {
     return {

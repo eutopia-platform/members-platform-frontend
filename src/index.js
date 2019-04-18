@@ -15,11 +15,13 @@ import Toolkits from './pages/workspace/Toolkits'
 import Settings from './pages/workspace/Settings'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { HttpLink } from 'apollo-link-http'
+import { createHttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
+import { setContext } from 'apollo-link-context'
 
-const createClient = url => new ApolloClient({
+
+const createClient = (url, sendToken = false) => new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors)
@@ -30,9 +32,14 @@ const createClient = url => new ApolloClient({
         );
       if (networkError) console.log(`[Network error]: ${networkError}`)
     }),
-    new HttpLink({
+    ...sendToken ? [setContext(() => ({
+      headers: {
+        'session-token': localStorage.getItem('sessionToken')
+      }
+    }))] : [],
+    createHttpLink({
       uri: url,
-      credentials: 'same-origin'
+      credentials: 'same-origin',
     })
   ]),
   cache: new InMemoryCache()
@@ -41,10 +48,10 @@ const createClient = url => new ApolloClient({
 const clients = process.env.NODE_ENV === 'development'
   ? {
     auth: createClient('http://localhost:3000/auth'),
-    user: createClient('http://localhost:5000')
+    user: createClient('http://localhost:5000', true)
   } : {
     auth: createClient('https://api.productcube.io/auth'),
-    user: createClient('https://user.api.productcube.io')
+    user: createClient('https://user.api.productcube.io', true)
   }
 
 const apolloProvider = new VueApollo({
