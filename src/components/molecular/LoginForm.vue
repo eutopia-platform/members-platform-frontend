@@ -65,6 +65,7 @@ export default new Molecular({
         switch (res.exitcode) {
           case status.OK:
             localStorage.setItem('sessionToken', res.token)
+            this.$router.push('/workspace')
             break
           case status.INCORRECT_EMAIL:
             this.error ='incorrect email'

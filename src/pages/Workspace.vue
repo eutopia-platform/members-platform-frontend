@@ -11,6 +11,7 @@ import Overlay from './workspace/Overlay'
 import Navbar from './workspace/NavigationBar'
 import Dashboard from './workspace/Dashboard'
 import Settings from './workspace/Settings'
+import gql from 'graphql-tag'
 
 export default {
   name: 'Workspace',
@@ -20,16 +21,24 @@ export default {
     Dashboard,
     Settings,
   },
+  apollo: {
+    user: gql`{user}`
+  },
   data: function() {
     return {
       showOverlay:
         process.env.NODE_ENV === 'production' &&
         !(this.$route.query.withoutOverlay === null),
+      user: ''
     }
   },
   computed: {
     activePage: () => Dashboard,
   },
+  created: function() {
+    if (!localStorage.getItem('sessionToken'))
+      this.$router.push('/login')
+  }
 }
 </script>
 
