@@ -22,7 +22,12 @@ export default {
     Settings,
   },
   apollo: {
-    user: gql`{user { name }}`
+    user: gql`{
+      user {
+        loggedIn
+        name 
+      }
+    }`
   },
   data: function() {
     return {
@@ -30,6 +35,14 @@ export default {
         process.env.NODE_ENV === 'production' &&
         !(this.$route.query.withoutOverlay === null),
       user: ''
+    }
+  },
+  watch: {
+    user: function(user) {
+      if (!user.loggedIn)
+        this.$router.push('/login')
+      else
+        console.log(user.name + ' logged in')
     }
   },
   computed: {
