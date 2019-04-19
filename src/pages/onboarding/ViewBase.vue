@@ -27,6 +27,9 @@ import Button from '../../components/atomic/Button.vue'
 
 export default {
   name: 'ViewBase',
+  apollo: {
+    $client: 'auth'
+  },
   components: {
     Logo,
     Header,

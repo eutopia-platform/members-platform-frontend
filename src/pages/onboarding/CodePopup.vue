@@ -34,6 +34,9 @@ import gql from 'graphql-tag'
 
 export default {
   name: 'CodePopup',
+  apollo: {
+    $client: 'auth'
+  },
   components: {
     Popup,
     Header,
