@@ -16,22 +16,12 @@ import Settings from './pages/workspace/Settings'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
-import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 
 
 const createClient = (url, sendToken = false) => new ApolloClient({
   link: ApolloLink.from([
-    onError(({ graphQLErrors, networkError }) => {
-      if (graphQLErrors)
-        graphQLErrors.map(({ message, locations, path }) =>
-          console.log(
-            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-          ),
-        );
-      if (networkError) console.log(`[Network error]: ${networkError}`)
-    }),
     ...sendToken ? [setContext(() => ({
       headers: {
         'session-token': localStorage.getItem('sessionToken')
@@ -47,10 +37,10 @@ const createClient = (url, sendToken = false) => new ApolloClient({
 
 const clients = process.env.NODE_ENV === 'development'
   ? {
-    auth: createClient('http://localhost:3000/auth'),
+    auth: createClient('http://localhost:4000'),
     user: createClient('http://localhost:5000', true)
   } : {
-    auth: createClient('https://api.productcube.io/auth'),
+    auth: createClient('https://auth.api.productcube.io/'),
     user: createClient('https://user.api.productcube.io', true)
   }
 

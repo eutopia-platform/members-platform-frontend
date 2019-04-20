@@ -25,13 +25,6 @@ import Input from '../atomic/Input.vue'
 import Button from '../atomic/Button.vue'
 import gql from 'graphql-tag'
 
-const status = {
-  OK: 0,
-  INCORRECT_EMAIL: 200,
-  INCORRECT_PASSWORD: 3,
-  ERROR: 4
-}
-
 export default new Molecular({
   name: 'LoginForm',
   apollo: {
@@ -53,31 +46,15 @@ export default new Molecular({
     login: function() {
       this.$apollo.mutate({
         mutation: gql`mutation {
-          loginUser(email: "${this.email}", password: "${this.password}") {
-            exitcode
-            token
-            msg
-          }
+          login(email: "${this.email}", password: "${this.password}")
         }`
       })
       .then(res => {
-        res = res.data.loginUser
-        switch (res.exitcode) {
-          case status.OK:
-            localStorage.setItem('sessionToken', res.token)
-            this.$router.push('/workspace')
-            break
-          case status.INCORRECT_EMAIL:
-            this.error ='incorrect email'
-            break
-          case status.INCORRECT_PASSWORD:
-            this.error = 'incorret password'
-            break
-          default:
-            this.error = 'unknown error'
-        }
+        console.log('token: ', res.data.login)
+        localStorage.setItem('sessionToken', res.data.login)
+        this.$router.push('/workspace')
       })
-      .catch(() => this.error = 'unknown error')
+      .catch(() => this.error = 'incorrect')
     }
   }
 })
