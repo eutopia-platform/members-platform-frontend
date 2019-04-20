@@ -11,7 +11,7 @@
       data-lpignore='true'
       v-model='password'
     ></Input>
-    <Button @click='login'>Submit</Button>
+    <Button @click='login' :disabled="!emailValid || !passwordValid">Submit</Button>
     <Paragraph v-if='error'>{{error}}</Paragraph>
   </div>
 </template>
@@ -41,6 +41,15 @@ export default new Molecular({
     email: '',
     password: '',
     error: ''
+  },
+  computed: {
+    emailValid: function() {
+      return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        .test(String(this.email).toLowerCase())
+    },
+    passwordValid: function() {
+      return this.password.length >= 8
+    }
   },
   methods: {
     login: function() {
