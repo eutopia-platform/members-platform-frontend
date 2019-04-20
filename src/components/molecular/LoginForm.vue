@@ -50,7 +50,7 @@ export default new Molecular({
         }`
       })
       .then(res => {
-        console.log('token: ', res.data.login)
+        localStorage.removeItem('sessionToken')
         localStorage.setItem('sessionToken', res.data.login)
         this.$router.push('/workspace')
       })

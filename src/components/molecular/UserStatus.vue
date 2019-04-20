@@ -1,9 +1,9 @@
 <template>
-  <div class="user-status">
-    <Icon :src="pic" class="user-icon" height="100px" height="100px"></Icon>
+  <div class="user-status" @click='logout'>
+    <Icon :src="pic" class="user-icon"></Icon>
     <div class="right">
-      <Paragraph>{{ name }}</Paragraph>
-      <Small>{{ email }}</Small>
+      <Paragraph>{{ user.callname }}</Paragraph>
+      <Small>{{ user.email }}</Small>
     </div>
   </div>
 </template>
@@ -12,15 +12,37 @@
 import Paragraph from '../atomic/Paragraph.vue'
 import Small from '../atomic/Small.vue'
 import Icon from '../atomic/Icon.vue'
+import gql from 'graphql-tag'
 
 export default {
   name: 'UserStatus',
   data: () => ({
-    name: 'unknown name',
-    email: 'unknown email',
+    user: {
+      email: 'unknown email',
+      callname: 'unknown name'
+    },
     pic:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcvm7dfwAHSwMUPdgKUQAAAABJRU5ErkJggg==',
+      require('/../data/img/ui/user.svg')
   }),
+  apollo: {
+    user: {
+      query: gql`{
+        user {
+          email
+          callname
+        }
+      }`
+    }
+  },
+  methods: {
+    logout: function() {
+      this.$apollo.mutate({mutation: gql`mutation {logout}`}).then((self = this) => {
+        localStorage.removeItem('sessionToken')
+        console.log(this)
+        this.$router.push('/login')
+      })
+    }
+  },
   components: {
     Paragraph,
     Small,
@@ -35,6 +57,15 @@ export default {
   display: flex;
   flex-direction: row;
   white-space: nowrap;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: .5rem;
+  overflow: hidden;
+  margin-left: -.5rem;
+
+  &:hover {
+    border: 1px solid lightgray;
+  }
 
   .user-icon {
     height: 100%;
@@ -42,7 +73,7 @@ export default {
   }
 
   .right {
-    margin-left: 1rem;
+    margin-left: .5rem;
     height: 100%;
     box-sizing: border-box;
     padding: 0.2rem;
