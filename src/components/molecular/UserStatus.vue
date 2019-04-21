@@ -1,10 +1,11 @@
 <template>
   <div class="user-status" @click='logout'>
-    <Icon :src="pic" class="user-icon"></Icon>
+    <Icon :src="srcUser" class="user-icon"></Icon>
     <div class="right">
       <Paragraph>{{ user.callname }}</Paragraph>
       <Small>{{ user.email }}</Small>
     </div>
+    <Icon :src="srcLogout" class="logout-icon"></Icon>
   </div>
 </template>
 
@@ -21,8 +22,8 @@ export default {
       email: 'unknown email',
       callname: 'unknown name'
     },
-    pic:
-      require('/../data/img/ui/user.svg')
+    srcUser: require('/../data/img/ui/user.svg'),
+    srcLogout: require('/../data/img/ui/logout.svg')
   }),
   apollo: {
     user: {
@@ -70,11 +71,23 @@ export default {
 
   &:hover {
     border: 1px solid lightgray;
+    .logout-icon {
+      opacity: 1;
+    }
   }
 
   .user-icon {
     height: 100%;
     width: 3rem;
+  }
+
+  .logout-icon {
+    height: 2rem;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 1rem;
+    opacity: 0;
   }
 
   .right {
