@@ -36,9 +36,14 @@ export default {
   },
   methods: {
     logout: function() {
-      this.$apollo.mutate({mutation: gql`mutation {logout}`}).then((self = this) => {
+      this.$apollo.provider.clients.auth.mutate({
+        mutation: gql`
+          mutation {
+            logout(token: "${localStorage.getItem('sessionToken')}")
+          }
+        `
+      }).then(() => {
         localStorage.removeItem('sessionToken')
-        console.log(this)
         this.$router.push('/login')
       })
     }
