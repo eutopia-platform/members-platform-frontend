@@ -77,34 +77,30 @@ export default {
         this.$emit('submit')
         return
       }
-      this.submitPassword(this.email)
-        .then(token => {
+      this.submitPassword(this.pw1)
+        .then(() => {
           this.$emit('submit')
         })
         .catch(msg => (this.errorMessage = msg))
     },
     submitPassword: function(password, self = this) {
       return new Promise(function(resolve, reject) {
-        self.$apollo
-          .mutate({
-            mutation: gql`mutation {
-            verifyCode(email: "${self.info.email}", code: "${self.info.code}",
-              password: "${password}") {
-              token
-              msg
-              exitcode
-            }}`,
-          })
-          .then(response => {
-            if (response.data.verifyCode.exitcode !== 0) {
-              reject(response.data.verifyCode.msg)
-              return
+        self.$apollo.mutate({mutation: gql`
+          mutation {
+            setPassword(email: "${self.info.email}", code: "${self.info.code}", password: "${password}")
+          }
+        `}).then(() => {
+          console.log('login...', self)
+          self.$apollo.mutate({mutation: gql`
+            mutation {
+              login(email: "${self.info.email}", password: "${password}")
             }
-            resolve(response.data.verifyCode.token)
+          `}).then(res => {
+            console.log('logged in', res.data.login)
+            localStorage.setItem('sessionToken', res.data.login)
+            resolve()
           })
-          .catch(data => {
-            reject(data)
-          })
+        })
       })
     },
   },
