@@ -33,17 +33,13 @@ export default {
     margin-top: 1rem;
     flex-grow: 1;
     width: 100%;
-    max-width: 45rem;
+    max-width: 50rem;
     margin-left: auto;
     margin-right: auto;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 3vw;
-
-    & * {
-      padding-bottom: 80%;
-    }
   }
 }
 </style>
