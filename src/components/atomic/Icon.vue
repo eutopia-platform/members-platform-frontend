@@ -1,12 +1,15 @@
 <template>
-  <img :src="src" />
+  <img :src="src">
 </template>
 
 <script>
 export default {
   name: 'Icon',
   props: {
-    src: String,
+    src: {
+      type: String,
+      default: '',
+    },
     size: {
       type: String,
       default: 'initial',
