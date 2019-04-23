@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import VueApollo from 'vue-apollo'
-import ApolloClient from 'apollo-boost'
 import App from './App.vue'
 import LandingPage from './pages/LandingPage'
 import Privacy from './pages/Privacy'
@@ -14,17 +13,43 @@ import Login from './pages/Login'
 import Dashboard from './pages/workspace/Dashboard'
 import Toolkits from './pages/workspace/Toolkits'
 import Settings from './pages/workspace/Settings'
+import { ApolloClient } from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { createHttpLink } from 'apollo-link-http'
+import { ApolloLink } from 'apollo-link'
+import { setContext } from 'apollo-link-context'
 
-const authUrl =
-  process.env.NODE_ENV !== 'development'
-    ? 'https://api.productcube.io/auth'
-    : 'http://localhost:3000/auth'
 
-const apolloClient = new ApolloClient({
-  uri: authUrl,
+const createClient = (url, sendToken = false) => new ApolloClient({
+  link: ApolloLink.from([
+    ...sendToken ? [setContext(() => ({
+      headers: {
+        'session-token': localStorage.getItem('sessionToken')
+      }
+    }))] : [],
+    createHttpLink({
+      uri: url,
+      credentials: 'same-origin',
+    })
+  ]),
+  cache: new InMemoryCache()
 })
+
+const clients = process.env.NODE_ENV === 'development'
+  ? {
+    auth: createClient('http://localhost:4000'),
+    user: createClient('http://localhost:5000', true)
+  } : {
+    auth: createClient('https://auth.api.productcube.io/'),
+    user: createClient('https://user.api.productcube.io', true)
+  }
+
 const apolloProvider = new VueApollo({
-  defaultClient: apolloClient,
+  clients: {
+    auth: clients.auth,
+    user: clients.user
+  },
+  defaultClient: clients.user
 })
 
 Vue.use(VueRouter)

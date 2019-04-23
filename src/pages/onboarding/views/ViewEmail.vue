@@ -71,18 +71,11 @@ export default {
         self.$apollo
           .mutate({
             mutation: gql`mutation {
-            registerEmail(email: "${self.email}") {
-              msg
-              exitcode
-            }}`,
+              registerEmail(email: "${self.email}")
+            }`,
           })
           .then(res => {
-            const code = res.data.registerEmail.exitcode
-            if (code === 0 || code === 4) resolve()
-            else if (
-              code === 500 // needs new code
-            );
-            else reject(res.data.registerEmail.msg)
+            resolve()
           })
           .catch(data => {
             reject(data)

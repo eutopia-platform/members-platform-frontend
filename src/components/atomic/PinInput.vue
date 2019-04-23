@@ -38,14 +38,17 @@ export default {
       type: Number,
       default: 2,
     },
+    value: String
   },
   methods: {
-    submit: function(e) {
-      const pin = Array.from(this.$el.getElementsByTagName('input'))
+    pin: function() {
+      return Array.from(this.$el.getElementsByTagName('input'))
         .map(i => parseInt(i.value, 10))
         .filter(i => !isNaN(i))
         .join('')
-      this.$emit('submit', pin)
+    },
+    submit: function() {
+      this.$emit('submit', this.pin())
     },
     onKey: function(e) {
       if (isNaN(e.key) || e.key === ' ') return
@@ -61,15 +64,16 @@ export default {
           .querySelector(`input[name='${parseInt(current, 10) + 1}']`)
           .focus()
       }
+      this.$emit('input', this.pin())
     },
     onDelete: function(e) {
       const current = document.activeElement.name
-      this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value =
-        ''
+      this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value = ''
       if (current !== '0')
         this.$el
           .querySelector(`input[name='${parseInt(current, 10) - 1}']`)
           .focus()
+      this.$emit('input', this.pin())
     },
     onLeft: function(e) {
       e.preventDefault()
@@ -95,6 +99,7 @@ export default {
       this.$el
         .querySelector(`input[name='${this.groups * this.digits - 1}']`)
         .focus()
+      this.$emit('input', this.pin())
       this.submit()
     },
   },

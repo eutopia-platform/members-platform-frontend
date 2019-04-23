@@ -1,37 +1,75 @@
 <template>
-  <div class="login-form">
+  <div :class='getClass'>
     <Header secondary>
       Login
     </Header>
-    <Input look="blend" placeholder="email" data-lpignore="true"></Input>
+    <Input look='blend' placeholder='email' data-lpignore='true' v-model='email'></Input>
     <Input
-      look="blend"
-      placeholder="password"
-      type="password"
-      data-lpignore="true"
+      look='blend'
+      placeholder='password'
+      type='password'
+      data-lpignore='true'
+      v-model='password'
     ></Input>
-    <Button>Submit</Button>
+    <Button @click='login' :disabled="!emailValid || !passwordValid">Submit</Button>
+    <Paragraph v-if='error'>{{error}}</Paragraph>
   </div>
 </template>
 
 <script>
+import Molecular from '/components/sharedScripts/molecular'
 import Popup from './Popup.vue'
 import Header from '../atomic/Header.vue'
+import Paragraph from '../atomic/Paragraph.vue'
 import Input from '../atomic/Input.vue'
 import Button from '../atomic/Button.vue'
+import gql from 'graphql-tag'
 
-export default {
+export default new Molecular({
   name: 'LoginForm',
+  apollo: {
+    $client: 'auth'
+  },
   components: {
     Popup,
     Header,
     Input,
     Button,
+    Paragraph
   },
-}
+  data: {
+    email: '',
+    password: '',
+    error: ''
+  },
+  computed: {
+    emailValid: function() {
+      return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        .test(String(this.email).toLowerCase())
+    },
+    passwordValid: function() {
+      return this.password.length >= 8
+    }
+  },
+  methods: {
+    login: function() {
+      this.$apollo.mutate({
+        mutation: gql`mutation {
+          login(email: "${this.email}", password: "${this.password}")
+        }`
+      })
+      .then(res => {
+        localStorage.removeItem('sessionToken')
+        localStorage.setItem('sessionToken', res.data.login)
+        this.$router.push('/workspace')
+      })
+      .catch(() => this.error = 'incorrect')
+    }
+  }
+})
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 @import '../sharedStyles/shadows.scss';
 
 .login-form {
