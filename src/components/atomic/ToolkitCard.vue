@@ -4,10 +4,8 @@
       <Paragraph type="sub">{{ banner }}</Paragraph>
     </div>
     <div class="content">
-      <Header quaternary>
-        {{ name }}
-      </Header>
-      <img :src="img" />
+      <Header quaternary>{{ name }}</Header>
+      <img :src="img">
     </div>
   </div>
 </template>
@@ -23,9 +21,18 @@ export default {
     Paragraph,
   },
   props: {
-    name: String,
-    banner: String,
-    img: String,
+    name: {
+      type: String,
+      default: '',
+    },
+    banner: {
+      type: String,
+      default: '',
+    },
+    img: {
+      type: String,
+      default: '',
+    },
   },
 }
 </script>
