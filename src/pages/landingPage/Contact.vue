@@ -1,7 +1,8 @@
 <template>
   <div class="contact">
     <div class="signup-wrap">
-      <Header primary> Try productcube with your team for free </Header><br />
+      <Header primary>Try productcube with your team for free</Header>
+      <br>
       <Button big @click="signup">Sign me up</Button>
     </div>
   </div>
@@ -10,7 +11,6 @@
 <script>
 import Header from '../../components/atomic/Header.vue'
 import Button from '../../components/atomic/Button.vue'
-import EmailSignupProvider from './Contact/EmailSignupProvider.vue'
 
 export default {
   name: 'Contact',
