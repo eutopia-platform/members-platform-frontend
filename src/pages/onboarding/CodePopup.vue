@@ -2,9 +2,7 @@
   <div class="code-popup">
     <Popup>
       <div class="code-wrap">
-        <Header secondary>
-          Find a secret in your email
-        </Header>
+        <Header secondary>Find a secret in your email</Header>
         <Paragraph>
           We have send you a 6 digit confirmation code to {{ info.email }}. It
           will expire shortly, so please enter your code soon.
@@ -42,17 +40,20 @@ export default {
     Icon,
   },
   apollo: {
-    $client: 'auth'
+    $client: 'auth',
   },
   props: {
-    info: Object,
+    info: {
+      type: Object,
+      default: () => ({}),
+    },
     submit: {
       type: Boolean,
       default: true,
-    }
+    },
   },
   data: () => ({
-    pin: ''
+    pin: '',
   }),
   computed: {
     img: () => require('../../../data/img/onboarding/inbox.svg'),
@@ -63,14 +64,16 @@ export default {
         this.$emit('submit', pin)
         return
       }
-      this.$apollo.query({query: gql`{
+      this.$apollo
+        .query({
+          query: gql`{
         isCodeValid(email: "${this.info.email}", code: "${pin}")
-      }`}).then(res => {
-        console.log(pin, res.data)
-        if (res.data.isCodeValid)
-          this.$emit('submit', pin)
-      }) 
-    }
+      }`,
+        })
+        .then(res => {
+          if (res.data.isCodeValid) this.$emit('submit', pin)
+        })
+    },
   },
 }
 </script>
