@@ -10,18 +10,13 @@
       :autocomplete="type === 'password' ? 'new-password' : 'true'"
       @input="onInput"
       @keyup.enter="onEnter"
-    />
+    >
   </div>
 </template>
 
 <script>
-import Button from './Button.vue'
-
 export default {
   name: 'Input',
-  components: {
-    Button,
-  },
   props: {
     name: {
       default: '',
