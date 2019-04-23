@@ -7,10 +7,8 @@
         name="email"
         @valueChange="onInputValueChange"
         @keyup.enter.native="onSubmit"
-      ></Input>
-      <Button disabled @click="onSubmit">
-        Sign up
-      </Button>
+      />
+      <Button disabled @click="onSubmit">Sign up</Button>
     </div>
   </div>
 </template>
