@@ -10,7 +10,10 @@
             <Welcome></Welcome>
           </template>
           <template v-slot:right>
-            <img class="image-right" src="../../data/img/landingpage/slide2.svg">
+            <img
+              class="image-right"
+              src="../../data/img/landingpage/slide2.svg"
+            />
           </template>
         </SplitViewHorizontal>
       </template>
@@ -27,7 +30,7 @@
             class="image-right"
             src="../../data/img/landingpage/laptop.svg"
             style="transform: translate(-40%, -50%)"
-          >
+          />
         </template>
       </SplitViewHorizontal>
     </PageSlide>
@@ -39,7 +42,10 @@
           <Pricing></Pricing>
         </template>
         <template v-slot:right>
-          <img class="image-right" src="../../data/img/landingpage/slide3.svg">
+          <img
+            class="image-right"
+            src="../../data/img/landingpage/slide3.svg"
+          />
         </template>
       </SplitViewHorizontal>
     </PageSlide>

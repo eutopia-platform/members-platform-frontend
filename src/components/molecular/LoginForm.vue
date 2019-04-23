@@ -1,7 +1,12 @@
 <template>
   <div :class="getClass">
     <Header secondary>Login</Header>
-    <Input v-model="email" look="blend" placeholder="email" data-lpignore="true" />
+    <Input
+      v-model="email"
+      look="blend"
+      placeholder="email"
+      data-lpignore="true"
+    />
     <Input
       v-model="password"
       look="blend"
@@ -9,7 +14,9 @@
       type="password"
       data-lpignore="true"
     />
-    <Button :disabled="!emailValid || !passwordValid" @click="login">Submit</Button>
+    <Button :disabled="!emailValid || !passwordValid" @click="login"
+      >Submit</Button
+    >
     <Paragraph v-if="error">{{ error }}</Paragraph>
   </div>
 </template>
@@ -69,7 +76,7 @@ export default new Molecular({
 })
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import '../sharedStyles/shadows.scss';
 
 .login-form {

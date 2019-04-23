@@ -2,7 +2,7 @@
   <div class="contact">
     <div class="signup-wrap">
       <Header primary>Try productcube with your team for free</Header>
-      <br>
+      <br />
       <Button big @click="signup">Sign me up</Button>
     </div>
   </div>

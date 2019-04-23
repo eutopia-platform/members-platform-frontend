@@ -6,7 +6,11 @@
       products people want.
     </Tagline>
     <div class="lean-tool">
-      <ToolkitCard name="Lean Startup Toolkit" banner="full cycle program" :img="img"></ToolkitCard>
+      <ToolkitCard
+        name="Lean Startup Toolkit"
+        banner="full cycle program"
+        :img="img"
+      ></ToolkitCard>
     </div>
   </div>
 </template>

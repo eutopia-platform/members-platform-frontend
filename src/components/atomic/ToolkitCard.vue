@@ -5,7 +5,7 @@
     </div>
     <div class="content">
       <Header quaternary>{{ name }}</Header>
-      <img :src="img">
+      <img :src="img" />
     </div>
   </div>
 </template>

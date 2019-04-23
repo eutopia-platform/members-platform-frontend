@@ -10,7 +10,7 @@
       :autocomplete="type === 'password' ? 'new-password' : 'true'"
       @input="onInput"
       @keyup.enter="onEnter"
-    >
+    />
   </div>
 </template>
 

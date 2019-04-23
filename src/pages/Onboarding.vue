@@ -8,7 +8,12 @@
       @next="onNext"
       @queryCode="queryCode"
     ></Component>
-    <CodePopup v-if="showCodePopup" :info="userInfo" :submit="submit" @submit="onCodeSubmit"></CodePopup>
+    <CodePopup
+      v-if="showCodePopup"
+      :info="userInfo"
+      :submit="submit"
+      @submit="onCodeSubmit"
+    ></CodePopup>
     <PasswordPopup
       v-if="showPasswordPopup"
       :info="userInfo"

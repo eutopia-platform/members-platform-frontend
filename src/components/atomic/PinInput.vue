@@ -14,7 +14,7 @@
         @keydown.delete="onDelete"
         @keydown.left="onLeft"
         @keydown.right="onRight"
-      >
+      />
     </div>
   </form>
 </template>

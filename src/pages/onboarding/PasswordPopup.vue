@@ -20,9 +20,7 @@
           data-lpignore="true"
         />
         <Paragraph v-if="errorMessage" class="error">
-          {{
-          errorMessage
-          }}
+          {{ errorMessage }}
         </Paragraph>
         <Button big :disabled="!isFormValid" @click="onSubmit">Next</Button>
         <div class="icon-wrap" :src="img">

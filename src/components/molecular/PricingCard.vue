@@ -8,7 +8,9 @@
       <ul>
         <li v-for="feat in feats" :key="feats.indexOf(feat)">{{ feat }}</li>
       </ul>
-      <Button class="bt-pc-request" @click="handleRequest">Request Access</Button>
+      <Button class="bt-pc-request" @click="handleRequest"
+        >Request Access</Button
+      >
     </div>
   </div>
 </template>

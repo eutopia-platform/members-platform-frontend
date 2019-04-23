@@ -19,37 +19,43 @@ import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 
+const createClient = (url, sendToken = false) =>
+  new ApolloClient({
+    link: ApolloLink.from([
+      ...(sendToken
+        ? [
+            setContext(() => ({
+              headers: {
+                'session-token': localStorage.getItem('sessionToken'),
+              },
+            })),
+          ]
+        : []),
+      createHttpLink({
+        uri: url,
+        credentials: 'same-origin',
+      }),
+    ]),
+    cache: new InMemoryCache(),
+  })
 
-const createClient = (url, sendToken = false) => new ApolloClient({
-  link: ApolloLink.from([
-    ...sendToken ? [setContext(() => ({
-      headers: {
-        'session-token': localStorage.getItem('sessionToken')
+const clients =
+  process.env.NODE_ENV === 'development'
+    ? {
+        auth: createClient('http://localhost:4000'),
+        user: createClient('http://localhost:5000', true),
       }
-    }))] : [],
-    createHttpLink({
-      uri: url,
-      credentials: 'same-origin',
-    })
-  ]),
-  cache: new InMemoryCache()
-})
-
-const clients = process.env.NODE_ENV === 'development'
-  ? {
-    auth: createClient('http://localhost:4000'),
-    user: createClient('http://localhost:5000', true)
-  } : {
-    auth: createClient('https://auth.api.productcube.io/'),
-    user: createClient('https://user.api.productcube.io', true)
-  }
+    : {
+        auth: createClient('https://auth.api.productcube.io/'),
+        user: createClient('https://user.api.productcube.io', true),
+      }
 
 const apolloProvider = new VueApollo({
   clients: {
     auth: clients.auth,
-    user: clients.user
+    user: clients.user,
   },
-  defaultClient: clients.user
+  defaultClient: clients.user,
 })
 
 Vue.use(VueRouter)
