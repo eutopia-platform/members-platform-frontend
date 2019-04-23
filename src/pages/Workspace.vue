@@ -10,7 +10,6 @@
 import Overlay from './workspace/Overlay'
 import Navbar from './workspace/NavigationBar'
 import Dashboard from './workspace/Dashboard'
-import Settings from './workspace/Settings'
 import gql from 'graphql-tag'
 
 export default {
@@ -20,14 +19,16 @@ export default {
     Navbar,
   },
   apollo: {
-    user: gql`{
-      user {
-        isLoggedIn
-        name
-        callname
-        email
+    user: gql`
+      {
+        user {
+          isLoggedIn
+          name
+          callname
+          email
+        }
       }
-    }`
+    `,
   },
   data: function() {
     return {
@@ -37,8 +38,8 @@ export default {
       user: {
         name: '',
         callName: '',
-        email: ''
-      }
+        email: '',
+      },
     }
   },
   computed: {
@@ -46,19 +47,12 @@ export default {
   },
   watch: {
     user: function(user) {
-      if (!user.isLoggedIn)
-        this.$router.push('/login')
-      else
-        console.log(user.name + ' logged in')
-
-      console.log(this.user)
-    }
+      if (!user.isLoggedIn) this.$router.push('/login')
+    },
   },
   created: function() {
-    if (!localStorage.getItem('sessionToken'))
-      this.$router.push('/login')
-
-  }
+    if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
+  },
 }
 </script>
 
