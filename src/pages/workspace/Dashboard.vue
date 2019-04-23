@@ -1,13 +1,13 @@
 <template>
-  <div class='dashboard'>
+  <div class="dashboard">
     <Header tertiary>
       Dashboard
     </Header>
-    <div class='content'>
-      <WelcomeInfo class='welcome'></WelcomeInfo>
+    <div class="content">
+      <WelcomeInfo class="welcome"></WelcomeInfo>
       <ToolkitStatus></ToolkitStatus>
       <Validation></Validation>
-      <Process class='process'></Process>
+      <Process class="process"></Process>
     </div>
   </div>
 </template>
@@ -28,12 +28,12 @@ export default {
     ToolkitStatus,
     Validation,
     Process,
-    WelcomeInfo
-  }
+    WelcomeInfo,
+  },
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -54,7 +54,8 @@ export default {
       }
     }
 
-    .process, .welcome {
+    .process,
+    .welcome {
       grid-column-start: span 2;
     }
   }

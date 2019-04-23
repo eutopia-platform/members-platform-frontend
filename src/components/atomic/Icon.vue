@@ -1,16 +1,16 @@
 <template>
-  <img :src="src"/>
+  <img :src="src" />
 </template>
 
 <script>
 export default {
-  name: "Icon",
+  name: 'Icon',
   props: {
     src: String,
     size: {
       type: String,
-      default: "initial"
-    }
-  }
+      default: 'initial',
+    },
+  },
 }
 </script>

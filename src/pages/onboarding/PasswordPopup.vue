@@ -19,7 +19,9 @@
           data-lpignore="true"
           v-model="pw2"
         ></Input>
-        <Paragraph class="error" v-if="errorMessage">{{errorMessage}}</Paragraph>
+        <Paragraph class="error" v-if="errorMessage">{{
+          errorMessage
+        }}</Paragraph>
         <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
         <div class="icon-wrap" :src="img">
           <Icon :src="img" class="icon"></Icon>
@@ -30,41 +32,44 @@
 </template>
 
 <script>
-import Popup from "../../components/molecular/Popup.vue";
-import Header from "../../components/atomic/Header.vue";
-import Input from "../../components/atomic/Input.vue";
-import Button from "../../components/atomic/Button.vue";
-import Icon from "../../components/atomic/Icon.vue";
-import Paragraph from "~/components/atomic/Paragraph";
-import gql from "graphql-tag";
+import Popup from '../../components/molecular/Popup.vue'
+import Header from '../../components/atomic/Header.vue'
+import Input from '../../components/atomic/Input.vue'
+import Button from '../../components/atomic/Button.vue'
+import Icon from '../../components/atomic/Icon.vue'
+import Paragraph from '~/components/atomic/Paragraph'
+import gql from 'graphql-tag'
 
 export default {
-  name: "PasswordPopup",
+  name: 'PasswordPopup',
+  apollo: {
+    $client: 'auth'
+  },
   components: {
     Popup,
     Header,
     Input,
     Button,
     Icon,
-    Paragraph
+    Paragraph,
   },
   props: {
     info: Object,
     submit: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data: () => ({
-    pw1: "",
-    pw2: "",
-    errorMessage: ""
+    pw1: '',
+    pw2: '',
+    errorMessage: '',
   }),
   computed: {
-    img: () => require("../../../data/img/onboarding/shield.svg"),
+    img: () => require('../../../data/img/onboarding/shield.svg'),
     isFormValid: function() {
-      return this.pw1 !== "" && this.pw1 === this.pw2;
-    }
+      return this.pw1 !== '' && this.pw1 === this.pw2
+    },
   },
   methods: {
     onSubmit: function() {
@@ -72,38 +77,34 @@ export default {
         this.$emit('submit')
         return
       }
-      this.submitPassword(this.email)
-        .then(token => {
-          this.$emit("submit");
+      this.submitPassword(this.pw1)
+        .then(() => {
+          this.$emit('submit')
         })
-        .catch(msg => (this.errorMessage = msg));
+        .catch(msg => (this.errorMessage = msg))
     },
     submitPassword: function(password, self = this) {
       return new Promise(function(resolve, reject) {
-        self.$apollo
-          .mutate({
-            mutation: gql`mutation {
-            verifyCode(email: "${self.info.email}", code: "${self.info.code}",
-              password: "${password}") {
-              token
-              msg
-              exitcode
-            }}`
-          })
-          .then(response => {
-            if (response.data.verifyCode.exitcode !== 0) {
-              reject(response.data.verifyCode.msg);
-              return;
+        self.$apollo.mutate({mutation: gql`
+          mutation {
+            setPassword(email: "${self.info.email}", code: "${self.info.code}", password: "${password}")
+          }
+        `}).then(() => {
+          console.log('login...', self)
+          self.$apollo.mutate({mutation: gql`
+            mutation {
+              login(email: "${self.info.email}", password: "${password}")
             }
-            resolve(response.data.verifyCode.token);
+          `}).then(res => {
+            console.log('logged in', res.data.login)
+            localStorage.setItem('sessionToken', res.data.login)
+            resolve()
           })
-          .catch(data => {
-            reject(data);
-          });
-      });
-    }
-  }
-};
+        })
+      })
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

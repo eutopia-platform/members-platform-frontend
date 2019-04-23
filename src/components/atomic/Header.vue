@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" :class="getClass">
-    <slot/>
+    <slot />
   </component>
 </template>
 
@@ -10,19 +10,19 @@ import Atomic from '/components/sharedScripts/atomic'
 export default new Atomic({
   name: 'Header',
   types: ['primary', 'secondary', 'tertiary', 'quaternary'],
-  tags: ['h1', 'h2', 'h3', 'h4']
+  tags: ['h1', 'h2', 'h3', 'h4'],
 })
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/colors.scss";
-@import "../sharedStyles/shapes.scss";
-@import "../sharedStyles/text.scss";
+@import '../sharedStyles/colors.scss';
+@import '../sharedStyles/shapes.scss';
+@import '../sharedStyles/text.scss';
 
 .header {
   font-weight: bold;
-  margin-top: .5em;
-  margin-bottom: .5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .primary {

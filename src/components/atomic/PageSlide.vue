@@ -1,26 +1,27 @@
 <template>
   <div class="page-slide">
-  <slot></slot>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "PageSlide"
-};
+  name: 'PageSlide',
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/colors.scss";
-@import "../sharedStyles/shapes.scss";
-@import "../sharedStyles/responsive.scss";
+@import '../sharedStyles/colors.scss';
+@import '../sharedStyles/shapes.scss';
+@import '../sharedStyles/responsive.scss';
 
 .page-slide {
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
 
-    @media screen and (max-width: $break-mobile) {
-      height: auto;
-    }
+  @media screen and (max-width: $break-mobile) {
+    height: auto;
+  }
 }
 </style>

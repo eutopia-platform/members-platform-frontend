@@ -2,20 +2,21 @@
   <div class="pricing-card">
     <div class="pc-shape">
       <Header quaternary class="title">
-        {{title}}
+        {{ title }}
       </Header>
       <p class="pc-price">
-        {{price}}
+        {{ price }}
       </p>
       <Small>when billed annually</Small>
-      <slot class="pc-image">
-      </slot>
+      <slot class="pc-image"> </slot>
       <ul>
         <li v-for="feat in feats">
-          {{feat}}
+          {{ feat }}
         </li>
       </ul>
-      <Button class="bt-pc-request" @click="handleRequest">Request Access</Button>
+      <Button class="bt-pc-request" @click="handleRequest"
+        >Request Access</Button
+      >
     </div>
   </div>
 </template>
@@ -26,32 +27,31 @@ import Small from '../atomic/Small.vue'
 import Button from '../atomic/Button.vue'
 
 export default {
-  name: "PricingCard",
+  name: 'PricingCard',
   props: {
     title: String,
     price: String,
-    feats: Array
+    feats: Array,
   },
   components: {
     Header,
     Small,
-    Button
+    Button,
   },
   methods: {
     handleRequest() {
       this.$emit('request')
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../../components/sharedStyles/shapes.scss";
-@import "../../components/sharedStyles/colors.scss";
-@import "../../components/sharedStyles/shadows.scss";
+@import '../../components/sharedStyles/shapes.scss';
+@import '../../components/sharedStyles/colors.scss';
+@import '../../components/sharedStyles/shadows.scss';
 
 .pricing-card {
-
   width: 18em;
   height: 32em;
   margin: 1em;
@@ -60,10 +60,10 @@ export default {
   border-bottom-right-radius: 1.5em;
 
   filter: drop-shadow($shadow-default);
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 
   &:hover {
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
     filter: drop-shadow($shadow-hover);
   }
 
@@ -77,7 +77,7 @@ export default {
     border-bottom-right-radius: 1.5em;
     display: block;
     background-color: white;
-    padding: .5em;
+    padding: 0.5em;
   }
 
   .title {
@@ -85,12 +85,12 @@ export default {
   }
 
   .pc-price {
-    margin: .4em;
-    font-size: .9em;
+    margin: 0.4em;
+    font-size: 0.9em;
   }
 
   .small {
-    margin: .4em;
+    margin: 0.4em;
     margin-bottom: 1rem;
     display: block;
   }

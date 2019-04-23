@@ -6,49 +6,49 @@
       v-html="graphqlResponse.message"
       v-bind:class="{
         success: this.graphqlResponse.successful,
-        error: this.graphqlResponse.unsuccessful
+        error: this.graphqlResponse.unsuccessful,
       }"
     ></div>
   </div>
 </template>
 
 <script>
-import EmailSignup from "../../../components/molecular/EmailSignup.vue";
+import EmailSignup from '../../../components/molecular/EmailSignup.vue'
 
 export default {
-  name: "EmailSignupProvider",
+  name: 'EmailSignupProvider',
   components: {
-    EmailSignup
+    EmailSignup,
   },
   data: () => ({
-    email: "",
+    email: '',
     graphqlConnection: {
       url:
-        process.env.NODE_ENV !== "development"
-          ? "https://api.productcube.io/mail"
-          : "http://localhost:3000/mail",
-      mutationName: "addEmail",
-      mutationQuery: "ok" //add msg here when it exists
+        process.env.NODE_ENV !== 'development'
+          ? 'https://api.productcube.io/mail'
+          : 'http://localhost:3000/mail',
+      mutationName: 'addEmail',
+      mutationQuery: 'ok', //add msg here when it exists
     },
     graphqlResponse: {
       successful: false,
       unsuccessful: false,
-      message: ""
-    }
+      message: '',
+    },
   }),
 
   methods: {
     handleResponce(payload) {
-      this.graphqlResponse.successful = payload.ok;
-      this.graphqlResponse.unsuccessful = !payload.ok;
+      this.graphqlResponse.successful = payload.ok
+      this.graphqlResponse.unsuccessful = !payload.ok
       if (payload.ok) {
-        this.graphqlResponse.message = "Success!";
+        this.graphqlResponse.message = 'Success!'
       } else {
-        this.graphqlResponse.message = "Error. " /* + payload.msg*/;
+        this.graphqlResponse.message = 'Error. ' /* + payload.msg*/
       }
     },
     onSubmit(payload) {
-      const email = payload.email.value;
+      const email = payload.email.value
 
       //graphql ajax request
 
@@ -60,23 +60,23 @@ export default {
         email +
         '\\") { ' +
         this.graphqlConnection.mutationQuery +
-        ' } }"}';
+        ' } }"}'
 
-      this.ajaxRequest = true;
+      this.ajaxRequest = true
       this.$http
         .post(this.graphqlConnection.url, graphqlQueryString)
         .then(result =>
           this.handleResponce(
             result.data.data[this.graphqlConnection.mutationName]
           )
-        );
-    }
-  }
-};
+        )
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../../../components/sharedStyles/colors.scss";
+@import '../../../components/sharedStyles/colors.scss';
 
 .graphql-response-div {
   margin-top: 1rem;

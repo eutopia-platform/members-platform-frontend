@@ -1,9 +1,9 @@
 <template>
-  <br/>
+  <br />
 </template>
 
 <script>
 export default {
-  name: 'Break'
+  name: 'Break',
 }
 </script>

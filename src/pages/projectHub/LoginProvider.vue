@@ -5,18 +5,18 @@
 </template>
 
 <script>
-import Login from "../../components/molecular/Login";
+import Login from '../../components/molecular/Login'
 
 export default {
-  name: "LoginProvider",
+  name: 'LoginProvider',
   components: {
-    Login
+    Login,
   },
   methods: {
     onSubmit(data) {
       //all login logic goes here
-      console.log(data);
-    }
-  }
-};
+      console.log(data)
+    },
+  },
+}
 </script>

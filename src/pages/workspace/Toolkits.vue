@@ -1,10 +1,10 @@
 <template>
-  <div class='toolkits'>
+  <div class="toolkits">
     <Header tertiary>
       Toolkits
     </Header>
-    <div class='grid'>
-      <Toolkit v-for='i in 100' name='Toolkit'>{{i}}</Toolkit>
+    <div class="grid">
+      <Toolkit v-for="i in 100" name="Toolkit">{{ i }}</Toolkit>
     </div>
   </div>
 </template>
@@ -19,12 +19,12 @@ export default {
   components: {
     Header,
     Card,
-    Toolkit
-  }
+    Toolkit,
+  },
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .toolkits {
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 3vw;
 
-    & *{
+    & * {
       padding-bottom: 80%;
     }
   }

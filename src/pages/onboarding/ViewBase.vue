@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="image-wrap">
-        <img v-bind:src="img">
+        <img v-bind:src="img" />
         <div class="dashboard">
           <slot name="dashboard"></slot>
         </div>
@@ -18,74 +18,77 @@
 </template>
 
 <script>
-import Logo from "../../components/atomic/Logo.vue";
-import Header from "../../components/atomic/Header.vue";
-import Paragraph from "../../components/atomic/Paragraph.vue";
-import Small from "../../components/atomic/Small.vue";
-import Input from "../../components/atomic/Input.vue";
-import Button from "../../components/atomic/Button.vue";
+import Logo from '../../components/atomic/Logo.vue'
+import Header from '../../components/atomic/Header.vue'
+import Paragraph from '../../components/atomic/Paragraph.vue'
+import Small from '../../components/atomic/Small.vue'
+import Input from '../../components/atomic/Input.vue'
+import Button from '../../components/atomic/Button.vue'
 
 export default {
-  name: "ViewBase",
+  name: 'ViewBase',
+  apollo: {
+    $client: 'auth'
+  },
   components: {
     Logo,
     Header,
     Paragraph,
     Input,
-    Button
+    Button,
   },
   props: {
     img: String,
     info: Object,
     submit: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data: () => ({
-    text: String
+    text: String,
   }),
   methods: {
     onSubmit: function() {
-      this.$emit("next", this.$data);
+      this.$emit('next', this.$data)
     },
     onInputValueChange: function(payload) {
-      this.text = payload;
-    }
+      this.text = payload
+    },
   },
   computed: {
-    inputValid: comp => comp.text.value && comp.text.value.length > 0
+    inputValid: comp => comp.text.value && comp.text.value.length > 0,
   },
   mounted: function() {
     if (this.$options.name === 'ViewBase') return // only render dashboard in child component
 
     const drawDashboard = (self = this) => {
-      const img = this.$el.querySelector('img');
-      const iw = img.offsetWidth / 100;
-      const ih = img.offsetHeight / 100;
+      const img = this.$el.querySelector('img')
+      const iw = img.offsetWidth / 100
+      const ih = img.offsetHeight / 100
 
       if (!img || !img.offsetWidth || !img.offsetHeight) {
-        setTimeout(drawDashboard, 100)  // try again later
+        setTimeout(drawDashboard, 100) // try again later
         return
       }
 
       // position & size dashboard
-      const dashboard = this.$el.querySelector(".dashboard");
+      const dashboard = this.$el.querySelector('.dashboard')
       dashboard.setAttribute(
-        "style",
+        'style',
         `
         left: ${img.offsetLeft - img.offsetWidth / 2}px;
         top: ${img.offsetTop - img.offsetHeight / 2}px;
         width: ${img.offsetWidth}px;
         height: ${img.offsetHeight}px;
       `
-      );
+      )
 
       // position dashboard elements
-      const orga = this.$el.querySelector(".organization");
+      const orga = this.$el.querySelector('.organization')
       if (orga) {
         orga.setAttribute(
-          "style",
+          'style',
           `
           left: ${4.3 * iw}px;
           top: ${11 * ih}px;
@@ -96,12 +99,12 @@ export default {
           }px;
           visibility: visible;
         `
-        );
+        )
       }
-      const email = this.$el.querySelector(".email");
+      const email = this.$el.querySelector('.email')
       if (email) {
         email.setAttribute(
-          "style",
+          'style',
           `
           left: ${15 * iw}px;
           top: ${21 * ih}px;
@@ -112,12 +115,12 @@ export default {
           }px;
           visibility: visible;
         `
-        );
+        )
       }
-      const ini_title = this.$el.querySelector(".ini-title");
+      const ini_title = this.$el.querySelector('.ini-title')
       if (ini_title) {
         ini_title.setAttribute(
-          "style",
+          'style',
           `
           left: ${45 * iw}px;
           top: ${9 * ih}px;
@@ -128,12 +131,12 @@ export default {
           }px;
           visibility: visible;
         `
-        );
+        )
       }
-      const ini_icon = this.$el.querySelector(".ini-icon");
+      const ini_icon = this.$el.querySelector('.ini-icon')
       if (ini_icon) {
         ini_icon.setAttribute(
-          "style",
+          'style',
           `
           left: ${12 * iw}px;
           top: ${32.2 * ih}px;
@@ -144,43 +147,43 @@ export default {
           }px;
           visibility: visible;
         `
-        );
+        )
       }
-      const member_title = this.$el.querySelector(".member-title");
+      const member_title = this.$el.querySelector('.member-title')
       if (member_title) {
         member_title.setAttribute(
-          "style",
+          'style',
           `
           left: ${5 * iw}px;
           top: ${67 * ih}px;
           font-size: ${3.5 * ih}px;
           visibility: visible;
         `
-        );
+        )
       }
-      const members = this.$el.querySelector(".members");
+      const members = this.$el.querySelector('.members')
       if (members) {
         members.setAttribute(
-          "style",
+          'style',
           `
           left: ${7 * iw}px;
           top: ${68 * ih}px;
           font-size: ${3 * ih}px;
           visibility: visible;
         `
-        );
+        )
       }
-    };
+    }
 
     drawDashboard()
-    window.addEventListener("resize", drawDashboard);
-  }
-};
+    window.addEventListener('resize', drawDashboard)
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../../components/sharedStyles/colors.scss";
-@import "../../components/sharedStyles/responsive.scss";
+@import '../../components/sharedStyles/colors.scss';
+@import '../../components/sharedStyles/responsive.scss';
 
 .logo {
   position: absolute;

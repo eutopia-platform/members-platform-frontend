@@ -1,13 +1,15 @@
 <template>
-  <aside class='navigation'>
+  <aside class="navigation">
     <Brand></Brand>
-    <UserStatus class='status'></UserStatus>
-    </ul>
-    <ul class='pages'>
-      <Item v-for='item in items' :icon='item.icon' :link='item.link'
-        @open='openPage'>
-        {{item.name}}
-      </Item>
+    <UserStatus class="status"></UserStatus>
+    <ul class="pages">
+      <Item
+        v-for="item in items"
+        :icon="item.icon"
+        :link="item.link"
+        @open="openPage"
+        >{{ item.name }}</Item
+      >
     </ul>
   </aside>
 </template>
@@ -22,31 +24,31 @@ export default {
   components: {
     UserStatus,
     Brand,
-    Item
+    Item,
   },
   methods: {
     openPage: function(link) {
       this.$router.push(link)
-    }
+    },
   },
   data: () => ({
     items: [
       {
         name: 'Dashboard',
         icon: require('/../data/img/workspace/navbar/dashboard.svg'),
-        link: '/workspace'
+        link: '/workspace',
       },
       {
         name: 'Toolkits',
         icon: require('/../data/img/workspace/navbar/toolkits.svg'),
-        link: '/workspace/toolkits'
+        link: '/workspace/toolkits',
       },
       {
         name: 'Settings',
         icon: require('/../data/img/workspace/navbar/settings.svg'),
-        link: '/workspace/settings'
-      }
-    ]
+        link: '/workspace/settings',
+      },
+    ],
   }),
 }
 </script>

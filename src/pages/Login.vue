@@ -8,9 +8,9 @@
 import LoginForm from '../components/molecular/LoginForm.vue'
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
-    LoginForm
-  }
+    LoginForm,
+  },
 }
 </script>

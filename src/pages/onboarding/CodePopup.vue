@@ -6,11 +6,11 @@
           Find a secret in your email
         </Header>
         <Paragraph>
-          We have send you a 6 digit confirmation code to {{info.email}}. It
+          We have send you a 6 digit confirmation code to {{ info.email }}. It
           will expire shortly, so please enter your code soon.
         </Paragraph>
         <div class="input-wrap">
-          <PinInput @submit="onSubmit"></PinInput>
+          <PinInput @submit="onSubmit" v-model="pin"></PinInput>
         </div>
         <Paragraph>
           Keep this tab open to enter your code. If you didn't receive an email,
@@ -33,19 +33,25 @@ import Icon from '../../components/atomic/Icon.vue'
 import gql from 'graphql-tag'
 
 export default {
-  name: "CodePopup",
+  name: 'CodePopup',
   components: {
     Popup,
     Header,
     Paragraph,
     PinInput,
-    Icon
+    Icon,
   },
+  apollo: {
+    $client: 'auth'
+  },
+  data: () => ({
+    pin: ''
+  }),
   props: {
     info: Object,
     submit: {
       type: Boolean,
-      default: true
+      default: true,
     }
   },
   methods: {
@@ -54,31 +60,18 @@ export default {
         this.$emit('submit', pin)
         return
       }
-      this.submitCode(pin).then(valid => {
-        if (valid)
+      this.$apollo.query({query: gql`{
+        isCodeValid(email: "${this.info.email}", code: "${pin}")
+      }`}).then(res => {
+        console.log(pin, res.data)
+        if (res.data.isCodeValid)
           this.$emit('submit', pin)
-        else
-          alert('not valid')
-      }).catch(data => alert(data.msg))
-    },
-    submitCode: function(pin, self = this) {
-      return new Promise(function(resolve, reject) {
-        self.$apollo.mutate({
-          mutation: gql`mutation {
-            isCodeValid(email: "${self.info.email}", code: "${pin}") {
-              isvalid
-            }}`
-        }).then(data => {
-          resolve(data.data.isCodeValid.isvalid)
-        }).catch(data => {
-          reject(data)
-        })
-      })
+      }) 
     }
   },
   computed: {
-    img: () => require('../../../data/img/onboarding/inbox.svg')
-  }
+    img: () => require('../../../data/img/onboarding/inbox.svg'),
+  },
 }
 </script>
 

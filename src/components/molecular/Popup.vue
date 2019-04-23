@@ -11,15 +11,15 @@
 import Shade from '../atomic/Shade.vue'
 
 export default {
-  name: "Popup",
+  name: 'Popup',
   components: {
-    Shade
-  }
+    Shade,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/shadows.scss";
+@import '../sharedStyles/shadows.scss';
 
 .content {
   position: absolute;

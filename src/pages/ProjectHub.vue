@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import LoginProvider from "./projectHub/LoginProvider";
+import LoginProvider from './projectHub/LoginProvider'
 
 export default {
-  name: "ProjectHub",
+  name: 'ProjectHub',
   components: {
-    LoginProvider
-  }
-};
+    LoginProvider,
+  },
+}
 </script>

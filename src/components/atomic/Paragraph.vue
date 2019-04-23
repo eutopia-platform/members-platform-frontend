@@ -1,21 +1,21 @@
 <template>
-  <p class="paragraph" :class="{small: small}">
-    <slot/>
+  <p class="paragraph" :class="{ small: small }">
+    <slot />
   </p>
 </template>
 
 <script>
 export default {
-  name: "Paragraph",
+  name: 'Paragraph',
   props: {
-    small: Boolean
-  }
+    small: Boolean,
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/text.scss";
-@import "../sharedStyles/colors.scss";
+@import '../sharedStyles/text.scss';
+@import '../sharedStyles/colors.scss';
 
 .paragraph {
   font-size: $fs-base;

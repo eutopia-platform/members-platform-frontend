@@ -1,10 +1,10 @@
 <template>
-  <Card class='db-card'>
+  <Card class="db-card">
     <Header tertiary>
-      {{title}}
+      {{ title }}
     </Header>
-    <LineHorizontal class='hl'></LineHorizontal>
-    <slot/>
+    <LineHorizontal class="hl"></LineHorizontal>
+    <slot />
   </Card>
 </template>
 
@@ -18,21 +18,21 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'unknown title'
-    }
+      default: 'unknown title',
+    },
   },
   components: {
     Card,
     Header,
-    LineHorizontal
-  }
+    LineHorizontal,
+  },
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .db-card {
   min-height: 20rem;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 

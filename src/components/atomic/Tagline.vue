@@ -6,26 +6,26 @@
 
 <script>
 export default {
-  name: "Tagline",
+  name: 'Tagline',
   props: {
     type: {
       default: 'main',
-      type: String
-    }
+      type: String,
+    },
   },
   computed: {
-    classObj: comp => ({[comp.type]: true})
-  }
+    classObj: comp => ({ [comp.type]: true }),
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../sharedStyles/text.scss";
-@import "../sharedStyles/colors.scss";
+@import '../sharedStyles/text.scss';
+@import '../sharedStyles/colors.scss';
 
 .tagline {
-  margin-top: .5em;
-  margin-bottom: .5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 .main {
   font-size: $fs-tagline-1;

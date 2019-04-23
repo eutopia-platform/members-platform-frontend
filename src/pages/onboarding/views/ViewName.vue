@@ -18,21 +18,21 @@
 </template>
 
 <script>
-import ViewBase from "../ViewBase.vue";
-import Input from "~/components/atomic/Input";
-import Button from "~/components/atomic/Button";
+import ViewBase from '../ViewBase.vue'
+import Input from '~/components/atomic/Input'
+import Button from '~/components/atomic/Button'
 
 export default {
-  name: "ViewName",
+  name: 'ViewName',
   extends: ViewBase,
   data: () => ({
-    name: ""
+    name: '',
   }),
   components: {
-    ViewBase
+    ViewBase,
   },
   computed: {
-    image: () => require("../../../../data/img/onboarding/view-name.png")
-  }
-};
+    image: () => require('../../../../data/img/onboarding/view-name.png'),
+  },
+}
 </script>

@@ -1,7 +1,6 @@
 <template>
-  <DashboardCard title='Ready for Validation'>
-    <div>
-    </div>
+  <DashboardCard title="Ready for Validation">
+    <div></div>
   </DashboardCard>
 </template>
 
@@ -15,7 +14,7 @@ export default {
   components: {
     DashboardCard,
     Button,
-    Header
-  }
+    Header,
+  },
 }
 </script>

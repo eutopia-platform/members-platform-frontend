@@ -1,7 +1,7 @@
 <template>
-  <button :class='getClass' @click='$emit("click")'>
-    <slot v-if='type !== "icon"'></slot>
-    <img v-if='type === "icon"' :src='img'/>
+  <button :class="getClass" @click="$emit('click')">
+    <slot v-if="type !== 'icon'"></slot>
+    <img v-if="type === 'icon'" :src="img" />
   </button>
 </template>
 
@@ -12,12 +12,12 @@ export default new Atomic({
   name: 'Button',
   types: ['default', 'text', 'icon', 'big'],
   props: {
-    img: String
-  }
+    img: String,
+  },
 })
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import '/components/sharedStyles/colors.scss';
 @import '/components/sharedStyles/shadows.scss';
 
@@ -42,8 +42,8 @@ export default new Atomic({
 
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: .2rem;
-  padding-bottom: .2rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
   margin-top: 1rem;
 
   background-color: #6bc1ff; // TODO: standardize colors
@@ -64,8 +64,8 @@ export default new Atomic({
 .big {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-top: .8rem;
-  padding-bottom: .8rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
   border-radius: 1.6rem !important;
 }
 
