@@ -1,16 +1,14 @@
 <template>
   <div :class="getClass">
-    <Header secondary>
-      Login
-    </Header>
-    <Input v-model="email" look="blend" placeholder="email" data-lpignore="true"></Input>
+    <Header secondary>Login</Header>
+    <Input v-model="email" look="blend" placeholder="email" data-lpignore="true" />
     <Input
       v-model="password"
       look="blend"
       placeholder="password"
       type="password"
       data-lpignore="true"
-    ></Input>
+    />
     <Button :disabled="!emailValid || !passwordValid" @click="login">Submit</Button>
     <Paragraph v-if="error">{{ error }}</Paragraph>
   </div>
@@ -28,44 +26,46 @@ import gql from 'graphql-tag'
 export default new Molecular({
   name: 'LoginForm',
   apollo: {
-    $client: 'auth'
+    $client: 'auth',
   },
   components: {
     Popup,
     Header,
     Input,
     Button,
-    Paragraph
+    Paragraph,
   },
   data: {
     email: '',
     password: '',
-    error: ''
+    error: '',
   },
   computed: {
     emailValid: function() {
-      return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        .test(String(this.email).toLowerCase())
+      return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        String(this.email).toLowerCase()
+      )
     },
     passwordValid: function() {
       return this.password.length >= 8
-    }
+    },
   },
   methods: {
     login: function() {
-      this.$apollo.mutate({
-        mutation: gql`mutation {
+      this.$apollo
+        .mutate({
+          mutation: gql`mutation {
           login(email: "${this.email}", password: "${this.password}")
-        }`
-      })
-      .then(res => {
-        localStorage.removeItem('sessionToken')
-        localStorage.setItem('sessionToken', res.data.login)
-        this.$router.push('/workspace')
-      })
-      .catch(() => this.error = 'incorrect')
-    }
-  }
+        }`,
+        })
+        .then(res => {
+          localStorage.removeItem('sessionToken')
+          localStorage.setItem('sessionToken', res.data.login)
+          this.$router.push('/workspace')
+        })
+        .catch(() => (this.error = 'incorrect'))
+    },
+  },
 })
 </script>
 
