@@ -4,10 +4,10 @@
     <div
       class="graphql-response-div"
       :class="{
-        success: this.graphqlResponse.successful,
-        error: this.graphqlResponse.unsuccessful,
+        success: graphqlResponse.successful,
+        error: graphqlResponse.unsuccessful,
       }"
-      v-html="graphqlResponse.message"
+      v-text="graphqlResponse.message"
     ></div>
   </div>
 </template>
