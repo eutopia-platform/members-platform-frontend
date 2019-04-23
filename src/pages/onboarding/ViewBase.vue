@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="image-wrap">
-        <img :src="img" />
+        <img :src="img">
         <div class="dashboard">
           <slot name="dashboard"></slot>
         </div>
@@ -19,27 +19,24 @@
 
 <script>
 import Logo from '../../components/atomic/Logo.vue'
-import Header from '../../components/atomic/Header.vue'
-import Paragraph from '../../components/atomic/Paragraph.vue'
-import Small from '../../components/atomic/Small.vue'
-import Input from '../../components/atomic/Input.vue'
-import Button from '../../components/atomic/Button.vue'
 
 export default {
   name: 'ViewBase',
   apollo: {
-    $client: 'auth'
+    $client: 'auth',
   },
   components: {
     Logo,
-    Header,
-    Paragraph,
-    Input,
-    Button,
   },
   props: {
-    img: String,
-    info: Object,
+    img: {
+      type: String,
+      default: '',
+    },
+    info: {
+      type: Object,
+      default: () => ({}),
+    },
     submit: {
       type: Boolean,
       default: true,
