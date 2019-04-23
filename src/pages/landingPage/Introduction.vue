@@ -1,18 +1,12 @@
 <template>
   <div class="intro">
-    <Header primary>
-      From idea to product
-    </Header>
-    <Tagline type="sub"
-      >Here you find the processes and toolkits you need to turn your ideas into
-      products people want.</Tagline
-    >
+    <Header primary>From idea to product</Header>
+    <Tagline type="sub">
+      Here you find the processes and toolkits you need to turn your ideas into
+      products people want.
+    </Tagline>
     <div class="lean-tool">
-      <ToolkitCard
-        name="Lean Startup Toolkit"
-        banner="full cycle program"
-        :img="img"
-      ></ToolkitCard>
+      <ToolkitCard name="Lean Startup Toolkit" banner="full cycle program" :img="img"></ToolkitCard>
     </div>
   </div>
 </template>
@@ -20,7 +14,6 @@
 <script>
 import Header from '../../components/atomic/Header'
 import Tagline from '../../components/atomic/Tagline'
-import Paragraph from '../../components/atomic/Paragraph'
 import ToolkitCard from '../../components/atomic/ToolkitCard'
 
 export default {
@@ -28,7 +21,6 @@ export default {
   components: {
     Header,
     Tagline,
-    Paragraph,
     ToolkitCard,
   },
   computed: {
