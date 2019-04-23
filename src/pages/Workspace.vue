@@ -41,6 +41,9 @@ export default {
       }
     }
   },
+  computed: {
+    activePage: () => Dashboard,
+  },
   watch: {
     user: function(user) {
       if (!user.isLoggedIn)
@@ -50,9 +53,6 @@ export default {
 
       console.log(this.user)
     }
-  },
-  computed: {
-    activePage: () => Dashboard,
   },
   created: function() {
     if (!localStorage.getItem('sessionToken'))

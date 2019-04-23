@@ -1,5 +1,5 @@
 <template>
-  <div class="user-status" @click='logout'>
+  <div class="user-status" @click="logout">
     <Icon :src="srcUser" class="user-icon"></Icon>
     <div class="right">
       <Paragraph>{{ user.callname }}</Paragraph>

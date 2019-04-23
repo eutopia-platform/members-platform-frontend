@@ -10,7 +10,7 @@
           will expire shortly, so please enter your code soon.
         </Paragraph>
         <div class="input-wrap">
-          <PinInput @submit="onSubmit" v-model="pin"></PinInput>
+          <PinInput v-model="pin" @submit="onSubmit"></PinInput>
         </div>
         <Paragraph>
           Keep this tab open to enter your code. If you didn't receive an email,
@@ -44,9 +44,6 @@ export default {
   apollo: {
     $client: 'auth'
   },
-  data: () => ({
-    pin: ''
-  }),
   props: {
     info: Object,
     submit: {
@@ -54,6 +51,9 @@ export default {
       default: true,
     }
   },
+  data: () => ({
+    pin: ''
+  }),
   computed: {
     img: () => require('../../../data/img/onboarding/inbox.svg'),
   },

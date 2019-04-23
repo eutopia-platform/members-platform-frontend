@@ -1,18 +1,18 @@
 <template>
-  <div :class='getClass'>
+  <div :class="getClass">
     <Header secondary>
       Login
     </Header>
-    <Input look='blend' placeholder='email' data-lpignore='true' v-model='email'></Input>
+    <Input v-model="email" look="blend" placeholder="email" data-lpignore="true"></Input>
     <Input
-      look='blend'
-      placeholder='password'
-      type='password'
-      data-lpignore='true'
-      v-model='password'
+      v-model="password"
+      look="blend"
+      placeholder="password"
+      type="password"
+      data-lpignore="true"
     ></Input>
-    <Button @click='login' :disabled="!emailValid || !passwordValid">Submit</Button>
-    <Paragraph v-if='error'>{{error}}</Paragraph>
+    <Button :disabled="!emailValid || !passwordValid" @click="login">Submit</Button>
+    <Paragraph v-if="error">{{ error }}</Paragraph>
   </div>
 </template>
 
