@@ -35,7 +35,6 @@ const config = {
         shouldMatchCase: true,
       },
     ],
-    'vue/no-boolean-default': ['error', 'no-default'],
     'vue/object-curly-spacing': ['error', 'always'],
     'vue/space-infix-ops': ['error', { int32Hint: false }],
     'vue/v-on-function-call': ['error', 'never'],
