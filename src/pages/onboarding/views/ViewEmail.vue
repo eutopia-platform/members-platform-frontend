@@ -74,7 +74,7 @@ export default {
               registerEmail(email: "${self.email}")
             }`,
           })
-          .then(res => {
+          .then(() => {
             resolve()
           })
           .catch(data => {
