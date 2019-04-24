@@ -3,7 +3,7 @@
     <div v-for="(_, i) in groups" :key="i" class="pin-group">
       <input
         v-for="(__, e) in digits"
-        :key="i * e"
+        :key="i * digits + e"
         type="text"
         :name="i * digits + e"
         maxlength="1"
