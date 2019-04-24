@@ -13,14 +13,14 @@ import Paragraph from '/components/atomic/Paragraph'
 
 export default {
   name: 'NavigationBarItem',
-  props: {
-    icon: String,
-    link: String,
-    active: Boolean,
-  },
   components: {
     Icon,
     Paragraph,
+  },
+  props: {
+    icon: { type: String, default: '' },
+    link: { type: String, default: '' },
+    active: Boolean,
   },
   computed: {
     // color blue if active

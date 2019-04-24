@@ -1,22 +1,19 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
-      <Header secondary>
-        Who else is working at {{ info.organization }}?
-      </Header>
+      <Header secondary>Who else is working at {{ info.organization }}?</Header>
       <div class="input-wrap">
         <Input
           v-for="(_, i) in members"
+          :key="i"
           look="blend"
           :name="String(i)"
           :placeholder="placeholders[i % 3]"
-          @valueChange="onInputValueChange"
           :focus="i === 0"
-        ></Input>
+          @valueChange="onInputValueChange"
+        />
         <Button text @click="addInput">+ add more team members</Button>
-        <Button big @click="onSubmit" :disabled="!isValid">
-          Next
-        </Button>
+        <Button big :disabled="!isValid" @click="onSubmit">Next</Button>
         <Button text class="skip" @click="onSubmit">Or, skip for now</Button>
       </div>
     </div>
@@ -33,9 +30,20 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
+import Header from '/components/atomic/Header'
+import Input from '/components/atomic/Input'
+import Paragraph from '/components/atomic/Paragraph'
+import Button from '/components/atomic/Button'
 
 export default {
   name: 'ViewMembers',
+  components: {
+    ViewBase,
+    Header,
+    Input,
+    Paragraph,
+    Button,
+  },
   extends: ViewBase,
   data: () => ({
     members: ['', '', ''],
@@ -46,9 +54,6 @@ export default {
       'awesome-mentor@example.com',
     ],
   }),
-  components: {
-    ViewBase,
-  },
   computed: {
     image: () => require('../../../../data/img/onboarding/dashboard-2.svg'),
   },

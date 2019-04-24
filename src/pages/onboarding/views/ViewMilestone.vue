@@ -1,24 +1,24 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
-      <Header secondary
-        >What milestone are you working on at the moment?</Header
-      >
-      <Paragraph
-        >A milestone brings together the key aspects of a successful initiative
-        - your teammates, objectives, key results, toolkits and frameworks so
-        you and your team achieve more, important goals.</Paragraph
-      >
+      <Header secondary>
+        What milestone are you working on at the moment?
+      </Header>
+      <Paragraph>
+        A milestone brings together the key aspects of a successful initiative -
+        your teammates, objectives, key results, toolkits and frameworks so you
+        and your team achieve more, important goals.
+      </Paragraph>
       <div class="input-wrap">
         <Input
-          look="blend"
           v-model="milestone"
-          @valueChange="onInputValueChange"
-          @submit="onSubmit"
+          look="blend"
           placeholder="Your next big thing"
           :focus="true"
-        ></Input>
-        <Button big @click="onSubmit" :disabled="!(milestone !== '')"
+          @valueChange="onInputValueChange"
+          @submit="onSubmit"
+        />
+        <Button big :disabled="!(milestone !== '')" @click="onSubmit"
           >Next</Button
         >
       </div>
@@ -34,13 +34,21 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
+import Header from '/components/atomic/Header'
+import Paragraph from '/components/atomic/Paragraph'
+import Input from '/components/atomic/Input'
+import Button from '/components/atomic/Button'
 
 export default {
   name: 'ViewMilestone',
-  extends: ViewBase,
   components: {
     ViewBase,
+    Header,
+    Paragraph,
+    Input,
+    Button,
   },
+  extends: ViewBase,
   data: () => ({
     milestone: '',
   }),

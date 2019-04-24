@@ -3,14 +3,12 @@
     <div class="input-wrap">
       <Input
         disabled
-        @valueChange="onInputValueChange"
-        @keyup.enter.native="onSubmit"
         placeholder="Email"
         name="email"
-      ></Input>
-      <Button @click="onSubmit" disabled>
-        Sign up
-      </Button>
+        @valueChange="onInputValueChange"
+        @keyup.enter.native="onSubmit"
+      />
+      <Button disabled @click="onSubmit">Sign up</Button>
     </div>
   </div>
 </template>

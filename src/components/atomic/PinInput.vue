@@ -1,29 +1,27 @@
 <template>
   <form class="pin-input" @paste="onPaste">
-    <div v-for="(_, i) in groups" class="pin-group">
+    <div v-for="(_, i) in groups" :key="i" class="pin-group">
       <input
-        v-for="(_, e) in digits"
-        v-for
+        v-for="(__, e) in digits"
+        :key="i * digits + e"
         type="text"
         :name="i * digits + e"
         maxlength="1"
         oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-        @keydown="onKey"
-        @keydown.delete="onDelete"
-        @keydown.left="onLeft"
-        @keydown.right="onRight"
         :autofocus="i * digits + e === 0"
         autocomplete="off"
         onclick="this.select()"
         onfocus="setTimeout(() => this.select(), 0)"
+        @keydown="onKey"
+        @keydown.delete="onDelete"
+        @keydown.left="onLeft"
+        @keydown.right="onRight"
       />
     </div>
   </form>
 </template>
 
 <script>
-import Paragraph from './Paragraph.vue'
-
 export default {
   name: 'PinInput',
   props: {
@@ -35,10 +33,10 @@ export default {
       type: Number,
       default: 2,
     },
-    value: String
-  },
-  components: {
-    Paragraph,
+    value: {
+      type: String,
+      default: undefined,
+    },
   },
   methods: {
     pin: function() {
@@ -66,9 +64,10 @@ export default {
       }
       this.$emit('input', this.pin())
     },
-    onDelete: function(e) {
+    onDelete: function() {
       const current = document.activeElement.name
-      this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value = ''
+      this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value =
+        ''
       if (current !== '0')
         this.$el
           .querySelector(`input[name='${parseInt(current, 10) - 1}']`)

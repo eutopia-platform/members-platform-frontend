@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="foot1">
       <p>&copy; 2019 Productcube</p>
-      <router-link to="/privacy">Privacy Policy</router-link>
+      <RouterLink to="/privacy">Privacy Policy</RouterLink>
     </div>
     <div class="foot2">
       <img class="image-right" src="../../../data/img/social/medium.svg" />

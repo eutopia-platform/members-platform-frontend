@@ -6,23 +6,23 @@
           <Header secondary>Set your password</Header>
         </legend>
         <Input
+          v-model="pw1"
           look="blend"
           placeholder="set your password"
           type="password"
           data-lpignore="true"
-          v-model="pw1"
-        ></Input>
+        />
         <Input
+          v-model="pw2"
           look="blend"
           placeholder="retype your password"
           type="password"
           data-lpignore="true"
-          v-model="pw2"
-        ></Input>
-        <Paragraph class="error" v-if="errorMessage">{{
-          errorMessage
-        }}</Paragraph>
-        <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
+        />
+        <Paragraph v-if="errorMessage" class="error">
+          {{ errorMessage }}
+        </Paragraph>
+        <Button big :disabled="!isFormValid" @click="onSubmit">Next</Button>
         <div class="icon-wrap" :src="img">
           <Icon :src="img" class="icon"></Icon>
         </div>
@@ -43,7 +43,7 @@ import gql from 'graphql-tag'
 export default {
   name: 'PasswordPopup',
   apollo: {
-    $client: 'auth'
+    $client: 'auth',
   },
   components: {
     Popup,
@@ -54,7 +54,10 @@ export default {
     Paragraph,
   },
   props: {
-    info: Object,
+    info: {
+      type: Object,
+      default: () => ({}),
+    },
     submit: {
       type: Boolean,
       default: true,
@@ -84,23 +87,31 @@ export default {
         .catch(msg => (this.errorMessage = msg))
     },
     submitPassword: function(password, self = this) {
-      return new Promise(function(resolve, reject) {
-        self.$apollo.mutate({mutation: gql`
+      return new Promise(function(resolve) {
+        self.$apollo
+          .mutate({
+            mutation: gql`
           mutation {
-            setPassword(email: "${self.info.email}", code: "${self.info.code}", password: "${password}")
+            setPassword(email: "${self.info.email}", code: "${
+              self.info.code
+            }", password: "${password}")
           }
-        `}).then(() => {
-          console.log('login...', self)
-          self.$apollo.mutate({mutation: gql`
+        `,
+          })
+          .then(() => {
+            self.$apollo
+              .mutate({
+                mutation: gql`
             mutation {
               login(email: "${self.info.email}", password: "${password}")
             }
-          `}).then(res => {
-            console.log('logged in', res.data.login)
-            localStorage.setItem('sessionToken', res.data.login)
-            resolve()
+          `,
+              })
+              .then(res => {
+                localStorage.setItem('sessionToken', res.data.login)
+                resolve()
+              })
           })
-        })
       })
     },
   },

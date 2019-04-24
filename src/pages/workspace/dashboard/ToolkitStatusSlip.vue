@@ -18,6 +18,11 @@ import ProgressBar from '/components/atomic/ProgressBar'
 
 export default {
   name: 'ToolkitStatusSlip',
+  components: {
+    Paragraph,
+    ProgressBar,
+    Icon,
+  },
   props: {
     name: {
       type: String,
@@ -35,11 +40,6 @@ export default {
       type: String,
       default: require('/../data/img/ui/user.svg'),
     },
-  },
-  components: {
-    Paragraph,
-    ProgressBar,
-    Icon,
   },
 }
 </script>

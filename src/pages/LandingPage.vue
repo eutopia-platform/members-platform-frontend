@@ -61,8 +61,6 @@
 <script>
 import PageSlide from '../components/atomic/PageSlide'
 import Logo from '../components/atomic/Logo'
-import Header from '../components/atomic/Header'
-import Button from '../components/atomic/Button'
 import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue'
 import Welcome from './landingPage/Welcome.vue'
 import Introduction from './landingPage/Introduction.vue'
@@ -75,8 +73,6 @@ export default {
   components: {
     Logo,
     PageSlide,
-    Header,
-    Button,
     SplitViewHorizontal,
     Welcome,
     Introduction,

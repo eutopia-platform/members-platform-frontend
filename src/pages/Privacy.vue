@@ -1,6 +1,6 @@
 <template>
   <div class="privacy-wrap">
-    <h4 class="c14" id="h.jog6bjjl02bi">
+    <h4 id="h.jog6bjjl02bi" class="c14">
       <span class="c5">Privacy Policy</span>
     </h4>
     <p class="c3">
@@ -39,7 +39,7 @@
         telephone.</span
       >
     </p>
-    <h4 class="c1" id="h.c9z2qvwnujsx">
+    <h4 id="h.c9z2qvwnujsx" class="c1">
       <span class="c5">1. Definitions</span>
     </h4>
     <p class="c3">
@@ -244,7 +244,7 @@
         >
       </li>
     </ul>
-    <h4 class="c1" id="h.zedn82ae88j2">
+    <h4 id="h.zedn82ae88j2" class="c1">
       <span class="c5">2. Name and Address of the controller</span>
     </h4>
     <p class="c3">
@@ -261,7 +261,7 @@
     <p class="c3"><span class="c2">Phone: +4917620659405</span></p>
     <p class="c3"><span class="c2">Email: andre.bappert@code.berlin</span></p>
     <p class="c3"><span class="c2">Website: www.productcube.io</span></p>
-    <h4 class="c1" id="h.lmg7o1lk6uut"><span class="c5">3. Cookies</span></h4>
+    <h4 id="h.lmg7o1lk6uut" class="c1"><span class="c5">3. Cookies</span></h4>
     <p class="c3">
       <span class="c2"
         >The Internet pages of the Productpad use cookies. Cookies are text
@@ -315,7 +315,7 @@
         website may be entirely usable.</span
       >
     </p>
-    <h4 class="c1" id="h.n7lumw6neqcs">
+    <h4 id="h.n7lumw6neqcs" class="c1">
       <span class="c5">4. Collection of general data and information</span>
     </h4>
     <p class="c3">
@@ -350,7 +350,7 @@
         provided by a data subject.</span
       >
     </p>
-    <h4 class="c1" id="h.1tm7i250ym7t">
+    <h4 id="h.1tm7i250ym7t" class="c1">
       <span class="c5">5. Registration on our website</span>
     </h4>
     <p class="c3">
@@ -401,7 +401,7 @@
         this respect as contact persons.</span
       >
     </p>
-    <h4 class="c1" id="h.qhv0iwbfu053">
+    <h4 id="h.qhv0iwbfu053" class="c1">
       <span class="c5">6. Subscription to our newsletters</span>
     </h4>
     <p class="c3">
@@ -456,7 +456,7 @@
         this to the controller in a different way.</span
       >
     </p>
-    <h4 class="c1" id="h.r38ralj3lmb">
+    <h4 id="h.r38ralj3lmb" class="c1">
       <span class="c5">7. Newsletter-Tracking</span>
     </h4>
     <p class="c3">
@@ -484,7 +484,7 @@
         receipt of the newsletter as a revocation.</span
       >
     </p>
-    <h4 class="c1" id="h.2kk7lflnyv3e">
+    <h4 id="h.2kk7lflnyv3e" class="c1">
       <span class="c5">8. Routine erasure and blocking of personal data</span>
     </h4>
     <p class="c3">
@@ -504,7 +504,7 @@
         with legal requirements.</span
       >
     </p>
-    <h4 class="c1" id="h.n4u9jrvf1hd3">
+    <h4 id="h.n4u9jrvf1hd3" class="c1">
       <span class="c5">9. Rights of the data subject</span>
     </h4>
     <ul class="c6 lst-kix_licn33vegu0m-0 start">
@@ -914,7 +914,7 @@
         >
       </li>
     </ul>
-    <h4 class="c1" id="h.7zmk3wqlikhg">
+    <h4 id="h.7zmk3wqlikhg" class="c1">
       <span class="c5"
         >10. Data protection provisions about the application and use of
         Facebook</span
@@ -998,7 +998,7 @@
         data subject to eliminate a data transmission to Facebook.</span
       >
     </p>
-    <h4 class="c1" id="h.w0casfxyxkk2">
+    <h4 id="h.w0casfxyxkk2" class="c1">
       <span class="c5"
         >11. Data protection provisions about the application and use of
         LinkedIn</span
@@ -1077,7 +1077,7 @@
         https://www.linkedin.com/legal/cookie-policy.</span
       >
     </p>
-    <h4 class="c1" id="h.lhvfcnccyci0">
+    <h4 id="h.lhvfcnccyci0" class="c1">
       <span class="c5"
         >12. Data protection provisions about the application and use of
         Twitter</span
@@ -1149,7 +1149,7 @@
         under https://twitter.com/privacy?lang=en.</span
       >
     </p>
-    <h4 class="c1" id="h.c8ijj8j9kbxw">
+    <h4 id="h.c8ijj8j9kbxw" class="c1">
       <span class="c5">13. Legal basis for the processing</span>
     </h4>
     <p class="c3">
@@ -1185,7 +1185,7 @@
         controller (Recital 47 Sentence 2 GDPR).</span
       >
     </p>
-    <h4 class="c1" id="h.lu6my8k0dfg8">
+    <h4 id="h.lu6my8k0dfg8" class="c1">
       <span class="c5"
         >14. The legitimate interests pursued by the controller or by a third
         party</span
@@ -1198,7 +1198,7 @@
         the well-being of all our employees and the shareholders.</span
       >
     </p>
-    <h4 class="c1" id="h.s161bsf2viyx">
+    <h4 id="h.s161bsf2viyx" class="c1">
       <span class="c5"
         >15. Period for which the personal data will be stored</span
       >
@@ -1212,7 +1212,7 @@
         of a contract.</span
       >
     </p>
-    <h4 class="c1" id="h.dyclz13mla0d">
+    <h4 id="h.dyclz13mla0d" class="c1">
       <span class="c5"
         >16. Provision of personal data as statutory or contractual requirement;
         Requirement necessary to enter into a contract; Obligation of the data
@@ -1239,7 +1239,7 @@
         data.</span
       >
     </p>
-    <h4 class="c1" id="h.cr8pgait6czd">
+    <h4 id="h.cr8pgait6czd" class="c1">
       <span class="c5">17. Existence of automated decision-making</span>
     </h4>
     <p class="c3">

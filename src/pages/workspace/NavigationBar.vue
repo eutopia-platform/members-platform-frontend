@@ -5,6 +5,7 @@
     <ul class="pages">
       <Item
         v-for="item in items"
+        :key="items.indexOf(item)"
         :icon="item.icon"
         :link="item.link"
         @open="openPage"
@@ -26,11 +27,6 @@ export default {
     Brand,
     Item,
   },
-  methods: {
-    openPage: function(link) {
-      this.$router.push(link)
-    },
-  },
   data: () => ({
     items: [
       {
@@ -50,6 +46,11 @@ export default {
       },
     ],
   }),
+  methods: {
+    openPage: function(link) {
+      this.$router.push(link)
+    },
+  },
 }
 </script>
 

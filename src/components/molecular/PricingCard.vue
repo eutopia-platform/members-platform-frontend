@@ -1,18 +1,12 @@
 <template>
   <div class="pricing-card">
     <div class="pc-shape">
-      <Header quaternary class="title">
-        {{ title }}
-      </Header>
-      <p class="pc-price">
-        {{ price }}
-      </p>
+      <Header quaternary class="title">{{ title }}</Header>
+      <p class="pc-price">{{ price }}</p>
       <Small>when billed annually</Small>
-      <slot class="pc-image"> </slot>
+      <slot class="pc-image"></slot>
       <ul>
-        <li v-for="feat in feats">
-          {{ feat }}
-        </li>
+        <li v-for="feat in feats" :key="feats.indexOf(feat)">{{ feat }}</li>
       </ul>
       <Button class="bt-pc-request" @click="handleRequest"
         >Request Access</Button
@@ -28,15 +22,24 @@ import Button from '../atomic/Button.vue'
 
 export default {
   name: 'PricingCard',
-  props: {
-    title: String,
-    price: String,
-    feats: Array,
-  },
   components: {
     Header,
     Small,
     Button,
+  },
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    price: {
+      type: String,
+      default: '',
+    },
+    feats: {
+      type: Array,
+      default: () => [],
+    },
   },
   methods: {
     handleRequest() {
