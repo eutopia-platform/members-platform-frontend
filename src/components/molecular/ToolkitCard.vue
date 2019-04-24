@@ -4,7 +4,7 @@
       <div class='front'>
         <Icon :src="img"></Icon>
         <Header quaternary>
-          {{ name }}
+          {{ title }}
         </Header>
       </div>
       <div class='back'>
@@ -35,7 +35,10 @@ export default new Molecular({
     Paragraph
   },
   props: {
-    name: String,
+    title: {
+      type: String,
+      default: 'unknown toolkit'
+    },
   },
   computed: {
     img: () => require('/../data/img/toolkits/placeholder.svg'),

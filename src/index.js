@@ -38,17 +38,16 @@ const createClient = (url, sendToken = false) => new ApolloClient({
 const clients = process.env.NODE_ENV === 'development'
   ? {
     auth: createClient('http://localhost:4000'),
-    user: createClient('http://localhost:5000', true)
+    user: createClient('http://localhost:5000', true),
+    tool: createClient('http://localhost:7000')
   } : {
     auth: createClient('https://auth.api.productcube.io/'),
-    user: createClient('https://user.api.productcube.io', true)
+    user: createClient('https://user.api.productcube.io', true),
+    tool: createClient('https://tool.api.productcube.io')
   }
 
 const apolloProvider = new VueApollo({
-  clients: {
-    auth: clients.auth,
-    user: clients.user
-  },
+  clients,
   defaultClient: clients.user
 })
 

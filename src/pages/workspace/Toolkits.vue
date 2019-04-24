@@ -11,12 +11,13 @@
           Based on templates, they help you to structure, test and validate your assumptions scientifically. 
         </Paragraph>
       </InfoCard>
-      <Toolkit v-for="i in 100" name="Toolkit">{{ i }}</Toolkit>
+      <Toolkit v-for='i in toolkits' :title='i.title'></Toolkit>
     </div>
   </div>
 </template>
 
 <script>
+import gql from 'graphql-tag'
 import Header from '/components/atomic/Header'
 import Card from '/components/atomic/Card'
 import Paragraph from '/components/atomic/Paragraph'
@@ -26,6 +27,17 @@ import InfoCard from '/components/molecular/InfoCard'
 
 export default {
   name: 'Toolkits',
+  apollo: {
+    $client: 'tool',
+    toolkits: gql`{
+      toolkits {
+        title
+      }
+    }`
+  },
+  data: () => ({
+    toolkits: []
+  }),
   components: {
     Header,
     Card,
@@ -33,7 +45,7 @@ export default {
     InfoCard,
     Paragraph,
     Break
-  },
+  }
 }
 </script>
 
