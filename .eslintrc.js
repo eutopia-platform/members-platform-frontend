@@ -4,7 +4,7 @@ const config = {
     browser: true,
   },
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 2018,
   },
   globals: {
     module: true,
