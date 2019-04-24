@@ -30,11 +30,19 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
+import Header from '/components/atomic/Header'
+import Input from '/components/atomic/Input'
+import Paragraph from '/components/atomic/Paragraph'
+import Button from '/components/atomic/Button'
 
 export default {
   name: 'ViewMembers',
   components: {
     ViewBase,
+    Header,
+    Input,
+    Paragraph,
+    Button,
   },
   extends: ViewBase,
   data: () => ({

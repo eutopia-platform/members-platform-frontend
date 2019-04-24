@@ -22,15 +22,21 @@
 </template>
 
 <script>
-import ViewBase from '../ViewBase.vue'
 import gql from 'graphql-tag'
-import Checkbox from '~/components/atomic/Checkbox'
+import ViewBase from '../ViewBase.vue'
+import Checkbox from '/components/atomic/Checkbox'
+import Header from '/components/atomic/Header'
+import Input from '/components/atomic/Input'
+import Button from '/components/atomic/Button'
 
 export default {
   name: 'ViewEmail',
   components: {
     ViewBase,
     Checkbox,
+    Header,
+    Input,
+    Button,
   },
   extends: ViewBase,
   data: function() {

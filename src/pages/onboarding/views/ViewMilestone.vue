@@ -1,9 +1,9 @@
 <template>
   <ViewBase :img="image">
     <div>
-      <Header secondary
-        >What milestone are you working on at the moment?</Header
-      >
+      <Header secondary>
+        What milestone are you working on at the moment?
+      </Header>
       <Paragraph>
         A milestone brings together the key aspects of a successful initiative -
         your teammates, objectives, key results, toolkits and frameworks so you
@@ -34,11 +34,19 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
+import Header from '/components/atomic/Header'
+import Paragraph from '/components/atomic/Paragraph'
+import Input from '/components/atomic/Input'
+import Button from '/components/atomic/Button'
 
 export default {
   name: 'ViewMilestone',
   components: {
     ViewBase,
+    Header,
+    Paragraph,
+    Input,
+    Button,
   },
   extends: ViewBase,
   data: () => ({

@@ -19,8 +19,9 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
-import Input from '~/components/atomic/Input'
-import Button from '~/components/atomic/Button'
+import Input from '/components/atomic/Input'
+import Button from '/components/atomic/Button'
+import Header from '/components/atomic/Header'
 
 export default {
   name: 'ViewName',
@@ -28,6 +29,7 @@ export default {
     ViewBase,
     Input,
     Button,
+    Header,
   },
   extends: ViewBase,
   data: () => ({
