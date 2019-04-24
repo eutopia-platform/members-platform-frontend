@@ -2,6 +2,8 @@
   <form class="pin-input" @paste="onPaste">
     <div v-for="(_, i) in groups" :key="i" class="pin-group">
       <input
+        v-for="(__, e) in digits"
+        :key="i * e"
         type="text"
         :name="i * digits + e"
         maxlength="1"
