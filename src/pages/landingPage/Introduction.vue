@@ -1,188 +1,31 @@
 <template>
   <div class="intro" :style="style">
-    <Header primary v-if="showCenterBig">{{centerBig}}</Header>
+    <Header v-if="showCenterBig" primary class="center-big">{{ centerBig }}</Header>
     <div v-if="showGroup1" class="group-1">
-      <Header tertiary>{{group1Small}}</Header>
-      <Header secondary>{{group1Big}}</Header>
+      <Header tertiary>{{ group1Small }}</Header>
+      <Header secondary>{{ group1Big }}</Header>
       <Icon :src="group1Icon"></Icon>
     </div>
+    <div class="ring"><div class="ring-inner" :style="style"></div></div>
+    <div class="check" v-for="i in num_checks" :key="i" :style="getCheckPos(i)" :class="getCheckClass(i)"></div>
   </div>
 </template>
 
 <script>
+import frames from './animation'
 import Header from '/components/atomic/Header'
 import Icon from '/components/atomic/Icon'
 
 export default {
   name: 'Introduction',
+  components: {
+    Header,
+    Icon,
+  },
   data: () => ({
-    frames: [
-      {},
-      {
-        time: 200,
-        background: '#5A6DEE',
-        centerBig: "THIS"
-      },
-      {
-        time: 200,
-        centerBig: "IS"
-      },
-      {
-        time: 2000,
-        centerBig: "CUBE"
-      },
-      {
-        time: 1000,
-        background: '#7EC0FA',
-        group1: {
-          small: "YOU WRITE YOUR",
-          big: "VISION STATEMENT",
-          icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        group1: {
-          small: "YOU TEST YOUR",
-          big: "VISION STATEMENT",
-          icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 2000,
-        group1: {
-          small: "YOU VALIDATE YOUR",
-          big: "VISION STATEMENT",
-          icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        background: '#F9DB6F',
-        group1: {
-          small: "YOU IDENTIFY YOUR",
-          big: "EARLY ADOPTER",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        group1: {
-          small: "YOU TEST YOUR",
-          big: "EARLY ADOPTER",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 2000,
-        group1: {
-          small: "YOU VALIDATE YOUR",
-          big: "EARLY ADOPTER",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        background: '#5A6DEE',
-        group1: {
-          small: "YOU IDENTIFY THE",
-          big: "PROBLEM",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        group1: {
-          small: "YOU TEST THE",
-          big: "PROBLEM",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 2000,
-        group1: {
-          small: "YOU VALIDATE THE",
-          big: "PROBLEM",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        background: '#BD7DD6',
-        group1: {
-          small: "YOU DEFINE YOUR",
-          big: "VALUE HYPOTHESIS",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        group1: {
-          small: "YOU TEST YOUR",
-          big: "VALUE HYPOTHESIS",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 2000,
-        group1: {
-          small: "YOU VALIDATE YOUR",
-          big: "VALUE HYPOTHESIS",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        background: '#EA7363',
-        group1: {
-          small: "YOU DESIGN YOUR",
-          big: "BUSINESS MODEL",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        group1: {
-          small: "YOU TEST YOUR",
-          big: "BUSINESS MODEL",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 2000,
-        group1: {
-          small: "YOU VALIDATE YOUR",
-          big: "BUSINESS MODEL",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        background: '#253DBC',
-        group1: {
-          small: "YOU BUILD YOUR",
-          big: "MVP",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 1000,
-        group1: {
-          small: "YOU LAUNCH YOUR",
-          big: "MVP",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-      {
-        time: 2000,
-        group1: {
-          small: "IT\'S TIME TO",
-          big: "SCALE YOUR STARTUP",
-           icon: require("/../data/img/landingpage/step1.svg"),
-        }
-      },
-    ],
+    frames: frames,
     frame_val: -1,
+    num_checks: 6,
   }),
   computed: {
     centerBig: function() {
@@ -215,11 +58,7 @@ export default {
     },
     showGroup1: function() {
       return this.frames[this.frame].hasOwnProperty('group1')
-    }
-  },
-  components: {
-    Header,
-    Icon
+    },
   },
   mounted: function() {
     this.animate()
@@ -231,6 +70,24 @@ export default {
         () => window.requestAnimationFrame(this.animate),
         this.frames[this.frame].time ? this.frames[this.frame].time : 0
       )
+    },
+    getCheckPos: function(i) {
+      const off = 4 / 3 * Math.PI
+      return {
+        left: `calc(50% + ${Math.sin(off + i / this.num_checks * 2 * -Math.PI) * 20}rem)`,
+        top: `calc(50% + ${Math.cos(off + i / this.num_checks * 2 * -Math.PI) * 20}rem)`,
+      }
+    },
+    getCheckClass: function(i) {
+      let step = this.frame - 4
+      let stage = 0
+      if (step < (i - 1) * 3)
+        stage = 0
+      else if (step > (i - 1) * 3 + 2)
+        stage = 3
+      else
+        stage = step - (i - 1) * 3 + 1
+      return 'stage-' + stage
     },
     getAnimProp: function(prop) {
       let i = this.frame
@@ -253,22 +110,80 @@ export default {
   text-align: center;
   box-sizing: border-box;
   padding: 1px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  top: 0;
 
-  & * {
-    position: relative;
+  * {
+    z-index: 1;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     color: white;
+    margin: 0;
+  }
+
+  .center-big {
+    margin: 0;
   }
 
   .group-1 {
+    text-align: center;
+
+    * {
+      position: static;
+      transform: none;
+    }
     .icon {
-      margin-top: 5rem;
+      margin-top: 1.5rem;
       height: 10rem;
       width: 10rem;
-      display: block;
     }
+  }
+
+  .ring {
+    z-index: 0;
+    margin: 1px;
+    background-color: white;
+    width: 40.25rem;
+    height: 40.25rem;
+    border-radius: 50%;
+
+    .ring-inner {
+      width: calc(100% - .5rem);
+      height: calc(100% - .5rem);
+      border-radius: 50%;
+    }
+  }
+
+  .check {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: .2rem solid transparent;
+    -webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+  }
+
+  .stage-0 {
+    opacity: 0;
+  }
+
+  .stage-1 {
+    background-color: #FFFFFF;
+  }
+
+  .stage-2 {
+    background-color:#E6B940;
+    border-color: white;
+  }
+
+  .stage-3 {
+    background-color: #54AB8A;
+    border-color: white;
   }
 }
 </style>
