@@ -19,18 +19,7 @@
     </PageSlide>
 
     <PageSlide>
-      <SplitViewHorizontal>
-        <template v-slot:left>
-          <Introduction></Introduction>
-        </template>
-        <template v-slot:right>
-          <img
-            class="image-right"
-            src="../../data/img/landingpage/laptop.svg"
-            style="transform: translate(-40%, -50%)"
-          />
-        </template>
-      </SplitViewHorizontal>
+      <Introduction></Introduction>
     </PageSlide>
 
     <PageSlide>
