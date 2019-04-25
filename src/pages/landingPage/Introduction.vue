@@ -61,7 +61,8 @@ export default {
     },
   },
   mounted: function() {
-    this.animate()
+    window.addEventListener('scroll', this.onScroll)
+    // this.animate()
   },
   methods: {
     animate: function() {
@@ -97,6 +98,12 @@ export default {
       }
       return this.frames[i][prop]
     },
+    onScroll: function() {
+      if (window.scrollY > this.$el.offsetTop - this.$el.offsetHeight / 6) {
+        this.animate()
+        window.removeEventListener('scroll', this.onScroll)
+      }
+    }
   },
 }
 </script>

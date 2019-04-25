@@ -1,5 +1,7 @@
 export default [
-      {},
+      {
+        background: '#5A6DEE',
+      },
       {
         time: 200,
         background: '#5A6DEE',
