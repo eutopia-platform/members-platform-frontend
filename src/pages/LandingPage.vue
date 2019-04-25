@@ -2,7 +2,6 @@
   <div class="landing-page">
     <Logo></Logo>
 
-    <!-- Welcome -->
     <PageSlide>
       <template v-slot>
         <SplitViewHorizontal>
@@ -19,7 +18,6 @@
       </template>
     </PageSlide>
 
-    <!-- Intro -->
     <PageSlide>
       <SplitViewHorizontal>
         <template v-slot:left>
@@ -30,21 +28,6 @@
             class="image-right"
             src="../../data/img/landingpage/laptop.svg"
             style="transform: translate(-40%, -50%)"
-          />
-        </template>
-      </SplitViewHorizontal>
-    </PageSlide>
-
-    <!-- Pricing -->
-    <PageSlide>
-      <SplitViewHorizontal>
-        <template v-slot:left>
-          <Pricing></Pricing>
-        </template>
-        <template v-slot:right>
-          <img
-            class="image-right"
-            src="../../data/img/landingpage/slide3.svg"
           />
         </template>
       </SplitViewHorizontal>
@@ -65,7 +48,6 @@ import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue'
 import Welcome from './landingPage/Welcome.vue'
 import Introduction from './landingPage/Introduction.vue'
 import Contact from './landingPage/Contact.vue'
-import Pricing from './landingPage/Pricing.vue'
 import Footer from './landingPage/Footer.vue'
 
 export default {
@@ -78,7 +60,6 @@ export default {
     Introduction,
     Contact,
     Footer,
-    Pricing,
   },
 }
 </script>
