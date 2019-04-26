@@ -92,7 +92,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  routes, // short for `routes: routes`
+  routes,
 })
 
 // event bus for communication of unrelated components

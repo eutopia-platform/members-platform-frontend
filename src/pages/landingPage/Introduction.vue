@@ -1,13 +1,21 @@
 <template>
   <div class="intro" :style="style">
-    <Header v-if="showCenterBig" primary class="center-big">{{ centerBig }}</Header>
+    <Header v-if="showCenterBig" primary class="center-big">{{
+      centerBig
+    }}</Header>
     <div v-if="showGroup1" class="group-1">
       <Header tertiary>{{ group1Small }}</Header>
       <Header secondary>{{ group1Big }}</Header>
       <Icon :src="group1Icon"></Icon>
     </div>
     <div class="ring"><div class="ring-inner" :style="style"></div></div>
-    <div class="check" v-for="i in num_checks" :key="i" :style="getCheckPos(i)" :class="getCheckClass(i)"></div>
+    <div
+      v-for="i in num_checks"
+      :key="i"
+      class="check"
+      :style="getCheckPos(i)"
+      :class="getCheckClass(i)"
+    ></div>
   </div>
 </template>
 
@@ -62,7 +70,6 @@ export default {
   },
   mounted: function() {
     window.addEventListener('scroll', this.onScroll)
-    // this.animate()
   },
   methods: {
     animate: function() {
@@ -73,21 +80,22 @@ export default {
       )
     },
     getCheckPos: function(i) {
-      const off = 4 / 3 * Math.PI
+      const off = (4 / 3) * Math.PI
       return {
-        left: `calc(50% + ${Math.sin(off + i / this.num_checks * 2 * -Math.PI) * 20}rem)`,
-        top: `calc(50% + ${Math.cos(off + i / this.num_checks * 2 * -Math.PI) * 20}rem)`,
+        left: `calc(50% + ${Math.sin(
+          off + (i / this.num_checks) * 2 * -Math.PI
+        ) * 20}rem)`,
+        top: `calc(50% + ${Math.cos(
+          off + (i / this.num_checks) * 2 * -Math.PI
+        ) * 20}rem)`,
       }
     },
     getCheckClass: function(i) {
       let step = this.frame - 4
       let stage = 0
-      if (step < (i - 1) * 3)
-        stage = 0
-      else if (step > (i - 1) * 3 + 2)
-        stage = 3
-      else
-        stage = step - (i - 1) * 3 + 1
+      if (step < (i - 1) * 3) stage = 0
+      else if (step > (i - 1) * 3 + 2) stage = 3
+      else stage = step - (i - 1) * 3 + 1
       return 'stage-' + stage
     },
     getAnimProp: function(prop) {
@@ -103,7 +111,7 @@ export default {
         this.animate()
         window.removeEventListener('scroll', this.onScroll)
       }
-    }
+    },
   },
 }
 </script>
@@ -159,8 +167,8 @@ export default {
     border-radius: 50%;
 
     .ring-inner {
-      width: calc(100% - .5rem);
-      height: calc(100% - .5rem);
+      width: calc(100% - 0.5rem);
+      height: calc(100% - 0.5rem);
       border-radius: 50%;
     }
   }
@@ -169,7 +177,7 @@ export default {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    border: .2rem solid transparent;
+    border: 0.2rem solid transparent;
     -webkit-transition: background-color 100ms linear;
     -ms-transition: background-color 100ms linear;
     transition: background-color 100ms linear;
@@ -180,16 +188,16 @@ export default {
   }
 
   .stage-1 {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
   }
 
   .stage-2 {
-    background-color:#E6B940;
+    background-color: #e6b940;
     border-color: white;
   }
 
   .stage-3 {
-    background-color: #54AB8A;
+    background-color: #54ab8a;
     border-color: white;
   }
 }
