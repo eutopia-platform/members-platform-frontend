@@ -17,7 +17,7 @@
 
 <script>
 import UserStatus from '/components/molecular/UserStatus'
-import Brand from '/components/atomic/Brand'
+import Brand from '/components/molecular/Brand'
 import Item from './NavigationBarItem'
 
 export default {
@@ -70,6 +70,10 @@ export default {
   }
 
   @include colorScheme('neutral');
+
+  .brand {
+    margin-top: 1rem;
+  }
 
   .status {
     margin-top: 2rem;

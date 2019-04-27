@@ -1,6 +1,6 @@
 <template>
   <div class="landing-page">
-    <Logo></Logo>
+    <Brand></Brand>
 
     <PageSlide>
       <template v-slot>
@@ -34,7 +34,7 @@
 
 <script>
 import PageSlide from '../components/atomic/PageSlide'
-import Logo from '../components/atomic/Logo'
+import Brand from '../components/molecular/Brand'
 import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue'
 import Welcome from './landingPage/Welcome.vue'
 import Introduction from './landingPage/Introduction.vue'
@@ -45,7 +45,7 @@ import Process from './landingPage/Process'
 export default {
   name: 'LandingPage',
   components: {
-    Logo,
+    Brand,
     PageSlide,
     SplitViewHorizontal,
     Welcome,
@@ -68,5 +68,10 @@ export default {
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.brand {
+  position: absolute;
+  margin: 1rem;
 }
 </style>

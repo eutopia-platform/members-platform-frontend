@@ -9,7 +9,10 @@
       <div class="step">
         <Icon :src="img1"></Icon>
         <Header tertiary>Choose a toolkit</Header>
-        <Paragraph>Toolkits help you get the job done</Paragraph>
+        <Paragraph>
+          Toolkits help you get the job done. No matter if you want to identify your customer, 
+          develop a new feature or even an entire MVP.
+        </Paragraph>
       </div>
       <div class="step">
         <Icon :src="img2"></Icon>

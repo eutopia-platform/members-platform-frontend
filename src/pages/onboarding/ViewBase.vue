@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Logo></Logo>
+    <Brand></Brand>
     <div class="view">
       <div class="content-half">
         <div class="content-section">
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Logo from '../../components/atomic/Logo.vue'
+import Brand from '../../components/molecular/Brand.vue'
 
 export default {
   name: 'ViewBase',
@@ -26,7 +26,7 @@ export default {
     $client: 'auth',
   },
   components: {
-    Logo,
+    Brand,
   },
   props: {
     img: {
@@ -182,11 +182,11 @@ export default {
 @import '../../components/sharedStyles/colors.scss';
 @import '../../components/sharedStyles/responsive.scss';
 
-.logo {
+.brand {
   position: absolute;
   top: 0;
   left: 0;
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .view {
