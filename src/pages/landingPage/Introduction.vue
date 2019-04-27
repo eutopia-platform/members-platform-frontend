@@ -1,5 +1,12 @@
 <template>
   <div class="intro" :style="style">
+    <div v-if="showWelcome" class="welcome">
+      <Header secondary>What does it take</Header>
+      <Header primary class="text-big"
+        >to create a world chaning product?</Header
+      >
+      <Button big @click="animate">Click to find out</Button>
+    </div>
     <Header v-if="showCenterBig" primary class="center-big">{{
       centerBig
     }}</Header>
@@ -23,12 +30,14 @@
 import frames from './animation'
 import Header from '/components/atomic/Header'
 import Icon from '/components/atomic/Icon'
+import Button from '/components/atomic/Button'
 
 export default {
   name: 'Introduction',
   components: {
     Header,
     Icon,
+    Button,
   },
   data: () => ({
     frames: frames,
@@ -66,6 +75,9 @@ export default {
     },
     showGroup1: function() {
       return this.frames[this.frame].hasOwnProperty('group1')
+    },
+    showWelcome: function() {
+      return this.frames[this.frame].hasOwnProperty('welcome')
     },
   },
   mounted: function() {
@@ -107,10 +119,10 @@ export default {
       return this.frames[i][prop]
     },
     onScroll: function() {
-      if (window.scrollY > this.$el.offsetTop - this.$el.offsetHeight / 6) {
-        this.animate()
-        window.removeEventListener('scroll', this.onScroll)
-      }
+      // if (window.scrollY > this.$el.offsetTop - this.$el.offsetHeight / 6) {
+      //   this.animate()
+      //   window.removeEventListener('scroll', this.onScroll)
+      // }
     },
   },
 }
@@ -155,6 +167,22 @@ export default {
       margin-top: 1.5rem;
       height: 10rem;
       width: 10rem;
+    }
+  }
+
+  .welcome {
+    text-align: center;
+    width: 40rem;
+
+    * {
+      position: static;
+      transform: none;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .text-big {
+      text-transform: uppercase;
     }
   }
 

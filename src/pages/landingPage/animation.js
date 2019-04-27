@@ -1,10 +1,10 @@
 export default [
   {
-    background: '#5A6DEE',
+    welcome: true,
+    background: '#253DBC',
   },
   {
     time: 200,
-    background: '#5A6DEE',
     centerBig: 'THIS',
   },
   {
