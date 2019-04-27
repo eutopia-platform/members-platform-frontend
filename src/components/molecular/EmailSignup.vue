@@ -1,7 +1,7 @@
 <template>
   <form :class="getClass">
-    <Input />
-    <Button>Subscribe</Button>
+    <Input v-model="email" placeholder="email" />
+    <Button @click="submit">Subscribe</Button>
   </form>
 </template>
 
@@ -9,12 +9,33 @@
 import Molecular from '/components/sharedScripts/molecular'
 import Input from '/components/atomic/Input'
 import Button from '/components/atomic/Button'
+import gql from 'graphql-tag'
 
 export default new Molecular({
   name: 'EmailSignup',
+  apollo: {
+    $client: 'mail',
+  },
   components: {
     Input,
     Button,
+  },
+  data: {
+    email: '',
+  },
+  methods: {
+    submit: function() {
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation newsletter($email: String!) {
+            subscribeNews(email: $email)
+          }
+        `,
+        variables: {
+          email: this.email,
+        },
+      })
+    },
   },
 })
 </script>

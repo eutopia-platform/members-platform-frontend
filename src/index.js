@@ -44,17 +44,16 @@ const clients =
     ? {
         auth: createClient('http://localhost:4000'),
         user: createClient('http://localhost:5000', true),
+        mail: createClient('http://localhost:9000'),
       }
     : {
         auth: createClient('https://auth.api.productcube.io/'),
         user: createClient('https://user.api.productcube.io', true),
+        mail: createClient('https://mail.api.productcube.io'),
       }
 
 const apolloProvider = new VueApollo({
-  clients: {
-    auth: clients.auth,
-    user: clients.user,
-  },
+  clients,
   defaultClient: clients.user,
 })
 
