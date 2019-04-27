@@ -22,6 +22,8 @@
       <Introduction></Introduction>
     </PageSlide>
 
+    <Process></Process>
+
     <PageSlide>
       <Contact></Contact>
     </PageSlide>
@@ -38,6 +40,7 @@ import Welcome from './landingPage/Welcome.vue'
 import Introduction from './landingPage/Introduction.vue'
 import Contact from './landingPage/Contact.vue'
 import Footer from './landingPage/Footer.vue'
+import Process from './landingPage/Process'
 
 export default {
   name: 'LandingPage',
@@ -49,6 +52,7 @@ export default {
     Introduction,
     Contact,
     Footer,
+    Process,
   },
 }
 </script>
