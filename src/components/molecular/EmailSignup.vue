@@ -28,12 +28,11 @@ export default new Molecular({
   width: 25rem;
   height: 2.5rem;
   text-align: left;
-  border-radius: 1.25rem;
+  border-radius: .4rem;
   box-shadow: $shadow-default;
 
   * {
     margin: 0;
-    border-radius: 1.25rem !important;
     border: none;
   }
 
