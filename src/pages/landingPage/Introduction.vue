@@ -1,10 +1,8 @@
 <template>
   <div class="intro" :style="style">
     <div v-if="showWelcome" class="welcome">
-      <Header secondary>What does it take</Header>
-      <Header primary class="text-big"
-        >to create a world chaning product?</Header
-      >
+      <Header secondary>{{ welcome_1 }}</Header>
+      <Header primary class="text-big">{{ welcome_2 }}</Header>
       <Button big @click="animate">Click to find out</Button>
     </div>
     <Header v-if="showCenterBig" primary class="center-big">{{
@@ -14,6 +12,13 @@
       <Header tertiary>{{ group1Small }}</Header>
       <Header secondary>{{ group1Big }}</Header>
       <Icon :src="group1Icon"></Icon>
+    </div>
+    <div v-if="showSignup" class="signup">
+      <Header primary>Cube</Header>
+      <Header primary :class="{ transparent: !showSignupBig }"
+        >scale your startup</Header
+      >
+      <EmailSignup :class="{ transparent: !showEmailForm }"></EmailSignup>
     </div>
     <div class="ring"><div class="ring-inner" :style="style"></div></div>
     <div
@@ -31,6 +36,7 @@ import frames from './animation'
 import Header from '/components/atomic/Header'
 import Icon from '/components/atomic/Icon'
 import Button from '/components/atomic/Button'
+import EmailSignup from '/components/molecular/EmailSignup'
 
 export default {
   name: 'Introduction',
@@ -38,11 +44,14 @@ export default {
     Header,
     Icon,
     Button,
+    EmailSignup,
   },
   data: () => ({
     frames: frames,
     frame_val: -1,
     num_checks: 6,
+    welcome_1: '',
+    welcome_2: '',
   }),
   computed: {
     centerBig: function() {
@@ -56,6 +65,12 @@ export default {
     },
     group1Icon: function() {
       return this.getAnimProp('group1').icon
+    },
+    signupSmall: function() {
+      return this.getAnimProp('signup').small
+    },
+    signupBig: function() {
+      return this.getAnimProp('signup').big
     },
     frame: {
       get: function() {
@@ -76,6 +91,17 @@ export default {
     showGroup1: function() {
       return this.frames[this.frame].hasOwnProperty('group1')
     },
+    showSignup: function() {
+      return this.frames[this.frame].hasOwnProperty('signup')
+    },
+    showEmailForm: function() {
+      const signup = this.frames[this.frame].signup
+      return signup ? signup.form : false
+    },
+    showSignupBig: function() {
+      const signup = this.frames[this.frame].signup
+      return signup ? signup.big : false
+    },
     showWelcome: function() {
       return this.frames[this.frame].hasOwnProperty('welcome')
     },
@@ -89,6 +115,19 @@ export default {
       setTimeout(
         () => window.requestAnimationFrame(this.animate),
         this.frames[this.frame].time ? this.frames[this.frame].time : 0
+      )
+    },
+    typeHello: function() {
+      const type = (i, str, target, callback) => {
+        if (i >= str.length) {
+          if (callback) callback()
+          return
+        }
+        this[target] += str[i]
+        setTimeout(() => type(++i, str, target, callback), 50)
+      }
+      type(0, 'This is how you use Cube', 'welcome_1', () =>
+        type(0, 'to build and launch an MVP.', 'welcome_2')
       )
     },
     getCheckPos: function(i) {
@@ -119,10 +158,11 @@ export default {
       return this.frames[i][prop]
     },
     onScroll: function() {
-      // if (window.scrollY > this.$el.offsetTop - this.$el.offsetHeight / 6) {
-      //   this.animate()
-      //   window.removeEventListener('scroll', this.onScroll)
-      // }
+      if (window.scrollY > this.$el.offsetTop - this.$el.offsetHeight / 6) {
+        // this.animate()
+        this.typeHello()
+        window.removeEventListener('scroll', this.onScroll)
+      }
     },
   },
 }
@@ -170,6 +210,22 @@ export default {
     }
   }
 
+  .signup {
+    text-align: center;
+    * {
+      position: static;
+      transform: none;
+    }
+
+    .email-signup {
+      margin-top: 2rem;
+    }
+
+    .transparent {
+      opacity: 0;
+    }
+  }
+
   .welcome {
     text-align: center;
     width: 40rem;
@@ -177,12 +233,14 @@ export default {
     * {
       position: static;
       transform: none;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
     }
 
-    .text-big {
-      text-transform: uppercase;
+    .header {
+      height: 3rem;
+    }
+
+    .button {
+      margin-top: 3rem;
     }
   }
 

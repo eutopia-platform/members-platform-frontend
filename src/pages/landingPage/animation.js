@@ -158,11 +158,37 @@ export default [
     },
   },
   {
-    time: 2000,
-    group1: {
-      small: "IT'S TIME TO",
-      big: 'SCALE YOUR STARTUP',
+    time: 1000,
+    background: '#253DBC',
+    signup: {
+      small: 'CUBE',
+      big: '',
       icon: require('/../data/img/landingpage/step6.svg'),
+    },
+  },
+  {
+    time: 1000,
+    background: '#253DBC',
+    signup: {
+      big: false,
+      form: false,
+    },
+  },
+  {
+    time: 1500,
+    background: '#253DBC',
+    signup: {
+      big: true,
+      form: false,
+    },
+  },
+  {
+    time: 100000,
+    background: '#253DBC',
+    signup: {
+      small: true,
+      big: true,
+      form: true,
     },
   },
 ]
