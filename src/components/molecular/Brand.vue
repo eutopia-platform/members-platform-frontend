@@ -19,13 +19,13 @@ export default new Molecular({
     Icon,
   },
   computed: {
-    logo: () => require('/../data/img/ui/logo.svg')
+    logo: () => require('/../data/img/ui/logo.svg'),
   },
   methods: {
     onClick: function() {
       this.$router.push('/')
-    }
-  }
+    },
+  },
 })
 </script>
 

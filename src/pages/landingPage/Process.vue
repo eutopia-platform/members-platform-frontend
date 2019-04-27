@@ -10,8 +10,8 @@
         <Icon :src="img1"></Icon>
         <Header tertiary>Choose a toolkit</Header>
         <Paragraph>
-          Toolkits help you get the job done. No matter if you want to identify your customer, 
-          develop a new feature or even an entire MVP.
+          Toolkits help you get the job done. No matter if you want to identify
+          your customer, develop a new feature or even an entire MVP.
         </Paragraph>
       </div>
       <div class="step">
@@ -62,6 +62,19 @@ export default {
     img3: () => require('/../data/img/landingpage/test3.svg'),
     img4: () => require('/../data/img/landingpage/test4.svg'),
   },
+  mounted: function() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll: function() {
+      if (window.scrollY > this.$el.offsetTop - this.$el.offsetHeight / 4) {
+        Array.from(this.$el.getElementsByClassName('step')).forEach(step =>
+          step.classList.add('active')
+        )
+        window.removeEventListener('scroll', this.onScroll)
+      }
+    },
+  },
 }
 </script>
 
@@ -92,11 +105,33 @@ export default {
     margin-top: 5rem;
 
     .step {
+      opacity: 0;
       width: 15rem;
+      transition: all 1s ease-out;
+      transform: translateY(-2rem);
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{($i - 1) * 0.15}s;
+        }
+        &:nth-child(even) {
+          transform: translateY(-3rem);
+        }
+      }
+
       * {
         margin: 0;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
+      }
+
+      &.active {
+        opacity: 1;
+        transform: none;
+
+        &:nth-child(odd) {
+          transform: translateY(1rem);
+        }
       }
     }
   }
