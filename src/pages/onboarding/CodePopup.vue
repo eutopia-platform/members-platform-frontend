@@ -2,15 +2,13 @@
   <div class="code-popup">
     <Popup>
       <div class="code-wrap">
-        <Header secondary>
-          Find a secret in your email
-        </Header>
+        <Header secondary>Find a secret in your email</Header>
         <Paragraph>
           We have send you a 6 digit confirmation code to {{ info.email }}. It
           will expire shortly, so please enter your code soon.
         </Paragraph>
         <div class="input-wrap">
-          <PinInput @submit="onSubmit" v-model="pin"></PinInput>
+          <PinInput v-model="pin" @submit="onSubmit"></PinInput>
         </div>
         <Paragraph>
           Keep this tab open to enter your code. If you didn't receive an email,
@@ -42,17 +40,23 @@ export default {
     Icon,
   },
   apollo: {
-    $client: 'auth'
+    $client: 'auth',
   },
-  data: () => ({
-    pin: ''
-  }),
   props: {
-    info: Object,
+    info: {
+      type: Object,
+      default: () => ({}),
+    },
     submit: {
       type: Boolean,
       default: true,
-    }
+    },
+  },
+  data: () => ({
+    pin: '',
+  }),
+  computed: {
+    img: () => require('../../../data/img/onboarding/inbox.svg'),
   },
   methods: {
     onSubmit: function(pin) {
@@ -60,17 +64,16 @@ export default {
         this.$emit('submit', pin)
         return
       }
-      this.$apollo.query({query: gql`{
+      this.$apollo
+        .query({
+          query: gql`{
         isCodeValid(email: "${this.info.email}", code: "${pin}")
-      }`}).then(res => {
-        console.log(pin, res.data)
-        if (res.data.isCodeValid)
-          this.$emit('submit', pin)
-      }) 
-    }
-  },
-  computed: {
-    img: () => require('../../../data/img/onboarding/inbox.svg'),
+      }`,
+        })
+        .then(res => {
+          if (res.data.isCodeValid) this.$emit('submit', pin)
+        })
+    },
   },
 }
 </script>

@@ -2,7 +2,7 @@
   <div class="workspace">
     <Overlay v-if="showOverlay"></Overlay>
     <Navbar></Navbar>
-    <router-view class="page"></router-view>
+    <RouterView class="page"></RouterView>
   </div>
 </template>
 
@@ -10,7 +10,6 @@
 import Overlay from './workspace/Overlay'
 import Navbar from './workspace/NavigationBar'
 import Dashboard from './workspace/Dashboard'
-import Settings from './workspace/Settings'
 import gql from 'graphql-tag'
 
 export default {
@@ -18,18 +17,18 @@ export default {
   components: {
     Overlay,
     Navbar,
-    Dashboard,
-    Settings,
   },
   apollo: {
-    user: gql`{
-      user {
-        isLoggedIn
-        name
-        callname
-        email
+    user: gql`
+      {
+        user {
+          isLoggedIn
+          name
+          callname
+          email
+        }
       }
-    }`
+    `,
   },
   data: function() {
     return {
@@ -39,28 +38,21 @@ export default {
       user: {
         name: '',
         callName: '',
-        email: ''
-      }
-    }
-  },
-  watch: {
-    user: function(user) {
-      if (!user.isLoggedIn)
-        this.$router.push('/login')
-      else
-        console.log(user.name + ' logged in')
-
-      console.log(this.user)
+        email: '',
+      },
     }
   },
   computed: {
     activePage: () => Dashboard,
   },
+  watch: {
+    user: function(user) {
+      if (!user.isLoggedIn) this.$router.push('/login')
+    },
+  },
   created: function() {
-    if (!localStorage.getItem('sessionToken'))
-      this.$router.push('/login')
-
-  }
+    if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
+  },
 }
 </script>
 

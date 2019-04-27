@@ -5,6 +5,7 @@
     <ul class="pages">
       <Item
         v-for="item in items"
+        :key="items.indexOf(item)"
         :icon="item.icon"
         :link="item.link"
         @open="openPage"
@@ -16,7 +17,7 @@
 
 <script>
 import UserStatus from '/components/molecular/UserStatus'
-import Brand from '/components/atomic/Brand'
+import Brand from '/components/molecular/Brand'
 import Item from './NavigationBarItem'
 
 export default {
@@ -25,11 +26,6 @@ export default {
     UserStatus,
     Brand,
     Item,
-  },
-  methods: {
-    openPage: function(link) {
-      this.$router.push(link)
-    },
   },
   data: () => ({
     items: [
@@ -50,6 +46,11 @@ export default {
       },
     ],
   }),
+  methods: {
+    openPage: function(link) {
+      this.$router.push(link)
+    },
+  },
 }
 </script>
 
@@ -69,6 +70,10 @@ export default {
   }
 
   @include colorScheme('neutral');
+
+  .brand {
+    margin-top: 1rem;
+  }
 
   .status {
     margin-top: 2rem;

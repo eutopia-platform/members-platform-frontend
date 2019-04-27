@@ -1,24 +1,24 @@
 <template>
   <div class="onboarding">
-    <component
-      @next="onNext"
-      @queryCode="queryCode"
-      :info="userInfo"
+    <Component
       :is="currentView"
       ref="view"
+      :info="userInfo"
       :submit="submit"
-    ></component>
+      @next="onNext"
+      @queryCode="queryCode"
+    ></Component>
     <CodePopup
       v-if="showCodePopup"
       :info="userInfo"
-      @submit="onCodeSubmit"
       :submit="submit"
+      @submit="onCodeSubmit"
     ></CodePopup>
     <PasswordPopup
       v-if="showPasswordPopup"
       :info="userInfo"
-      @submit="onPasswordSubmit"
       :submit="submit"
+      @submit="onPasswordSubmit"
     ></PasswordPopup>
   </div>
 </template>
@@ -80,7 +80,6 @@ export default {
     )
 
     if (lowercaseViewNames.includes(stage)) {
-      console.log('skip to ' + stage)
       this.currentViewIndex = lowercaseViewNames.indexOf(stage)
     }
   },

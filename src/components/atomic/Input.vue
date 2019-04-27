@@ -1,22 +1,18 @@
 <template>
-  <div class="input-wrap">
-    <input
-      v-model="value"
-      class="input"
-      :name="name"
-      :type="type"
-      :placeholder="placeholder"
-      @input="onInput"
-      @keyup.enter="onEnter"
-      v-bind:class="styleClass"
-      :autocomplete="type === 'password' ? 'new-password' : 'true'"
-    />
-  </div>
+  <input
+    v-model="value"
+    class="input"
+    :name="name"
+    :type="type"
+    :placeholder="placeholder"
+    :class="styleClass"
+    :autocomplete="type === 'password' ? 'new-password' : 'true'"
+    @input="onInput"
+    @keyup.enter="onEnter"
+  />
 </template>
 
 <script>
-import Button from './Button.vue'
-
 export default {
   name: 'Input',
   props: {
@@ -41,14 +37,14 @@ export default {
       type: Boolean,
     },
   },
-  components: {
-    Button,
-  },
   data: () => ({
     value: '',
   }),
   computed: {
     styleClass: comp => 'style-' + comp.look,
+  },
+  mounted: function() {
+    if (this.focus) this.$el.focus()
   },
   methods: {
     onInput(e) {
@@ -66,9 +62,6 @@ export default {
       this.$emit('submit')
     },
   },
-  mounted: function() {
-    if (this.focus) this.$el.focus()
-  },
 }
 </script>
 
@@ -76,10 +69,6 @@ export default {
 @import '../sharedStyles/colors.scss';
 @import '../sharedStyles/shapes.scss';
 @import '../sharedStyles/text.scss';
-
-.input-wrap {
-  max-width: 40vw;
-}
 
 .input {
   display: inline-block;

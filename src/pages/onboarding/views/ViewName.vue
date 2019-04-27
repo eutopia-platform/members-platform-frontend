@@ -1,17 +1,17 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
       <Header secondary>What is the name of your company or startup?</Header>
       <div class="input-wrap">
         <Input
-          look="blend"
           v-model="name"
-          @valueChange="onInputValueChange"
-          @submit="onSubmit"
+          look="blend"
           placeholder="Are you the next Google?"
           :focus="true"
-        ></Input>
-        <Button big @click="onSubmit" :disabled="!(name !== '')">Next</Button>
+          @valueChange="onInputValueChange"
+          @submit="onSubmit"
+        />
+        <Button big :disabled="!(name !== '')" @click="onSubmit">Next</Button>
       </div>
     </div>
   </ViewBase>
@@ -19,18 +19,22 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
-import Input from '~/components/atomic/Input'
-import Button from '~/components/atomic/Button'
+import Input from '/components/atomic/Input'
+import Button from '/components/atomic/Button'
+import Header from '/components/atomic/Header'
 
 export default {
   name: 'ViewName',
+  components: {
+    ViewBase,
+    Input,
+    Button,
+    Header,
+  },
   extends: ViewBase,
   data: () => ({
     name: '',
   }),
-  components: {
-    ViewBase,
-  },
   computed: {
     image: () => require('../../../../data/img/onboarding/view-name.png'),
   },

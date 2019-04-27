@@ -1,8 +1,6 @@
 <template>
   <div class="dashboard">
-    <Header tertiary>
-      Dashboard
-    </Header>
+    <Header tertiary>Dashboard</Header>
     <div class="content">
       <WelcomeInfo class="welcome"></WelcomeInfo>
       <ToolkitStatus></ToolkitStatus>
@@ -13,7 +11,6 @@
 </template>
 
 <script>
-import Card from '/components/atomic/Card'
 import Header from '/components/atomic/Header'
 import ToolkitStatus from './dashboard/ToolkitStatus'
 import Validation from './dashboard/Validation'
@@ -24,7 +21,6 @@ export default {
   name: 'Dashboard',
   components: {
     Header,
-    Card,
     ToolkitStatus,
     Validation,
     Process,

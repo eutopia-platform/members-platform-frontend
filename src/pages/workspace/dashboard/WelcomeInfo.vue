@@ -11,10 +11,10 @@
       </Paragraph>
       <Button
         icon
-        @click="close"
         class="close"
         type="icon"
         :img="iconClose"
+        @click="close"
       ></Button>
     </div>
   </Card>
@@ -36,14 +36,14 @@ export default {
     Button,
     Icon,
   },
+  computed: {
+    iconInfo: () => require('/../data/img/ui/info.svg'),
+    iconClose: () => require('/../data/img/ui/close.svg'),
+  },
   methods: {
     close: function() {
       this.$el.style.display = 'none'
     },
-  },
-  computed: {
-    iconInfo: () => require('/../data/img/ui/info.svg'),
-    iconClose: () => require('/../data/img/ui/close.svg'),
   },
 }
 </script>

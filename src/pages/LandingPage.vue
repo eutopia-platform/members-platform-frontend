@@ -1,8 +1,7 @@
 <template>
   <div class="landing-page">
-    <Logo></Logo>
+    <Brand></Brand>
 
-    <!-- Welcome -->
     <PageSlide>
       <template v-slot>
         <SplitViewHorizontal>
@@ -19,36 +18,11 @@
       </template>
     </PageSlide>
 
-    <!-- Intro -->
     <PageSlide>
-      <SplitViewHorizontal>
-        <template v-slot:left>
-          <Introduction></Introduction>
-        </template>
-        <template v-slot:right>
-          <img
-            class="image-right"
-            src="../../data/img/landingpage/laptop.svg"
-            style="transform: translate(-40%, -50%)"
-          />
-        </template>
-      </SplitViewHorizontal>
+      <Introduction></Introduction>
     </PageSlide>
 
-    <!-- Pricing -->
-    <PageSlide>
-      <SplitViewHorizontal>
-        <template v-slot:left>
-          <Pricing></Pricing>
-        </template>
-        <template v-slot:right>
-          <img
-            class="image-right"
-            src="../../data/img/landingpage/slide3.svg"
-          />
-        </template>
-      </SplitViewHorizontal>
-    </PageSlide>
+    <Process></Process>
 
     <PageSlide>
       <Contact></Contact>
@@ -60,29 +34,25 @@
 
 <script>
 import PageSlide from '../components/atomic/PageSlide'
-import Logo from '../components/atomic/Logo'
-import Header from '../components/atomic/Header'
-import Button from '../components/atomic/Button'
+import Brand from '../components/molecular/Brand'
 import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue'
 import Welcome from './landingPage/Welcome.vue'
 import Introduction from './landingPage/Introduction.vue'
 import Contact from './landingPage/Contact.vue'
-import Pricing from './landingPage/Pricing.vue'
 import Footer from './landingPage/Footer.vue'
+import Process from './landingPage/Process'
 
 export default {
   name: 'LandingPage',
   components: {
-    Logo,
+    Brand,
     PageSlide,
-    Header,
-    Button,
     SplitViewHorizontal,
     Welcome,
     Introduction,
     Contact,
     Footer,
-    Pricing,
+    Process,
   },
 }
 </script>
@@ -98,5 +68,10 @@ export default {
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.brand {
+  position: absolute;
+  margin: 1rem;
 }
 </style>

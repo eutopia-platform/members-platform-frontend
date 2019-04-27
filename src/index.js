@@ -19,37 +19,42 @@ import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 
+const createClient = (url, sendToken = false) =>
+  new ApolloClient({
+    link: ApolloLink.from([
+      ...(sendToken
+        ? [
+            setContext(() => ({
+              headers: {
+                'session-token': localStorage.getItem('sessionToken'),
+              },
+            })),
+          ]
+        : []),
+      createHttpLink({
+        uri: url,
+        credentials: 'same-origin',
+      }),
+    ]),
+    cache: new InMemoryCache(),
+  })
 
-const createClient = (url, sendToken = false) => new ApolloClient({
-  link: ApolloLink.from([
-    ...sendToken ? [setContext(() => ({
-      headers: {
-        'session-token': localStorage.getItem('sessionToken')
+const clients =
+  process.env.NODE_ENV === 'development'
+    ? {
+        auth: createClient('http://localhost:4000'),
+        user: createClient('http://localhost:5000', true),
+        mail: createClient('http://localhost:9000'),
       }
-    }))] : [],
-    createHttpLink({
-      uri: url,
-      credentials: 'same-origin',
-    })
-  ]),
-  cache: new InMemoryCache()
-})
-
-const clients = process.env.NODE_ENV === 'development'
-  ? {
-    auth: createClient('http://localhost:4000'),
-    user: createClient('http://localhost:5000', true)
-  } : {
-    auth: createClient('https://auth.api.productcube.io/'),
-    user: createClient('https://user.api.productcube.io', true)
-  }
+    : {
+        auth: createClient('https://auth.api.productcube.io/'),
+        user: createClient('https://user.api.productcube.io', true),
+        mail: createClient('https://mail.api.productcube.io'),
+      }
 
 const apolloProvider = new VueApollo({
-  clients: {
-    auth: clients.auth,
-    user: clients.user
-  },
-  defaultClient: clients.user
+  clients,
+  defaultClient: clients.user,
 })
 
 Vue.use(VueRouter)
@@ -86,7 +91,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  routes, // short for `routes: routes`
+  routes,
 })
 
 // event bus for communication of unrelated components

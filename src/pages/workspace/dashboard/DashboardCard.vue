@@ -15,16 +15,16 @@ import LineHorizontal from '/components/atomic/LineHorizontal'
 
 export default {
   name: 'DashboardCard',
+  components: {
+    Card,
+    Header,
+    LineHorizontal,
+  },
   props: {
     title: {
       type: String,
       default: 'unknown title',
     },
-  },
-  components: {
-    Card,
-    Header,
-    LineHorizontal,
   },
 }
 </script>

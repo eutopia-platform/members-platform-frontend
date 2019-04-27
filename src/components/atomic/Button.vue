@@ -1,5 +1,5 @@
 <template>
-  <button :class="getClass" @click="$emit('click')">
+  <button type="button" :class="getClass" @click="$emit('click')">
     <slot v-if="type !== 'icon'"></slot>
     <img v-if="type === 'icon'" :src="img" />
   </button>
@@ -27,7 +27,7 @@ export default new Atomic({
   min-width: 2rem;
 
   &:not(.icon) {
-    border-radius: 1rem;
+    border-radius: 0.4rem;
   }
 
   &:not(.text) {
@@ -66,7 +66,6 @@ export default new Atomic({
   padding-right: 1.5rem;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
-  border-radius: 1.6rem !important;
 }
 
 .icon {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Logo></Logo>
+    <Brand></Brand>
     <div class="view">
       <div class="content-half">
         <div class="content-section">
@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="image-wrap">
-        <img v-bind:src="img" />
+        <img :src="img" />
         <div class="dashboard">
           <slot name="dashboard"></slot>
         </div>
@@ -18,28 +18,25 @@
 </template>
 
 <script>
-import Logo from '../../components/atomic/Logo.vue'
-import Header from '../../components/atomic/Header.vue'
-import Paragraph from '../../components/atomic/Paragraph.vue'
-import Small from '../../components/atomic/Small.vue'
-import Input from '../../components/atomic/Input.vue'
-import Button from '../../components/atomic/Button.vue'
+import Brand from '../../components/molecular/Brand.vue'
 
 export default {
   name: 'ViewBase',
   apollo: {
-    $client: 'auth'
+    $client: 'auth',
   },
   components: {
-    Logo,
-    Header,
-    Paragraph,
-    Input,
-    Button,
+    Brand,
   },
   props: {
-    img: String,
-    info: Object,
+    img: {
+      type: String,
+      default: '',
+    },
+    info: {
+      type: Object,
+      default: () => ({}),
+    },
     submit: {
       type: Boolean,
       default: true,
@@ -48,21 +45,13 @@ export default {
   data: () => ({
     text: String,
   }),
-  methods: {
-    onSubmit: function() {
-      this.$emit('next', this.$data)
-    },
-    onInputValueChange: function(payload) {
-      this.text = payload
-    },
-  },
   computed: {
     inputValid: comp => comp.text.value && comp.text.value.length > 0,
   },
   mounted: function() {
     if (this.$options.name === 'ViewBase') return // only render dashboard in child component
 
-    const drawDashboard = (self = this) => {
+    const drawDashboard = () => {
       const img = this.$el.querySelector('img')
       const iw = img.offsetWidth / 100
       const ih = img.offsetHeight / 100
@@ -178,6 +167,14 @@ export default {
     drawDashboard()
     window.addEventListener('resize', drawDashboard)
   },
+  methods: {
+    onSubmit: function() {
+      this.$emit('next', this.$data)
+    },
+    onInputValueChange: function(payload) {
+      this.text = payload
+    },
+  },
 }
 </script>
 
@@ -185,11 +182,11 @@ export default {
 @import '../../components/sharedStyles/colors.scss';
 @import '../../components/sharedStyles/responsive.scss';
 
-.logo {
+.brand {
   position: absolute;
   top: 0;
   left: 0;
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .view {

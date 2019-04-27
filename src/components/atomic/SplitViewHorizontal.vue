@@ -38,7 +38,6 @@ export default {
     width: 50%;
     display: block;
     flex-grow: 1;
-    overflow: hidden;
     box-sizing: border-box;
 
     img {
