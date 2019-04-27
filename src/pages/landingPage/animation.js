@@ -4,18 +4,6 @@ export default [
     background: '#253DBC',
   },
   {
-    time: 200,
-    centerBig: 'THIS',
-  },
-  {
-    time: 200,
-    centerBig: 'IS',
-  },
-  {
-    time: 2000,
-    centerBig: 'CUBE',
-  },
-  {
     time: 1000,
     background: '#7EC0FA',
     group1: {

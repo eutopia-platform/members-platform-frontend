@@ -27,7 +27,7 @@ export default new Atomic({
   min-width: 2rem;
 
   &:not(.icon) {
-    border-radius: .4rem;
+    border-radius: 0.4rem;
   }
 
   &:not(.text) {

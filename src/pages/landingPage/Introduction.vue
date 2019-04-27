@@ -3,11 +3,7 @@
     <div v-if="showWelcome" class="welcome">
       <Header secondary>{{ welcome_1 }}</Header>
       <Header primary class="text-big">{{ welcome_2 }}</Header>
-      <Button big @click="animate">Click to find out</Button>
     </div>
-    <Header v-if="showCenterBig" primary class="center-big">{{
-      centerBig
-    }}</Header>
     <div v-if="showGroup1" class="group-1">
       <Header tertiary>{{ group1Small }}</Header>
       <Header secondary>{{ group1Big }}</Header>
@@ -35,7 +31,6 @@
 import frames from './animation'
 import Header from '/components/atomic/Header'
 import Icon from '/components/atomic/Icon'
-import Button from '/components/atomic/Button'
 import EmailSignup from '/components/molecular/EmailSignup'
 
 export default {
@@ -43,7 +38,6 @@ export default {
   components: {
     Header,
     Icon,
-    Button,
     EmailSignup,
   },
   data: () => ({
@@ -54,9 +48,6 @@ export default {
     welcome_2: '',
   }),
   computed: {
-    centerBig: function() {
-      return this.getAnimProp('centerBig')
-    },
     group1Small: function() {
       return this.getAnimProp('group1').small
     },
@@ -84,9 +75,6 @@ export default {
       return {
         backgroundColor: this.getAnimProp('background'),
       }
-    },
-    showCenterBig: function() {
-      return this.frames[this.frame].hasOwnProperty('centerBig')
     },
     showGroup1: function() {
       return this.frames[this.frame].hasOwnProperty('group1')
@@ -127,7 +115,9 @@ export default {
         setTimeout(() => type(++i, str, target, callback), 50)
       }
       type(0, 'This is how you use Cube', 'welcome_1', () =>
-        type(0, 'to build and launch an MVP.', 'welcome_2')
+        type(0, 'to build and launch an MVP.', 'welcome_2', () =>
+          setTimeout(this.animate, 1000)
+        )
       )
     },
     getCheckPos: function(i) {
@@ -142,7 +132,7 @@ export default {
       }
     },
     getCheckClass: function(i) {
-      let step = this.frame - 4
+      let step = this.frame - 1
       let stage = 0
       if (step < (i - 1) * 3) stage = 0
       else if (step > (i - 1) * 3 + 2) stage = 3

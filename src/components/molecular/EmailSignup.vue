@@ -26,9 +26,9 @@ export default new Molecular({
 .email-signup {
   display: block;
   width: 25rem;
-  height: 2.5rem;
+  height: 2.8rem;
   text-align: left;
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   box-shadow: $shadow-default;
 
   * {
@@ -43,6 +43,7 @@ export default new Molecular({
     padding-left: 1.5rem;
     font-size: 1rem;
     @include colorScheme('neutral');
+    border-radius: 0.4rem;
   }
 
   .button {
