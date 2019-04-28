@@ -73,6 +73,9 @@ export default {
 
 <style lang="scss" scoped>
 .analytics {
+  display: flex;
+  flex-direction: column;
+
   .content {
     margin-top: 1rem;
     flex-grow: 1;
