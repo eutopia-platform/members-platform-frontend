@@ -28,7 +28,7 @@ export default {
 @import '../../components/sharedStyles/colors.scss';
 
 .contact {
-  @include colorScheme('primary');
+  @include colorScheme('tertiary');
 
   box-sizing: border-box;
   width: 100%;
