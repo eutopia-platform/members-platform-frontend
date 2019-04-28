@@ -43,7 +43,7 @@ export default {
   top: 50vh;
   transform: translateY(-50%);
   position: relative;
-  
+
   @media screen and (max-width: 800px) {
     margin-top: 4rem;
     transform: none;

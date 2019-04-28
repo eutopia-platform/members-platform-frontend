@@ -232,6 +232,7 @@ export default {
 
     .email-signup {
       margin-top: 2rem;
+      max-width: 80vw;
     }
 
     .transparent {

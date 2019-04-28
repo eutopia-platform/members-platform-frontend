@@ -19,6 +19,8 @@ import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 
+import '/master.scss'
+
 const createClient = (url, sendToken = false) =>
   new ApolloClient({
     link: ApolloLink.from([
