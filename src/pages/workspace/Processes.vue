@@ -11,19 +11,25 @@
           </Paragraph>
         </div>
       </InfoCard>
+      <ProcessCard></ProcessCard>
+      <ProcessCard></ProcessCard>
     </div>
   </div>
 </template>
 
 <script>
 import Header from '/components/atomic/Header'
+import Paragraph from '/components/atomic/Paragraph'
 import InfoCard from '/components/molecular/InfoCard'
+import ProcessCard from './processes/ProcessCard'
 
 export default {
   name: 'Processes',
   components: {
     Header,
+    Paragraph,
     InfoCard,
+    ProcessCard,
   },
 }
 </script>
@@ -49,7 +55,8 @@ export default {
       }
     }
 
-    .welcome {
+    .welcome,
+    .process-card {
       grid-column-start: span 4;
     }
   }
