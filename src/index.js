@@ -11,7 +11,9 @@ import Workspace from './pages/Workspace'
 import Onboarding from './pages/Onboarding'
 import Login from './pages/Login'
 import Dashboard from './pages/workspace/Dashboard'
+import Analytics from './pages/workspace/Analytics'
 import Toolkits from './pages/workspace/Toolkits'
+import Processes from './pages/workspace/Processes'
 import Settings from './pages/workspace/Settings'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
@@ -77,8 +79,16 @@ const routes = [
         component: Dashboard,
       },
       {
+        path: 'analytics',
+        component: Analytics,
+      },
+      {
         path: 'toolkits',
         component: Toolkits,
+      },
+      {
+        path: 'processes',
+        component: Processes,
       },
       {
         path: 'settings',
