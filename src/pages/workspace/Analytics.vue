@@ -11,6 +11,7 @@
           </Paragraph>
         </div>
       </InfoCard>
+      <TestStatus></TestStatus>
     </div>
   </div>
 </template>
@@ -19,6 +20,7 @@
 import Header from '/components/atomic/Header'
 import Paragraph from '/components/atomic/Paragraph'
 import InfoCard from '/components/molecular/InfoCard'
+import TestStatus from './analytics/TestStatus'
 
 export default {
   name: 'Analytics',
@@ -26,6 +28,7 @@ export default {
     Header,
     Paragraph,
     InfoCard,
+    TestStatus,
   },
 }
 </script>
@@ -48,7 +51,7 @@ export default {
       }
     }
 
-    .welcome {
+    .welcome, .test-status {
       grid-column-start: span 2;
     }
   }
