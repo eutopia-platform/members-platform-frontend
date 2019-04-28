@@ -1,5 +1,8 @@
 <template>
-  <DashboardCard title="Cohort testing - measure the impact of your experiments" class="test-status">
+  <DashboardCard
+    title="Cohort testing - measure the impact of your experiments"
+    class="test-status"
+  >
     <div class="table">
       <Header quaternary>Toolkit</Header>
       <Header quaternary>Metric</Header>
@@ -53,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 .table {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr 1fr .5fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.5fr;
   grid-template-rows: 3rem;
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
   <Card class="metric-card">
     <Icon :src="img"></Icon>
-    <Header secondary>{{val}}</Header>
-    <Paragraph>{{name}}</Paragraph>
-    <Small :style="cl_percent">{{percent + '%'}}</Small>
+    <Header secondary>{{ val }}</Header>
+    <Paragraph>{{ name }}</Paragraph>
+    <Small :style="cl_percent">{{ percent + '%' }}</Small>
   </Card>
 </template>
 
@@ -32,9 +32,9 @@ export default {
   computed: {
     cl_percent: function() {
       return {
-        color: this.percent >= 0 ? 'green' : 'red'
+        color: this.percent >= 0 ? 'green' : 'red',
       }
-    }
+    },
   },
 }
 </script>

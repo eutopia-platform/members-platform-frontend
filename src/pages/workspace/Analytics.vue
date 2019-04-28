@@ -12,37 +12,37 @@
         </div>
       </InfoCard>
       <TestStatus></TestStatus>
-      <MetricCard 
+      <MetricCard
         img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_1.svg"
         val="10,940"
         name="Signups"
         :percent="121.52"
       ></MetricCard>
-      <MetricCard 
+      <MetricCard
         img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_2.svg"
         val="4,909"
         name="Activation"
-        :percent="14.50"
+        :percent="14.5"
       ></MetricCard>
-      <MetricCard 
+      <MetricCard
         img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_3.svg"
         val="596"
         name="Retention"
         :percent="25.42"
       ></MetricCard>
-      <MetricCard 
+      <MetricCard
         img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_4.svg"
         val="102"
         name="Referral"
         :percent="-2.45"
       ></MetricCard>
-      <MetricCard 
+      <MetricCard
         img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_5.svg"
         val="4,594€"
         name="Monthly recurring revenue"
         :percent="45.42"
       ></MetricCard>
-      <MetricCard 
+      <MetricCard
         img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_6.svg"
         val="4.92€"
         name="Customer lifetime value"
@@ -89,7 +89,8 @@ export default {
       }
     }
 
-    .welcome, .test-status {
+    .welcome,
+    .test-status {
       grid-column-start: span 4;
     }
   }

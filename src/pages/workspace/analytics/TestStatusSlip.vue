@@ -56,7 +56,7 @@ export default {
 .slip {
   grid-column-start: span 6;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr 1fr .5fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.5fr;
 
   .progress {
     position: relative;
@@ -66,12 +66,10 @@ export default {
 
   .checkbox {
     text-align: center;
-    // position: relative;
-    // left: 50%;
   }
 
   * {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 }
 </style>
