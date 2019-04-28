@@ -19,36 +19,46 @@ import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 
+import '/master.scss'
 
-const createClient = (url, sendToken = false) => new ApolloClient({
-  link: ApolloLink.from([
-    ...sendToken ? [setContext(() => ({
-      headers: {
-        'session-token': localStorage.getItem('sessionToken')
+const createClient = (url, sendToken = false) =>
+  new ApolloClient({
+    link: ApolloLink.from([
+      ...(sendToken
+        ? [
+            setContext(() => ({
+              headers: {
+                'session-token': localStorage.getItem('sessionToken'),
+              },
+            })),
+          ]
+        : []),
+      createHttpLink({
+        uri: url,
+        credentials: 'same-origin',
+      }),
+    ]),
+    cache: new InMemoryCache(),
+  })
+
+const clients =
+  process.env.NODE_ENV === 'development'
+    ? {
+        auth: createClient('http://localhost:4000'),
+        user: createClient('http://localhost:5000', true),
+        tool: createClient('https://locahost:7000'),
+        mail: createClient('http://localhost:9000'),
       }
-    }))] : [],
-    createHttpLink({
-      uri: url,
-      credentials: 'same-origin',
-    })
-  ]),
-  cache: new InMemoryCache()
-})
-
-const clients = process.env.NODE_ENV === 'development'
-  ? {
-    auth: createClient('http://localhost:4000'),
-    user: createClient('http://localhost:5000', true),
-    tool: createClient('http://localhost:7000')
-  } : {
-    auth: createClient('https://auth.api.productcube.io/'),
-    user: createClient('https://user.api.productcube.io', true),
-    tool: createClient('https://tool.api.productcube.io')
-  }
+    : {
+        auth: createClient('https://auth.api.productcube.io/'),
+        user: createClient('https://user.api.productcube.io', true),
+        tool: createClient('https://tool.api.productcube.io'),
+        mail: createClient('https://mail.api.productcube.io'),
+      }
 
 const apolloProvider = new VueApollo({
   clients,
-  defaultClient: clients.user
+  defaultClient: clients.user,
 })
 
 Vue.use(VueRouter)
@@ -85,7 +95,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  routes, // short for `routes: routes`
+  routes,
 })
 
 // event bus for communication of unrelated components

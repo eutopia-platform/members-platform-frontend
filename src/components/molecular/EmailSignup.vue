@@ -1,86 +1,78 @@
 <template>
-  <div class="contact-form">
-    <div class="input-wrap">
-      <Input
-        disabled
-        @valueChange="onInputValueChange"
-        @keyup.enter.native="onSubmit"
-        placeholder="Email"
-        name="email"
-      ></Input>
-      <Button @click="onSubmit" disabled>
-        Sign up
-      </Button>
-    </div>
-  </div>
+  <form :class="getClass">
+    <Input v-model="email" placeholder="email" />
+    <Button @click="submit">Subscribe</Button>
+  </form>
 </template>
 
 <script>
-import Input from '../atomic/Input.vue'
-import Button from '../atomic/Button.vue'
+import Molecular from '/components/sharedScripts/molecular'
+import Input from '/components/atomic/Input'
+import Button from '/components/atomic/Button'
+import gql from 'graphql-tag'
 
-export default {
+export default new Molecular({
   name: 'EmailSignup',
+  apollo: {
+    $client: 'mail',
+  },
   components: {
     Input,
     Button,
   },
-  data: () => ({
-    email: {
-      value: '',
-    },
-  }),
-
-  created() {
-    this.$eventBus.$on('scroll-to-email', () => {
-      const input = this.$el.querySelector('input')
-      if (input) {
-        input.scrollIntoView({
-          behavior: 'smooth',
-        })
-        setTimeout(() => input.focus(), 1000)
-      }
-    })
+  data: {
+    email: '',
   },
-
   methods: {
-    onInputValueChange(payload) {
-      //Only works because payload has the same name as the data
-      this[payload.name].value = payload.value
-    },
-    onSubmit() {
-      const payload = {
-        email: this.email,
-      }
-      this.$emit('mySubmit', payload)
+    submit: function() {
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation newsletter($email: String!) {
+            subscribeNews(email: $email)
+          }
+        `,
+        variables: {
+          email: this.email,
+        },
+      })
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/colors.scss';
+@import '/components/sharedStyles/colors';
+@import '/components/sharedStyles/shadows';
 
-.contact-form {
-  background-color: map-get($colors, primary-back);
+.email-signup {
   display: block;
+  width: 25rem;
+  height: 2.8rem;
+  text-align: left;
+  border-radius: 0.4rem;
+  box-shadow: $shadow-default;
 
-  width: 20em;
-  margin: auto;
+  * {
+    margin: 0;
+    border: none;
+  }
 
-  .input-wrap {
-    display: flex;
-    flex-direction: row;
+  .input {
+    width: 80%;
+    height: 100%;
+    width: 100%;
+    padding-left: 1.5rem;
+    font-size: 1rem;
+    @include colorScheme('neutral');
+    border-radius: 0.4rem;
+  }
 
-    input {
-      &::placeholder {
-        color: map-get($colors, secondary-back);
-      }
-    }
-
-    button {
-      width: 7em;
-    }
+  .button {
+    margin-top: 0;
+    height: 100%;
+    position: relative;
+    transform: translateX(-100%) translateY(-100%);
+    left: 100%;
   }
 }
 </style>

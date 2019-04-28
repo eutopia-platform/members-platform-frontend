@@ -1,38 +1,44 @@
 <template>
-  <ViewBase v-bind:img="image">
+  <ViewBase :img="image">
     <div>
       <Header secondary>Let's create your workspace</Header>
       <div class="input-wrap">
         <Input
-          look="blend"
-          @valueChange="onInputValueChange"
           v-model="email"
-          @submit="onSubmit"
+          look="blend"
           placeholder="you-are-awesome@example.com"
           :focus="true"
-        ></Input>
+          @valueChange="onInputValueChange"
+          @submit="onSubmit"
+        />
         <Checkbox v-model="hasAgreed">
           I agree to the
-          <router-link to="/privacy">Privacy Policy</router-link>
+          <RouterLink to="/privacy">Privacy Policy</RouterLink>
         </Checkbox>
-        <Button big @click="onSubmit" :disabled="!isFormValid">Next</Button>
+        <Button big :disabled="!isFormValid" @click="onSubmit">Next</Button>
       </div>
     </div>
   </ViewBase>
 </template>
 
 <script>
-import ViewBase from '../ViewBase.vue'
 import gql from 'graphql-tag'
-import Checkbox from '~/components/atomic/Checkbox'
+import ViewBase from '../ViewBase.vue'
+import Checkbox from '/components/atomic/Checkbox'
+import Header from '/components/atomic/Header'
+import Input from '/components/atomic/Input'
+import Button from '/components/atomic/Button'
 
 export default {
   name: 'ViewEmail',
-  extends: ViewBase,
   components: {
     ViewBase,
     Checkbox,
+    Header,
+    Input,
+    Button,
   },
+  extends: ViewBase,
   data: function() {
     return {
       hasAgreed: false,
@@ -74,11 +80,10 @@ export default {
               registerEmail(email: "${self.email}")
             }`,
           })
-          .then(res => {
+          .then(() => {
             resolve()
           })
           .catch(data => {
-            console.error(data)
             reject(data)
           })
       })

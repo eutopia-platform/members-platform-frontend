@@ -6,15 +6,11 @@
 
 <script>
 import DashboardCard from './DashboardCard'
-import Button from '/components/atomic/Button'
-import Header from '/components/atomic/Header'
 
 export default {
-  name: 'Process',
+  name: 'Validation',
   components: {
     DashboardCard,
-    Button,
-    Header,
   },
 }
 </script>

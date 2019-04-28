@@ -1,8 +1,9 @@
 <template>
   <div class="contact">
     <div class="signup-wrap">
-      <Header primary> Try productcube with your team for free </Header><br />
-      <Button @click="signup" big>Sign me up</Button>
+      <Header primary>Try productcube with your team for free</Header>
+      <br />
+      <Button big @click="signup">Sign me up</Button>
     </div>
   </div>
 </template>
@@ -10,7 +11,6 @@
 <script>
 import Header from '../../components/atomic/Header.vue'
 import Button from '../../components/atomic/Button.vue'
-import EmailSignupProvider from './Contact/EmailSignupProvider.vue'
 
 export default {
   name: 'Contact',
@@ -28,7 +28,7 @@ export default {
 @import '../../components/sharedStyles/colors.scss';
 
 .contact {
-  @include colorScheme('primary');
+  @include colorScheme('tertiary');
 
   box-sizing: border-box;
   width: 100%;
@@ -36,6 +36,10 @@ export default {
   margin: 0;
   padding: 3em;
   text-align: center;
+
+  @media screen and (max-width: 520px) {
+    text-align: left;
+  }
 
   .signup-wrap {
     position: relative;

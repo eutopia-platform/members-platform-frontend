@@ -16,8 +16,8 @@
     "now-build": "npm run build",
     "format:check": "prettier --check \"./*.{js,vue,html}\" \"./**/*.{js,vue,html}\"",
     "format:write": "prettier --write \"./*.{js,vue,html}\" \"./**/*.{js,vue,html}\"",
-    "lint:check": "eslint ./src/ --ext .js,.vue",
-    "lint:write": "eslint ./src/ --ext .js,.vue --fix",
+    "lint:check": "eslint . --ext .js,.vue",
+    "lint:write": "eslint . --ext .js,.vue --fix",
     "format-lint:check": "npm run lint:check && npm run format:check",
     "format-lint:write": "npm run lint:write && npm run format:write"
   },

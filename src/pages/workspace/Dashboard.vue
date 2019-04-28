@@ -1,8 +1,6 @@
 <template>
   <div class="dashboard">
-    <Header tertiary>
-      Dashboard
-    </Header>
+    <Header tertiary>Dashboard</Header>
     <div class="content">
       <InfoCard>
         <div>
@@ -23,7 +21,6 @@
 </template>
 
 <script>
-import Card from '/components/atomic/Card'
 import Header from '/components/atomic/Header'
 import Paragraph from '/components/atomic/Paragraph'
 import Break from '/components/atomic/Break'
@@ -36,7 +33,6 @@ export default {
   name: 'Dashboard',
   components: {
     Header,
-    Card,
     ToolkitStatus,
     Validation,
     Process,

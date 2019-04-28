@@ -1,22 +1,27 @@
 <template>
   <div class="lp-welcome">
     <Header primary>
-      Build. Measure. Learn.<br />
-      Product development streamlined.
+      A workspace to turn ideas into startups
     </Header>
-    <Button @click="signup" big>Setup workspace</Button>
+    <Tagline
+      >Cube is the easiest way for teams to develop products people
+      want.</Tagline
+    >
+    <EmailSignup></EmailSignup>
   </div>
 </template>
 
 <script>
 import Header from '../../components/atomic/Header.vue'
-import Button from '../../components/atomic/Button.vue'
+import Tagline from '../../components/atomic/Tagline.vue'
+import EmailSignup from '/components/molecular/EmailSignup'
 
 export default {
   name: 'Welcome',
   components: {
     Header,
-    Button,
+    Tagline,
+    EmailSignup,
   },
   methods: {
     scrollToSignup: function() {
@@ -38,12 +43,25 @@ export default {
   top: 50vh;
   transform: translateY(-50%);
   position: relative;
-  margin-bottom: 5em;
 
-  // text-align: center;
+  @media screen and (max-width: 800px) {
+    margin-top: 4rem;
+    transform: none;
+    position: initial;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    .email-signup {
+      max-width: 100%;
+    }
+  }
+
+  * {
+    margin-bottom: 2rem;
+  }
 }
 
-.button {
-  margin-top: 2rem;
+.email-signup {
+  width: 25rem;
 }
 </style>

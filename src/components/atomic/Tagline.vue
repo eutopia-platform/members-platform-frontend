@@ -1,5 +1,5 @@
 <template>
-  <div class="tagline" v-bind:class="classObj">
+  <div class="tagline" :class="classObj">
     <slot></slot>
   </div>
 </template>

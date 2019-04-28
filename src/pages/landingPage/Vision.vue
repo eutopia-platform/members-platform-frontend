@@ -7,7 +7,7 @@
     </div>
     <div class="vision-title">
       <Header secondary>
-        <Icon v-bind:src="img1" height="23px"></Icon>
+        <Icon :src="img1" height="23px"></Icon>
         Setup your vision
       </Header>
     </div>
@@ -18,7 +18,7 @@
     <hr />
     <div class="vision-title">
       <Header secondary>
-        <Icon v-bind:src="img2" height="23px"></Icon>
+        <Icon :src="img2" height="23px"></Icon>
         Develop your strategy
       </Header>
     </div>
@@ -29,7 +29,7 @@
     <hr />
     <div class="vision-title">
       <Header secondary>
-        <Icon v-bind:src="img3" height="23px"></Icon>
+        <Icon :src="img3" height="23px"></Icon>
         Define your roadmap
       </Header>
     </div>
@@ -40,7 +40,7 @@
     <hr />
     <div class="vision-title">
       <Header secondary>
-        <Icon v-bind:src="img4" height="23px"></Icon>
+        <Icon :src="img4" height="23px"></Icon>
         Measure and execute
       </Header>
     </div>

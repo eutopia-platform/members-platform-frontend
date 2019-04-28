@@ -1,17 +1,15 @@
 <template>
   <div class="toolkits">
-    <Header tertiary>
-      Toolkits
-    </Header>
+    <Header tertiary>Toolkits</Header>
     <div class="grid">
       <InfoCard>
         <Paragraph>
           Toolkits accelerate the development of ideas while building a solid foundation for your startup.
           <Break></Break>
-          Based on templates, they help you to structure, test and validate your assumptions scientifically. 
+          Based on templates, they help you to structure, test and validate your assumptions scientifically.
         </Paragraph>
       </InfoCard>
-      <Toolkit v-for='i in toolkits' :title='i.title'></Toolkit>
+      <Toolkit v-for='i in toolkits' :title='i.title' :key="i"></Toolkit>
     </div>
   </div>
 </template>
@@ -40,7 +38,6 @@ export default {
   }),
   components: {
     Header,
-    Card,
     Toolkit,
     InfoCard,
     Paragraph,
