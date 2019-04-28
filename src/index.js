@@ -46,7 +46,7 @@ const clients =
     ? {
         auth: createClient('http://localhost:4000'),
         user: createClient('http://localhost:5000', true),
-        tool: createClient('https://locahost:7000'),
+        tool: createClient('http://localhost:7000'),
         mail: createClient('http://localhost:9000'),
       }
     : {

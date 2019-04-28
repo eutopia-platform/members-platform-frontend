@@ -1,14 +1,14 @@
 <template>
-  <Card :class='getClass'>
+  <Card :class="getClass">
     <Icon :src="iconInfo"></Icon>
     <slot></slot>
     <Button
-        icon
-        @click='close'
-        class='close'
-        type='icon'
-        :img='iconClose'
-      ></Button>
+      icon
+      class="close"
+      type="icon"
+      :img="iconClose"
+      @click="close"
+    ></Button>
   </Card>
 </template>
 
@@ -19,7 +19,7 @@ import Icon from '/components/atomic/Icon'
 import Button from '/components/atomic/Button'
 
 export default new Molecular({
-  name: "InfoCard",
+  name: 'InfoCard',
   components: {
     Card,
     Icon,
@@ -27,7 +27,7 @@ export default new Molecular({
   },
   computed: {
     iconInfo: () => require('/../data/img/ui/info.svg'),
-    iconClose: () => require('/../data/img/ui/close.svg')
+    iconClose: () => require('/../data/img/ui/close.svg'),
   },
   methods: {
     close: function() {
@@ -50,8 +50,8 @@ export default new Molecular({
     position: absolute;
     top: 0;
     right: 0;
-    margin-top: .3rem;
-    margin-right: .3rem;
+    margin-top: 0.3rem;
+    margin-right: 0.3rem;
     background-color: transparent;
   }
 }

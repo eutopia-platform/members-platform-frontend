@@ -1,13 +1,13 @@
 <template>
   <div :class="getClass">
-    <Card class='flipwrap'>
-      <div class='front'>
+    <Card class="flipwrap">
+      <div class="front">
         <Icon :src="img"></Icon>
         <Header quaternary>
           {{ title }}
         </Header>
       </div>
-      <div class='back'>
+      <div class="back">
         <Header tertiary>
           Who is our customer?
         </Header>
@@ -32,16 +32,14 @@ export default new Molecular({
     Header,
     Icon,
     Card,
-    Paragraph
+    Paragraph,
   },
   props: {
     title: {
       type: String,
-      default: 'unknown toolkit'
+      default: 'unknown toolkit',
     },
-  },
-  computed: {
-    img: () => require('/../data/img/toolkits/placeholder.svg'),
+    img: String,
   },
 })
 </script>
@@ -53,17 +51,17 @@ export default new Molecular({
   background-color: transparent;
   height: 17rem;
   perspective: 1000px;
-  
+
   &:hover {
     .flipwrap {
       transform: rotateY(180deg);
     }
   }
-  
+
   .flipwrap {
     width: 100%;
     height: 100%;
-    transition: transform .5s;
+    transition: transform 0.5s;
     position: relative;
     transform-style: preserve-3d;
     background-color: initial;
@@ -74,12 +72,13 @@ export default new Molecular({
       flex-direction: column;
       justify-content: space-around;
     }
-    
+
     .back {
       transform: rotateY(180deg);
     }
 
-    .front, .back {
+    .front,
+    .back {
       padding: 1rem;
       box-sizing: border-box;
       @include colorScheme('neutral');

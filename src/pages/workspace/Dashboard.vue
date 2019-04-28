@@ -5,8 +5,8 @@
       <InfoCard>
         <div>
           <Paragraph>
-            Welcome to the dashboard of your workspace &mdash; the new home of your
-            project.
+            Welcome to the dashboard of your workspace &mdash; the new home of
+            your project.
             <Break></Break>
             Manage toolkits and processes and always stay on top of the progress
             your team is making.
@@ -38,7 +38,7 @@ export default {
     Process,
     InfoCard,
     Paragraph,
-    Break
+    Break,
   },
 }
 </script>
@@ -65,8 +65,7 @@ export default {
     }
 
     .process,
-    .welcome,
-    {
+    .welcome {
       grid-column-start: span 2;
     }
   }

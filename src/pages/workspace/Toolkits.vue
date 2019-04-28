@@ -4,12 +4,23 @@
     <div class="grid">
       <InfoCard>
         <Paragraph>
-          Toolkits accelerate the development of ideas while building a solid foundation for your startup.
+          Toolkits accelerate the development of ideas while building a solid
+          foundation for your startup.
           <Break></Break>
-          Based on templates, they help you to structure, test and validate your assumptions scientifically.
+          Based on templates, they help you to structure, test and validate your
+          assumptions scientifically.
         </Paragraph>
       </InfoCard>
-      <Toolkit v-for='i in toolkits' :title='i.title' :key="i"></Toolkit>
+      <Toolkit
+        v-for="i in toolkits"
+        :key="toolkits.indexOf(i)"
+        :title="i.title"
+        :img="
+          `https://s3.eu-central-1.amazonaws.com/eutopia.media/tool_${toolkits.indexOf(
+            i
+          ) + 1}.svg`
+        "
+      ></Toolkit>
     </div>
   </div>
 </template>
@@ -17,7 +28,6 @@
 <script>
 import gql from 'graphql-tag'
 import Header from '/components/atomic/Header'
-import Card from '/components/atomic/Card'
 import Paragraph from '/components/atomic/Paragraph'
 import Break from '/components/atomic/Break'
 import Toolkit from '/components/molecular/ToolkitCard'
@@ -27,22 +37,24 @@ export default {
   name: 'Toolkits',
   apollo: {
     $client: 'tool',
-    toolkits: gql`{
-      toolkits {
-        title
+    toolkits: gql`
+      {
+        toolkits {
+          title
+        }
       }
-    }`
+    `,
   },
-  data: () => ({
-    toolkits: []
-  }),
   components: {
     Header,
     Toolkit,
     InfoCard,
     Paragraph,
-    Break
-  }
+    Break,
+  },
+  data: () => ({
+    toolkits: [],
+  }),
 }
 </script>
 
