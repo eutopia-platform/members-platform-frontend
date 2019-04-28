@@ -37,6 +37,10 @@ export default {
   padding: 3em;
   text-align: center;
 
+  @media screen and (max-width: 520px) {
+    text-align: left;
+  }
+
   .signup-wrap {
     position: relative;
     display: block;
