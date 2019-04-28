@@ -20,7 +20,7 @@ export default {
   min-height: 100vh;
   overflow: hidden;
 
-  @media screen and (max-width: $break-mobile) {
+  @media screen and (max-width: 800px) {
     height: auto;
   }
 }

@@ -28,10 +28,9 @@ export default {
   justify-content: space-around;
   box-sizing: border-box;
 
-  @media screen and (max-width: $break-mobile) {
+  @media screen and (max-width: 800px) {
     flex-direction: column;
-    height: 150vh;
-    height: auto;
+    // height: 150vh;
   }
 
   .half {
@@ -50,7 +49,7 @@ export default {
       z-index: 1;
     }
 
-    @media screen and (max-width: $break-mobile) {
+    @media screen and (max-width: 800px) {
       width: 100%;
       display: block;
     }
@@ -59,10 +58,14 @@ export default {
   .half-left {
     min-height: 100vh;
     z-index: 5;
+
+    @media screen and (max-width: 800px) {
+      min-height: auto;
+    }
   }
 
   .half-right {
-    @media screen and (max-width: $break-mobile) {
+    @media screen and (max-width: 800px) {
       height: 50vh;
     }
   }
