@@ -12,6 +12,42 @@
         </div>
       </InfoCard>
       <TestStatus></TestStatus>
+      <MetricCard 
+        img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_1.svg"
+        val="10,940"
+        name="Signups"
+        :percent="121.52"
+      ></MetricCard>
+      <MetricCard 
+        img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_2.svg"
+        val="4,909"
+        name="Activation"
+        :percent="14.50"
+      ></MetricCard>
+      <MetricCard 
+        img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_3.svg"
+        val="596"
+        name="Retention"
+        :percent="25.42"
+      ></MetricCard>
+      <MetricCard 
+        img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_4.svg"
+        val="102"
+        name="Referral"
+        :percent="-2.45"
+      ></MetricCard>
+      <MetricCard 
+        img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_5.svg"
+        val="4,594€"
+        name="Monthly recurring revenue"
+        :percent="45.42"
+      ></MetricCard>
+      <MetricCard 
+        img="https://s3.eu-central-1.amazonaws.com/eutopia.media/metric_6.svg"
+        val="4.92€"
+        name="Customer lifetime value"
+        :percent="-11.59"
+      ></MetricCard>
     </div>
   </div>
 </template>
@@ -21,6 +57,7 @@ import Header from '/components/atomic/Header'
 import Paragraph from '/components/atomic/Paragraph'
 import InfoCard from '/components/molecular/InfoCard'
 import TestStatus from './analytics/TestStatus'
+import MetricCard from './analytics/MetricCard'
 
 export default {
   name: 'Analytics',
@@ -29,6 +66,7 @@ export default {
     Paragraph,
     InfoCard,
     TestStatus,
+    MetricCard,
   },
 }
 </script>
@@ -41,7 +79,7 @@ export default {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
 
     * {
@@ -52,7 +90,7 @@ export default {
     }
 
     .welcome, .test-status {
-      grid-column-start: span 2;
+      grid-column-start: span 4;
     }
   }
 }

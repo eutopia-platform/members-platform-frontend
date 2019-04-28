@@ -11,25 +11,25 @@
         toolkit="Problem Definition"
         metric="Approve problem by 7/10 core users"
         status="Assumption"
-        progress="0.2"
+        :rogress="0.2"
       ></TestStatusSlip>
       <TestStatusSlip
         toolkit="User Flow Design"
         metric="Decrease churn rate from 70,000 by 5%"
         status="In testing"
-        progress="0.5"
+        :progress="0.5"
       ></TestStatusSlip>
       <TestStatusSlip
         toolkit="Business Model Design"
         metric="Increase subscription rate from 40,000 by 20%"
         status="Iteration"
-        progress="1"
+        :progress="1"
       ></TestStatusSlip>
       <TestStatusSlip
         toolkit="A/B Test"
         metric="Improve signup rate on landingpage from 400,000 by 6%"
         status="Approved"
-        progress="0.9"
+        :progress="0.9"
       ></TestStatusSlip>
     </div>
   </DashboardCard>
