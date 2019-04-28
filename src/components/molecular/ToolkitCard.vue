@@ -9,10 +9,20 @@
       </div>
       <div class="back">
         <Header tertiary>
-          Who is our customer?
+          {{
+            description
+              ? (t => t[0] + t[1])(description.split(/([\.\?])/))
+              : 'unknown'
+          }}
         </Header>
         <Paragraph>
-          Understand your customer is key.
+          {{
+            description
+              ? (t => t.splice(2, t.length).join(''))(
+                  description.split(/([\.\?])/)
+                )
+              : 'unknown'
+          }}
         </Paragraph>
       </div>
     </Card>
@@ -39,6 +49,7 @@ export default new Molecular({
       type: String,
       default: 'unknown toolkit',
     },
+    description: String,
     img: String,
   },
 })
@@ -49,7 +60,7 @@ export default new Molecular({
 
 .toolkit-card {
   background-color: transparent;
-  height: 17rem;
+  height: 20rem;
   perspective: 1000px;
 
   &:hover {
@@ -75,6 +86,7 @@ export default new Molecular({
 
     .back {
       transform: rotateY(180deg);
+      overflow: scroll;
     }
 
     .front,

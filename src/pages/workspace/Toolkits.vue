@@ -15,6 +15,7 @@
         v-for="i in toolkits"
         :key="toolkits.indexOf(i)"
         :title="i.title"
+        :description="i.description"
         :img="
           `https://s3.eu-central-1.amazonaws.com/eutopia.media/tool_${toolkits.indexOf(
             i
@@ -41,6 +42,7 @@ export default {
       {
         toolkits {
           title
+          description
         }
       }
     `,
