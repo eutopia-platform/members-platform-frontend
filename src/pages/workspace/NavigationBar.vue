@@ -35,9 +35,19 @@ export default {
         link: '/workspace',
       },
       {
+        name: 'Analytics',
+        icon: require('/../data/img/workspace/navbar/analytics.svg'),
+        link: '/workspace/analytics',
+      },
+      {
         name: 'Toolkits',
         icon: require('/../data/img/workspace/navbar/toolkits.svg'),
         link: '/workspace/toolkits',
+      },
+      {
+        name: 'Processes',
+        icon: require('/../data/img/workspace/navbar/processes.svg'),
+        link: '/workspace/processes',
       },
       {
         name: 'Settings',

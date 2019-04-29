@@ -2,7 +2,17 @@
   <div class="dashboard">
     <Header tertiary>Dashboard</Header>
     <div class="content">
-      <WelcomeInfo class="welcome"></WelcomeInfo>
+      <InfoCard>
+        <div>
+          <Paragraph>
+            Welcome to the dashboard of your workspace &mdash; the new home of
+            your project.
+            <Break></Break>
+            Manage toolkits and processes and always stay on top of the progress
+            your team is making.
+          </Paragraph>
+        </div>
+      </InfoCard>
       <ToolkitStatus></ToolkitStatus>
       <Validation></Validation>
       <Process class="process"></Process>
@@ -12,10 +22,12 @@
 
 <script>
 import Header from '/components/atomic/Header'
+import Paragraph from '/components/atomic/Paragraph'
+import Break from '/components/atomic/Break'
 import ToolkitStatus from './dashboard/ToolkitStatus'
 import Validation from './dashboard/Validation'
 import Process from './dashboard/Process'
-import WelcomeInfo from './dashboard/WelcomeInfo'
+import InfoCard from '/components/molecular/InfoCard'
 
 export default {
   name: 'Dashboard',
@@ -24,7 +36,9 @@ export default {
     ToolkitStatus,
     Validation,
     Process,
-    WelcomeInfo,
+    InfoCard,
+    Paragraph,
+    Break,
   },
 }
 </script>

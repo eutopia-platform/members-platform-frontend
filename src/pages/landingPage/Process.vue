@@ -83,6 +83,16 @@ export default {
   padding: 5rem;
   text-align: center;
 
+  @media screen and (max-width: 800px) {
+    padding: 2rem;
+    text-align: left;
+
+    // .tagline {
+    //   transform: none !important;
+    //   left: 0 !important;
+    // }
+  }
+
   * {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -93,6 +103,12 @@ export default {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+
+    @media screen and (max-width: 800px) {
+      transform: none;
+      left: 0;
+      width: auto;
+    }
   }
 
   .steps {
@@ -103,12 +119,19 @@ export default {
     left: 50%;
     transform: translateX(-50%);
     margin-top: 5rem;
+    flex-wrap: wrap;
+    align-items: end;
+
+    @media screen and (max-width: 544px) {
+      justify-content: center;
+    }
 
     .step {
       opacity: 0;
       width: 15rem;
       transition: all 1s ease-out;
       transform: translateY(-2rem);
+      text-align: center;
 
       @for $i from 1 through 4 {
         &:nth-child(#{$i}) {
@@ -132,6 +155,11 @@ export default {
         &:nth-child(odd) {
           transform: translateY(1rem);
         }
+      }
+
+      .paragraph {
+        text-align: left;
+        margin: 2rem;
       }
     }
   }

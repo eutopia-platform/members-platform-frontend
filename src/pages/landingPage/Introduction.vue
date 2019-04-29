@@ -1,19 +1,23 @@
 <template>
   <div class="intro" :style="style">
     <div v-if="showWelcome" class="welcome">
+      <Icon :src="logo"></Icon>
       <Header secondary>{{ welcome_1 }}</Header>
       <Header primary class="text-big">{{ welcome_2 }}</Header>
     </div>
     <div v-if="showGroup1" class="group-1">
       <Header tertiary>{{ group1Small }}</Header>
       <Header secondary>{{ group1Big }}</Header>
-      <Icon :src="group1Icon"></Icon>
+      <Icon :src="group1Icon" :class="{ rocket: showRocket }"></Icon>
     </div>
     <div v-if="showSignup" class="signup">
-      <Header primary>Cube</Header>
-      <Header primary :class="{ transparent: !showSignupBig }"
-        >scale your startup</Header
-      >
+      <Icon :src="logo"></Icon>
+      <Header primary :class="{ transparent: !showSignupSmall }">
+        scale your
+      </Header>
+      <Header primary :class="{ transparent: !showSignupBig }">
+        startup
+      </Header>
       <EmailSignup :class="{ transparent: !showEmailForm }"></EmailSignup>
     </div>
     <div class="ring"><div class="ring-inner" :style="style"></div></div>
@@ -52,7 +56,7 @@ export default {
       return this.getAnimProp('group1').small
     },
     group1Big: function() {
-      return this.getAnimProp('group1').big
+      return 'YOUR ' + this.getAnimProp('group1').big
     },
     group1Icon: function() {
       return this.getAnimProp('group1').icon
@@ -86,6 +90,10 @@ export default {
       const signup = this.frames[this.frame].signup
       return signup ? signup.form : false
     },
+    showSignupSmall: function() {
+      const signup = this.frames[this.frame].signup
+      return signup ? signup.small : false
+    },
     showSignupBig: function() {
       const signup = this.frames[this.frame].signup
       return signup ? signup.big : false
@@ -93,6 +101,10 @@ export default {
     showWelcome: function() {
       return this.frames[this.frame].hasOwnProperty('welcome')
     },
+    showRocket: function() {
+      return this.frames[this.frame].rocket
+    },
+    logo: () => require('/../data/img/ui/logo.svg'),
   },
   mounted: function() {
     window.addEventListener('scroll', this.onScroll)
@@ -116,7 +128,7 @@ export default {
       }
       type(0, 'This is how you use Cube', 'welcome_1', () =>
         type(0, 'to build and launch an MVP.', 'welcome_2', () =>
-          setTimeout(this.animate, 1000)
+          setTimeout(this.animate, 2000)
         )
       )
     },
@@ -167,7 +179,6 @@ export default {
   text-align: center;
   box-sizing: border-box;
   padding: 1px;
-  overflow: hidden;
   position: relative;
   margin: 0;
   top: 0;
@@ -192,11 +203,19 @@ export default {
     * {
       position: static;
       transform: none;
+      &:first-child {
+        margin-bottom: 1rem;
+      }
     }
     .icon {
       margin-top: 1.5rem;
       height: 10rem;
       width: 10rem;
+
+      &.rocket {
+        transform: translateY(-1000px);
+        transition: transform 1s cubic-bezier(0.82, 0.03, 0.98, 0.69);
+      }
     }
   }
 
@@ -207,8 +226,13 @@ export default {
       transform: none;
     }
 
+    .icon {
+      width: 7rem;
+    }
+
     .email-signup {
       margin-top: 2rem;
+      max-width: 80vw;
     }
 
     .transparent {
@@ -229,8 +253,9 @@ export default {
       height: 3rem;
     }
 
-    .button {
-      margin-top: 3rem;
+    .icon {
+      margin-bottom: 2rem;
+      width: 7rem;
     }
   }
 

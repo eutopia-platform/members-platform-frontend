@@ -43,7 +43,18 @@ export default {
   top: 50vh;
   transform: translateY(-50%);
   position: relative;
-  margin-bottom: 5em;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 4rem;
+    transform: none;
+    position: initial;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    .email-signup {
+      max-width: 100%;
+    }
+  }
 
   * {
     margin-bottom: 2rem;

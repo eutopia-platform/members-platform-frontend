@@ -1,10 +1,11 @@
 @import "./utils.scss";
+@import "/components/sharedStyles/fluid.scss";
 
 // fonts
 $font-primary: 'Nunito', sans-serif;
 
 // font sizes
-$fs-base: 16px;
+$fs-base: 1rem;
 $fs-step: 1.4;
 
 $fs-header-1: $fs-base * pow($fs-step, 3);
@@ -16,3 +17,7 @@ $fs-tagline-1: $fs-base * pow($fs-step, 2);
 $fs-tagline-2: $fs-base * pow($fs-step, 1);
 
 $fs-small: $fs-base * pow(1 + ($fs-step - 1) / 2, -1);
+
+@mixin fontSize($n) {
+  @include fluid(font-size, 1rem, 4rem, 400px, 1000px);
+}

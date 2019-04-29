@@ -24,7 +24,8 @@ export default {
 @import '../../components/sharedStyles/colors.scss';
 
 .footer {
-  @include colorScheme('tertiary');
+  @include colorScheme('primary');
+  background-color: darken(#253dbc, 15%);
 
   box-sizing: border-box;
   width: 100%;

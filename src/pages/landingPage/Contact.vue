@@ -28,7 +28,7 @@ export default {
 @import '../../components/sharedStyles/colors.scss';
 
 .contact {
-  @include colorScheme('primary');
+  @include colorScheme('tertiary');
 
   box-sizing: border-box;
   width: 100%;
@@ -36,6 +36,10 @@ export default {
   margin: 0;
   padding: 3em;
   text-align: center;
+
+  @media screen and (max-width: 520px) {
+    text-align: left;
+  }
 
   .signup-wrap {
     position: relative;
