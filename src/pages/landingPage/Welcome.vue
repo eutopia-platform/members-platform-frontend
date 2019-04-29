@@ -24,9 +24,6 @@ export default {
     EmailSignup,
   },
   methods: {
-    scrollToSignup: function() {
-      this.$eventBus.$emit('scroll-to-email')
-    },
     signup: () => window.open('/onboarding', '_self'),
   },
 }
