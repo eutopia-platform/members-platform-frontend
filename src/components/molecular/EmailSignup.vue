@@ -25,10 +25,9 @@ export default new Molecular({
   },
   methods: {
     submit: function() {
-      // prettier-ignore
       gtag('event', 'submit', {
         event_category: 'EmailSignup',
-        event_label: `uid: ${this._uid}`
+        event_label: `uid: ${this._uid}`,
       })
       this.$apollo.mutate({
         mutation: gql`
