@@ -132,9 +132,6 @@ export default {
         &:nth-child(#{$i}) {
           transition-delay: #{($i - 1) * 0.15}s;
         }
-        &:nth-child(even) {
-          // transform: translateY(-3rem);
-        }
       }
 
       * {
@@ -146,10 +143,6 @@ export default {
       &.active {
         opacity: 1;
         transform: none;
-
-        &:nth-child(odd) {
-          // transform: translateY(1rem);
-        }
       }
 
       .paragraph {
