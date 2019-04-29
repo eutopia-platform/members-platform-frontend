@@ -10,6 +10,7 @@ const config = {
     module: true,
     process: true,
     require: true,
+    gtag: 'readonly',
   },
   rules: {
     'vue/max-attributes-per-line': false,

@@ -161,7 +161,6 @@ export default {
     },
     onScroll: function() {
       if (window.scrollY > this.$el.offsetTop - this.$el.offsetHeight / 6) {
-        // this.animate()
         this.typeHello()
         window.removeEventListener('scroll', this.onScroll)
       }
@@ -182,6 +181,13 @@ export default {
   position: relative;
   margin: 0;
   top: 0;
+
+  @media screen and (max-width: 700px) {
+    .ring,
+    .check {
+      display: none;
+    }
+  }
 
   * {
     z-index: 1;
@@ -243,6 +249,12 @@ export default {
   .welcome {
     text-align: center;
     width: 40rem;
+
+    @media screen and (max-width: 700px) {
+      .header {
+        transform: scale(0.7);
+      }
+    }
 
     * {
       position: static;

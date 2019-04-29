@@ -24,10 +24,22 @@ export default {
     Small,
   },
   props: {
-    img: String,
-    val: String,
-    name: String,
-    percent: Number,
+    img: {
+      type: String,
+      default: '',
+    },
+    val: {
+      type: String,
+      default: '',
+    },
+    name: {
+      type: String,
+      default: '',
+    },
+    percent: {
+      type: Number,
+      default: 0,
+    },
   },
   computed: {
     cl_percent: function() {
