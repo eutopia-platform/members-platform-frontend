@@ -14,17 +14,9 @@
 
 <script>
 import Molecular from '/components/sharedScripts/molecular'
-import Card from '/components/atomic/Card'
-import Icon from '/components/atomic/Icon'
-import Button from '/components/atomic/Button'
 
 export default new Molecular({
   name: 'InfoCard',
-  components: {
-    Card,
-    Icon,
-    Button,
-  },
   computed: {
     iconInfo: () => require('/../data/img/ui/info.svg'),
     iconClose: () => require('/../data/img/ui/close.svg'),

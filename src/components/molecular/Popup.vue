@@ -8,13 +8,8 @@
 </template>
 
 <script>
-import Shade from '../atomic/Shade.vue'
-
 export default {
   name: 'Popup',
-  components: {
-    Shade,
-  },
 }
 </script>
 

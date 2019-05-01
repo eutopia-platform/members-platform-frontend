@@ -65,19 +65,8 @@
 </template>
 
 <script>
-import Button from '../components/atomic/Button.vue'
-import Header from '../components/atomic/Header.vue'
-import Tagline from '../components/atomic/Tagline.vue'
-import Paragraph from '../components/atomic/Paragraph.vue'
-
 export default {
   name: 'Components',
-  components: {
-    Button,
-    Header,
-    Tagline,
-    Paragraph,
-  },
 }
 </script>
 

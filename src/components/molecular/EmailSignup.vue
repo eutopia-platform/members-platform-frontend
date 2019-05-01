@@ -7,18 +7,12 @@
 
 <script>
 import Molecular from '/components/sharedScripts/molecular'
-import Input from '/components/atomic/Input'
-import Button from '/components/atomic/Button'
 import gql from 'graphql-tag'
 
 export default new Molecular({
   name: 'EmailSignup',
   apollo: {
     $client: 'mail',
-  },
-  components: {
-    Input,
-    Button,
   },
   data: {
     email: '',

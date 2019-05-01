@@ -33,9 +33,7 @@
 </template>
 
 <script>
-import PageSlide from '../components/atomic/PageSlide'
 import Brand from '../components/molecular/Brand'
-import SplitViewHorizontal from '../components/atomic/SplitViewHorizontal.vue'
 import Welcome from './landingPage/Welcome.vue'
 import Introduction from './landingPage/Introduction.vue'
 import Contact from './landingPage/Contact.vue'
@@ -46,8 +44,6 @@ export default {
   name: 'LandingPage',
   components: {
     Brand,
-    PageSlide,
-    SplitViewHorizontal,
     Welcome,
     Introduction,
     Contact,

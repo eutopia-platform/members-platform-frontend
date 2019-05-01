@@ -11,15 +11,8 @@
 </template>
 
 <script>
-import Header from './Header.vue'
-import Paragraph from './Paragraph.vue'
-
 export default {
   name: 'ToolkitCard',
-  components: {
-    Header,
-    Paragraph,
-  },
   props: {
     name: {
       type: String,

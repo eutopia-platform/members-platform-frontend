@@ -10,18 +10,10 @@
 </template>
 
 <script>
-import Paragraph from '../atomic/Paragraph.vue'
-import Small from '../atomic/Small.vue'
-import Icon from '../atomic/Icon.vue'
 import gql from 'graphql-tag'
 
 export default {
   name: 'UserStatus',
-  components: {
-    Paragraph,
-    Small,
-    Icon,
-  },
   data: () => ({
     user: {
       email: 'unknown email',

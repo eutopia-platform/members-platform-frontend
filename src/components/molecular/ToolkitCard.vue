@@ -31,19 +31,9 @@
 
 <script>
 import Molecular from '/components/sharedScripts/molecular'
-import Header from '/components/atomic/Header'
-import Paragraph from '/components/atomic/Paragraph'
-import Card from '/components/atomic/Card'
-import Icon from '/components/atomic/Icon'
 
 export default new Molecular({
   name: 'ToolkitCard',
-  components: {
-    Header,
-    Icon,
-    Card,
-    Paragraph,
-  },
   props: {
     title: {
       type: String,

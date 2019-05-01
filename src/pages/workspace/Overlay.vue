@@ -21,17 +21,8 @@
 </template>
 
 <script>
-import SplitViewHorizontal from '~/components/atomic/SplitViewHorizontal'
-import Header from '~/components/atomic/Header'
-import Tagline from '~/components/atomic/Tagline'
-
 export default {
   name: 'Overlay',
-  components: {
-    SplitViewHorizontal,
-    Header,
-    Tagline,
-  },
 }
 </script>
 

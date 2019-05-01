@@ -43,19 +43,8 @@
 </template>
 
 <script>
-import Header from '/components/atomic/Header'
-import Tagline from '/components/atomic/Tagline'
-import Icon from '/components/atomic/Icon'
-import Paragraph from '/components/atomic/Paragraph'
-
 export default {
   name: 'Process',
-  components: {
-    Header,
-    Tagline,
-    Icon,
-    Paragraph,
-  },
   computed: {
     img1: () => require('/../data/img/landingpage/test1.svg'),
     img2: () => require('/../data/img/landingpage/test2.svg'),

@@ -8,15 +8,8 @@
 </template>
 
 <script>
-import Icon from '/components/atomic/Icon'
-import Paragraph from '/components/atomic/Paragraph'
-
 export default {
   name: 'NavigationBarItem',
-  components: {
-    Icon,
-    Paragraph,
-  },
   props: {
     icon: { type: String, default: '' },
     link: { type: String, default: '' },

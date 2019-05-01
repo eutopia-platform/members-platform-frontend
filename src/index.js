@@ -69,6 +69,9 @@ const router = new VueRouter({
   routes,
 })
 
+const atomic = require('./components/atomic/*.vue')
+Object.keys(atomic).forEach(name => Vue.component(name, atomic[name].default))
+
 new Vue({
   el: '#app',
   apolloProvider,

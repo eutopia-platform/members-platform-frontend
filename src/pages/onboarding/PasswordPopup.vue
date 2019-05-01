@@ -33,11 +33,6 @@
 
 <script>
 import Popup from '../../components/molecular/Popup.vue'
-import Header from '../../components/atomic/Header.vue'
-import Input from '../../components/atomic/Input.vue'
-import Button from '../../components/atomic/Button.vue'
-import Icon from '../../components/atomic/Icon.vue'
-import Paragraph from '~/components/atomic/Paragraph'
 import gql from 'graphql-tag'
 
 export default {
@@ -47,11 +42,6 @@ export default {
   },
   components: {
     Popup,
-    Header,
-    Input,
-    Button,
-    Icon,
-    Paragraph,
   },
   props: {
     info: {

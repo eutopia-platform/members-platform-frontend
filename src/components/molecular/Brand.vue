@@ -9,15 +9,9 @@
 
 <script>
 import Molecular from '/components/sharedScripts/molecular'
-import Icon from '/components/atomic/Icon'
-import Header from '/components/atomic/Header'
 
 export default new Molecular({
   name: 'Brand',
-  components: {
-    Header,
-    Icon,
-  },
   computed: {
     logo: () => require('/../data/img/ui/logo.svg'),
   },

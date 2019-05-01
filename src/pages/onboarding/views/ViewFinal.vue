@@ -38,17 +38,11 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
-import Header from '/components/atomic/Header'
-import Paragraph from '/components/atomic/Paragraph'
-import Button from '/components/atomic/Button'
 
 export default {
   name: 'ViewFinal',
   components: {
     ViewBase,
-    Header,
-    Paragraph,
-    Button,
   },
   extends: ViewBase,
   computed: {

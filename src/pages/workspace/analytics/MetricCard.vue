@@ -8,21 +8,8 @@
 </template>
 
 <script>
-import Card from '/components/atomic/Card'
-import Icon from '/components/atomic/Icon'
-import Header from '/components/atomic/Header'
-import Paragraph from '/components/atomic/Paragraph'
-import Small from '/components/atomic/Small'
-
 export default {
   name: 'MetricCard',
-  components: {
-    Card,
-    Icon,
-    Header,
-    Paragraph,
-    Small,
-  },
   props: {
     img: {
       type: String,

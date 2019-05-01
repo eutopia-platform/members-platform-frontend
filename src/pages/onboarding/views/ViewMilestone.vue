@@ -34,19 +34,11 @@
 
 <script>
 import ViewBase from '../ViewBase.vue'
-import Header from '/components/atomic/Header'
-import Paragraph from '/components/atomic/Paragraph'
-import Input from '/components/atomic/Input'
-import Button from '/components/atomic/Button'
 
 export default {
   name: 'ViewMilestone',
   components: {
     ViewBase,
-    Header,
-    Paragraph,
-    Input,
-    Button,
   },
   extends: ViewBase,
   data: () => ({

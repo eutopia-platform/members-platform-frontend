@@ -9,15 +9,8 @@
 </template>
 
 <script>
-import Header from '../../components/atomic/Header.vue'
-import Button from '../../components/atomic/Button.vue'
-
 export default {
   name: 'Contact',
-  components: {
-    Header,
-    Button,
-  },
   methods: {
     signup: () => window.open('/onboarding', '_self'),
   },
