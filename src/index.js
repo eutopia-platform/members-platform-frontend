@@ -70,7 +70,7 @@ const router = new VueRouter({
 })
 
 const atomic = require('./components/atomic/*.vue')
-Object.keys(atomic).forEach(name => Vue.component(name, atomic[name].default))
+Object.keys(atomic).forEach(name => Vue.component(name, atomic[name].default || atomic[name]))
 
 new Vue({
   el: '#app',
