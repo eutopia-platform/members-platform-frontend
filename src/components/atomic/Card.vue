@@ -5,9 +5,11 @@
 </template>
 
 <script>
-export default {
+import Atomic from '../sharedScripts/atomic'
+
+export default new Atomic({
   name: 'Card',
-}
+})
 </script>
 
 <style lang="scss" scoped>
