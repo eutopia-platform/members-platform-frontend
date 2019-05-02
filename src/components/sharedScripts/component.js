@@ -1,4 +1,4 @@
-import { assert } from '/components/sharedScripts/debug'
+import { assert } from './debug'
 
 export default class Component {
   constructor(def) {

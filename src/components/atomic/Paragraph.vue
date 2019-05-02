@@ -1,16 +1,16 @@
 <template>
-  <p class="paragraph" :class="{ small: small }">
+  <p class="paragraph" :class="getClass">
     <slot />
   </p>
 </template>
 
 <script>
-export default {
+import Atomic from '../sharedScripts/atomic'
+
+export default new Atomic({
   name: 'Paragraph',
-  props: {
-    small: Boolean,
-  },
-}
+  types: ['small'],
+})
 </script>
 
 <style lang="scss" scoped>

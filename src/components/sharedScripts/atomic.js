@@ -1,5 +1,5 @@
 import Component from './component'
-import { assert } from '/components/sharedScripts/debug'
+import { assert } from './debug'
 
 export default class Atomic extends Component {
   constructor(def) {
