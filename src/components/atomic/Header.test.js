@@ -10,8 +10,8 @@ describe('A Header', () => {
   it('renders an h1 as primary header', () => {
     const header = mount(Header, {
       propsData: {
-        primary: true
-      }
+        primary: true,
+      },
     })
     expect(header.is('h1.primary')).toBe(true)
   })
@@ -19,8 +19,8 @@ describe('A Header', () => {
   it('renders an h2 as secondary header', () => {
     const header = mount(Header, {
       propsData: {
-        secondary: true
-      }
+        secondary: true,
+      },
     })
     expect(header.is('h2.secondary')).toBe(true)
   })
@@ -29,7 +29,7 @@ describe('A Header', () => {
     const header = mount(Header, {
       propsData: {
         tertiary: true,
-      }
+      },
     })
     expect(header.is('h3.tertiary')).toBe(true)
   })
@@ -38,7 +38,7 @@ describe('A Header', () => {
     const header = mount(Header, {
       propsData: {
         quaternary: true,
-      }
+      },
     })
     expect(header.is('h4.quaternary')).toBe(true)
   })
@@ -46,7 +46,7 @@ describe('A Header', () => {
   it('renders passed content in header', () => {
     const header = mount(Header, {
       propsData: {
-        primary: true
+        primary: true,
       },
       slots: {
         default: '<span></span>',

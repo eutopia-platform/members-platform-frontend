@@ -45,7 +45,7 @@ describe('A Checkbox', () => {
 
   it('emits input event when changed', () => {
     const checkbox = mount(Checkbox)
-    checkbox.find('input[type=\'checkbox\']').trigger('input')
+    checkbox.find("input[type='checkbox']").trigger('input')
     expect(checkbox.emitted().input).toBeTruthy()
   })
 })
