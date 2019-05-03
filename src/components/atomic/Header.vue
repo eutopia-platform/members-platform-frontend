@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Atomic from '/components/sharedScripts/atomic'
+import Atomic from '../sharedScripts/atomic'
 
 export default new Atomic({
   name: 'Header',
