@@ -32,7 +32,8 @@ describe('A Checkbox', () => {
     expect(hasSpanInLabel).toBe(true)
   })
 
-  it('passes the passed value to the html-input', () => {
+  it('supports v-model', () => {
+    // passes down value
     const checkbox = mount(Checkbox, {
       propsData: {
         value: true,
@@ -41,10 +42,8 @@ describe('A Checkbox', () => {
     expect(checkbox.find("input[type='checkbox'][value=true]").exists()).toBe(
       true
     )
-  })
 
-  it('emits input event when changed', () => {
-    const checkbox = mount(Checkbox)
+    // emits input event
     checkbox.find("input[type='checkbox']").trigger('input')
     expect(checkbox.emitted().input).toBeTruthy()
   })
