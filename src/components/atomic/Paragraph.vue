@@ -9,7 +9,7 @@ import Atomic from '../sharedScripts/atomic'
 
 export default new Atomic({
   name: 'Paragraph',
-  types: ['small'],
+  types: ['default', 'small'],
 })
 </script>
 
