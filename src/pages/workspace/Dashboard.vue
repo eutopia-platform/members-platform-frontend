@@ -21,9 +21,6 @@
 </template>
 
 <script>
-import Header from '/components/atomic/Header'
-import Paragraph from '/components/atomic/Paragraph'
-import Break from '/components/atomic/Break'
 import ToolkitStatus from './dashboard/ToolkitStatus'
 import Validation from './dashboard/Validation'
 import Process from './dashboard/Process'
@@ -32,13 +29,10 @@ import InfoCard from '/components/molecular/InfoCard'
 export default {
   name: 'Dashboard',
   components: {
-    Header,
     ToolkitStatus,
     Validation,
     Process,
     InfoCard,
-    Paragraph,
-    Break,
   },
 }
 </script>

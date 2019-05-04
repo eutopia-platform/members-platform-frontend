@@ -14,19 +14,8 @@
 </template>
 
 <script>
-import Paragraph from '/components/atomic/Paragraph'
-import Checkbox from '/components/atomic/Checkbox'
-import Icon from '/components/atomic/Icon'
-import ProgressBar from '/components/atomic/ProgressBar'
-
 export default {
   name: 'TestStatusSlip',
-  components: {
-    Paragraph,
-    ProgressBar,
-    Icon,
-    Checkbox,
-  },
   props: {
     toolkit: {
       type: String,

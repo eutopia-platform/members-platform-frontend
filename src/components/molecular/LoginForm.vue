@@ -24,10 +24,6 @@
 <script>
 import Molecular from '/components/sharedScripts/molecular'
 import Popup from './Popup.vue'
-import Header from '../atomic/Header.vue'
-import Paragraph from '../atomic/Paragraph.vue'
-import Input from '../atomic/Input.vue'
-import Button from '../atomic/Button.vue'
 import gql from 'graphql-tag'
 
 export default new Molecular({
@@ -37,10 +33,6 @@ export default new Molecular({
   },
   components: {
     Popup,
-    Header,
-    Input,
-    Button,
-    Paragraph,
   },
   data: {
     email: '',

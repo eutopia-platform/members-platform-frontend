@@ -24,20 +24,12 @@
 
 <script>
 import Popup from '../../components/molecular/Popup.vue'
-import Header from '../../components/atomic/Header.vue'
-import Paragraph from '../../components/atomic/Paragraph.vue'
-import PinInput from '../../components/atomic/PinInput.vue'
-import Icon from '../../components/atomic/Icon.vue'
 import gql from 'graphql-tag'
 
 export default {
   name: 'CodePopup',
   components: {
     Popup,
-    Header,
-    Paragraph,
-    PinInput,
-    Icon,
   },
   apollo: {
     $client: 'auth',

@@ -3,13 +3,8 @@
 </template>
 
 <script>
-import Card from '/components/atomic/Card'
-
 export default {
   name: 'ProcessCard',
-  components: {
-    Card,
-  },
 }
 </script>
 

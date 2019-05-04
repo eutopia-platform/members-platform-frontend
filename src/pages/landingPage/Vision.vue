@@ -52,15 +52,8 @@
 </template>
 
 <script>
-import Header from '../../components/atomic/Header.vue'
-import Icon from '../../components/atomic/Icon.vue'
-
 export default {
   name: 'Vision',
-  components: {
-    Header,
-    Icon,
-  },
   computed: {
     img1: () => require('../../../data/img/landingpage/step1.svg'),
     img2: () => require('../../../data/img/landingpage/step2.svg'),

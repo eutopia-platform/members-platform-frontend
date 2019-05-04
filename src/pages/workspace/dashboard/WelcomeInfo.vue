@@ -21,21 +21,8 @@
 </template>
 
 <script>
-import Card from '/components/atomic/Card'
-import Paragraph from '/components/atomic/Paragraph'
-import Break from '/components/atomic/Break'
-import Button from '/components/atomic/Button'
-import Icon from '/components/atomic/Icon'
-
 export default {
   name: 'WelcomeInfo',
-  components: {
-    Card,
-    Paragraph,
-    Break,
-    Button,
-    Icon,
-  },
   computed: {
     iconInfo: () => require('/../data/img/ui/info.svg'),
     iconClose: () => require('/../data/img/ui/close.svg'),

@@ -12,17 +12,8 @@
 </template>
 
 <script>
-import Paragraph from '/components/atomic/Paragraph'
-import Icon from '/components/atomic/Icon'
-import ProgressBar from '/components/atomic/ProgressBar'
-
 export default {
   name: 'ToolkitStatusSlip',
-  components: {
-    Paragraph,
-    ProgressBar,
-    Icon,
-  },
   props: {
     name: {
       type: String,

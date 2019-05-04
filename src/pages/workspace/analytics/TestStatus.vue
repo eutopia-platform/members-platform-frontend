@@ -40,14 +40,12 @@
 
 <script>
 import DashboardCard from '../dashboard/DashboardCard'
-import Header from '/components/atomic/Header'
 import TestStatusSlip from './TestStatusSlip'
 
 export default {
   name: 'TestStatus',
   components: {
     DashboardCard,
-    Header,
     TestStatusSlip,
   },
 }

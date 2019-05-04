@@ -7,13 +7,8 @@
 </template>
 
 <script>
-import Header from './Header.vue'
-
 export default {
   name: 'Logo',
-  components: {
-    Header,
-  },
 }
 </script>
 

@@ -52,6 +52,8 @@ export default {
       if (isNaN(e.key) || e.key === ' ') return
       const current = document.activeElement.name
       if (current >= this.groups * this.digits - 1) {
+        this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value =
+          e.key
         this.submit()
       } else {
         // write input to current field and focus next

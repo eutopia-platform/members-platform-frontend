@@ -6,7 +6,9 @@
 </template>
 
 <script>
-export default {
+import Atomic from '../sharedScripts/atomic'
+
+export default new Atomic({
   name: 'Checkbox',
   props: {
     value: {
@@ -19,5 +21,5 @@ export default {
       this.$emit('input', e.target.checked)
     },
   },
-}
+})
 </script>

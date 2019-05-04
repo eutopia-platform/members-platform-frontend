@@ -53,8 +53,6 @@
 </template>
 
 <script>
-import Header from '/components/atomic/Header'
-import Paragraph from '/components/atomic/Paragraph'
 import InfoCard from '/components/molecular/InfoCard'
 import TestStatus from './analytics/TestStatus'
 import MetricCard from './analytics/MetricCard'
@@ -62,8 +60,6 @@ import MetricCard from './analytics/MetricCard'
 export default {
   name: 'Analytics',
   components: {
-    Header,
-    Paragraph,
     InfoCard,
     TestStatus,
     MetricCard,

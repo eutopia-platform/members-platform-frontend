@@ -32,14 +32,12 @@
 <script>
 import DashboardCard from './DashboardCard'
 import ToolkitStatusSlip from './ToolkitStatusSlip'
-import Header from '/components/atomic/Header'
 
 export default {
   name: 'ToolkitStatus',
   components: {
     DashboardCard,
     ToolkitStatusSlip,
-    Header,
   },
 }
 </script>

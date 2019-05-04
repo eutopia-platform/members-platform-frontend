@@ -11,6 +11,9 @@ const config = {
     process: true,
     require: true,
     gtag: 'readonly',
+    describe: true,
+    it: true,
+    expect: true,
   },
   rules: {
     'vue/max-attributes-per-line': false,

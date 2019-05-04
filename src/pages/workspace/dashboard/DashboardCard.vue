@@ -9,17 +9,8 @@
 </template>
 
 <script>
-import Card from '/components/atomic/Card'
-import Header from '/components/atomic/Header'
-import LineHorizontal from '/components/atomic/LineHorizontal'
-
 export default {
   name: 'DashboardCard',
-  components: {
-    Card,
-    Header,
-    LineHorizontal,
-  },
   props: {
     title: {
       type: String,

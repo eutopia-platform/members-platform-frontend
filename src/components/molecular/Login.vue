@@ -17,15 +17,8 @@
 </template>
 
 <script>
-import Button from '../atomic/Button'
-import Input from '../atomic/Input'
-
 export default {
   name: 'Login',
-  components: {
-    Input,
-    Button,
-  },
   data: () => ({
     email: '',
     password: '',

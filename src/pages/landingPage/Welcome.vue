@@ -12,15 +12,11 @@
 </template>
 
 <script>
-import Header from '../../components/atomic/Header.vue'
-import Tagline from '../../components/atomic/Tagline.vue'
 import EmailSignup from '/components/molecular/EmailSignup'
 
 export default {
   name: 'Welcome',
   components: {
-    Header,
-    Tagline,
     EmailSignup,
   },
   methods: {

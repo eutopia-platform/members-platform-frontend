@@ -28,9 +28,6 @@
 
 <script>
 import gql from 'graphql-tag'
-import Header from '/components/atomic/Header'
-import Paragraph from '/components/atomic/Paragraph'
-import Break from '/components/atomic/Break'
 import Toolkit from '/components/molecular/ToolkitCard'
 import InfoCard from '/components/molecular/InfoCard'
 
@@ -48,11 +45,8 @@ export default {
     `,
   },
   components: {
-    Header,
     Toolkit,
     InfoCard,
-    Paragraph,
-    Break,
   },
   data: () => ({
     toolkits: [],

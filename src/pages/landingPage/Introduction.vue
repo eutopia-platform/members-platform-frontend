@@ -33,15 +33,11 @@
 
 <script>
 import frames from './animation'
-import Header from '/components/atomic/Header'
-import Icon from '/components/atomic/Icon'
 import EmailSignup from '/components/molecular/EmailSignup'
 
 export default {
   name: 'Introduction',
   components: {
-    Header,
-    Icon,
     EmailSignup,
   },
   data: () => ({
