@@ -36,6 +36,14 @@ const steps = [
     type: Route,
     route: 'members',
   },
+  {
+    type: Route,
+    route: 'done',
+  },
+  {
+    type: Route,
+    route: '/workspace',
+  },
 ]
 
 export default {

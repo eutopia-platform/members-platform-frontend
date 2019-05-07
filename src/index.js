@@ -22,6 +22,7 @@ import SignupEmail from './pages/signup/Email'
 import SignupName from './pages/signup/Name'
 import SignupMilestone from './pages/signup/Milestone'
 import SignupMembers from './pages/signup/Members'
+import SignupDone from './pages/signup/Done'
 
 import '/master.scss'
 
@@ -85,6 +86,10 @@ const routes = [
       {
         path: 'members',
         component: SignupMembers,
+      },
+      {
+        path: 'done',
+        component: SignupDone,
       },
     ],
   },
