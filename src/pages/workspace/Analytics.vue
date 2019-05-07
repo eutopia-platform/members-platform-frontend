@@ -81,14 +81,12 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
 
-    * {
-      height: 100%;
-      @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1200px) {
+      .metric-card {
         grid-column-start: span 2;
       }
     }
 
-    .welcome,
     .test-status {
       grid-column-start: span 4;
     }
