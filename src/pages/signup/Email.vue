@@ -3,15 +3,16 @@
     <Header secondary>Let's create your workspace</Header>
     <template v-slot:content>
       <Input
+        v-model="email"
         look="blend"
         placeholder="you-are-awesome@example.com"
         :focus="true"
       />
-      <Checkbox>
+      <Checkbox v-model="hasAgreedToPrivacyPolicy">
         I agree to the
         <RouterLink to="/privacy">Privacy Policy</RouterLink>
       </Checkbox>
-      <Button big @click="$emit('next')">Next</Button>
+      <Button big :disabled="!isFormValid" @click="$emit('next')">Next</Button>
     </template>
   </SplitView>
 </template>
@@ -24,7 +25,13 @@ export default {
   components: {
     SplitView,
   },
+  data: () => ({
+    email: '',
+    hasAgreedToPrivacyPolicy: false,
+  }),
   computed: {
+    isFormValid: (self = this) =>
+      self.email !== '' && self.hasAgreedToPrivacyPolicy,
     img: () => require('../../../data/img/onboarding/view-email.png'),
   },
 }
