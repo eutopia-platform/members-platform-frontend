@@ -7,7 +7,7 @@
         placeholder="Are you the next Google?"
         :focus="true"
       />
-      <Button big>Next</Button>
+      <Button big @click="$emit('next')">Next</Button>
     </template>
   </SplitView>
 </template>

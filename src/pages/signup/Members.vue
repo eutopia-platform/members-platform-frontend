@@ -6,7 +6,7 @@
     <Input look="blend" placeholder="awesome-colleague@example.com" />
     <Input look="blend" placeholder="awesome-mentor@example.com" />
     <Button text>+ add more team members</Button>
-    <Button big>Next</Button>
+    <Button big @click="$emit('next')">Next</Button>
     <Button text>Or, skip for now</Button>
   </template>
   </SplitView>
@@ -23,9 +23,12 @@ export default {
   computed: {
     image: () => require('../../../data/img/onboarding/dashboard-2.svg'),
   },
-  data: () => ({
-    org: 'unknown organization',
-  }),
+  props: {
+    org: {
+      type: String,
+      default: 'unknown organization',
+    },
+  },
 }
 </script>
 

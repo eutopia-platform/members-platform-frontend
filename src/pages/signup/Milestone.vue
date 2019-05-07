@@ -8,7 +8,7 @@
     </Paragraph>
     <template v-slot:content>
       <Input look="blend" placeholder="Your next big thing" :focus="true" />
-      <Button big>Next</Button>
+      <Button big @click="$emit('next')">Next</Button>
     </template>
   </SplitView>
 </template>

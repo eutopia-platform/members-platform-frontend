@@ -11,7 +11,7 @@
         I agree to the
         <RouterLink to="/privacy">Privacy Policy</RouterLink>
       </Checkbox>
-      <Button big>Next</Button>
+      <Button big @click="$emit('next')">Next</Button>
     </template>
   </SplitView>
 </template>
