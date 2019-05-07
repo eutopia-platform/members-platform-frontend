@@ -1,5 +1,5 @@
 <template>
-  <SplitView :imgSource="image">
+  <SplitView :img-source="image">
     <Header secondary>What milestone are you working on at the moment?</Header>
     <Paragraph>
       A milestone brings together the key aspects of a successful initiative -

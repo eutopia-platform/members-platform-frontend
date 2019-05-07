@@ -1,5 +1,5 @@
 <template>
-  <SplitView :imgSource="img">
+  <SplitView :img-source="img">
     <Header secondary>Let's create your workspace</Header>
     <template v-slot:content>
       <Input

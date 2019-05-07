@@ -1,5 +1,5 @@
 <template>
-  <SplitView :imgSource="image">
+  <SplitView :img-source="image">
     <Header secondary>What is the name of your company or startup?</Header>
     <template v-slot:content>
       <Input
