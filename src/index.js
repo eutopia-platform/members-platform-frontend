@@ -17,6 +17,12 @@ import Processes from './pages/workspace/Processes'
 import Settings from './pages/workspace/Settings'
 import clients from './connections'
 
+import Signup from './pages/Signup'
+import SignupEmail from './pages/signup/Email'
+import SignupName from './pages/signup/Name'
+import SignupMilestone from './pages/signup/Milestone'
+import SignupMembers from './pages/signup/Members'
+
 import '/master.scss'
 
 const apolloProvider = new VueApollo({
@@ -60,6 +66,28 @@ const routes = [
   { path: '/privacy', component: Privacy },
   { path: '/components', component: Components },
   { path: '/onboarding', component: Onboarding },
+  {
+    path: '/signup',
+    component: Signup,
+    children: [
+      {
+        path: '/',
+        component: SignupEmail,
+      },
+      {
+        path: 'name',
+        component: SignupName,
+      },
+      {
+        path: 'milestone',
+        component: SignupMilestone,
+      },
+      {
+        path: 'members',
+        component: SignupMembers,
+      },
+    ],
+  },
   { path: '/login', component: Login },
   { path: '*', component: NotFound },
 ]
