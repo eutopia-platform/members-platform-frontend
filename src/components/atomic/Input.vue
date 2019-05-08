@@ -6,7 +6,7 @@
     :type="type"
     :placeholder="placeholder"
     :aria-label="internalAriaLabel"
-    :class="styleClass"
+    :class="getClass"
     :autocomplete="type === 'password' ? 'new-password' : 'true'"
     @input="onInput"
     @keyup.enter="onEnter"
@@ -14,8 +14,11 @@
 </template>
 
 <script>
-export default {
+import Molecular from '../sharedScripts/molecular'
+
+export default new Molecular({
   name: 'Input',
+  types: ['default', 'blend'],
   props: {
     name: {
       default: '',
@@ -29,24 +32,15 @@ export default {
       default: null,
       type: String,
     },
-    type: {
-      default: 'text',
-      type: String,
-    },
-    look: {
-      default: 'default',
-      type: String,
-    },
     focus: {
       default: false,
       type: Boolean,
     },
   },
-  data: () => ({
+  data: {
     value: '',
-  }),
+  },
   computed: {
-    styleClass: comp => 'style-' + comp.look,
     internalAriaLabel: comp =>
       comp.ariaLabel !== null ? comp.ariaLabel : comp.placeholder,
   },
@@ -69,7 +63,7 @@ export default {
       this.$emit('submit')
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -89,6 +83,7 @@ export default {
   transition: box-shadow 0.2s, transform 0.2s;
   transform: translate(0, 0px);
   box-sizing: border-box;
+  border: none;
 
   &:active {
     box-shadow: $shadow-active;
@@ -101,7 +96,7 @@ export default {
   }
 }
 
-.style-blend {
+.blend {
   border: none;
   box-shadow: none;
   border-radius: 0;

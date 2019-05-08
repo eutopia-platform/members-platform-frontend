@@ -12,7 +12,7 @@
       <div class="input-wrap">
         <Input
           v-model="milestone"
-          look="blend"
+          blend
           placeholder="Your next big thing"
           :focus="true"
           @valueChange="onInputValueChange"

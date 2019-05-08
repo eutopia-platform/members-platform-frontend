@@ -1,15 +1,10 @@
 <template>
   <div :class="getClass">
     <Header secondary>Login</Header>
-    <Input
-      v-model="email"
-      look="blend"
-      placeholder="email"
-      data-lpignore="true"
-    />
+    <Input v-model="email" blend placeholder="email" data-lpignore="true" />
     <Input
       v-model="password"
-      look="blend"
+      blend
       placeholder="password"
       type="password"
       data-lpignore="true"

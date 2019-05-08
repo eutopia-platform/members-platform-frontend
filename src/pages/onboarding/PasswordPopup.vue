@@ -7,14 +7,14 @@
         </legend>
         <Input
           v-model="pw1"
-          look="blend"
+          blend
           placeholder="set your password"
           type="password"
           data-lpignore="true"
         />
         <Input
           v-model="pw2"
-          look="blend"
+          blend
           placeholder="retype your password"
           type="password"
           data-lpignore="true"

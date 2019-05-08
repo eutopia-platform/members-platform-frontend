@@ -6,7 +6,7 @@
         <Input
           v-for="(_, i) in members"
           :key="i"
-          look="blend"
+          blend
           :name="String(i)"
           :placeholder="placeholders[i % 3]"
           :focus="i === 0"
