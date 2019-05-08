@@ -39,6 +39,7 @@ export default new Molecular({
   justify-content: space-between;
   cursor: pointer;
   z-index: 200;
+  user-select: none;
 
   .logo {
     height: 100%;

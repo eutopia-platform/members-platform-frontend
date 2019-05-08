@@ -74,6 +74,7 @@ export default {
   box-sizing: border-box;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  user-select: none;
 
   @media screen and (min-width: 1000px) {
     width: 300px;
