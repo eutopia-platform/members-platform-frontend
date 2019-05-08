@@ -37,11 +37,6 @@ export default {
       showOverlay:
         process.env.NODE_ENV === 'production' &&
         !(this.$route.query.withoutOverlay === null),
-      user: {
-        name: '',
-        callName: '',
-        email: '',
-      },
     }
   },
   computed: {
@@ -54,6 +49,30 @@ export default {
   },
   created: function() {
     if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
+    const query = gql`
+      {
+        user {
+          name
+          callname
+          email
+        }
+      }
+    `
+    try {
+      this.$apollo.provider.clients.user.readQuery({ query })
+    } catch (e) {
+      this.$apollo.provider.clients.user.writeQuery({
+        query,
+        data: {
+          user: {
+            name: '',
+            callname: '',
+            email: '',
+            __typename: 'User',
+          },
+        },
+      })
+    }
   },
 }
 </script>

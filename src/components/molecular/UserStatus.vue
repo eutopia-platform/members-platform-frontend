@@ -15,10 +15,6 @@ import gql from 'graphql-tag'
 export default {
   name: 'UserStatus',
   data: () => ({
-    user: {
-      email: 'unknown email',
-      callname: 'unknown name',
-    },
     srcUser: require('/../data/img/ui/user.svg'),
     srcLogout: require('/../data/img/ui/logout.svg'),
   }),
@@ -32,7 +28,7 @@ export default {
           }
         }
       `,
-      fetchPolicy: 'cache-first',
+      fetchPolicy: 'cache-only',
     },
   },
   methods: {
