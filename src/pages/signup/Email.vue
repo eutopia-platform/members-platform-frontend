@@ -31,7 +31,7 @@ export default {
   }),
   computed: {
     isFormValid: (self = this) =>
-      self.email !== '' && self.hasAgreedToPrivacyPolicy,
+      /^.+@.+$/.test(self.email) && self.hasAgreedToPrivacyPolicy,
     img: () => require('../../../data/img/onboarding/view-email.png'),
   },
 }
