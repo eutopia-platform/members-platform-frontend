@@ -1,5 +1,5 @@
 <template>
-  <img class="icon" :src="src" />
+  <img class="icon" :src="src" :aria="aria" />
 </template>
 
 <script>
@@ -13,6 +13,10 @@ export default {
     size: {
       type: String,
       default: 'initial',
+    },
+    aria: {
+      type: String,
+      default: '',
     },
   },
 }
