@@ -1,7 +1,13 @@
 <template>
   <div :class="getClass">
     <Paragraph>{{ label }}:</Paragraph>
-    <Input small :size="size" />
+    <Input
+      small
+      :size="size"
+      :placeholder="placeholder"
+      :value="defaultValue"
+      @input="onInput"
+    />
   </div>
 </template>
 
@@ -15,9 +21,26 @@ export default new Molecular({
       type: String,
       default: 'unknown',
     },
+    defaultValue: {
+      type: String,
+      default: '',
+    },
+    placeholder: {
+      default: '',
+      type: String,
+    },
     size: {
       default: undefined,
       type: Number,
+    },
+  },
+  data: {
+    value: '',
+  },
+  methods: {
+    onInput: function(value) {
+      this.value = value
+      this.$emit('input', this.value)
     },
   },
 })
