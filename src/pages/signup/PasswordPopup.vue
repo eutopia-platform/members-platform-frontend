@@ -1,12 +1,13 @@
 <template>
   <div class="password-popup">
     <Popup>
-      <div class="create-password">
+      <form class="create-password" @submit="onSubmit">
         <legend>
           <Header secondary>Set your password</Header>
         </legend>
         <Input
           v-model="pw1"
+          :focus="true"
           look="blend"
           placeholder="set your password"
           type="password"
@@ -22,11 +23,11 @@
         <Paragraph v-if="errorMessage" class="error">
           {{ errorMessage }}
         </Paragraph>
-        <Button big :disabled="!isFormValid" @click="onSubmit">Next</Button>
+        <Button big :disabled="!isFormValid" type="submit">Next</Button>
         <div class="icon-wrap" :src="img">
-          <Icon :src="img" class="icon"></Icon>
+          <Icon :src="img" class="icon" alt=""></Icon>
         </div>
-      </div>
+      </form>
     </Popup>
   </div>
 </template>
@@ -65,16 +66,29 @@ export default {
     },
   },
   methods: {
-    onSubmit: function() {
+    onSubmit: function(e) {
+      e.preventDefault()
+
+      if (this.pw1 !== this.pw2) {
+        this.errorMessage = 'The passwords do not match'
+        return false
+      } else if (this.pw1.length < 8) {
+        this.errorMessage = 'The password has to be at least 8 characters long'
+        return false
+      }
+
+      this.errorMessage = ''
+
       if (!this.submit) {
         this.$emit('next')
-        return
+        return false
       }
       this.submitPassword(this.pw1)
         .then(() => {
           this.$emit('next')
         })
         .catch(msg => (this.errorMessage = msg))
+      return false
     },
     submitPassword: function(password, self = this) {
       return new Promise(function(resolve) {

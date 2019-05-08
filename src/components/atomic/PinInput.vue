@@ -12,10 +12,14 @@
         autocomplete="off"
         onclick="this.select()"
         onfocus="setTimeout(() => this.select(), 0)"
-        @keydown="onKey"
-        @keydown.delete="onDelete"
-        @keydown.left="onLeft"
-        @keydown.right="onRight"
+        :aria-label="
+          'Enter digit ' + (i * digits + e + 1) + ' of the code here'
+        "
+        @keypress="onKey"
+        @keyup="onKeyUp"
+        @keypress.delete="onDelete"
+        @keypress.left="onLeft"
+        @keypress.right="onRight"
       />
     </div>
   </form>
@@ -54,7 +58,6 @@ export default {
       if (current >= this.groups * this.digits - 1) {
         this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value =
           e.key
-        this.submit()
       } else {
         // write input to current field and focus next
         this.$el.querySelector(`input[name='${parseInt(current, 10)}']`).value =
@@ -65,6 +68,16 @@ export default {
           .focus()
       }
       this.$emit('input', this.pin())
+    },
+    onKeyUp: function(e) {
+      if (isNaN(e.key) || e.key === ' ') return
+      const current = document.activeElement.name
+      if (
+        current >= this.groups * this.digits - 1 &&
+        this.pin().length == this.groups * this.digits
+      ) {
+        this.submit()
+      }
     },
     onDelete: function() {
       const current = document.activeElement.name
