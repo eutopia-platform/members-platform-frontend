@@ -19,16 +19,18 @@ export default {
     Navbar,
   },
   apollo: {
-    user: gql`
-      {
-        user {
-          isLoggedIn
-          name
-          callname
-          email
+    user: {
+      query: gql`
+        {
+          user {
+            isLoggedIn
+            name
+            callname
+            email
+          }
         }
-      }
-    `,
+      `,
+    },
   },
   data: function() {
     return {

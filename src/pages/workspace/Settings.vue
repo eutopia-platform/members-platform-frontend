@@ -62,9 +62,23 @@ export default new Component({
           mutation { 
             setName(name: "${this.user.name}" callname: "${
           this.user.callname
-        }") 
+        }") {
+              callname
+            }
           }
         `,
+        update: (store, { data: { setName } }) => {
+          store.writeQuery({
+            query: gql`
+              {
+                user {
+                  callname
+                }
+              }
+            `,
+            data: { user: setName },
+          })
+        },
       })
     },
   },

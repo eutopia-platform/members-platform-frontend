@@ -32,6 +32,7 @@ export default {
           }
         }
       `,
+      fetchPolicy: 'cache-first',
     },
   },
   methods: {
