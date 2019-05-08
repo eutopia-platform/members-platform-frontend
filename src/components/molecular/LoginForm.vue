@@ -9,6 +9,7 @@
       type="password"
       data-lpignore="true"
     />
+    <Break />
     <Button :disabled="!emailValid || !passwordValid" @click="login"
       >Submit</Button
     >
@@ -78,5 +79,9 @@ export default new Molecular({
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: $shadow-default;
+
+  .input {
+    width: 100%;
+  }
 }
 </style>
