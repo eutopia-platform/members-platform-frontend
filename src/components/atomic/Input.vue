@@ -47,7 +47,8 @@ export default {
   }),
   computed: {
     styleClass: comp => 'style-' + comp.look,
-    internalAriaLabel: comp => comp.ariaLabel !== null ? comp.ariaLabel : comp.placeholder
+    internalAriaLabel: comp =>
+      comp.ariaLabel !== null ? comp.ariaLabel : comp.placeholder,
   },
   mounted: function() {
     if (this.focus) this.$el.focus()

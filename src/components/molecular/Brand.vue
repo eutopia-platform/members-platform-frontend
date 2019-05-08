@@ -1,5 +1,10 @@
 <template>
-  <div :class="getClass" @click="onClick" role="button" aria-label="Go to landing page">
+  <div
+    :class="getClass"
+    role="button"
+    aria-label="Go to landing page"
+    @click="onClick"
+  >
     <Icon :src="logo" class="logo" aria="Productcube's logo"></Icon>
     <Header tertiary>
       Productcube
