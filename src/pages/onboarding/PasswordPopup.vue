@@ -81,21 +81,28 @@ export default {
         self.$apollo
           .mutate({
             mutation: gql`
-          mutation {
-            setPassword(email: "${self.info.email}", code: "${
-              self.info.code
-            }", password: "${password}")
-          }
-        `,
+              mutation setPassword(email: String!, code: String!, password: String!) {
+                setPassword(email: $email, code: $code, password: $password)
+              }
+            `,
+            variables: {
+              email: self.info.email,
+              code: self.info.code,
+              password,
+            },
           })
           .then(() => {
             self.$apollo
               .mutate({
                 mutation: gql`
-            mutation {
-              login(email: "${self.info.email}", password: "${password}")
-            }
-          `,
+                  mutation login(email: String!, password: String!) {
+                    login(email: $email, password: $password)
+                  }
+                `,
+                variables: {
+                  email: self.info.email,
+                  password,
+                },
               })
               .then(res => {
                 localStorage.setItem('sessionToken', res.data.login)
