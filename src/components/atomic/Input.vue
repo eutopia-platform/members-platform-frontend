@@ -5,6 +5,7 @@
     :name="name"
     :type="type"
     :placeholder="placeholder"
+    :aria-label="internalAriaLabel"
     :class="styleClass"
     :autocomplete="type === 'password' ? 'new-password' : 'true'"
     @input="onInput"
@@ -22,6 +23,10 @@ export default {
     },
     placeholder: {
       default: '',
+      type: String,
+    },
+    ariaLabel: {
+      default: null,
       type: String,
     },
     type: {
@@ -42,6 +47,7 @@ export default {
   }),
   computed: {
     styleClass: comp => 'style-' + comp.look,
+    internalAriaLabel: comp => comp.ariaLabel !== null ? comp.ariaLabel : comp.placeholder
   },
   mounted: function() {
     if (this.focus) this.$el.focus()
