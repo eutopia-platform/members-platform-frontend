@@ -11,7 +11,8 @@
         </main>
       </div>
       <div class="content-half">
-        <img class="content-section image" :src="imgSource" alt="" />
+        <!-- <img class="content-section image" :src="imgSource" alt="" /> -->
+        <div ref="imageContainer" class="content-section image" />
       </div>
     </div>
   </div>
@@ -30,6 +31,9 @@ export default {
       type: String,
       default: '',
     },
+  },
+  mounted: function() {
+    this.$refs.imageContainer.style.backgroundImage = `url(${this.imgSource})`
   },
 }
 </script>
@@ -79,6 +83,11 @@ export default {
           max-width: 80%;
           max-height: 80%;
           width: initial;
+          height: 80%;
+
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
         }
 
         .content-wrapper {
