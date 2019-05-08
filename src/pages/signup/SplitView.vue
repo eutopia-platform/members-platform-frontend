@@ -3,15 +3,15 @@
     <Brand></Brand>
     <div class="view">
       <div class="content-half">
-        <div class="content-section">
+        <main class="content-section">
           <slot name="default"></slot>
           <div class="content-wrapper">
             <slot name="content"></slot>
           </div>
-        </div>
+        </main>
       </div>
       <div class="content-half">
-        <img class="content-section image" :src="imgSource" />
+        <img class="content-section image" :src="imgSource" alt="" />
       </div>
     </div>
   </div>
