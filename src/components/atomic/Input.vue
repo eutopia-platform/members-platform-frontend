@@ -1,13 +1,13 @@
 <template>
   <input
     v-model="value"
-    class="input"
     :name="name"
     :type="type"
     :placeholder="placeholder"
     :aria-label="internalAriaLabel"
     :class="getClass"
     :autocomplete="type === 'password' ? 'new-password' : 'true'"
+    :style="size ? { width: size + 'em' } : {}"
     @input="onInput"
     @keyup.enter="onEnter"
   />
@@ -18,7 +18,7 @@ import Molecular from '../sharedScripts/molecular'
 
 export default new Molecular({
   name: 'Input',
-  types: ['default', 'blend'],
+  types: ['default', 'blend', 'small'],
   props: {
     name: {
       default: '',
@@ -35,6 +35,10 @@ export default new Molecular({
     focus: {
       default: false,
       type: Boolean,
+    },
+    size: {
+      default: undefined,
+      type: Number,
     },
   },
   data: {
@@ -73,7 +77,6 @@ export default new Molecular({
 
 .input {
   display: inline-block;
-  width: 100%;
   border: $border;
   border-radius: $border-radius;
   box-shadow: $shadow-default;
@@ -108,5 +111,13 @@ export default new Molecular({
   &:active {
     box-shadow: none;
   }
+}
+
+.small {
+  border: 1px solid map-get($colors, 'neutral-font');
+  height: 1rem;
+  color: map-get($colors, 'neutral-font');
+  font-size: 0.8rem;
+  box-shadow: none;
 }
 </style>
