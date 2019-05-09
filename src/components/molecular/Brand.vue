@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
+import Molecular from '../sharedScripts/molecular'
 
 export default new Molecular({
   name: 'Brand',
