@@ -19,6 +19,7 @@
             :default-value="user.callname"
             :size="20"
           ></LabeledInput>
+          <Paragraph>ID: {{ user.id }}</Paragraph>
           <Button small @click="submitProfile">submit</Button>
         </div>
       </Card>
@@ -40,6 +41,7 @@ export default new Component({
           name
           callname
           email
+          id
         }
       }
     `,

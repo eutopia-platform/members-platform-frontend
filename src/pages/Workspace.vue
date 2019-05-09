@@ -27,6 +27,7 @@ export default {
             name
             callname
             email
+            id
           }
         }
       `,
@@ -55,6 +56,7 @@ export default {
           name
           callname
           email
+          id
         }
       }
     `
@@ -68,6 +70,7 @@ export default {
             name: '',
             callname: '',
             email: '',
+            id: '',
             __typename: 'User',
           },
         },

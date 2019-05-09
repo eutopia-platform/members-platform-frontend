@@ -1,6 +1,6 @@
 <template>
   <div class="user-status" @click="logout">
-    <Icon :src="srcUser" class="user-icon"></Icon>
+    <UserIcon :user-id="user.id"></UserIcon>
     <div class="right">
       <Paragraph>{{ user.callname }}</Paragraph>
       <Small>{{ user.email }}</Small>
@@ -15,7 +15,6 @@ import gql from 'graphql-tag'
 export default {
   name: 'UserStatus',
   data: () => ({
-    srcUser: require('/../data/img/ui/user.svg'),
     srcLogout: require('/../data/img/ui/logout.svg'),
   }),
   apollo: {
@@ -25,6 +24,7 @@ export default {
           user {
             email
             callname
+            id
           }
         }
       `,
@@ -58,7 +58,6 @@ export default {
   white-space: nowrap;
   box-sizing: border-box;
   cursor: pointer;
-  border-radius: 0.5rem;
   overflow: hidden;
   margin-left: -0.5rem;
 
