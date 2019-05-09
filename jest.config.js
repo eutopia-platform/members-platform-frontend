@@ -1,7 +1,7 @@
-const testRegex = ({
+const testRegex = {
   TEST: '\\.test.js$',
   VISUAL_TEST: '\\.visualTest.js$',
-})[process.env.NODE_ENV]
+}[process.env.NODE_ENV]
 
 const config = {
   moduleFileExtensions: ['js', 'json', 'jsx', 'vue'],
@@ -9,8 +9,12 @@ const config = {
     '.+\\.js$': '<rootDir>/node_modules/babel-jest',
     '.*\\.vue$': '<rootDir>/node_modules/vue-jest',
   },
-  setupFiles: ['<rootDir>/jest.setup.js'],
+  setupFiles: ['<rootDir>/testFiles/jest.shared.setup.js'],
   testRegex,
+}
+
+if (process.env.NODE_ENV === 'VISUAL_TEST') {
+  config.preset = 'jest-puppeteer'
 }
 
 module.exports = config
