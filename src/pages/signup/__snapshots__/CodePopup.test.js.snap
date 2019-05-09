@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A CodePopup renders same thing as always 1`] = `
+<div class="popup">
+  <shade-stub></shade-stub>
+  <div class="content">
+    <div class="code-wrap">
+      <header secondary="">Find a secret in your email</header>
+      <paragraph-stub>
+        We have sent you a 6 digit confirmation code to . It
+        will expire shortly, so please enter your code soon.
+      </paragraph-stub>
+      <div class="input-wrap">
+        <pininput-stub value=""></pininput-stub>
+      </div>
+      <paragraph-stub>
+        Keep this tab open to enter your code. If you didn't receive an email,
+        check your spam folder.
+      </paragraph-stub>
+      <div src="[object Object]" class="icon-wrap">
+        <icon-stub src="[object Object]" size="5rem"></icon-stub>
+      </div>
+    </div>
+  </div>
+</div>
+`;
