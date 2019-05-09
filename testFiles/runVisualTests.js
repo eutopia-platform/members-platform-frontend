@@ -1,8 +1,9 @@
 const Path = require('path')
 const Bundler = require('parcel-bundler')
 const jest = require('jest')
+const PORT = require('./visual.port.js')
 
-const PORT = process.env.PORT ? process.env.PORT : 4321;
+const shouldUpdateSnapshots = process.env.UPDATE ? process.env.UPDATE : false
 
 ;(async () => {
   const bundler = new Bundler(Path.join(__dirname, '../src/index.html'))
@@ -12,6 +13,7 @@ const PORT = process.env.PORT ? process.env.PORT : 4321;
   const options = {
     projects: [__dirname],
     silent: false,
+    'updateSnapshot': shouldUpdateSnapshots,
   }
   const result = await jest.runCLI(options, options.projects)
 
