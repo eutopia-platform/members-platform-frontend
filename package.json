@@ -21,9 +21,11 @@
     "format-lint:check": "npm run lint:check && npm run format:check",
     "format-lint:write": "npm run lint:write && npm run format:write",
     "test": "jest",
+    "test:visuals": "NODE_ENV=VISUAL_TEST node ./testFiles/runVisualTests.js",
     "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@vue/component-compiler-utils": "^2.6.0",
     "@vue/test-utils": "^1.0.0-beta.29",
@@ -36,8 +38,10 @@
     "eslint-plugin-vue": "^5.2.2",
     "graphql": "^14.1.1",
     "jest": "^24.7.1",
+    "jest-image-snapshot": "^2.8.1",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.16.4",
+    "puppeteer": "^1.15.0",
     "sass": "^1.17.2",
     "vue-apollo": "^3.0.0-beta.28",
     "vue-cli-plugin-apollo": "^0.19.2",
