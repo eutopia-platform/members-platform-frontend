@@ -14,7 +14,7 @@ describe('The signup', () => {
 
   it('renders mobile view', async () => {
     await page.emulateMedia('screen')
-    await page.setViewport({ width: 500, height: 700 })
+    await page.setViewport({ width: 375, height: 812 })
     await page.goto(`http://localhost:${PORT}/signup/`)
     const image = await page.screenshot({ fullPage: true })
     expect(image).toMatchImageSnapshot()
