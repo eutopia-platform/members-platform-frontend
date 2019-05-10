@@ -10,8 +10,7 @@
         :icon="item.icon"
         :link="item.link"
         @open="openPage"
-        >{{ item.name }}</Item
-      >
+      >{{ item.name }}</Item>
     </ul>
   </aside>
 </template>
@@ -30,35 +29,40 @@ export default {
     Item,
     WorkspaceIndicator,
   },
-  data: () => ({
-    items: [
-      {
-        name: 'Dashboard',
-        icon: require('/../data/img/workspace/navbar/dashboard.svg'),
-        link: '/workspace',
-      },
-      {
-        name: 'Analytics',
-        icon: require('/../data/img/workspace/navbar/analytics.svg'),
-        link: '/workspace/analytics',
-      },
-      {
-        name: 'Toolkits',
-        icon: require('/../data/img/workspace/navbar/toolkits.svg'),
-        link: '/workspace/toolkits',
-      },
-      {
-        name: 'Processes',
-        icon: require('/../data/img/workspace/navbar/processes.svg'),
-        link: '/workspace/processes',
-      },
-      {
-        name: 'Settings',
-        icon: require('/../data/img/workspace/navbar/settings.svg'),
-        link: '/workspace/settings',
-      },
-    ],
-  }),
+  computed: {
+    workspace: function() {
+      return this.$route.params.workspace
+    },
+    items: function() {
+      return [
+        {
+          name: 'Dashboard',
+          icon: require('/../data/img/workspace/navbar/dashboard.svg'),
+          link: `/space/${this.workspace}`,
+        },
+        {
+          name: 'Analytics',
+          icon: require('/../data/img/workspace/navbar/analytics.svg'),
+          link: `/space/${this.workspace}/analytics`,
+        },
+        {
+          name: 'Toolkits',
+          icon: require('/../data/img/workspace/navbar/toolkits.svg'),
+          link: `/space/${this.workspace}/toolkits`,
+        },
+        {
+          name: 'Processes',
+          icon: require('/../data/img/workspace/navbar/processes.svg'),
+          link: `/space/${this.workspace}/processes`,
+        },
+        {
+          name: 'Settings',
+          icon: require('/../data/img/workspace/navbar/settings.svg'),
+          link: `/space/${this.workspace}/settings`,
+        },
+      ]
+    },
+  },
   methods: {
     openPage: function(link) {
       this.$router.push(link)

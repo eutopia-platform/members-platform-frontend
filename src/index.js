@@ -32,7 +32,7 @@ Vue.http.options.emulateJSON = true
 const routes = [
   { path: '/', component: LandingPage },
   {
-    path: '/workspace/',
+    path: '/space/:workspace',
     component: Workspace,
     children: [
       {

@@ -1,6 +1,6 @@
 <template>
   <div :class="getClass">
-    <Header quaternary>{{ workspaces[0].name }} Workspace</Header>
+    <Header quaternary>{{ workspace.name }} Workspace</Header>
   </div>
 </template>
 
@@ -11,17 +11,16 @@ import gql from 'graphql-tag'
 export default new Component({
   name: 'WorkspaceIndicator',
   apollo: {
-    $client: 'work',
-    workspaces: gql`
-      {
-        workspaces {
-          name
+    workspace: {
+      query: gql`
+        {
+          workspace @client {
+            name
+          }
         }
-      }
-    `,
-  },
-  data: {
-    workspaces: [{ name: 'uknown' }],
+      `,
+      client: 'work',
+    },
   },
 })
 </script>

@@ -31,8 +31,12 @@ const createClient = (url, sendToken = false) => {
         email: '',
         id: '',
         __typename: 'User',
-      }
-    }
+      },
+      workspace: {
+        name: 'unknown',
+        __typename: 'Workspace',
+      },
+    },
   })
   return client
 }

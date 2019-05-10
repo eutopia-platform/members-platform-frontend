@@ -20,9 +20,9 @@
             :size="20"
           ></LabeledInput>
           <Paragraph>ID: {{ user.id }}</Paragraph>
-          <Paragraph
-            >Workspaces: {{ workspaces.map(s => s.name).join(', ') }}</Paragraph
-          >
+          <Paragraph>
+            Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
+          </Paragraph>
           <Button small @click="submitProfile">submit</Button>
         </div>
       </Card>

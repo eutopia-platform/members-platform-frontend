@@ -32,6 +32,27 @@ export default {
         }
       `,
     },
+    workspace: {
+      query: gql`
+        query currentWorkspace($spaceUrl: String!) {
+          workspace(name: $spaceUrl) {
+            name
+          }
+        }
+      `,
+      client: 'work',
+      variables() {
+        return {
+          spaceUrl: this.$route.params.workspace,
+        }
+      },
+      result({ data }) {
+        if (data.workspace === null) {
+          // todo
+        }
+        this.$apollo.provider.clients.work.cache.writeData({ data })
+      },
+    },
   },
   data: function() {
     return {
