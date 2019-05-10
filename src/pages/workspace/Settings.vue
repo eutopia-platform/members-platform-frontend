@@ -20,6 +20,9 @@
             :size="20"
           ></LabeledInput>
           <Paragraph>ID: {{ user.id }}</Paragraph>
+          <Paragraph
+            >Workspaces: {{ workspaces.map(s => s.name).join(', ') }}</Paragraph
+          >
           <Button small @click="submitProfile">submit</Button>
         </div>
       </Card>
@@ -45,6 +48,16 @@ export default new Component({
         }
       }
     `,
+    workspaces: {
+      query: gql`
+        {
+          workspaces {
+            name
+          }
+        }
+      `,
+      client: 'work',
+    },
   },
   components: {
     LabeledInput,
@@ -55,7 +68,7 @@ export default new Component({
       callName: '',
       email: '',
     },
-    foo: '',
+    workspaces: [],
   },
   methods: {
     submitProfile: function() {
