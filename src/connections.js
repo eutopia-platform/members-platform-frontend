@@ -30,10 +30,12 @@ export default (process.env.NODE_ENV === 'development'
       user: createClient('http://localhost:5000', true),
       tool: createClient('http://localhost:7000'),
       mail: createClient('http://localhost:9000'),
+      work: createClient('http://localhost:11000', true),
     }
   : {
       auth: createClient('https://auth.api.productcube.io/'),
       user: createClient('https://user.api.productcube.io', true),
       tool: createClient('https://tool.api.productcube.io'),
       mail: createClient('https://mail.api.productcube.io'),
+      work: createClient('https://work.api.productcube.io', true),
     })
