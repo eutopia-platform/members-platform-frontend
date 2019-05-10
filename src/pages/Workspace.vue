@@ -50,43 +50,6 @@ export default {
   },
   created: function() {
     if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
-    this.prepareChache()
-  },
-  methods: {
-    initCacheQuery: function(query, data, client = 'user') {
-      try {
-        this.$apollo.provider.clients[client].readQuery({ query })
-      } catch (e) {
-        if (e.name !== 'Invariant Violation') throw e
-        this.$apollo.provider.clients[client].writeQuery({
-          query,
-          data,
-        })
-      }
-    },
-    prepareChache: function() {
-      this.initCacheQuery(
-        gql`
-          {
-            user {
-              name
-              callname
-              email
-              id
-            }
-          }
-        `,
-        {
-          user: {
-            name: '',
-            callname: '',
-            email: '',
-            id: '',
-            __typename: 'User',
-          },
-        }
-      )
-    },
   },
 }
 </script>

@@ -4,8 +4,8 @@ import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 
-const createClient = (url, sendToken = false) =>
-  new ApolloClient({
+const createClient = (url, sendToken = false) => {
+  const client = new ApolloClient({
     link: ApolloLink.from([
       ...(sendToken
         ? [
@@ -23,6 +23,19 @@ const createClient = (url, sendToken = false) =>
     ]),
     cache: new InMemoryCache(),
   })
+  client.cache.writeData({
+    data: {
+      user: {
+        name: '',
+        callname: '',
+        email: '',
+        id: '',
+        __typename: 'User',
+      }
+    }
+  })
+  return client
+}
 
 export default (process.env.NODE_ENV === 'development'
   ? {
