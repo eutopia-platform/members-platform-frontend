@@ -50,22 +50,33 @@ export default {
   },
   created: function() {
     if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
-    const query = gql`
-      {
-        user {
-          name
-          callname
-          email
-          id
-        }
+    this.prepareChache()
+  },
+  methods: {
+    initCacheQuery: function(query, data, client = 'user') {
+      try {
+        this.$apollo.provider.clients[client].readQuery({ query })
+      } catch (e) {
+        if (e.name !== 'Invariant Violation') throw e
+        this.$apollo.provider.clients[client].writeQuery({
+          query,
+          data,
+        })
       }
-    `
-    try {
-      this.$apollo.provider.clients.user.readQuery({ query })
-    } catch (e) {
-      this.$apollo.provider.clients.user.writeQuery({
-        query,
-        data: {
+    },
+    prepareChache: function() {
+      this.initCacheQuery(
+        gql`
+          {
+            user {
+              name
+              callname
+              email
+              id
+            }
+          }
+        `,
+        {
           user: {
             name: '',
             callname: '',
@@ -73,9 +84,9 @@ export default {
             id: '',
             __typename: 'User',
           },
-        },
-      })
-    }
+        }
+      )
+    },
   },
 }
 </script>
