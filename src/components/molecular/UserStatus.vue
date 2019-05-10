@@ -21,14 +21,13 @@ export default {
     user: {
       query: gql`
         {
-          user {
+          user @client {
             email
             callname
             id
           }
         }
       `,
-      fetchPolicy: 'cache-only',
     },
   },
   methods: {
@@ -43,17 +42,7 @@ export default {
         })
         .then(() => {
           localStorage.removeItem('sessionToken')
-          this.$apollo.provider.clients.user.writeQuery({
-            query: gql`
-              {
-                user {
-                  name
-                  callname
-                  email
-                  id
-                }
-              }
-            `,
+          this.$apollo.provider.clients.user.cache.writeData({
             data: {
               user: {
                 name: '',
