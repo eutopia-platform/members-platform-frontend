@@ -1,6 +1,7 @@
 <template>
   <aside class="navigation">
     <Brand></Brand>
+    <WorkspaceIndicator></WorkspaceIndicator>
     <UserStatus class="status"></UserStatus>
     <ul class="pages">
       <Item
@@ -19,6 +20,7 @@
 import UserStatus from '/components/molecular/UserStatus'
 import Brand from '/components/molecular/Brand'
 import Item from './NavigationBarItem'
+import WorkspaceIndicator from './WorkspaceIndicator'
 
 export default {
   name: 'NavigationBar',
@@ -26,6 +28,7 @@ export default {
     UserStatus,
     Brand,
     Item,
+    WorkspaceIndicator,
   },
   data: () => ({
     items: [
@@ -86,7 +89,8 @@ export default {
     margin-top: 1rem;
   }
 
-  .status {
+  .status,
+  .workspace-indicator {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
