@@ -43,6 +43,27 @@ export default {
         })
         .then(() => {
           localStorage.removeItem('sessionToken')
+          this.$apollo.provider.clients.user.writeQuery({
+            query: gql`
+              {
+                user {
+                  name
+                  callname
+                  email
+                  id
+                }
+              }
+            `,
+            data: {
+              user: {
+                name: '',
+                callname: '',
+                email: '',
+                id: '',
+                __typename: 'User',
+              },
+            },
+          })
           this.$router.push('/login')
         })
     },
