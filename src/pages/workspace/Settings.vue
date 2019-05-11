@@ -1,8 +1,6 @@
 <template>
   <div class="settings">
-    <Header tertiary>
-      Settings
-    </Header>
+    <Header tertiary>Settings</Header>
     <div class="content">
       <Card>
         <div>
@@ -24,6 +22,16 @@
             Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
           </Paragraph>
           <Button small @click="submitProfile">submit</Button>
+        </div>
+      </Card>
+      <Card>
+        <div>
+          <Header quaternary>Workspace</Header>
+          <Paragraph>name: {{ workspace ? workspace.name : '' }}</Paragraph>
+          <Paragraph>
+            created:
+            {{ (workspace ? workspace.created : null) || '?' }}
+          </Paragraph>
         </div>
       </Card>
     </div>
@@ -53,10 +61,27 @@ export default new Component({
         {
           workspaces {
             name
+            created
           }
         }
       `,
       client: 'work',
+    },
+    workspace: {
+      query: gql`
+        query getWorkspace($name: String!) {
+          workspace(name: $name) {
+            name
+            created
+          }
+        }
+      `,
+      client: 'work',
+      variables() {
+        return {
+          name: localStorage.getItem('workspace'),
+        }
+      },
     },
   },
   components: {

@@ -42,6 +42,7 @@ export default {
         })
         .then(() => {
           localStorage.removeItem('sessionToken')
+          localStorage.removeItem('workspace')
           this.$apollo.provider.clients.user.cache.writeData({
             data: {
               user: {
