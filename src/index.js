@@ -7,7 +7,7 @@ import LandingPage from './pages/LandingPage'
 import Privacy from './pages/Privacy'
 import Components from './pages/Components'
 import NotFound from './pages/NotFound'
-import Workspace from './pages/Workspace'
+import WorkspaceGuard from './pages/WorkspaceGuard'
 import Onboarding from './pages/Onboarding'
 import Login from './pages/Login'
 import Dashboard from './pages/workspace/Dashboard'
@@ -33,7 +33,7 @@ const routes = [
   { path: '/', component: LandingPage },
   {
     path: '/space/:workspace',
-    component: Workspace,
+    component: WorkspaceGuard,
     children: [
       {
         path: '/',
