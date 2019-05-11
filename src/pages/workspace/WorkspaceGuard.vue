@@ -25,6 +25,9 @@ export default {
           spaceUrl: this.$route.params.workspace,
         }
       },
+      skip() {
+        return !this.$route.params.workspace
+      },
       result({ data }) {
         this.showWorkspace = data.workspace !== null
         if (data.workspace)
@@ -37,6 +40,23 @@ export default {
           this.$router.push('/login')
           return
         } else throw Error(err)
+      },
+    },
+    workspaces: {
+      client: 'work',
+      query: gql`
+        query workspaceList {
+          workspaces {
+            name
+          }
+        }
+      `,
+      result({ data: { workspaces } }) {
+        if (workspaces.length === 0) return
+        this.$router.push('/space/' + workspaces[0].name)
+      },
+      skip() {
+        return typeof this.$route.params.workspace !== 'undefined'
       },
     },
   },
