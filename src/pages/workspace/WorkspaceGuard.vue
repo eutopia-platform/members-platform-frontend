@@ -32,8 +32,15 @@ export default {
         this.showWorkspace = data.workspace !== null
         if (data.workspace) {
           this.$apollo.provider.clients.work.cache.writeData({ data })
+          localStorage.setItem('workspace', data.workspace.name)
           if (this.$route.params.workspace !== data.workspace.name)
-            history.replaceState({}, null, data.workspace.name)
+            history.replaceState(
+              {},
+              null,
+              this.$route.path
+                .toLowerCase()
+                .replace(data.workspace.name.toLowerCase(), data.workspace.name)
+            )
         }
       },
       error(err) {
