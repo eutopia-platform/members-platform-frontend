@@ -18,9 +18,9 @@
           @valueChange="onInputValueChange"
           @submit="onSubmit"
         />
-        <Button big :disabled="!(milestone !== '')" @click="onSubmit"
-          >Next</Button
-        >
+        <Button big :disabled="!(milestone !== '')" @click="onSubmit">
+          Next
+        </Button>
       </div>
     </div>
     <template v-slot:dashboard>

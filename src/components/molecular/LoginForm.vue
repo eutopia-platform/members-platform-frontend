@@ -10,9 +10,9 @@
       data-lpignore="true"
     />
     <Break />
-    <Button :disabled="!emailValid || !passwordValid" @click="login"
-      >Submit</Button
-    >
+    <Button :disabled="!emailValid || !passwordValid" @click="login">
+      Submit
+    </Button>
     <Paragraph v-if="error">{{ error }}</Paragraph>
   </div>
 </template>

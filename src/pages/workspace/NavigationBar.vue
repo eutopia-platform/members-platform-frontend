@@ -10,7 +10,9 @@
         :icon="item.icon"
         :link="item.link"
         @open="openPage"
-      >{{ item.name }}</Item>
+      >
+        {{ item.name }}
+      </Item>
     </ul>
   </aside>
 </template>
