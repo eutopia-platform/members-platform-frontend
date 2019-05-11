@@ -55,7 +55,7 @@ export default new Molecular({
         })
         .then(res => {
           localStorage.setItem('sessionToken', res.data.login)
-          this.$router.push('/workspace')
+          this.$router.push('/space')
         })
         .catch(() => (this.error = 'incorrect'))
     },
