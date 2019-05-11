@@ -5,6 +5,7 @@
 <script>
 import Workspace from '/pages/Workspace'
 import NotFound from '/pages/NotFound'
+import WorkspaceLoading from './WorkspaceLoading'
 import gql from 'graphql-tag'
 
 export default {
@@ -41,6 +42,7 @@ export default {
   },
   components: {
     Workspace,
+    WorkspaceLoading,
     NotFound,
   },
   data: () => ({
@@ -48,6 +50,7 @@ export default {
   }),
   computed: {
     component() {
+      if (this.$apollo.loading) return 'WorkspaceLoading'
       return this.showWorkspace ? 'Workspace' : 'NotFound'
     },
   },
