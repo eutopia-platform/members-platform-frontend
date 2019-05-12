@@ -32,6 +32,15 @@
             created:
             {{ (workspace ? workspace.created : null) || '?' }}
           </Paragraph>
+          <Paragraph>Members:</Paragraph>
+          <ul v-if="workspace && workspace.members">
+            <li
+              v-for="m in workspace.members"
+              :key="workspace.members.indexOf(m)"
+            >
+              {{ `${m.callname} (${m.email})` }}
+            </li>
+          </ul>
         </div>
       </Card>
     </div>
@@ -73,6 +82,10 @@ export default new Component({
           workspace(name: $name) {
             name
             created
+            members {
+              callname
+              email
+            }
           }
         }
       `,
