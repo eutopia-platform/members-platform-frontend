@@ -45,10 +45,17 @@ export default {
       },
       error(err) {
         if (
+          err.message.startsWith('Network error') ||
+          err.graphQLErrors.some(err => err.message.startsWith('Network error'))
+        ) {
+          this.$emit('error', err)
+          return true
+        }
+        if (
           err.message.replace('GraphQL error:', '').trim() === 'NOT_LOGGED_IN'
         ) {
           this.$router.push('/login')
-          return
+          return true
         } else throw Error(err)
       },
     },
