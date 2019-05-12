@@ -1,9 +1,13 @@
 <template>
-  <Loader></Loader>
+  <div>
+    <Loader></Loader>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'WorkspaceLoading',
+}
 </script>
 
 <style lang="scss" scoped>
