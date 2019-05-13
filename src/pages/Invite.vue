@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/Component'
+import Component from '/components/sharedScripts/component'
 import LoadingScreen from '/pages/LoadingScreen'
 import InviteError from './invite/InviteError'
 import InviteInfo from './invite/InviteInfo'
