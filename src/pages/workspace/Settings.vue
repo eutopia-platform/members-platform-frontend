@@ -41,6 +41,7 @@
               {{ `${m.callname} (${m.email})` }}
             </li>
           </ul>
+          <InviteForm @error="onError"></InviteForm>
         </div>
       </Card>
     </div>
@@ -51,6 +52,7 @@
 import gql from 'graphql-tag'
 import Component from '/components/sharedScripts/component'
 import LabeledInput from '/components/molecular/LabeledInput'
+import InviteForm from './settings/InviteForm'
 
 export default new Component({
   name: 'Settings',
@@ -99,6 +101,7 @@ export default new Component({
   },
   components: {
     LabeledInput,
+    InviteForm,
   },
   data: {
     user: {
@@ -133,6 +136,9 @@ export default new Component({
           })
         },
       })
+    },
+    onError(err) {
+      throw err
     },
   },
 })
