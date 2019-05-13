@@ -30,6 +30,12 @@ export default new Molecular({
   components: {
     Popup,
   },
+  props: {
+    redirect: {
+      type: String,
+      default: '/space/',
+    },
+  },
   data: {
     email: '',
     password: '',
@@ -55,7 +61,7 @@ export default new Molecular({
         })
         .then(res => {
           localStorage.setItem('sessionToken', res.data.login)
-          this.$router.push('/space')
+          this.$router.push(this.redirect)
         })
         .catch(() => (this.error = 'incorrect'))
     },

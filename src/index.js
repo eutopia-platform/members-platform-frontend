@@ -15,6 +15,7 @@ import Analytics from './pages/workspace/Analytics'
 import Toolkits from './pages/workspace/Toolkits'
 import Processes from './pages/workspace/Processes'
 import Settings from './pages/workspace/Settings'
+import Invite from './pages/Invite'
 import clients from './connections'
 
 import '/master.scss'
@@ -60,7 +61,8 @@ const routes = [
   { path: '/privacy', component: Privacy },
   { path: '/components', component: Components },
   { path: '/onboarding', component: Onboarding },
-  { path: '/login', component: Login },
+  { path: '/login', component: Login, name: 'login', props: true },
+  { path: '/invite/:code', component: Invite },
   { path: '*', component: NotFound },
 ]
 
