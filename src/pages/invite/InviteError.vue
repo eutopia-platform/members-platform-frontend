@@ -24,7 +24,6 @@ export default new Component({
       query: gql`
         {
           user {
-            isLoggedIn
             name
             callname
             email
@@ -32,8 +31,13 @@ export default new Component({
           }
         }
       `,
-      result({ data: { user } }) {
-        if (!user.isLoggedIn) this.openLogin()
+      error(err) {
+        if (
+          err.message.replace('GraphQL error:', '').trim() === 'NOT_LOGGED_IN'
+        ) {
+          this.openLogin()
+          return true
+        } else throw Error(err)
       },
       fetchPolicy: 'network-only',
     },

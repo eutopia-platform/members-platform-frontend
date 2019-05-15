@@ -23,7 +23,6 @@ export default {
       query: gql`
         {
           user {
-            isLoggedIn
             name
             callname
             email
@@ -42,11 +41,6 @@ export default {
   },
   computed: {
     activePage: () => Dashboard,
-  },
-  watch: {
-    user: function(user) {
-      if (!user.isLoggedIn) this.$router.push('/login')
-    },
   },
   created: function() {
     if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
