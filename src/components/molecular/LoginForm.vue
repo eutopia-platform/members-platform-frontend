@@ -30,6 +30,20 @@ export default new Molecular({
   components: {
     Popup,
   },
+  created() {
+    localStorage.removeItem('sessionToken')
+    this.$apollo.provider.clients.user.cache.writeData({
+      data: {
+        user: {
+          name: '',
+          callname: '',
+          email: '',
+          id: '',
+          __typename: 'User',
+        },
+      },
+    })
+  },
   props: {
     redirect: {
       type: String,

@@ -44,7 +44,6 @@ export default new Component({
   },
   data: {
     user: {
-      isLoggedIn: true,
       name: '',
       email: '',
     },
