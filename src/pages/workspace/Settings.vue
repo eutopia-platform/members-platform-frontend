@@ -17,7 +17,6 @@
             :default-value="user.callname"
             :size="20"
           ></LabeledInput>
-          <Paragraph>ID: {{ user.id }}</Paragraph>
           <Paragraph>
             Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
           </Paragraph>
@@ -145,6 +144,8 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
+@import '/components/sharedStyles/colors.scss';
+
 .settings {
   display: flex;
   flex-direction: column;
@@ -159,6 +160,10 @@ export default new Component({
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 3vw;
+  }
+
+  .danger-zone {
+    border: 0.1rem solid $c-error;
   }
 }
 </style>
