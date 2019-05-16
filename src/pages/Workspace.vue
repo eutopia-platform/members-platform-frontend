@@ -30,6 +30,7 @@ export default {
           }
         }
       `,
+      fetchPolicy: 'network-only',
     },
   },
   data: function() {
