@@ -1,22 +1,18 @@
 <template>
   <div :class="getClass">
     <Header secondary>Login</Header>
-    <Input
-      v-model="email"
-      look="blend"
-      placeholder="email"
-      data-lpignore="true"
-    />
+    <Input v-model="email" blend placeholder="email" data-lpignore="true" />
     <Input
       v-model="password"
-      look="blend"
+      blend
       placeholder="password"
       type="password"
       data-lpignore="true"
     />
-    <Button :disabled="!emailValid || !passwordValid" @click="login"
-      >Submit</Button
-    >
+    <Break />
+    <Button :disabled="!emailValid || !passwordValid" @click="login">
+      Submit
+    </Button>
     <Paragraph v-if="error">{{ error }}</Paragraph>
   </div>
 </template>
@@ -33,6 +29,26 @@ export default new Molecular({
   },
   components: {
     Popup,
+  },
+  created() {
+    localStorage.removeItem('sessionToken')
+    this.$apollo.provider.clients.user.cache.writeData({
+      data: {
+        user: {
+          name: '',
+          callname: '',
+          email: '',
+          id: '',
+          __typename: 'User',
+        },
+      },
+    })
+  },
+  props: {
+    redirect: {
+      type: String,
+      default: '/space/',
+    },
   },
   data: {
     email: '',
@@ -58,9 +74,8 @@ export default new Molecular({
         }`,
         })
         .then(res => {
-          localStorage.removeItem('sessionToken')
           localStorage.setItem('sessionToken', res.data.login)
-          this.$router.push('/workspace')
+          this.$router.push(this.redirect)
         })
         .catch(() => (this.error = 'incorrect'))
     },
@@ -83,5 +98,9 @@ export default new Molecular({
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: $shadow-default;
+
+  .input {
+    width: 100%;
+  }
 }
 </style>

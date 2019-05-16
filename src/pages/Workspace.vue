@@ -19,36 +19,29 @@ export default {
     Navbar,
   },
   apollo: {
-    user: gql`
-      {
-        user {
-          isLoggedIn
-          name
-          callname
-          email
+    user: {
+      query: gql`
+        {
+          user {
+            name
+            callname
+            email
+            id
+          }
         }
-      }
-    `,
+      `,
+      fetchPolicy: 'network-only',
+    },
   },
   data: function() {
     return {
       showOverlay:
         process.env.NODE_ENV === 'production' &&
         !(this.$route.query.withoutOverlay === null),
-      user: {
-        name: '',
-        callName: '',
-        email: '',
-      },
     }
   },
   computed: {
     activePage: () => Dashboard,
-  },
-  watch: {
-    user: function(user) {
-      if (!user.isLoggedIn) this.$router.push('/login')
-    },
   },
   created: function() {
     if (!localStorage.getItem('sessionToken')) this.$router.push('/login')

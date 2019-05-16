@@ -12,15 +12,15 @@
       <div class="input-wrap">
         <Input
           v-model="milestone"
-          look="blend"
+          blend
           placeholder="Your next big thing"
           :focus="true"
           @valueChange="onInputValueChange"
           @submit="onSubmit"
         />
-        <Button big :disabled="!(milestone !== '')" @click="onSubmit"
-          >Next</Button
-        >
+        <Button big :disabled="!(milestone !== '')" @click="onSubmit">
+          Next
+        </Button>
       </div>
     </div>
     <template v-slot:dashboard>

@@ -1,6 +1,5 @@
 $c-accent: #109cf1;
-
-$c-warning: red;
+$c-error: #b42a43;
 
 //----------------------
 
@@ -12,10 +11,10 @@ $colors: (
   secondary-back: #e9f5fd,
   secondary-font: #334d6e,
   tertiary-back: #253dbc,
-  tertiary-font: #ffffff
+  tertiary-font: #ffffff,
 );
 
 @mixin colorScheme($scheme) {
-  background-color: map-get($colors, $scheme + "-back");
-  color: map-get($colors, $scheme + "-font");
+  background-color: map-get($colors, $scheme + '-back');
+  color: map-get($colors, $scheme + '-font');
 }

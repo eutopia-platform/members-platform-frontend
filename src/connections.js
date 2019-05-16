@@ -4,8 +4,8 @@ import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 
-const createClient = (url, sendToken = false) =>
-  new ApolloClient({
+const createClient = (url, sendToken = false) => {
+  const client = new ApolloClient({
     link: ApolloLink.from([
       ...(sendToken
         ? [
@@ -23,6 +23,23 @@ const createClient = (url, sendToken = false) =>
     ]),
     cache: new InMemoryCache(),
   })
+  client.cache.writeData({
+    data: {
+      user: {
+        name: '',
+        callname: '',
+        email: '',
+        id: '',
+        __typename: 'User',
+      },
+      workspace: {
+        name: 'unknown',
+        __typename: 'Workspace',
+      },
+    },
+  })
+  return client
+}
 
 export default (process.env.NODE_ENV === 'development'
   ? {
@@ -30,10 +47,12 @@ export default (process.env.NODE_ENV === 'development'
       user: createClient('http://localhost:5000', true),
       tool: createClient('http://localhost:7000'),
       mail: createClient('http://localhost:9000'),
+      work: createClient('http://localhost:11000', true),
     }
   : {
       auth: createClient('https://auth.api.productcube.io/'),
       user: createClient('https://user.api.productcube.io', true),
       tool: createClient('https://tool.api.productcube.io'),
       mail: createClient('https://mail.api.productcube.io'),
+      work: createClient('https://work.api.productcube.io', true),
     })

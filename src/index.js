@@ -7,7 +7,7 @@ import LandingPage from './pages/LandingPage'
 import Privacy from './pages/Privacy'
 import Components from './pages/Components'
 import NotFound from './pages/NotFound'
-import Workspace from './pages/Workspace'
+import WorkspaceGuard from './pages/workspace/WorkspaceGuard'
 import Onboarding from './pages/Onboarding'
 import Login from './pages/Login'
 import Dashboard from './pages/workspace/Dashboard'
@@ -15,6 +15,7 @@ import Analytics from './pages/workspace/Analytics'
 import Toolkits from './pages/workspace/Toolkits'
 import Processes from './pages/workspace/Processes'
 import Settings from './pages/workspace/Settings'
+import Invite from './pages/Invite'
 import clients from './connections'
 
 import '/master.scss'
@@ -32,8 +33,8 @@ Vue.http.options.emulateJSON = true
 const routes = [
   { path: '/', component: LandingPage },
   {
-    path: '/workspace/',
-    component: Workspace,
+    path: '/space/:workspace?',
+    component: WorkspaceGuard,
     children: [
       {
         path: '/',
@@ -60,7 +61,8 @@ const routes = [
   { path: '/privacy', component: Privacy },
   { path: '/components', component: Components },
   { path: '/onboarding', component: Onboarding },
-  { path: '/login', component: Login },
+  { path: '/login', component: Login, name: 'login', props: true },
+  { path: '/invite/:code', component: Invite },
   { path: '*', component: NotFound },
 ]
 
