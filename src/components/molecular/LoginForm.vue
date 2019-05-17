@@ -19,6 +19,7 @@
 
 <script>
 import Molecular from '/components/sharedScripts/molecular'
+import logout from '/components/sharedScripts/logout'
 import Popup from './Popup.vue'
 import gql from 'graphql-tag'
 
@@ -31,18 +32,7 @@ export default new Molecular({
     Popup,
   },
   created() {
-    localStorage.removeItem('sessionToken')
-    this.$apollo.provider.clients.user.cache.writeData({
-      data: {
-        user: {
-          name: '',
-          callname: '',
-          email: '',
-          id: '',
-          __typename: 'User',
-        },
-      },
-    })
+    logout(this.$apollo.provider)
   },
   props: {
     redirect: {

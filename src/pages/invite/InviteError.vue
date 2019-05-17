@@ -49,37 +49,11 @@ export default new Component({
     },
   },
   methods: {
-    logout: function() {
-      this.$apollo.provider.clients.auth
-        .mutate({
-          mutation: gql`
-            mutation logoutCurrent($sessionToken: ID!) {
-              logout(token: $sessionToken)
-            }
-          `,
-          variables: {
-            sessionToken: localStorage.getItem('sessionToken'),
-          },
-        })
-        .then(() => {
-          localStorage.removeItem('sessionToken')
-          localStorage.removeItem('workspace')
-          this.$apollo.provider.clients.user.cache.writeData({
-            data: {
-              user: {
-                name: '',
-                callname: '',
-                email: '',
-                id: '',
-                __typename: 'User',
-              },
-            },
-          })
-          this.$router.push({
-            name: 'login',
-            params: { redirect: this.$route.path },
-          })
-        })
+    logout() {
+      this.$router.push({
+        name: 'login',
+        params: { redirect: this.$route.path },
+      })
     },
   },
 })

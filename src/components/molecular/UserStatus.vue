@@ -31,31 +31,8 @@ export default {
     },
   },
   methods: {
-    logout: function() {
-      this.$apollo.provider.clients.auth
-        .mutate({
-          mutation: gql`
-          mutation {
-            logout(token: "${localStorage.getItem('sessionToken')}")
-          }
-        `,
-        })
-        .then(() => {
-          localStorage.removeItem('sessionToken')
-          localStorage.removeItem('workspace')
-          this.$apollo.provider.clients.user.cache.writeData({
-            data: {
-              user: {
-                name: '',
-                callname: '',
-                email: '',
-                id: '',
-                __typename: 'User',
-              },
-            },
-          })
-          this.$router.push('/login')
-        })
+    logout() {
+      this.$router.push('/login')
     },
   },
 }
