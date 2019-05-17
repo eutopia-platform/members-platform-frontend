@@ -38,21 +38,31 @@ export default new Component({
     onResize() {
       this.sideRatio = this.$el.offsetHeight / this.$el.offsetWidth
     },
-    scroll(e) {
-      const { deltaX: x, deltaY: y } = e
-      this.def.scroll(x, y)
+    onWheel(e) {
+      if (e.ctrlKey)
+        this.pinch(e.deltaY, {
+          x: (e.clientX - this.$el.offsetLeft) / this.$el.offsetWidth,
+          y: (e.clientY - this.$el.offsetTop) / this.$el.offsetHeight,
+        })
+      else this.scroll(e.deltaX, e.deltaY)
       e.preventDefault()
+    },
+    scroll(x, y) {
+      this.def.scroll(x, y)
+    },
+    pinch(step, target) {
+      this.def.zoom(step, target)
     },
   },
   mounted() {
     window.addEventListener('resize', this.onResize)
     this.onResize()
 
-    this.$el.addEventListener('wheel', this.scroll)
+    this.$el.addEventListener('wheel', this.onWheel)
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
-    this.$el.removeEventListener('wheel', this.scroll)
+    this.$el.removeEventListener('wheel', this.onWheel)
   },
 })
 </script>

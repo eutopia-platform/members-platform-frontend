@@ -18,10 +18,10 @@ export default new Component({
     style() {
       const frame = this.def.render()
       return {
-        left: `${frame.x}%`,
-        top: `${frame.y}%`,
-        width: `${frame.width}%`,
-        height: `${frame.height}%`,
+        left: `${frame.x * 100}%`,
+        top: `${frame.y * 100}%`,
+        width: `${frame.width * 100}%`,
+        height: `${frame.height * 100}%`,
       }
     },
   },
