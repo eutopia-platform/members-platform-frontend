@@ -17,7 +17,7 @@ export default {
     handleError(err) {
       if (
         err.message.startsWith('Network error') ||
-        (err.graphQLERrors &&
+        (err.graphQLErrors &&
           err.graphQLErrors.some(err =>
             err.message.startsWith('Network error')
           ))
