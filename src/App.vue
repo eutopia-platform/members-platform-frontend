@@ -1,5 +1,5 @@
 <template>
-  <RouterView class="app" @error="handleError" role="alert"></RouterView>
+  <RouterView class="app" role="alert" @error="handleError"></RouterView>
 </template>
 
 <script>

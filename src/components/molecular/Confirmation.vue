@@ -1,5 +1,5 @@
 <template>
-  <div class="getClass">
+  <div :class="getClass">
     <Shade></Shade>
     <Card class="content">
       <div>
