@@ -3,58 +3,52 @@
     <Header tertiary>Settings</Header>
     <div class="content">
       <Card>
-        <div>
-          <Header quaternary>Profile</Header>
-          <LabeledInput
-            v-model="user.name"
-            label="name"
-            :default-value="user.name"
-            :size="20"
-          ></LabeledInput>
-          <LabeledInput
-            v-model="user.callname"
-            label="nickname"
-            :default-value="user.callname"
-            :size="20"
-          ></LabeledInput>
-          <Paragraph>
-            Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
-          </Paragraph>
-          <Button small @click="submitProfile">submit</Button>
-        </div>
+        <Header quaternary>Profile</Header>
+        <LabeledInput
+          v-model="user.name"
+          label="name"
+          :default-value="user.name"
+          :size="20"
+        ></LabeledInput>
+        <LabeledInput
+          v-model="user.callname"
+          label="nickname"
+          :default-value="user.callname"
+          :size="20"
+        ></LabeledInput>
+        <Paragraph>
+          Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
+        </Paragraph>
+        <Button small @click="submitProfile">submit</Button>
       </Card>
       <Card>
-        <div>
-          <Header quaternary>Workspace</Header>
-          <Paragraph>name: {{ workspace ? workspace.name : '' }}</Paragraph>
-          <Paragraph>
-            created:
-            {{ (workspace ? workspace.created : null) || '?' }}
-          </Paragraph>
-          <Paragraph>Members:</Paragraph>
-          <ul v-if="workspace && workspace.members">
-            <li
-              v-for="m in workspace.members"
-              :key="workspace.members.indexOf(m)"
-            >
-              {{ `${m.callname} (${m.email})` }}
-            </li>
-          </ul>
-          <InviteForm @error="onError"></InviteForm>
-        </div>
+        <Header quaternary>Workspace</Header>
+        <Paragraph>name: {{ workspace ? workspace.name : '' }}</Paragraph>
+        <Paragraph>
+          created:
+          {{ (workspace ? workspace.created : null) || '?' }}
+        </Paragraph>
+        <Paragraph>Members:</Paragraph>
+        <ul v-if="workspace && workspace.members">
+          <li
+            v-for="m in workspace.members"
+            :key="workspace.members.indexOf(m)"
+          >
+            {{ `${m.callname} (${m.email})` }}
+          </li>
+        </ul>
+        <InviteForm @error="onError"></InviteForm>
       </Card>
       <Card class="danger-zone">
-        <div>
-          <Header quaternary>Danger Zone</Header>
-          <Button @click="confirmDelete = true">delete this workspace</Button>
-          <Confirmation
-            v-if="confirmDelete"
-            title="Are you sure?"
-            description="Do you really want to delete this workspace? This action cannot not be undone! Please type the name of this workspace if you want to proceed."
-            :confirmation="workspace.name"
-            @confirmed="deleteWorkspace"
-          ></Confirmation>
-        </div>
+        <Header quaternary>Danger Zone</Header>
+        <Button @click="confirmDelete = true">delete this workspace</Button>
+        <Confirmation
+          v-if="confirmDelete"
+          title="Are you sure?"
+          description="Do you really want to delete this workspace? This action cannot not be undone! Please type the name of this workspace if you want to proceed."
+          :confirmation="workspace.name"
+          @confirmed="deleteWorkspace"
+        ></Confirmation>
       </Card>
     </div>
   </div>
