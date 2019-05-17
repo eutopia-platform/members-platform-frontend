@@ -1,5 +1,5 @@
 <template>
-  <div :class="getClass">
+  <form :class="getClass">
     <Header secondary>Login</Header>
     <Input v-model="email" blend placeholder="email" data-lpignore="true" />
     <Input
@@ -14,7 +14,7 @@
       Submit
     </Button>
     <Paragraph v-if="error">{{ error }}</Paragraph>
-  </div>
+  </form>
 </template>
 
 <script>
