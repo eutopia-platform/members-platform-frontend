@@ -1,7 +1,8 @@
 <template>
   <div :class="getClass">
-    <Paragraph>{{ label }}:</Paragraph>
+    <label :for="`labeled-input-${_uid}`">{{ label }}:</label>
     <Input
+      :id="`labeled-input-${_uid}`"
       small
       :size="size"
       :placeholder="placeholder"
@@ -26,12 +27,12 @@ export default new Molecular({
       default: '',
     },
     placeholder: {
-      default: '',
       type: String,
+      default: '',
     },
     size: {
-      default: undefined,
       type: Number,
+      default: undefined,
     },
   },
   data: {
@@ -50,6 +51,8 @@ export default new Molecular({
 .labeled-input {
   display: flex;
   align-items: baseline;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   *:first-child {
     margin-right: 1rem;
