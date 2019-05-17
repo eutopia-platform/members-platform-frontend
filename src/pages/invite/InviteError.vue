@@ -53,10 +53,13 @@ export default new Component({
       this.$apollo.provider.clients.auth
         .mutate({
           mutation: gql`
-          mutation {
-            logout(token: "${localStorage.getItem('sessionToken')}")
-          }
-        `,
+            mutation logoutCurrent($sessionToken: ID!) {
+              logout(token: $sessionToken)
+            }
+          `,
+          variables: {
+            sessionToken: localStorage.getItem('sessionToken'),
+          },
         })
         .then(() => {
           localStorage.removeItem('sessionToken')
