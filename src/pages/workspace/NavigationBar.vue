@@ -86,6 +86,7 @@ export default {
   padding-right: 1.5rem;
   user-select: none;
   box-shadow: $shadow-default;
+  z-index: 1000;
 
   @media screen and (min-width: 1000px) {
     width: 300px;
