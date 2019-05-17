@@ -75,6 +75,7 @@ export default {
 
 <style lang="scss" scoped>
 @import 'src/components/sharedStyles/colors.scss';
+@import 'src/components/sharedStyles/shadows.scss';
 
 .navigation {
   position: fixed;
@@ -84,6 +85,7 @@ export default {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   user-select: none;
+  box-shadow: $shadow-default;
 
   @media screen and (min-width: 1000px) {
     width: 300px;
