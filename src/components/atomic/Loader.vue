@@ -1,5 +1,5 @@
 <template>
-  <div :class="getClass"></div>
+  <div :class="getClass" aria-label="loading"></div>
 </template>
 
 <script>
