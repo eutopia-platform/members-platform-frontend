@@ -51,23 +51,39 @@ export default new Component({
     },
     onMouseDown(e) {
       if (e.target === this.$el) return
-      const target = this.$children
-        .filter(child => child.$options.name === 'Box')
-        .find(box => box.$el === e.target)
+      const boxes = this.$children.filter(
+        child => child.$options.name === 'Box'
+      )
+      const target = boxes.find(
+        box => box.$el === e.target || box.$el === e.target.parentNode
+      )
       if (target) {
-        this.dragTarget = {
-          el: target,
-          off: {
-            x: e.clientX - this.$el.offsetLeft - target.$el.offsetLeft,
-            y: e.clientY - this.$el.offsetTop - target.$el.offsetTop,
-          },
+        if (e.target.className.includes('box')) {
+          this.dragTarget = {
+            el: target,
+            off: {
+              x: e.clientX - this.$el.offsetLeft - target.$el.offsetLeft,
+              y: e.clientY - this.$el.offsetTop - target.$el.offsetTop,
+            },
+          }
+          this.$el.addEventListener('mousemove', this.onDrag)
+        } else if (e.target.className.includes('resize')) {
+          this.resizeTarget = {
+            el: target,
+            resSide: e.target.className
+              .split(' ')
+              .find(name => name.includes('res-'))
+              .replace('res-', ''),
+          }
+          this.$el.addEventListener('mousemove', this.onBoxResize)
         }
-        this.$el.addEventListener('mousemove', this.onDrag)
       }
     },
     onMouseUp() {
       this.dragTarget = null
+      this.resizeTarget = null
       this.$el.removeEventListener('mousemove', this.onDrag)
+      this.$el.removeEventListener('mousemove', this.onBoxResize)
     },
     onDrag({ clientX: x, clientY: y }) {
       this.dragTarget.el.def.move(
@@ -75,6 +91,46 @@ export default new Component({
           this.$el.offsetWidth,
         (y - this.dragTarget.off.y - this.$el.offsetTop) / this.$el.offsetHeight
       )
+    },
+    onBoxResize({ clientX: x, clientY: y }) {
+      let dim = {
+        width: this.resizeTarget.el.$el.offsetWidth / this.$el.offsetWidth,
+        height: this.resizeTarget.el.$el.offsetHeight / this.$el.offsetHeight,
+      }
+      let anchor = {
+        bottom: false,
+        right: false,
+      }
+      switch (this.resizeTarget.resSide) {
+        case 'right':
+          dim.width =
+            (x - this.$el.offsetLeft - this.resizeTarget.el.$el.offsetLeft) /
+            this.$el.offsetWidth
+          break
+        case 'bottom':
+          dim.height =
+            (y - this.$el.offsetTop - this.resizeTarget.el.$el.offsetTop) /
+            this.$el.offsetHeight
+          break
+        case 'left':
+          anchor.right = true
+          dim.width =
+            (this.resizeTarget.el.$el.offsetLeft +
+              this.resizeTarget.el.$el.offsetWidth -
+              (x - this.$el.offsetLeft)) /
+            this.$el.offsetWidth
+          break
+        case 'top':
+          anchor.bottom = true
+          dim.height =
+            (this.resizeTarget.el.$el.offsetTop +
+              this.resizeTarget.el.$el.offsetHeight -
+              (y - this.$el.offsetTop)) /
+            this.$el.offsetHeight
+          break
+      }
+
+      this.resizeTarget.el.def.resize(dim, anchor)
     },
     scroll(x, y) {
       this.def.scroll(x, y)

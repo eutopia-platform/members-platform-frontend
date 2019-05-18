@@ -1,11 +1,11 @@
 export class Box {
-  constructor(x, y, vp) {
+  constructor(vp, x, y, w = 10, h = 10) {
     this.pos = {
       x,
       y,
     }
-    this.width = 10
-    this.height = 10
+    this.width = w
+    this.height = h
     this.vp = vp
   }
 
@@ -24,17 +24,25 @@ export class Box {
       y: this.vp.offY + this.vp.height * y,
     }
   }
+
+  resize({ width, height }, anchor) {
+    const oldDim = { width: this.width, height: this.height }
+    this.width = width * this.vp.width
+    this.height = height * this.vp.height
+    if (anchor.right) this.pos.x -= this.width - oldDim.width
+    if (anchor.bottom) this.pos.y -= this.height - oldDim.height
+  }
 }
 
 export class Canvas {
   constructor() {
-    this.boxes = []
     this.viewport = {
-      width: 50,
-      height: 50,
+      width: 100,
+      height: 100,
       offX: 0,
       offY: 0,
     }
+    this.boxes = []
     this.scrollMod = 0.05
     this.dragTarget = null
   }
@@ -62,6 +70,6 @@ export class Canvas {
   addBox(x, y) {
     x = this.viewport.offX + x * this.viewport.width
     y = this.viewport.offY + y * this.viewport.height
-    this.boxes.push(new Box(x, y, this.viewport))
+    this.boxes.push(new Box(this.viewport, x, y))
   }
 }
