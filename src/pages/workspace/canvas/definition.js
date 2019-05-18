@@ -1,5 +1,5 @@
 export class Box {
-  constructor(vp, x, y, w = 10, h = 10) {
+  constructor(vp, x, y, w = 40, h = 40) {
     this.pos = {
       x,
       y,

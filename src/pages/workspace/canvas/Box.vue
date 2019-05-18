@@ -1,5 +1,11 @@
 <template>
   <div :class="getClass" :style="style">
+    <div ref="content" :style="scaleContent" class="content">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam,
+      veritatis. Culpa, natus delectus. Illum consequuntur, dolorum
+      exercitationem commodi iste explicabo nihil, consectetur dolorem assumenda
+      porro perferendis minima optio nobis odio!
+    </div>
     <div class="inner"></div>
     <div class="resize res-left"></div>
     <div class="resize res-right"></div>
@@ -30,6 +36,16 @@ export default new Component({
         height: `${frame.height * 100}%`,
       }
     },
+    scaleContent() {
+      const scale = 100 / this.def.vp.height
+      return {
+        ...(this.$el && {
+          transform: `scale(${scale})`,
+          width: `${this.$el.offsetWidth / scale}px`,
+          height: `${this.$el.offsetHeight / scale}px`,
+        }),
+      }
+    },
   },
 })
 </script>
@@ -43,12 +59,23 @@ export default new Component({
   background-color: white;
   box-sizing: border-box;
   position: absolute;
-  resize: both;
   box-shadow: $shadow-default;
+  padding: 0;
   cursor: grab;
 
-  $res-margin: 0.2rem;
+  .content {
+    padding: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    pointer-events: none;
+    user-select: none;
+    transform-origin: center;
+    transform-origin: left top;
+  }
 
+  $res-margin: 0.2rem;
   .resize {
     background-color: transparent;
     position: absolute;
