@@ -28,7 +28,9 @@ export default new Component({
     },
   },
   methods: {
-    onClick({ clientX: x, clientY: y }) {
+    onClick(e) {
+      if (e.target !== this.$el) return
+      let { clientX: x, clientY: y } = e
       x -= this.$el.offsetLeft
       y -= this.$el.offsetTop
       x /= this.$el.offsetWidth
@@ -47,6 +49,26 @@ export default new Component({
       else this.scroll(e.deltaX, e.deltaY)
       e.preventDefault()
     },
+    onMouseDown(e) {
+      if (e.target === this.$el) return
+      const target = this.$children
+        .filter(child => child.$options.name === 'Box')
+        .find(box => box.$el === e.target)
+      if (target) {
+        this.dragTarget = target
+        this.$el.addEventListener('mousemove', this.onDrag)
+      }
+    },
+    onMouseUp() {
+      this.dragTarget = null
+      this.$el.removeEventListener('mousemove', this.onDrag)
+    },
+    onDrag({ clientX: x, clientY: y }) {
+      this.dragTarget.def.move(
+        (x - this.$el.offsetLeft) / this.$el.offsetWidth,
+        (y - this.$el.offsetTop) / this.$el.offsetHeight
+      )
+    },
     scroll(x, y) {
       this.def.scroll(x, y)
     },
@@ -57,12 +79,15 @@ export default new Component({
   mounted() {
     window.addEventListener('resize', this.onResize)
     this.onResize()
-
     this.$el.addEventListener('wheel', this.onWheel)
+    this.$el.addEventListener('mousedown', this.onMouseDown)
+    this.$el.addEventListener('mouseup', this.onMouseUp)
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
     this.$el.removeEventListener('wheel', this.onWheel)
+    this.$el.removeEventListener('mousedown', this.onMouseDown)
+    this.$el.removeEventListener('mouseup', this.onMouseUp)
   },
 })
 </script>

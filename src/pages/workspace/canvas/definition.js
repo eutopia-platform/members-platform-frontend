@@ -6,7 +6,6 @@ export class Box {
     }
     this.width = 10
     this.height = 10
-
     this.vp = vp
   }
 
@@ -18,18 +17,26 @@ export class Box {
       height: this.height / this.vp.height,
     }
   }
+
+  move(x, y) {
+    this.pos = {
+      x: this.vp.offX + this.vp.width * x,
+      y: this.vp.offY + this.vp.height * y,
+    }
+  }
 }
 
 export class Canvas {
   constructor() {
+    this.boxes = []
     this.viewport = {
       width: 50,
       height: 50,
       offX: 0,
       offY: 0,
     }
-    this.boxes = [new Box(20, 10, this.viewport)]
     this.scrollMod = 0.05
+    this.dragTarget = null
   }
 
   setSideRatio(ratio) {
