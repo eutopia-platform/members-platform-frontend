@@ -55,7 +55,13 @@ export default new Component({
         .filter(child => child.$options.name === 'Box')
         .find(box => box.$el === e.target)
       if (target) {
-        this.dragTarget = target
+        this.dragTarget = {
+          el: target,
+          off: {
+            x: e.clientX - this.$el.offsetLeft - target.$el.offsetLeft,
+            y: e.clientY - this.$el.offsetTop - target.$el.offsetTop,
+          },
+        }
         this.$el.addEventListener('mousemove', this.onDrag)
       }
     },
@@ -64,9 +70,10 @@ export default new Component({
       this.$el.removeEventListener('mousemove', this.onDrag)
     },
     onDrag({ clientX: x, clientY: y }) {
-      this.dragTarget.def.move(
-        (x - this.$el.offsetLeft) / this.$el.offsetWidth,
-        (y - this.$el.offsetTop) / this.$el.offsetHeight
+      this.dragTarget.el.def.move(
+        (x - this.dragTarget.off.x - this.$el.offsetLeft) /
+          this.$el.offsetWidth,
+        (y - this.dragTarget.off.y - this.$el.offsetTop) / this.$el.offsetHeight
       )
     },
     scroll(x, y) {
