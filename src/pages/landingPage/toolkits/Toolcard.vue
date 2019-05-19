@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/Component'
+import Component from '/components/sharedScripts/component'
 
 export default new Component({
   name: 'Toolcard',
