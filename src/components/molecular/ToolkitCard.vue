@@ -3,9 +3,7 @@
     <Card class="flipwrap">
       <div class="front">
         <Icon :src="img"></Icon>
-        <Header quaternary>
-          {{ title }}
-        </Header>
+        <Header quaternary>{{ title }}</Header>
       </div>
       <div class="back">
         <Header tertiary>

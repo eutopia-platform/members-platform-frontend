@@ -44,7 +44,6 @@ export default {
 
 .workflow {
   @include colorScheme('primary');
-
   width: 100vw;
   height: 400vh;
   background: linear-gradient(#6bc1ff, #5969f6);
