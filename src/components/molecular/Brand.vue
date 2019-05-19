@@ -5,8 +5,13 @@
     aria-label="Go to landing page"
     @click="onClick"
   >
-    <Icon :src="logo" class="logo" aria="Productcube's logo"></Icon>
-    <Header tertiary>Productcube</Header>
+    <Icon
+      v-if="!nologo"
+      :src="logo"
+      class="logo"
+      aria="Productcube's logo"
+    ></Icon>
+    <Header tertiary :class="{ white }">Productcube</Header>
   </div>
 </template>
 
@@ -15,12 +20,19 @@ import Molecular from '/components/sharedScripts/molecular'
 
 export default new Molecular({
   name: 'Brand',
+  types: ['default', 'nologo'],
   computed: {
     logo: () => require('/../data/img/ui/logo.svg'),
   },
   methods: {
     onClick: function() {
       this.$router.push('/')
+    },
+  },
+  props: {
+    white: {
+      type: Boolean,
+      default: false,
     },
   },
 })
@@ -43,5 +55,9 @@ export default new Molecular({
   .logo {
     height: 100%;
   }
+}
+
+.white {
+  color: white;
 }
 </style>
