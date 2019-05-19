@@ -22,16 +22,46 @@ export default new Component({
     Item,
     Brand,
   },
+  data: {
+    lastScrollPos: 0,
+    hidden: false,
+  },
   computed: {
     theme() {
       return this.$route.path === '/' ? 'white' : 'blue'
     },
+  },
+  methods: {
+    hide() {
+      this.$el.style.transform = 'translateY(-100%)'
+      this.hidden = true
+    },
+    show() {
+      this.$el.style.transform = 'none'
+      this.hidden = false
+    },
+    onScroll() {
+      const scrollPos = window.scrollY
+      if (scrollPos === this.lastScrollPos) return
+      if (scrollPos > this.lastScrollPos && !this.hidden) this.hide()
+      else if (scrollPos < this.lastScrollPos && this.hidden) this.show()
+      this.lastScrollPos = scrollPos
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+    this.lastScrollPos = window.scrollY
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll)
   },
 })
 </script>
 
 <style lang="scss" scoped>
 .mainnav {
+  transition: transform 0.5s ease;
+
   .brand {
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
