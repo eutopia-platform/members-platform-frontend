@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../components/sharedStyles/colors.scss';
+@import '../../../components/sharedStyles/colors.scss';
 
 .contact {
   @include colorScheme('tertiary');

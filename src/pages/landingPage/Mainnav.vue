@@ -1,10 +1,10 @@
 <template>
-  <Menu top navigation :class="theme">
+  <Menu top navigation class="mainnav" :class="theme">
     <Item>
       <Brand :nologo="theme === 'blue'" :white="theme === 'blue'"></Brand>
     </Item>
-    <Item text="Workflow" align="right"></Item>
-    <Item text="Toolkits" align="right"></Item>
+    <Item text="Workflow" link="/workflow" align="right"></Item>
+    <Item text="Toolkits" link="/toolkits" align="right"></Item>
     <Item text="Start Now" align="right"></Item>
   </Menu>
 </template>
@@ -22,14 +22,20 @@ export default new Component({
     Item,
     Brand,
   },
-  data: {
-    theme: 'white',
+  computed: {
+    theme() {
+      return this.$route.path === '/' ? 'white' : 'blue'
+    },
   },
 })
 </script>
 
 <style lang="scss" scoped>
 .mainnav {
+  .brand {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
 }
 
 .blue {

@@ -25,6 +25,8 @@ export default new Molecular({
 
 .menu {
   box-shadow: $shadow-default;
+  position: fixed;
+  z-index: 500;
 }
 
 .top {

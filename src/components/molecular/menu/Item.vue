@@ -1,5 +1,5 @@
 <template>
-  <div :class="getClass" :style="alignStyle">
+  <div :class="getClass" :style="alignStyle" @click="onClick">
     <slot></slot>
     <span>{{ text }}</span>
   </div>
@@ -18,6 +18,10 @@ export default new Molecular({
       type: String,
       default: '',
     },
+    link: {
+      type: String,
+      default: null,
+    },
   },
   data: {
     alignment: '',
@@ -30,6 +34,11 @@ export default new Molecular({
             'margin-left': 'auto',
           }
       }
+    },
+  },
+  methods: {
+    onClick() {
+      if (this.link) this.$router.push(this.link)
     },
   },
   created() {
