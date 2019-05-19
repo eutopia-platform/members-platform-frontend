@@ -2,27 +2,40 @@
   <div class="workflow">
     <div class="textblock">
       <Header secondary>Step by step towards products that people love</Header>
-      <Header tertiary>Use guiding processes and feedback from successful entrepreneurs</Header>
+      <Header tertiary>
+        Use guiding processes and feedback from successful entrepreneurs
+      </Header>
     </div>
-    <div class="screen"></div>
+    <Screen img="toolkit"></Screen>
 
     <div class="textblock">
-      <Header secondary>Data driven decisions to turn ideas into results</Header>
-      <Header tertiary>Set KPIs, run experiments and see the performance impact in real time</Header>
+      <Header secondary>
+        Data driven decisions to turn ideas into results
+      </Header>
+      <Header tertiary>
+        Set KPIs, run experiments and see the performance impact in real time
+      </Header>
     </div>
-    <div class="screen"></div>
+    <Screen img="analytics"></Screen>
 
     <div class="textblock">
       <Header secondary>Always stay on top of important events</Header>
-      <Header tertiary>Our dashboard brings you up to speed on what your team is doing</Header>
+      <Header tertiary>
+        Our dashboard brings you up to speed on what your team is doing
+      </Header>
     </div>
-    <div class="screen"></div>
+    <Screen img="dashboard"></Screen>
   </div>
 </template>
 
 <script>
+import Screen from './workflow/Screen'
+
 export default {
   name: 'Workflow',
+  components: {
+    Screen,
+  },
 }
 </script>
 
@@ -41,15 +54,6 @@ export default {
 
   .textblock {
     margin-top: 10rem;
-    margin-bottom: 5rem;
-  }
-
-  .screen {
-    width: 70vw;
-    height: 40vw;
-    background: white;
-    margin: auto;
-    margin-top: 5rem;
     margin-bottom: 5rem;
   }
 }
