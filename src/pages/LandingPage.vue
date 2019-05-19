@@ -1,6 +1,6 @@
 <template>
   <div class="landing-page">
-    <Brand></Brand>
+    <Mainnav></Mainnav>
 
     <PageSlide>
       <template v-slot>
@@ -33,22 +33,22 @@
 </template>
 
 <script>
-import Brand from '../components/molecular/Brand'
 import Welcome from './landingPage/Welcome.vue'
 import Introduction from './landingPage/Introduction.vue'
 import Contact from './landingPage/Contact.vue'
 import Footer from './landingPage/Footer.vue'
 import Process from './landingPage/Process'
+import Mainnav from './landingPage/Mainnav'
 
 export default {
   name: 'LandingPage',
   components: {
-    Brand,
     Welcome,
     Introduction,
     Contact,
     Footer,
     Process,
+    Mainnav,
   },
 }
 </script>
