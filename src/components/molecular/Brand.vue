@@ -6,9 +6,7 @@
     @click="onClick"
   >
     <Icon :src="logo" class="logo" aria="Productcube's logo"></Icon>
-    <Header tertiary>
-      Productcube
-    </Header>
+    <Header tertiary>Productcube</Header>
   </div>
 </template>
 
@@ -40,6 +38,7 @@ export default new Molecular({
   cursor: pointer;
   z-index: 200;
   user-select: none;
+  background-color: transparent;
 
   .logo {
     height: 100%;
