@@ -22,25 +22,23 @@
 
     <Process></Process>
 
-    <PageSlide>
-      <Contact></Contact>
-    </PageSlide>
+    <Newsletter></Newsletter>
   </div>
 </template>
 
 <script>
 import Welcome from './home/Welcome.vue'
 import Introduction from './home/Introduction.vue'
-import Contact from './home/Contact.vue'
 import Process from './home/Process'
+import Newsletter from './Newsletter'
 
 export default {
   name: 'Home',
   components: {
     Welcome,
     Introduction,
-    Contact,
     Process,
+    Newsletter,
   },
 }
 </script>
@@ -58,8 +56,7 @@ export default {
   padding: 0;
 }
 
-.brand {
-  position: absolute;
-  margin: 1rem;
+.newsletter {
+  background: linear-gradient(#6bc1ff, #5969f6);
 }
 </style>

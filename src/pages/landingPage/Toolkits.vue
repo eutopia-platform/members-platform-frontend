@@ -12,6 +12,7 @@
       ></Toolcard>
     </div>
     <Showcase :kit="kits[selectedKit]"></Showcase>
+    <Newsletter></Newsletter>
   </div>
 </template>
 
@@ -19,12 +20,14 @@
 import Toolcard from './toolkits/Toolcard'
 import Showcase from './toolkits/Showcase'
 import Toolkit from './toolkits/toolkit'
+import Newsletter from './Newsletter'
 
 export default {
   name: 'Toolkits',
   components: {
     Toolcard,
     Showcase,
+    Newsletter,
   },
   data() {
     return {
@@ -87,7 +90,6 @@ export default {
 .toolkits {
   @include colorScheme('primary');
   width: 100vw;
-  height: 400vh;
   background: linear-gradient(#6bc1ff, #5969f6);
   padding-top: 7rem;
 
@@ -102,6 +104,10 @@ export default {
     justify-content: space-between;
     width: 80vw;
     margin: auto;
+
+    .toolcard {
+      cursor: pointer;
+    }
 
     *:first-child {
       margin-left: 0;

@@ -25,16 +25,19 @@
       </Header>
     </div>
     <Screen img="dashboard"></Screen>
+    <Newsletter></Newsletter>
   </div>
 </template>
 
 <script>
 import Screen from './workflow/Screen'
+import Newsletter from './Newsletter'
 
 export default {
   name: 'Workflow',
   components: {
     Screen,
+    Newsletter,
   },
 }
 </script>
@@ -47,7 +50,6 @@ export default {
   width: 100vw;
   background: linear-gradient(#6bc1ff, #5969f6);
   padding-top: 1px;
-  padding-bottom: 5rem;
 
   text-align: center;
 

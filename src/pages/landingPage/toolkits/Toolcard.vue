@@ -34,6 +34,7 @@ export default new Component({
   display: flex;
   flex-direction: column;
   background-color: #fffe !important;
+  user-select: none;
 
   .icon {
     margin-top: 1rem;
