@@ -59,6 +59,8 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
+@import '/components/sharedStyles/colors';
+
 .mainnav {
   transition: transform 0.5s ease;
 
@@ -74,7 +76,6 @@ export default new Component({
 }
 
 .white {
-  background-color: white;
-  color: initial;
+  @include colorScheme('neutral');
 }
 </style>
