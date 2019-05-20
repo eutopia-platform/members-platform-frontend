@@ -48,6 +48,14 @@ export default new Component({
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem 5vw;
 
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+    .toolcard,
+    .button {
+      display: none;
+    }
+  }
+
   .toolcard {
     height: 25vw;
     margin: 0;
