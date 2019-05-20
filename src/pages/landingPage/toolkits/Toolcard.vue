@@ -27,7 +27,6 @@ export default new Component({
 
 <style lang="scss" scoped>
 .toolcard {
-  width: 100%;
   margin-right: 1rem;
   margin-left: 1rem;
   text-align: center;
@@ -35,10 +34,12 @@ export default new Component({
   flex-direction: column;
   background-color: #fffe !important;
   user-select: none;
+  justify-content: space-around;
 
   .icon {
     margin-top: 1rem;
     margin-bottom: 2rem;
+    flex-grow: 0.5;
   }
 }
 </style>

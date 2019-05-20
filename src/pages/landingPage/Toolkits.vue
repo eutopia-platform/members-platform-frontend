@@ -4,12 +4,14 @@
       Whatever the goal, our toolkits get you started
     </Header>
     <div class="selection">
-      <Toolcard
-        v-for="kit in kits"
-        :key="kits.indexOf(kit)"
-        :kit="kit"
-        @select="select"
-      ></Toolcard>
+      <div class="scroll">
+        <Toolcard
+          v-for="kit in kits"
+          :key="kits.indexOf(kit)"
+          :kit="kit"
+          @select="select"
+        ></Toolcard>
+      </div>
     </div>
     <Showcase :kit="kits[selectedKit]"></Showcase>
     <Newsletter></Newsletter>
@@ -99,22 +101,31 @@ export default {
   }
 
   .selection {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80vw;
+    width: 100vw;
+    max-width: 1180px;
     margin: auto;
+    overflow: scroll;
 
-    .toolcard {
-      cursor: pointer;
-    }
+    .scroll {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: calc(1180px - 4rem);
+      padding-left: 2rem;
+      padding-right: 2rem;
 
-    *:first-child {
-      margin-left: 0;
-    }
+      .toolcard {
+        cursor: pointer;
+        width: 20rem;
+      }
 
-    *:last-child {
-      margin-right: 0;
+      *:first-child {
+        margin-left: 0;
+      }
+
+      *:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
