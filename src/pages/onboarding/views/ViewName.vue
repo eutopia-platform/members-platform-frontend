@@ -5,7 +5,7 @@
       <div class="input-wrap">
         <Input
           v-model="name"
-          look="blend"
+          blend
           placeholder="Are you the next Google?"
           :focus="true"
           @valueChange="onInputValueChange"

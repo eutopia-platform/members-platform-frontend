@@ -10,7 +10,7 @@ import Atomic from '../sharedScripts/atomic'
 
 export default new Atomic({
   name: 'Button',
-  types: ['default', 'text', 'icon', 'big'],
+  types: ['default', 'text', 'icon', 'big', 'small'],
   props: {
     img: String,
   },
@@ -30,7 +30,7 @@ export default new Atomic({
     border-radius: 0.4rem;
   }
 
-  &:not(.text) {
+  &:not(.text, .small) {
     box-sizing: border-box;
     min-height: 2rem;
     vertical-align: top;
@@ -66,6 +66,12 @@ export default new Atomic({
   padding-right: 1.5rem;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
+}
+
+.small {
+  font-size: 0.8rem;
+  line-height: 1rem;
+  border-radius: 0.3rem;
 }
 
 .icon {

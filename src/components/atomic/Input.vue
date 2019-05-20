@@ -1,20 +1,24 @@
 <template>
   <input
     v-model="value"
-    class="input"
     :name="name"
     :type="type"
     :placeholder="placeholder"
-    :class="styleClass"
+    :aria-label="internalAriaLabel"
+    :class="getClass"
     :autocomplete="type === 'password' ? 'new-password' : 'true'"
+    :style="size ? { width: size + 'em' } : {}"
     @input="onInput"
     @keyup.enter="onEnter"
   />
 </template>
 
 <script>
-export default {
+import Molecular from '../sharedScripts/molecular'
+
+export default new Molecular({
   name: 'Input',
+  types: ['default', 'blend', 'small'],
   props: {
     name: {
       default: '',
@@ -24,24 +28,25 @@ export default {
       default: '',
       type: String,
     },
-    type: {
-      default: 'text',
-      type: String,
-    },
-    look: {
-      default: 'default',
+    ariaLabel: {
+      default: null,
       type: String,
     },
     focus: {
       default: false,
       type: Boolean,
     },
+    size: {
+      default: undefined,
+      type: Number,
+    },
   },
-  data: () => ({
+  data: {
     value: '',
-  }),
+  },
   computed: {
-    styleClass: comp => 'style-' + comp.look,
+    internalAriaLabel: comp =>
+      comp.ariaLabel !== null ? comp.ariaLabel : comp.placeholder,
   },
   mounted: function() {
     if (this.focus) this.$el.focus()
@@ -62,7 +67,7 @@ export default {
       this.$emit('submit')
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -72,7 +77,6 @@ export default {
 
 .input {
   display: inline-block;
-  width: 100%;
   border: $border;
   border-radius: $border-radius;
   box-shadow: $shadow-default;
@@ -82,6 +86,7 @@ export default {
   transition: box-shadow 0.2s, transform 0.2s;
   transform: translate(0, 0px);
   box-sizing: border-box;
+  border: none;
 
   &:active {
     box-shadow: $shadow-active;
@@ -94,7 +99,7 @@ export default {
   }
 }
 
-.style-blend {
+.blend {
   border: none;
   box-shadow: none;
   border-radius: 0;
@@ -106,5 +111,13 @@ export default {
   &:active {
     box-shadow: none;
   }
+}
+
+.small {
+  border: 1px solid map-get($colors, 'neutral-font');
+  height: 1rem;
+  color: map-get($colors, 'neutral-font');
+  font-size: 0.8rem;
+  box-shadow: none;
 }
 </style>

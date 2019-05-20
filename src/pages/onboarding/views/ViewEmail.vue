@@ -5,7 +5,7 @@
       <div class="input-wrap">
         <Input
           v-model="email"
-          look="blend"
+          blend
           placeholder="you-are-awesome@example.com"
           :focus="true"
           @valueChange="onInputValueChange"

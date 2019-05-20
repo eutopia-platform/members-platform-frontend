@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <LoginForm></LoginForm>
+    <LoginForm :redirect="redirect"></LoginForm>
   </div>
 </template>
 
@@ -11,6 +11,12 @@ export default {
   name: 'Login',
   components: {
     LoginForm,
+  },
+  props: {
+    redirect: {
+      type: String,
+      default: '/space/',
+    },
   },
 }
 </script>

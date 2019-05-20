@@ -1,6 +1,6 @@
 <template>
   <div class="user-status" @click="logout">
-    <Icon :src="srcUser" class="user-icon"></Icon>
+    <UserIcon :user-id="user.id"></UserIcon>
     <div class="right">
       <Paragraph>{{ user.callname }}</Paragraph>
       <Small>{{ user.email }}</Small>
@@ -15,39 +15,24 @@ import gql from 'graphql-tag'
 export default {
   name: 'UserStatus',
   data: () => ({
-    user: {
-      email: 'unknown email',
-      callname: 'unknown name',
-    },
-    srcUser: require('/../data/img/ui/user.svg'),
     srcLogout: require('/../data/img/ui/logout.svg'),
   }),
   apollo: {
     user: {
       query: gql`
         {
-          user {
+          user @client {
             email
             callname
+            id
           }
         }
       `,
     },
   },
   methods: {
-    logout: function() {
-      this.$apollo.provider.clients.auth
-        .mutate({
-          mutation: gql`
-          mutation {
-            logout(token: "${localStorage.getItem('sessionToken')}")
-          }
-        `,
-        })
-        .then(() => {
-          localStorage.removeItem('sessionToken')
-          this.$router.push('/login')
-        })
+    logout() {
+      this.$router.push('/login')
     },
   },
 }
@@ -61,7 +46,6 @@ export default {
   white-space: nowrap;
   box-sizing: border-box;
   cursor: pointer;
-  border-radius: 0.5rem;
   overflow: hidden;
   margin-left: -0.5rem;
 

@@ -1,6 +1,6 @@
 <template>
-  <form :class="getClass">
-    <Input v-model="email" placeholder="email" />
+  <form :class="getClass" @submit="submit">
+    <Input ref="input" v-model="email" placeholder="email" />
     <Button @click="submit">Subscribe</Button>
   </form>
 </template>
@@ -18,7 +18,9 @@ export default new Molecular({
     email: '',
   },
   methods: {
-    submit: function() {
+    submit(e) {
+      if (e) e.preventDefault()
+      this.$refs.input.value = ''
       // gtag('event', 'submit', {
       //   event_category: 'EmailSignup',
       //   event_label: `uid: ${this._uid}`,

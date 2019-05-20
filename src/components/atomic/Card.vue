@@ -22,7 +22,6 @@ export default new Atomic({
   min-height: 5rem;
   padding: 1rem;
   box-sizing: border-box;
-  display: table;
   box-shadow: $shadow-default;
 }
 </style>

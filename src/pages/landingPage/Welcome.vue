@@ -3,10 +3,9 @@
     <Header primary>
       A workspace to turn ideas into startups
     </Header>
-    <Tagline
-      >Cube is the easiest way for teams to develop products people
-      want.</Tagline
-    >
+    <Tagline>
+      Cube is the easiest way for teams to develop products people want.
+    </Tagline>
     <EmailSignup></EmailSignup>
   </div>
 </template>

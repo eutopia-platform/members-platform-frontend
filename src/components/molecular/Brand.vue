@@ -1,6 +1,11 @@
 <template>
-  <div :class="getClass" @click="onClick">
-    <Icon :src="logo" class="logo"></Icon>
+  <div
+    :class="getClass"
+    role="button"
+    aria-label="Go to landing page"
+    @click="onClick"
+  >
+    <Icon :src="logo" class="logo" aria="Productcube's logo"></Icon>
     <Header tertiary>
       Productcube
     </Header>
@@ -34,6 +39,7 @@ export default new Molecular({
   justify-content: space-between;
   cursor: pointer;
   z-index: 200;
+  user-select: none;
 
   .logo {
     height: 100%;
