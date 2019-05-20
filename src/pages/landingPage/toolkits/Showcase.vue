@@ -1,6 +1,13 @@
 <template>
   <div :class="getClass">
-    <div class="title">{{ kit.name }}</div>
+    <div class="title">
+      <Header tertiary>{{ kit.name }}</Header>
+      <div class="tags">
+        <Paragraph v-for="tag in kit.tags" :key="kit.tags.indexOf(tag)">
+          &#35;{{ tag }}
+        </Paragraph>
+      </div>
+    </div>
     <Button>Use Toolkit</Button>
     <div class="description">
       <Paragraph v-for="t in kit.description" :key="kit.description.indexOf(t)">
@@ -31,15 +38,52 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
+@import '/components/sharedStyles/colors';
+
 .showcase {
   width: 80vw;
   margin: auto;
   margin-top: 5rem;
-  display: flex;
-  flex-direction: column;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem 5vw;
+
+  .toolcard {
+    height: 25vw;
+    margin: 0;
+  }
+
+  .button {
+    // should this monstrosity of a button style that is only used once in the entire website and completely defeats the entire purpose of a component system be removed ASAP? Absolutely, yes.
+    background-color: #fffe;
+    color: map-get($colors, 'secondary-font');
+    box-shadow: 0px 2px 5px white !important;
+    border-radius: 0 !important;
+    width: 15ch;
+    position: relative;
+    left: 100%;
+    transform: translateX(-100%);
+    height: 2rem;
+  }
+
+  .description {
+    *:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+
+    .tags {
+      display: flex;
+      flex-direction: row;
+
+      *:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
 }
 </style>

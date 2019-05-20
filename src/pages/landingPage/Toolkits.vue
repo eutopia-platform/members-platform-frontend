@@ -36,7 +36,8 @@ export default {
             'Validate your assumptions and learn about your user, the problems, desires, goals, and dreams they have. This toolkit gets you started in running user interviews that deliver actionable insights.',
             'It is perfect for product managers, UX research teams and startups when trying to build or test a new product or feature.',
             'Personalize this and other toolkits to guide your teams towards developing products so good, people tell their friends about it.',
-          ]
+          ],
+          ['User research', 'Product development', 'Design & UX']
         ),
         new Toolkit(
           'Empathy Map',
