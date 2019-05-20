@@ -1,23 +1,25 @@
 <template>
-  <Card :class="getClass">
-    <Header quaternary>{{ title }}</Header>
-    <Icon :src="img"></Icon>
+  <Card :class="getClass" @click="select">
+    <Header quaternary>{{ kit.name }}</Header>
+    <Icon :src="kit.icon"></Icon>
   </Card>
 </template>
 
 <script>
 import Component from '/components/sharedScripts/component'
+import Toolkit from './toolkit'
 
 export default new Component({
   name: 'Toolcard',
   props: {
-    title: {
-      type: String,
+    kit: {
+      type: Toolkit,
       required: true,
     },
-    img: {
-      type: String,
-      required: true,
+  },
+  methods: {
+    select() {
+      this.$emit('select', this)
     },
   },
 })

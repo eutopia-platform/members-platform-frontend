@@ -7,11 +7,11 @@
       <Toolcard
         v-for="kit in kits"
         :key="kits.indexOf(kit)"
-        :title="kit.name"
-        :img="kit.icon"
+        :kit="kit"
+        @select="select"
       ></Toolcard>
     </div>
-    <Showcase :kit="kits[0]"></Showcase>
+    <Showcase :kit="kits[selectedKit]"></Showcase>
   </div>
 </template>
 
@@ -28,6 +28,7 @@ export default {
   },
   data() {
     return {
+      selectedKit: 0,
       kits: [
         new Toolkit(
           'User Interview',
@@ -46,7 +47,8 @@ export default {
             'Collect the observations you make during the discovery stage of your product or feature development.',
             'The empathy helps you to answer questions like: What do my users hear, see, say & do, what is influencing them and what are the problems they face when trying to achieve their goal?',
             'Personalize this and other toolkits to guide your teams towards developing products so good, people tell their friends about it.',
-          ]
+          ],
+          ['User research', 'Product development', 'Design & UX']
         ),
         new Toolkit(
           'User Flow Design',
@@ -55,7 +57,8 @@ export default {
             'Time to design your user flow.',
             'User flows are the path taken by a user on a website or app to complete a task. It should take your user from their entry point through a set of steps towards a successful outcome and final action, such as purchasing a product.',
             'Personalize this and other toolkits to guide your teams towards developing products so good, people tell their friends about it.',
-          ]
+          ],
+          ['User research', 'Product development', 'Design & UX']
         ),
         new Toolkit(
           'Business Model Canvas',
@@ -64,10 +67,16 @@ export default {
             'Design your business model in a visual way.',
             'From your value proposition, the infrastructure, your customers to how you are planning to earn money, the business model canvas is a great strategic tool to develop new or document existing business models. It assists you with aligning your activities by illustrating potential trade-offs.',
             'Personalize this and other toolkits to guide your teams towards developing products so good, people tell their friends about it.',
-          ]
+          ],
+          ['Business development', 'Product development', 'Startup']
         ),
       ],
     }
+  },
+  methods: {
+    select(comp) {
+      this.selectedKit = this.kits.indexOf(comp.$options.propsData.kit)
+    },
   },
 }
 </script>

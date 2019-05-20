@@ -14,7 +14,7 @@
         {{ t }}
       </Paragraph>
     </div>
-    <Toolcard :title="kit.name" :img="kit.icon"></Toolcard>
+    <Toolcard :kit="kit"></Toolcard>
   </div>
 </template>
 
@@ -46,7 +46,7 @@ export default new Component({
   margin-top: 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem 5vw;
+  grid-gap: 1rem 5vw;
 
   .toolcard {
     height: 25vw;
@@ -75,6 +75,10 @@ export default new Component({
   .title {
     display: flex;
     flex-direction: column;
+
+    *:first-child {
+      margin-bottom: 0;
+    }
 
     .tags {
       display: flex;
