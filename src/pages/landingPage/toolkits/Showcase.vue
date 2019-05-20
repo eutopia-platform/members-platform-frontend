@@ -54,11 +54,8 @@ export default new Component({
   }
 
   .button {
-    // should this monstrosity of a button style that is only used once in the entire website and completely defeats the entire purpose of a component system be removed ASAP? Absolutely, yes.
     background-color: #fffe;
     color: map-get($colors, 'secondary-font');
-    box-shadow: 0px 2px 5px white !important;
-    border-radius: 0 !important;
     width: 15ch;
     position: relative;
     left: 100%;

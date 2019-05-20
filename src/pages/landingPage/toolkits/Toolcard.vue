@@ -34,7 +34,6 @@ export default new Component({
   display: flex;
   flex-direction: column;
   background-color: #fffe !important;
-  box-shadow: 0px 2px 5px white !important;
 
   .icon {
     margin-top: 1rem;
