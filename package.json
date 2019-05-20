@@ -12,7 +12,7 @@
   "homepage": "https://github.com/eutopia-platform/members-platform-frontend#readme",
   "scripts": {
     "start": "parcel src/index.html --no-autoinstall",
-    "build": "parcel build --no-source-maps --public-url . src/index.html",
+    "build": "parcel build --no-source-maps src/index.html",
     "now-build": "npm run build",
     "format:check": "prettier --check \"./*.{js,vue,html}\" \"./**/*.{js,vue,html}\"",
     "format:write": "prettier --write \"./*.{js,vue,html}\" \"./**/*.{js,vue,html}\"",
