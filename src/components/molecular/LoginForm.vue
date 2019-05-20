@@ -1,5 +1,5 @@
 <template>
-  <form :class="getClass">
+  <form :class="getClass" @submit="login">
     <Header secondary>Login</Header>
     <Input v-model="email" blend placeholder="email" data-lpignore="true" />
     <Input
@@ -56,7 +56,8 @@ export default new Molecular({
     },
   },
   methods: {
-    login: function() {
+    login(e) {
+      if (e) e.preventDefault()
       this.$apollo
         .mutate({
           mutation: gql`mutation {
