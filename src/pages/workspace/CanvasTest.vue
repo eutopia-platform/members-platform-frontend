@@ -1,8 +1,8 @@
 <template>
   <div :class="getClass">
     <div class="center" :style="centerWidth">
-      <TitleBar :style="titleBarWidth"></TitleBar>
-      <Canvas></Canvas>
+      <TitleBar ref="titlebar" :style="titleBarWidth"></TitleBar>
+      <Canvas :style="canvasPos"></Canvas>
     </div>
     <Sidebar
       ref="sidebar"
@@ -29,6 +29,7 @@ export default new Component({
   data: {
     sidebarWidth: 0,
     offsetLeft: 0,
+    titlebarHeight: 0,
   },
   computed: {
     centerWidth() {
@@ -41,12 +42,21 @@ export default new Component({
         width: `calc(100% - ${this.sidebarWidth} - ${this.offsetLeft})`,
       }
     },
+    canvasPos() {
+      return {
+        top: `${this.titlebarHeight}px`,
+        height: `calc(100% - ${this.titlebarHeight}px)`,
+      }
+    },
   },
   methods: {
     updateSidebarWidth(width) {
       this.sidebarWidth = width
       this.offsetLeft = this.$el.offsetLeft + 'px'
     },
+  },
+  mounted() {
+    this.titlebarHeight = this.$refs.titlebar.$el.offsetHeight
   },
 })
 </script>
