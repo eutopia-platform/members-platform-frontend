@@ -1,6 +1,6 @@
 <template>
   <div :class="getClass" :style="alignStyle" @click="onClick">
-    <slot></slot>
+    <slot class="slot"></slot>
     <span>{{ text }}</span>
   </div>
 </template>
@@ -34,6 +34,11 @@ export default new Molecular({
           return {
             'margin-left': 'auto',
           }
+        case 'center':
+          return {
+            'margin-left': 'auto',
+            'margin-right': 'auto',
+          }
       }
     },
   },
@@ -64,12 +69,13 @@ export default new Molecular({
   padding-right: 1rem;
   cursor: pointer;
 
-  span {
+  * {
     position: relative;
     display: block;
     top: 50%;
     transform: translateY(-50%);
-    margin-top: auto;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     user-select: none;
   }
 }
