@@ -1,5 +1,9 @@
 <template>
-  <DashboardCard title="Toolkit Status Overview">
+  <DashboardCard
+    title="Toolkit Status Overview"
+    button="add toolkit"
+    @action="addToolkit"
+  >
     <div class="table">
       <Header quaternary>Name</Header>
       <Header quaternary>Status</Header>
@@ -30,6 +34,11 @@ export default {
     return {
       toolkits: [],
     }
+  },
+  methods: {
+    addToolkit() {
+      this.$router.push(this.$route.path + '/toolkits')
+    },
   },
 }
 </script>

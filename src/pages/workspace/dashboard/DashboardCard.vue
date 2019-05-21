@@ -1,8 +1,9 @@
 <template>
   <Card class="db-card">
-    <Header tertiary>
-      {{ title }}
-    </Header>
+    <div class="title-bar">
+      <Header tertiary>{{ title }}</Header>
+      <Button v-if="button" small @click="$emit('action')">{{ button }}</Button>
+    </div>
     <LineHorizontal class="hl"></LineHorizontal>
     <slot />
   </Card>
@@ -16,6 +17,10 @@ export default {
       type: String,
       default: 'unknown title',
     },
+    button: {
+      type: String,
+      default: null,
+    },
   },
 }
 </script>
@@ -27,10 +32,17 @@ export default {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 
-  .hl {
-    margin-top: 1rem;
-    margin-left: -1.5rem;
-    width: calc(100% + 3rem);
+  .title-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .button {
+      height: 2rem;
+      position: relative;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
   }
 }
 </style>
