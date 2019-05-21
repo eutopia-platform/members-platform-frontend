@@ -31,7 +31,18 @@ export default new Molecular({
   methods: {
     toggleCollapse() {
       this.collapsed = !this.collapsed
+      this.onWidthChange()
     },
+    onWidthChange() {
+      this.$emit(
+        'changeWidth',
+        this.collapsed ? '3rem' : window.innerWidth >= 1000 ? '300px' : '30vw'
+      )
+    },
+  },
+  mounted() {
+    this.onWidthChange()
+    window.addEventListener('resize', this.onWidthChange)
   },
 })
 </script>

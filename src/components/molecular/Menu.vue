@@ -24,6 +24,7 @@ export default new Molecular({
 @import '/components/sharedStyles/shadows';
 
 .menu {
+  @include colorScheme('neutral');
   box-shadow: $shadow-default;
   position: fixed;
   z-index: 500;

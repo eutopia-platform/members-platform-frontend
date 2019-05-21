@@ -1,17 +1,45 @@
 <template>
   <div :class="getClass">
-    <Canvas></Canvas>
+    <div class="center" :style="centerWidth">
+      <TitleBar></TitleBar>
+      <Canvas></Canvas>
+    </div>
+    <Sidebar
+      ref="sidebar"
+      right
+      collapsable
+      @changeWidth="updateSidebarWidth"
+    ></Sidebar>
   </div>
 </template>
 
 <script>
 import Component from '/components/sharedScripts/component'
 import Canvas from './canvas/Canvas'
+import Sidebar from '/components/molecular/Sidebar'
+import TitleBar from './canvas/TitleBar'
 
 export default new Component({
   name: 'CanvasTest',
   components: {
     Canvas,
+    Sidebar,
+    TitleBar,
+  },
+  data: {
+    sidebarWidth: 0,
+  },
+  computed: {
+    centerWidth() {
+      return {
+        width: `calc(100% - ${this.sidebarWidth})`,
+      }
+    },
+  },
+  methods: {
+    updateSidebarWidth(width) {
+      this.sidebarWidth = width
+    },
   },
 })
 </script>
@@ -20,5 +48,9 @@ export default new Component({
 .canvas-test {
   padding: 0 !important;
   height: 100vh;
+
+  .center {
+    height: 100vh;
+  }
 }
 </style>
