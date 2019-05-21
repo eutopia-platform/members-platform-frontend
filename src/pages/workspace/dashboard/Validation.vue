@@ -1,5 +1,5 @@
 <template>
-  <DashboardCard title="Ready for Validation">
+  <DashboardCard title="Ready for Validation" button="get feedback" disabled>
     <div></div>
     <Paragraph v-if="toolkits.length === 0" class="nokit">
       No toolkit ready for validation.
@@ -25,7 +25,6 @@ export default {
 
 <style lang="scss" scoped>
 .nokit {
-  margin-top: 3rem;
   text-align: center;
 }
 </style>

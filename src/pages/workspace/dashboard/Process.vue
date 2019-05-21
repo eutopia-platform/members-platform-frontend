@@ -1,12 +1,12 @@
 <template>
-  <DashboardCard title="Process Overview">
+  <DashboardCard title="Process Overview" button="new process" disabled>
     <div class="content">
       <ProcessCard></ProcessCard>
       <div class="placeholder">
         <div>
           <Paragraph>You have not started a process yet.</Paragraph>
           <Paragraph>
-            We recomment this process to start working on an idea.
+            We recommend this process to start working on an idea.
           </Paragraph>
         </div>
       </div>

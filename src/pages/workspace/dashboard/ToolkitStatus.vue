@@ -53,7 +53,7 @@ export default {
 .nokit {
   grid-column-start: span 4;
   margin: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 </style>

@@ -11,8 +11,11 @@
           </Paragraph>
         </div>
       </InfoCard>
-      <ProcessCard></ProcessCard>
-      <ProcessCard></ProcessCard>
+      <ProcessCard
+        text1="You have not started a process yet."
+        text2="We recommend this process to start working on an idea."
+      ></ProcessCard>
+      <ProcessCard text1="Create your own process"></ProcessCard>
     </div>
   </div>
 </template>
@@ -44,7 +47,7 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
 
-    .process-card {
+    .process {
       grid-column-start: span 4;
     }
   }

@@ -2,7 +2,9 @@
   <Card class="db-card">
     <div class="title-bar">
       <Header tertiary>{{ title }}</Header>
-      <Button v-if="button" small @click="$emit('action')">{{ button }}</Button>
+      <Button v-if="button" small :disabled="disabled" @click="$emit('action')">
+        {{ button }}
+      </Button>
     </div>
     <LineHorizontal class="hl"></LineHorizontal>
     <slot />
@@ -20,6 +22,10 @@ export default {
     button: {
       type: String,
       default: null,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 }
