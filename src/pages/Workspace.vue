@@ -1,13 +1,11 @@
 <template>
   <div class="workspace">
-    <Overlay v-if="showOverlay"></Overlay>
     <Navbar></Navbar>
     <RouterView class="page"></RouterView>
   </div>
 </template>
 
 <script>
-import Overlay from './workspace/Overlay'
 import Navbar from './workspace/NavigationBar'
 import Dashboard from './workspace/Dashboard'
 import gql from 'graphql-tag'
@@ -15,7 +13,6 @@ import gql from 'graphql-tag'
 export default {
   name: 'Workspace',
   components: {
-    Overlay,
     Navbar,
   },
   apollo: {
@@ -32,13 +29,6 @@ export default {
       `,
       fetchPolicy: 'network-only',
     },
-  },
-  data: function() {
-    return {
-      showOverlay:
-        process.env.NODE_ENV === 'production' &&
-        !(this.$route.query.withoutOverlay === null),
-    }
   },
   computed: {
     activePage: () => Dashboard,
