@@ -6,25 +6,12 @@
       <Header quaternary>Progress</Header>
       <Header quaternary>Lead</Header>
       <ToolkitStatusSlip
-        name="Problem Definition"
-        status="Assumption"
-        :progress="0.1"
+        v-for="kit in toolkits"
+        :key="toolits.indexOf(kit)"
       ></ToolkitStatusSlip>
-      <ToolkitStatusSlip
-        name="Customer Definition"
-        status="In Testing"
-        :progress="0.4"
-      ></ToolkitStatusSlip>
-      <ToolkitStatusSlip
-        name="Business Model"
-        status="Iteration"
-        :progress="0.7"
-      ></ToolkitStatusSlip>
-      <ToolkitStatusSlip
-        name="Value Hypothesis"
-        status="Validated"
-        :progress="1"
-      ></ToolkitStatusSlip>
+      <Paragraph v-if="toolkits.length === 0" class="nokit">
+        You haven't started any toolkit yet.
+      </Paragraph>
     </div>
   </DashboardCard>
 </template>
@@ -39,6 +26,11 @@ export default {
     DashboardCard,
     ToolkitStatusSlip,
   },
+  data() {
+    return {
+      toolkits: [],
+    }
+  },
 }
 </script>
 
@@ -47,5 +39,12 @@ export default {
   display: grid;
   grid-template-columns: 3fr 2fr 2fr 1fr;
   grid-template-rows: 3rem;
+}
+
+.nokit {
+  grid-column-start: span 4;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 </style>
