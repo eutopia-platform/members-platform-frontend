@@ -1,6 +1,14 @@
 <template>
   <div class="workflow">
     <div class="textblock">
+      <Header secondary>Always stay on top of important events</Header>
+      <Header tertiary>
+        Our dashboard brings you up to speed on what your team is doing
+      </Header>
+    </div>
+    <Screen img="dashboard"></Screen>
+
+    <div class="textblock">
       <Header secondary>Step by step towards products that people love</Header>
       <Header tertiary>
         Use guiding processes and feedback from successful entrepreneurs
@@ -18,13 +26,6 @@
     </div>
     <Screen img="analytics"></Screen>
 
-    <div class="textblock">
-      <Header secondary>Always stay on top of important events</Header>
-      <Header tertiary>
-        Our dashboard brings you up to speed on what your team is doing
-      </Header>
-    </div>
-    <Screen img="dashboard"></Screen>
     <Newsletter></Newsletter>
   </div>
 </template>

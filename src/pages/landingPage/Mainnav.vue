@@ -5,7 +5,9 @@
     </Item>
     <Item text="Workflow" link="/workflow" align="right"></Item>
     <Item text="Toolkits" link="/toolkits" align="right"></Item>
-    <Item text="Start Now" align="right"></Item>
+    <Item>
+      <Button @click="$router.push('/login')">Login</Button>
+    </Item>
   </Menu>
 </template>
 

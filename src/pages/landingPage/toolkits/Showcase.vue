@@ -8,7 +8,7 @@
         </Paragraph>
       </div>
     </div>
-    <Button>Use Toolkit</Button>
+    <Button @click="$router.push('/login')">Use Toolkit</Button>
     <div class="description">
       <Paragraph v-for="t in kit.description" :key="kit.description.indexOf(t)">
         {{ t }}
