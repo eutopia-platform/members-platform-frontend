@@ -3,9 +3,7 @@
     <Card class="flipwrap">
       <div class="front">
         <Icon :src="img"></Icon>
-        <Header quaternary>
-          {{ title }}
-        </Header>
+        <Header quaternary>{{ title }}</Header>
       </div>
       <div class="back">
         <Header tertiary>
@@ -24,6 +22,7 @@
               : 'unknown'
           }}
         </Paragraph>
+        <Button @click="$router.push('canvas')">Use Toolkit</Button>
       </div>
     </Card>
   </div>
@@ -77,6 +76,11 @@ export default new Molecular({
     .back {
       transform: rotateY(180deg);
       overflow: scroll;
+      .button {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
 
     .front,

@@ -1,5 +1,5 @@
 <template>
-  <Header quaternary :class="getClass">{{ workspace.name }} Workspace</Header>
+  <Header quaternary :class="getClass">{{ workspace.name }}</Header>
 </template>
 
 <script>

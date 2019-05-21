@@ -72,6 +72,14 @@ export default {
         if (workspaces.length === 0) return
         this.$router.push('/space/' + workspaces[0].name)
       },
+      error(err) {
+        if (
+          err.message.replace('GraphQL error:', '').trim() === 'NOT_LOGGED_IN'
+        ) {
+          this.$router.push('/login')
+          return true
+        } else throw Error(err)
+      },
       skip() {
         return typeof this.$route.params.workspace !== 'undefined'
       },

@@ -4,6 +4,9 @@ import VueResource from 'vue-resource'
 import VueApollo from 'vue-apollo'
 import App from './App.vue'
 import LandingPage from './pages/LandingPage'
+import Home from './pages/landingPage/Home'
+import { default as LpToolkits } from './pages/landingPage/Toolkits'
+import Workflow from './pages/landingPage/Workflow'
 import Privacy from './pages/Privacy'
 import Components from './pages/Components'
 import NotFound from './pages/NotFound'
@@ -32,7 +35,15 @@ Vue.use(VueApollo)
 Vue.http.options.emulateJSON = true
 
 const routes = [
-  { path: '/', component: LandingPage },
+  {
+    path: '/',
+    component: LandingPage,
+    children: [
+      { path: '/', component: Home },
+      { path: 'workflow', component: Workflow },
+      { path: 'toolkits', component: LpToolkits },
+    ],
+  },
   {
     path: '/space/:workspace?',
     component: WorkspaceGuard,
