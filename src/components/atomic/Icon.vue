@@ -2,10 +2,14 @@
   <img
     class="icon"
     :class="{ color: recolor }"
-    :src="name.length === 0 ? src : `https://s3.eu-central-1.amazonaws.com/eutopia.media/ui/icons/${name}.svg`"
+    :src="
+      name.length === 0
+        ? src
+        : `https://s3.eu-central-1.amazonaws.com/eutopia.media/ui/icons/${name}.svg`
+    "
     :aria="aria"
     @click="$emit('click')"
-  >
+  />
 </template>
 
 <script>
