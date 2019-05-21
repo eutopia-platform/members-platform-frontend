@@ -1,9 +1,6 @@
 <template>
   <DashboardCard title="Ready for Validation" button="get feedback" disabled>
     <div></div>
-    <Paragraph v-if="toolkits.length === 0" class="nokit">
-      No toolkit ready for validation.
-    </Paragraph>
   </DashboardCard>
 </template>
 

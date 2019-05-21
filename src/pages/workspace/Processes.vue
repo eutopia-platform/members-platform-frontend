@@ -15,7 +15,11 @@
         text1="You have not started a process yet."
         text2="We recommend this process to start working on an idea."
       ></ProcessCard>
-      <ProcessCard text1="Create your own process"></ProcessCard>
+      <ProcessCard
+        text1="Create your own process"
+        img-num="2"
+        title="Design your own process"
+      ></ProcessCard>
     </div>
   </div>
 </template>

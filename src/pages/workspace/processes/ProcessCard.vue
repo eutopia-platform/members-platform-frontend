@@ -1,6 +1,6 @@
 <template>
   <Card class="process">
-    <PlaceholderCard></PlaceholderCard>
+    <PlaceholderCard :img-num="imgNum" :title="title"></PlaceholderCard>
     <div class="text">
       <div>
         <Paragraph v-if="text1">{{ text1 }}</Paragraph>
@@ -26,6 +26,14 @@ export default {
     text2: {
       type: String,
       default: null,
+    },
+    imgNum: {
+      type: String,
+      default: '1',
+    },
+    title: {
+      type: String,
+      default: 'Build and launch an MVP',
     },
   },
 }

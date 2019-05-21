@@ -1,9 +1,11 @@
 <template>
   <Card :class="getClass">
     <Icon
-      src="https://s3.eu-central-1.amazonaws.com/eutopia.media/process/process_1.svg"
+      :src="
+        `https://s3.eu-central-1.amazonaws.com/eutopia.media/process/process_${imgNum}.svg`
+      "
     ></Icon>
-    <Header quaternary>Build and launch an MVP</Header>
+    <Header quaternary>{{ title }}</Header>
   </Card>
 </template>
 
@@ -12,6 +14,16 @@ import Component from '/components/sharedScripts/component'
 
 export default new Component({
   name: 'ProcessCard',
+  props: {
+    imgNum: {
+      type: String,
+      default: 1,
+    },
+    title: {
+      type: String,
+      default: 'Build and launch an MVP',
+    },
+  },
 })
 </script>
 
@@ -23,5 +35,9 @@ export default new Component({
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  .icon {
+    height: 3rem;
+  }
 }
 </style>
