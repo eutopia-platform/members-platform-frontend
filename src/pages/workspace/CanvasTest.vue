@@ -1,7 +1,7 @@
 <template>
   <div :class="getClass">
     <div class="center" :style="centerWidth">
-      <TitleBar></TitleBar>
+      <TitleBar :style="titleBarWidth"></TitleBar>
       <Canvas></Canvas>
     </div>
     <Sidebar
@@ -28,6 +28,7 @@ export default new Component({
   },
   data: {
     sidebarWidth: 0,
+    offsetLeft: 0,
   },
   computed: {
     centerWidth() {
@@ -35,10 +36,16 @@ export default new Component({
         width: `calc(100% - ${this.sidebarWidth})`,
       }
     },
+    titleBarWidth() {
+      return {
+        width: `calc(100% - ${this.sidebarWidth} - ${this.offsetLeft})`,
+      }
+    },
   },
   methods: {
     updateSidebarWidth(width) {
       this.sidebarWidth = width
+      this.offsetLeft = this.$el.offsetLeft + 'px'
     },
   },
 })

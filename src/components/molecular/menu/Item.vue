@@ -28,6 +28,7 @@ export default new Molecular({
   },
   computed: {
     alignStyle() {
+      // TODO: allow left aligned items after right aligned items
       switch (this.alignment) {
         case 'right':
           return {

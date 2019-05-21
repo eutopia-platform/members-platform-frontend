@@ -1,7 +1,5 @@
 <template>
-  <Menu top :class="getClass">
-    <Item align="right" text="test"></Item>
-  </Menu>
+  <Menu top :class="getClass"></Menu>
 </template>
 
 <script>
