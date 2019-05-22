@@ -5,7 +5,9 @@
     :src="
       name.length === 0
         ? src
-        : `https://s3.eu-central-1.amazonaws.com/eutopia.media/ui/icons/${name}.svg`
+        : `https://s3.eu-central-1.amazonaws.com/eutopia.media${
+            !name.includes('/') ? '/ui/icons/' : '/'
+          }${name}.svg`
     "
     :aria="aria"
     @click="$emit('click')"
