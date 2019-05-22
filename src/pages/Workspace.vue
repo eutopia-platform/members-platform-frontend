@@ -50,7 +50,7 @@ export default {
   methods: {
     updateSidebarWidth(width) {
       this.sidebarWidth = width
-      this.$refs.page.updateOffset(width)
+      if (this.$refs.page.updateOffset) this.$refs.page.updateOffset(width)
     },
   },
 }
