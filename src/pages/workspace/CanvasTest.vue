@@ -54,6 +54,9 @@ export default new Component({
       this.sidebarWidth = width
       this.offsetLeft = this.$el.offsetLeft + 'px'
     },
+    updateOffset(off) {
+      this.offsetLeft = off
+    },
   },
   mounted() {
     this.titlebarHeight = this.$refs.titlebar.$el.offsetHeight

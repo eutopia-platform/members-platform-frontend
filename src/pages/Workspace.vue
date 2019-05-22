@@ -1,7 +1,7 @@
 <template>
   <div class="workspace">
-    <Navbar></Navbar>
-    <RouterView class="page"></RouterView>
+    <Navbar @changeWidth="updateSidebarWidth"></Navbar>
+    <RouterView ref="page" class="page" :style="contentPos"></RouterView>
   </div>
 </template>
 
@@ -30,11 +30,28 @@ export default {
       fetchPolicy: 'network-only',
     },
   },
+  data() {
+    return {
+      sidebarWidth: 0,
+    }
+  },
   computed: {
     activePage: () => Dashboard,
+    contentPos() {
+      return {
+        'margin-left': this.sidebarWidth,
+        width: `calc(100% - ${this.sidebarWidth})`,
+      }
+    },
   },
   created: function() {
     if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
+  },
+  methods: {
+    updateSidebarWidth(width) {
+      this.sidebarWidth = width
+      this.$refs.page.updateOffset(width)
+    },
   },
 }
 </script>
@@ -45,18 +62,11 @@ export default {
 .workspace {
   .page {
     @include colorScheme('secondary');
-    width: 70vw;
-    margin-left: 30vw;
     min-height: 100vh;
     box-sizing: border-box;
     padding: 2rem;
     padding-left: 3rem;
     padding-right: 3rem;
-
-    @media screen and (min-width: 1000px) {
-      margin-left: 300px;
-      width: calc(100vw - 300px);
-    }
   }
 }
 </style>

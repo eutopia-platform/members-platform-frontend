@@ -141,6 +141,7 @@ export default new Component({
       }
 
       this.resizeTarget.el.def.resize(dim, anchor)
+      this.resizeTarget.el.updateLayout()
     },
     scroll(x, y) {
       this.def.scroll(x, y)

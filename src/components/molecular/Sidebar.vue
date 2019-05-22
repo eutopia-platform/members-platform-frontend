@@ -1,9 +1,10 @@
 <template>
-  <div class="sidebar" :class="{ right, collapsed }">
+  <div class="sidebar" :class="{ left, right, collapsed }">
+    <slot></slot>
     <Icon
       v-if="collapsable"
       class="toggle-collapse"
-      :name="!collapsed ? 'chevron_right' : 'chevron_left'"
+      :name="collapsed === left ? 'chevron_right' : 'chevron_left'"
       recolor
       @click="toggleCollapse"
     ></Icon>
@@ -15,11 +16,8 @@ import Molecular from '/components/sharedScripts/component'
 
 export default new Molecular({
   name: 'Sidebar',
+  types: ['left', 'right'],
   props: {
-    right: {
-      type: Boolean,
-      default: false,
-    },
     collapsable: {
       type: Boolean,
       default: false,
@@ -58,6 +56,7 @@ export default new Molecular({
   height: 100vh;
   box-sizing: border-box;
   z-index: 1000;
+  overflow: hidden;
 
   @include colorScheme('neutral');
   box-shadow: $shadow-default;
@@ -72,7 +71,15 @@ export default new Molecular({
     position: absolute;
     height: 2rem;
     bottom: 0;
+    left: 0;
     margin-bottom: 0.5rem;
+  }
+
+  &.left {
+    .toggle-collapse {
+      left: initial;
+      right: 0;
+    }
   }
 }
 

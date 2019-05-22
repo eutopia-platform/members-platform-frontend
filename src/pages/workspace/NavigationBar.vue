@@ -1,5 +1,10 @@
 <template>
-  <aside class="navigation">
+  <Sidebar
+    class="navigation"
+    left
+    collapsable
+    @changeWidth="w => $emit('changeWidth', w)"
+  >
     <Brand></Brand>
     <WorkspaceIndicator></WorkspaceIndicator>
     <UserStatus class="status"></UserStatus>
@@ -14,7 +19,7 @@
         {{ item.name }}
       </Item>
     </ul>
-  </aside>
+  </Sidebar>
 </template>
 
 <script>
@@ -22,6 +27,7 @@ import UserStatus from '/components/molecular/UserStatus'
 import Brand from '/components/molecular/Brand'
 import Item from './NavigationBarItem'
 import WorkspaceIndicator from './WorkspaceIndicator'
+import Sidebar from '/components/molecular/Sidebar'
 
 export default {
   name: 'NavigationBar',
@@ -30,6 +36,7 @@ export default {
     Brand,
     Item,
     WorkspaceIndicator,
+    Sidebar,
   },
   computed: {
     workspace: function() {
@@ -78,8 +85,6 @@ export default {
 @import 'src/components/sharedStyles/shadows.scss';
 
 .navigation {
-  position: fixed;
-  width: 30vw;
   height: 100vh;
   box-sizing: border-box;
   padding-left: 1.5rem;
@@ -87,10 +92,6 @@ export default {
   user-select: none;
   box-shadow: $shadow-default;
   z-index: 1000;
-
-  @media screen and (min-width: 1000px) {
-    width: 300px;
-  }
 
   @include colorScheme('neutral');
 

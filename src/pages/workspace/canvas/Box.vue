@@ -47,6 +47,14 @@ export default new Component({
       }
     },
   },
+  methods: {
+    updateLayout() {
+      this.$el.style = {
+        ...this.$el,
+        ...this.scaleContent,
+      }
+    },
+  },
 })
 </script>
 
