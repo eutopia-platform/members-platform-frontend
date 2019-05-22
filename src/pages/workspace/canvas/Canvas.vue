@@ -32,7 +32,11 @@ export default new Component({
   },
   methods: {
     handleDrop(e) {
-      if (e.target !== this.$el) return
+      if (
+        e.target !== this.$el ||
+        e.dataTransfer.getData('text/plain') !== 'box'
+      )
+        return
       let { clientX: x, clientY: y } = e
       this.createBox(x, y)
     },

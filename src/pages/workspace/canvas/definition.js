@@ -70,6 +70,6 @@ export class Canvas {
   addBox(x, y) {
     x = this.viewport.offX + x * this.viewport.width
     y = this.viewport.offY + y * this.viewport.height
-    this.boxes.push(new Box(this.viewport, x, y))
+    this.boxes.push(new Box(this.viewport, x - 20, y - 20, 40, 40))
   }
 }
