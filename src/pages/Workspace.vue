@@ -1,13 +1,11 @@
 <template>
   <div class="workspace">
-    <Overlay v-if="showOverlay"></Overlay>
-    <Navbar></Navbar>
-    <RouterView class="page"></RouterView>
+    <Navbar @changeWidth="updateSidebarWidth"></Navbar>
+    <RouterView ref="page" class="page" :style="contentPos"></RouterView>
   </div>
 </template>
 
 <script>
-import Overlay from './workspace/Overlay'
 import Navbar from './workspace/NavigationBar'
 import Dashboard from './workspace/Dashboard'
 import gql from 'graphql-tag'
@@ -15,7 +13,6 @@ import gql from 'graphql-tag'
 export default {
   name: 'Workspace',
   components: {
-    Overlay,
     Navbar,
   },
   apollo: {
@@ -33,18 +30,28 @@ export default {
       fetchPolicy: 'network-only',
     },
   },
-  data: function() {
+  data() {
     return {
-      showOverlay:
-        process.env.NODE_ENV === 'production' &&
-        !(this.$route.query.withoutOverlay === null),
+      sidebarWidth: 0,
     }
   },
   computed: {
     activePage: () => Dashboard,
+    contentPos() {
+      return {
+        'margin-left': this.sidebarWidth,
+        width: `calc(100% - ${this.sidebarWidth})`,
+      }
+    },
   },
   created: function() {
     if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
+  },
+  methods: {
+    updateSidebarWidth(width) {
+      this.sidebarWidth = width
+      this.$refs.page.updateOffset(width)
+    },
   },
 }
 </script>
@@ -55,18 +62,11 @@ export default {
 .workspace {
   .page {
     @include colorScheme('secondary');
-    width: 70vw;
-    margin-left: 30vw;
     min-height: 100vh;
     box-sizing: border-box;
     padding: 2rem;
     padding-left: 3rem;
     padding-right: 3rem;
-
-    @media screen and (min-width: 1000px) {
-      margin-left: 300px;
-      width: calc(100vw - 300px);
-    }
   }
 }
 </style>

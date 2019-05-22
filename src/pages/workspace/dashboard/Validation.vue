@@ -1,5 +1,5 @@
 <template>
-  <DashboardCard title="Ready for Validation">
+  <DashboardCard title="Ready for Validation" button="get feedback" disabled>
     <div></div>
   </DashboardCard>
 </template>
@@ -12,5 +12,16 @@ export default {
   components: {
     DashboardCard,
   },
+  data() {
+    return {
+      toolkits: [],
+    }
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+.nokit {
+  text-align: center;
+}
+</style>
