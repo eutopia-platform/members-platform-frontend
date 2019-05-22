@@ -18,6 +18,7 @@ import Analytics from './pages/workspace/Analytics'
 import Toolkits from './pages/workspace/Toolkits'
 import Processes from './pages/workspace/Processes'
 import Settings from './pages/workspace/Settings'
+import CanvasTest from './pages/workspace/CanvasTest'
 import Invite from './pages/Invite'
 import clients from './connections'
 
@@ -66,6 +67,10 @@ const routes = [
       {
         path: 'settings',
         component: Settings,
+      },
+      {
+        path: 'canvas',
+        component: CanvasTest,
       },
     ],
   },

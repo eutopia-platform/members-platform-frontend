@@ -1,5 +1,17 @@
 <template>
-  <img class="icon" :src="src" :aria="aria" />
+  <img
+    class="icon"
+    :class="{ color: recolor }"
+    :src="
+      name.length === 0
+        ? src
+        : `https://s3.eu-central-1.amazonaws.com/eutopia.media${
+            !name.includes('/') ? '/ui/icons/' : '/'
+          }${name}.svg`
+    "
+    :aria="aria"
+    @click="$emit('click')"
+  />
 </template>
 
 <script>
@@ -10,14 +22,26 @@ export default {
       type: String,
       default: '',
     },
-    size: {
+    name: {
       type: String,
-      default: 'initial',
+      default: '',
     },
     aria: {
       type: String,
       default: '',
     },
+    recolor: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@import '/components/sharedStyles/colors';
+
+.color {
+  filter: $icon-filter;
+}
+</style>
