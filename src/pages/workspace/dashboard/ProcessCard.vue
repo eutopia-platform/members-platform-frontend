@@ -17,7 +17,7 @@ export default new Component({
   props: {
     imgNum: {
       type: String,
-      default: 1,
+      default: '1',
     },
     title: {
       type: String,
