@@ -1,5 +1,6 @@
 <template>
-  <div :class="getClass" @click="onClick">
+  <div :class="getClass" @dragover="e => e.preventDefault()" @drop="handleDrop">
+    <Toolbar></Toolbar>
     <Box
       v-for="box in def.boxes"
       :key="def.boxes.indexOf(box)"
@@ -11,12 +12,14 @@
 <script>
 import Component from '/components/sharedScripts/component'
 import Box from './Box'
+import Toolbar from './Toolbar'
 import { Canvas } from './definition'
 
 export default new Component({
   name: 'Canvas',
   components: {
     Box,
+    Toolbar,
   },
   data: {
     def: new Canvas(),
@@ -28,9 +31,12 @@ export default new Component({
     },
   },
   methods: {
-    onClick(e) {
+    handleDrop(e) {
       if (e.target !== this.$el) return
       let { clientX: x, clientY: y } = e
+      this.createBox(x, y)
+    },
+    createBox(x, y) {
       x -= this.$el.offsetLeft
       y -= this.$el.offsetTop
       x /= this.$el.offsetWidth
