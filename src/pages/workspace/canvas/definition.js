@@ -1,5 +1,5 @@
 export class Box {
-  constructor(vp, x, y, w = 40, h = 40) {
+  constructor(vp, x, y, w = 40, h = 40, content) {
     this.pos = {
       x,
       y,
@@ -7,6 +7,7 @@ export class Box {
     this.width = w
     this.height = h
     this.vp = vp
+    this.content = content
   }
 
   render() {
@@ -41,6 +42,7 @@ export class Canvas {
       height: 100,
       offX: 0,
       offY: 0,
+      initialWidth: 100,
     }
     this.boxes = []
     this.scrollMod = 0.05
@@ -71,5 +73,9 @@ export class Canvas {
     x = this.viewport.offX + x * this.viewport.width
     y = this.viewport.offY + y * this.viewport.height
     this.boxes.push(new Box(this.viewport, x - 20, y - 20, 40, 40))
+  }
+
+  loadTemplate(template) {
+    this.boxes = this.boxes.concat(template.boxes)
   }
 }

@@ -4,8 +4,12 @@
     <Box
       v-for="box in def.boxes"
       :key="def.boxes.indexOf(box)"
+      :parent-width="width"
+      :parent-height="height"
       :def="box"
-    ></Box>
+    >
+      {{ box.content }}
+    </Box>
   </div>
 </template>
 
@@ -14,6 +18,8 @@ import Component from '/components/sharedScripts/component'
 import Box from './Box'
 import Toolbar from './Toolbar'
 import { Canvas } from './definition'
+import Template from './template'
+import customerJourney from './templates/customerJourney'
 
 export default new Component({
   name: 'Canvas',
@@ -24,6 +30,13 @@ export default new Component({
   data: {
     def: new Canvas(),
     sideRatio: 1,
+    height: window.innerHeight,
+  },
+  props: {
+    width: {
+      type: Number,
+      default: 0,
+    },
   },
   watch: {
     sideRatio(n) {
@@ -48,6 +61,7 @@ export default new Component({
       this.def.addBox(x, y)
     },
     onResize() {
+      this.height = this.$el.offsetHeight
       this.sideRatio = this.$el.offsetHeight / this.$el.offsetWidth
     },
     onWheel(e) {
@@ -162,6 +176,9 @@ export default new Component({
     this.$el.removeEventListener('wheel', this.onWheel)
     this.$el.removeEventListener('mousedown', this.onMouseDown)
     this.$el.removeEventListener('mouseup', this.onMouseUp)
+  },
+  created() {
+    this.def.loadTemplate(new Template(this.def.viewport, customerJourney))
   },
 })
 </script>

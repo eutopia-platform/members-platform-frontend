@@ -1,10 +1,7 @@
 <template>
   <div :class="getClass" :style="style">
     <div ref="content" :style="scaleContent" class="content">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam,
-      veritatis. Culpa, natus delectus. Illum consequuntur, dolorum
-      exercitationem commodi iste explicabo nihil, consectetur dolorem assumenda
-      porro perferendis minima optio nobis odio!
+      <pre><slot></slot></pre>
     </div>
     <div class="inner"></div>
     <div class="resize res-left"></div>
@@ -25,6 +22,14 @@ export default new Component({
       type: BoxDef,
       required: true,
     },
+    parentWidth: {
+      type: Number,
+      required: true,
+    },
+    parentHeight: {
+      type: Number,
+      required: true,
+    },
   },
   computed: {
     style() {
@@ -37,13 +42,15 @@ export default new Component({
       }
     },
     scaleContent() {
-      const scale = 100 / this.def.vp.height
+      const scale = this.def.vp.initialWidth / this.def.vp.width
+
       return {
-        ...(this.$el && {
-          transform: `scale(${scale})`,
-          width: `${this.$el.offsetWidth / scale}px`,
-          height: `${this.$el.offsetHeight / scale}px`,
-        }),
+        transform: `scale(${scale})`,
+        width: `${((this.def.width / this.def.vp.width) * this.parentWidth) /
+          scale}px`,
+        height: `${((this.def.height / this.def.vp.height) *
+          this.parentHeight) /
+          scale}px`,
       }
     },
   },
@@ -70,6 +77,7 @@ export default new Component({
   box-shadow: $shadow-default;
   padding: 0;
   cursor: grab;
+  overflow: hidden;
 
   .content {
     padding: 1rem;
@@ -81,6 +89,11 @@ export default new Component({
     user-select: none;
     transform-origin: center;
     transform-origin: left top;
+
+    pre {
+      font-family: 'Nunito', sans-serif;
+      white-space: pre-wrap;
+    }
   }
 
   $res-margin: 0.2rem;
