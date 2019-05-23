@@ -21,6 +21,11 @@ export default class Template {
       : (template.height * vp.height) /
         Math.max(...template.boxes.map(box => box[3] - offTop))
     const spacing = template.spacing || 0
+    vp.offX =
+      -(
+        vp.width -
+        Math.max(...template.boxes.map(box => box[2] - offLeft)) * scale
+      ) / 2
     return {
       boxes: template.boxes.map(box => [
         (box[0] + spacing / 2) * scale,
