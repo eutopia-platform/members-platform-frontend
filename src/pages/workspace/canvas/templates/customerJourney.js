@@ -1,5 +1,5 @@
 export default {
-  width: 0.1,
+  width: 1,
   spacing: 0.01,
   boxes: [
     [0, 0, 1, 0.2],

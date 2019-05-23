@@ -13,8 +13,8 @@ export default class Template {
       template.hasOwnProperty('width') || template.hasOwnProperty('height'),
       'template needs to specify width or height'
     )
-    const offLeft = Math.max(...template.boxes.map(box => box[0]))
-    const offTop = Math.max(...template.boxes.map(box => box[1]))
+    const offLeft = Math.min(...template.boxes.map(box => box[0]))
+    const offTop = Math.min(...template.boxes.map(box => box[1]))
     const scale = template.hasOwnProperty('width')
       ? (template.width * vp.width) /
         Math.max(...template.boxes.map(box => box[2] - offLeft))

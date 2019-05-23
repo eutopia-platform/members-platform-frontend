@@ -166,7 +166,6 @@ export default new Component({
     this.$el.removeEventListener('mouseup', this.onMouseUp)
   },
   created() {
-    // console.log(this.def.viewport)
     this.def.loadTemplate(new Template(this.def.viewport, customerJourney))
   },
 })
