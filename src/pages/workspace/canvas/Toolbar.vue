@@ -18,6 +18,8 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
+@import '/components/sharedStyles/shadows';
+
 .toolbar {
   position: absolute;
   background-color: white;
@@ -25,6 +27,8 @@ export default new Component({
   display: flex;
   flex-direction: row;
   margin: 1rem;
+  z-index: 900;
+  box-shadow: $shadow-default;
 
   .icon {
     cursor: grab;
