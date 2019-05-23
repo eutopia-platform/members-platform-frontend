@@ -72,4 +72,8 @@ export class Canvas {
     y = this.viewport.offY + y * this.viewport.height
     this.boxes.push(new Box(this.viewport, x - 20, y - 20, 40, 40))
   }
+
+  loadTemplate(template) {
+    this.boxes = this.boxes.concat(template.boxes)
+  }
 }
