@@ -1,7 +1,12 @@
 <template>
   <div class="workspace">
     <Navbar @changeWidth="updateSidebarWidth"></Navbar>
-    <RouterView ref="page" class="page" :style="contentPos" :offset-left="sidebarWidth"></RouterView>
+    <RouterView
+      ref="page"
+      class="page"
+      :style="contentPos"
+      :offset-left="sidebarWidth"
+    ></RouterView>
   </div>
 </template>
 

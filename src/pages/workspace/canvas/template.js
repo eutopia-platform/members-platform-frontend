@@ -32,6 +32,7 @@ export default class Template {
         (box[1] + spacing / 2) * scale,
         (box[2] - spacing) * scale,
         (box[3] - spacing) * scale,
+        box[4],
       ]),
     }
   }

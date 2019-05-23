@@ -1,5 +1,5 @@
 export class Box {
-  constructor(vp, x, y, w = 40, h = 40) {
+  constructor(vp, x, y, w = 40, h = 40, content) {
     this.pos = {
       x,
       y,
@@ -7,6 +7,7 @@ export class Box {
     this.width = w
     this.height = h
     this.vp = vp
+    this.content = content
   }
 
   render() {

@@ -7,7 +7,9 @@
       :parent-width="width"
       :parent-height="height"
       :def="box"
-    ></Box>
+    >
+      {{ box.content }}
+    </Box>
   </div>
 </template>
 

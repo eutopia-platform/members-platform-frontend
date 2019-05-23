@@ -1,10 +1,7 @@
 <template>
   <div :class="getClass" :style="style">
     <div ref="content" :style="scaleContent" class="content">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam,
-      veritatis. Culpa, natus delectus. Illum consequuntur, dolorum
-      exercitationem commodi iste explicabo nihil, consectetur dolorem assumenda
-      porro perferendis minima optio nobis odio!
+      <pre><slot></slot></pre>
     </div>
     <div class="inner"></div>
     <div class="resize res-left"></div>
@@ -92,6 +89,11 @@ export default new Component({
     user-select: none;
     transform-origin: center;
     transform-origin: left top;
+
+    pre {
+      font-family: 'Nunito', sans-serif;
+      white-space: pre-wrap;
+    }
   }
 
   $res-margin: 0.2rem;
