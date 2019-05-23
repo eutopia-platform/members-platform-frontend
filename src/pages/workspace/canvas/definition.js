@@ -41,6 +41,7 @@ export class Canvas {
       height: 100,
       offX: 0,
       offY: 0,
+      initialWidth: 100,
     }
     this.boxes = []
     this.scrollMod = 0.05

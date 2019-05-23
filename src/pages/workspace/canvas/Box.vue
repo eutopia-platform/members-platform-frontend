@@ -25,6 +25,14 @@ export default new Component({
       type: BoxDef,
       required: true,
     },
+    parentWidth: {
+      type: Number,
+      required: true,
+    },
+    parentHeight: {
+      type: Number,
+      required: true,
+    },
   },
   computed: {
     style() {
@@ -37,13 +45,15 @@ export default new Component({
       }
     },
     scaleContent() {
-      const scale = 100 / this.def.vp.height
+      const scale = this.def.vp.initialWidth / this.def.vp.width
+
       return {
-        ...(this.$el && {
-          transform: `scale(${scale})`,
-          width: `${this.$el.offsetWidth / scale}px`,
-          height: `${this.$el.offsetHeight / scale}px`,
-        }),
+        transform: `scale(${scale})`,
+        width: `${((this.def.width / this.def.vp.width) * this.parentWidth) /
+          scale}px`,
+        height: `${((this.def.height / this.def.vp.height) *
+          this.parentHeight) /
+          scale}px`,
       }
     },
   },
@@ -70,6 +80,7 @@ export default new Component({
   box-shadow: $shadow-default;
   padding: 0;
   cursor: grab;
+  overflow: hidden;
 
   .content {
     padding: 1rem;

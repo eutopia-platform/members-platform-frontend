@@ -1,7 +1,7 @@
 <template>
   <div class="workspace">
     <Navbar @changeWidth="updateSidebarWidth"></Navbar>
-    <RouterView ref="page" class="page" :style="contentPos"></RouterView>
+    <RouterView ref="page" class="page" :style="contentPos" :offset-left="sidebarWidth"></RouterView>
   </div>
 </template>
 
@@ -50,7 +50,6 @@ export default {
   methods: {
     updateSidebarWidth(width) {
       this.sidebarWidth = width
-      if (this.$refs.page.updateOffset) this.$refs.page.updateOffset(width)
     },
   },
 }

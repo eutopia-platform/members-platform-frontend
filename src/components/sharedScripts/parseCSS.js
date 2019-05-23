@@ -12,6 +12,8 @@ export const parseLength = length => {
   if (length.includes('vw'))
     return (parseInt(length, 10) / 100) * window.innerWidth
   if (length.includes('rem'))
-    parseInt(length, 10) *
+    return (
+      parseInt(length, 10) *
       parseFloat(getComputedStyle(document.documentElement).fontSize)
+    )
 }
