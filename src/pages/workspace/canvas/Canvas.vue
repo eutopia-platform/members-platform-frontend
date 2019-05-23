@@ -14,6 +14,8 @@ import Component from '/components/sharedScripts/component'
 import Box from './Box'
 import Toolbar from './Toolbar'
 import { Canvas } from './definition'
+import Template from './template'
+import customerJourney from './templates/customerJourney'
 
 export default new Component({
   name: 'Canvas',
@@ -162,6 +164,10 @@ export default new Component({
     this.$el.removeEventListener('wheel', this.onWheel)
     this.$el.removeEventListener('mousedown', this.onMouseDown)
     this.$el.removeEventListener('mouseup', this.onMouseUp)
+  },
+  created() {
+    // console.log(this.def.viewport)
+    this.def.loadTemplate(new Template(this.def.viewport, customerJourney))
   },
 })
 </script>
