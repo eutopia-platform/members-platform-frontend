@@ -30,6 +30,7 @@ export default new Molecular({
     toggleCollapse() {
       this.collapsed = !this.collapsed
       this.onWidthChange()
+      this.$emit(this.collapsed ? 'collapse' : 'expand')
     },
     onWidthChange() {
       this.$emit(
