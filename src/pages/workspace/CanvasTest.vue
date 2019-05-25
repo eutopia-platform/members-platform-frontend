@@ -4,19 +4,14 @@
       <TitleBar ref="titlebar" :style="titleBarWidth"></TitleBar>
       <Canvas :style="canvasPos" :width="canvasWidth"></Canvas>
     </div>
-    <Sidebar
-      ref="sidebar"
-      right
-      collapsable
-      @changeWidth="updateSidebarWidth"
-    ></Sidebar>
+    <ContextBar @changeWidth="updateSidebarWidth"></ContextBar>
   </div>
 </template>
 
 <script>
 import Component from '/components/sharedScripts/component'
 import Canvas from './canvas/Canvas'
-import Sidebar from '/components/molecular/Sidebar'
+import ContextBar from './canvas/ContextBar'
 import TitleBar from './canvas/TitleBar'
 import { parseLength } from '/components/sharedScripts/parseCSS'
 
@@ -24,8 +19,8 @@ export default new Component({
   name: 'CanvasTest',
   components: {
     Canvas,
-    Sidebar,
     TitleBar,
+    ContextBar,
   },
   data: {
     sidebarWidth: 0,
