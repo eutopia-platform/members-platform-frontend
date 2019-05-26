@@ -3,7 +3,14 @@
     <form style="position: absolute">
       <label>
         elevation:
-        <input type="range" min="0" max="200" v-on:input="changeHeight" value="0">
+        <input
+          type="range"
+          min="0"
+          max="50"
+          v-on:input="changeHeight"
+          value="0"
+          step="0.1"
+        >
       </label>
       <br>
       <label>
@@ -18,16 +25,21 @@
         <input type="checkbox" @input="toggleColor">color shadows
       </label>
       <br>
-      ambient: {{ambient && shadow['box-shadow'].split('),')[spot ? 1 : 0]}}
-      <br>
-      spot: {{spot && shadow['box-shadow'].split('),')[0] + (ambient ? ')' : '')}}
-      <br>
       <label @input="setBackground">
         background color:
-        <input type="color" value="#ffffff">
+        <input type="color" value="#e5e5e5">
+      </label>
+      <br>
+      <label>
+        light pos:
+        <input type="range" min="0" max="2" value="0" step="0.01" @input="changeLight">
+        {{Math.round((lightPos / Math.PI - 0.5) * 100) / 100}}&pi; rad
       </label>
     </form>
-    <Card ref="card" :style="shadow">Elevation: {{cardHeight}}</Card>
+    <Card
+      ref="card"
+      :style="shadow"
+    >Elevation: {{Math.round(cardHeight * (cardHeight < 20 ? 100 : 1) ) / (cardHeight < 20 ? 100 : 1) }}</Card>
   </div>
 </template>
 
@@ -41,7 +53,8 @@ export default new Component({
     ambient: true,
     spot: true,
     color: false,
-    backgroundColor: '#fff',
+    backgroundColor: '#e5e5e5',
+    lightPos: Math.PI / 2,
   },
   computed: {
     backColor() {
@@ -52,13 +65,22 @@ export default new Component({
     shadow() {
       const el = this.cardHeight
 
-      const spotShadow = `0 ${el}px ${el * 0.8}px rgba(${
-        this.color ? '255, 0, 0' : '0, 0, 0'
-      }, ${((1 / (el / 100 + 1)) * 24) / 100})`
+      const pos = Math.PI / 2
 
-      const ambientShadow = `0 ${el / 4}px ${el}px rgba(${
-        this.color ? ' 0, 255, 0' : '0, 0, 0'
-      }, ${((1 / (el / 100 + 1)) * 38) / 100})`
+      const spotShadow = `${Math.cos(this.lightPos) * el}px ${Math.sin(
+        this.lightPos
+      ) * el}px 
+      ${el * 0.8}px rgba(${this.color ? '255, 0, 0' : '0, 0, 0'}, ${((1 /
+        (el / 100 + 1)) *
+        24) /
+        100})`
+
+      const ambientShadow = `${(Math.cos(this.lightPos) * el) / 4}px ${Math.sin(
+        this.lightPos
+      ) * el}px ${el}px rgba(${this.color ? ' 0, 255, 0' : '0, 0, 0'}, ${((1 /
+        (el / 100 + 1)) *
+        38) /
+        100})`
 
       const shadows = [
         ...(this.spot ? [spotShadow] : []),
@@ -72,7 +94,7 @@ export default new Component({
   },
   methods: {
     changeHeight({ srcElement: { value } }) {
-      this.cardHeight = value
+      this.cardHeight = (value / 7) ** 3
     },
     toggleAmbient({ srcElement: { checked } }) {
       this.ambient = checked
@@ -86,6 +108,9 @@ export default new Component({
     setBackground({ srcElement: { value } }) {
       this.backgroundColor = value
     },
+    changeLight({ srcElement: { value } }) {
+      this.lightPos = value * Math.PI + Math.PI / 2
+    },
   },
   mounted() {
     this.$refs.card.$el.style.boxShadow = 'none'
@@ -98,16 +123,17 @@ export default new Component({
   padding: 2rem;
   min-height: 100vh;
   box-sizing: border-box;
+  background-color: #e5e5e5;
 
   .card {
-    width: 20rem;
-    height: 20rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 0.5rem;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     text-align: center;
-    padding-top: 8rem;
   }
 }
 </style>
