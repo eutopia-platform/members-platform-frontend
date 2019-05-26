@@ -3,27 +3,25 @@
     <form style="position: absolute">
       <label>
         elevation:
-        <input
-          type="range"
-          min="0"
-          max="50"
-          v-on:input="changeHeight"
-          value="0"
-          step="0.1"
-        >
+        <input type="range" min="0" max="50" value="0" step="0.1" @input="changeHeight">
+      </label>
+      <br>
+      <br>
+      <label>
+        <input type="checkbox" checked @input="toggleAmbient">
+        show ambient
       </label>
       <br>
       <label>
-        <input type="checkbox" @input="toggleAmbient" checked>ambient
+        <input type="checkbox" checked @input="toggleSpot">
+        show spot
       </label>
       <br>
       <label>
-        <input type="checkbox" @input="toggleSpot" checked>spot
+        <input type="checkbox" @input="toggleColor">
+        color shadows
       </label>
       <br>
-      <label>
-        <input type="checkbox" @input="toggleColor">color shadows
-      </label>
       <br>
       <label @input="setBackground">
         background color:
@@ -33,18 +31,40 @@
       <label>
         light pos:
         <input type="range" min="0" max="2" value="0" step="0.01" @input="changeLight">
-        {{Math.round((lightPos / Math.PI - 0.5) * 100) / 100}}&pi; rad
+        {{ Math.round((lightPos / Math.PI) * 100) / 100 }}&pi; rad
       </label>
+      <br>
+      <br>
+      ambient:
+      {{
+      Object.entries(calcAmbientShadow())
+      .map(e => `${e[0]}: ${Math.round(e[1] * 100) / 100}`)
+      .join(' | ')
+      }}
+      <br>
+      spot:
+      {{
+      Object.entries(calcSpotShadow())
+      .map(e => `${e[0]}: ${Math.round(e[1] * 100) / 100}`)
+      .join(' | ')
+      }}
     </form>
-    <Card
-      ref="card"
-      :style="shadow"
-    >Elevation: {{Math.round(cardHeight * (cardHeight < 20 ? 100 : 1) ) / (cardHeight < 20 ? 100 : 1) }}</Card>
+    <Card ref="card" :style="shadow">
+      Elevation:
+      {{
+      Math.round(cardHeight * (cardHeight < 20 ? 100 : 1) ) / (cardHeight < 20 ? 100 : 1)
+      }}
+    </Card>
   </div>
 </template>
 
 <script>
 import Component from '/components/sharedScripts/component'
+
+const shadowToCSS = (shadow, color = { r: 0, g: 0, b: 0 }) =>
+  `${shadow.x}px ${shadow.y}px ${shadow.blur}px rgba(${color.r}, ${color.g}, ${
+    color.b
+  }, ${shadow.alpha})`
 
 export default new Component({
   name: 'Components',
@@ -54,7 +74,7 @@ export default new Component({
     spot: true,
     color: false,
     backgroundColor: '#e5e5e5',
-    lightPos: Math.PI / 2,
+    lightPos: 0,
   },
   computed: {
     backColor() {
@@ -63,28 +83,23 @@ export default new Component({
       }
     },
     shadow() {
-      const el = this.cardHeight
-
-      const pos = Math.PI / 2
-
-      const spotShadow = `${Math.cos(this.lightPos) * el}px ${Math.sin(
-        this.lightPos
-      ) * el}px 
-      ${el * 0.8}px rgba(${this.color ? '255, 0, 0' : '0, 0, 0'}, ${((1 /
-        (el / 100 + 1)) *
-        24) /
-        100})`
-
-      const ambientShadow = `${(Math.cos(this.lightPos) * el) / 4}px ${Math.sin(
-        this.lightPos
-      ) * el}px ${el}px rgba(${this.color ? ' 0, 255, 0' : '0, 0, 0'}, ${((1 /
-        (el / 100 + 1)) *
-        38) /
-        100})`
-
       const shadows = [
-        ...(this.spot ? [spotShadow] : []),
-        ...(this.ambient ? [ambientShadow] : []),
+        ...(this.ambient
+          ? [
+              shadowToCSS(
+                this.calcAmbientShadow(),
+                this.color ? { r: 0, g: 255, b: 0 } : { r: 0, g: 0, b: 0 }
+              ),
+            ]
+          : []),
+        ...(this.spot
+          ? [
+              shadowToCSS(
+                this.calcSpotShadow(),
+                this.color ? { r: 255, g: 0, b: 0 } : { r: 0, g: 0, b: 0 }
+              ),
+            ]
+          : []),
       ]
 
       return {
@@ -109,7 +124,24 @@ export default new Component({
       this.backgroundColor = value
     },
     changeLight({ srcElement: { value } }) {
-      this.lightPos = value * Math.PI + Math.PI / 2
+      this.lightPos = value * Math.PI
+    },
+
+    calcAmbientShadow() {
+      return {
+        x: (Math.sin(this.lightPos) * this.cardHeight) / 4,
+        y: (Math.cos(this.lightPos) * this.cardHeight) / 4,
+        blur: this.cardHeight,
+        alpha: ((1 / (this.cardHeight / 100 + 1)) * 38) / 100,
+      }
+    },
+    calcSpotShadow() {
+      return {
+        x: Math.sin(this.lightPos) * this.cardHeight,
+        y: Math.cos(this.lightPos) * this.cardHeight,
+        blur: this.cardHeight * 0.8,
+        alpha: ((1 / (this.cardHeight / 100 + 1)) * 24) / 100,
+      }
     },
   },
   mounted() {
