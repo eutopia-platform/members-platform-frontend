@@ -1,7 +1,38 @@
 <template>
   <div :class="getClass">
-    <Paragraph v-for="(_, i) in new Array(50)" :key="i">
-      line {{ i + 1 }}
+    <Header primary>Header primary</Header>
+    <Header secondary>Header secondary</Header>
+    <Header tertiary>Header tertiary</Header>
+    <Header quaternary>Header quatnery</Header>
+
+    <Paragraph>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
+      a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
+      distinctio error, odit iusto modi omnis qui voluptate at earum!
+    </Paragraph>
+    <Header primary>Header primary</Header>
+    <Paragraph>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
+      a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
+      distinctio error, odit iusto modi omnis qui voluptate at earum!
+    </Paragraph>
+    <Header secondary>Header secondary</Header>
+    <Paragraph>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
+      a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
+      distinctio error, odit iusto modi omnis qui voluptate at earum!
+    </Paragraph>
+    <Header tertiary>Header tertiary</Header>
+    <Paragraph>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
+      a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
+      distinctio error, odit iusto modi omnis qui voluptate at earum!
+    </Paragraph>
+    <Header quaternary>Header quatnery</Header>
+    <Paragraph>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
+      a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
+      distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
 
     <Paragraph id="textblock">
@@ -35,14 +66,9 @@
       mollitia unde.
     </Paragraph>
 
-    <Header primary>Typography</Header>
-
-    <div>test</div>
-
-    <Header primary>Header primary</Header>
-    <Header secondary>Header secondary</Header>
-    <Header tertiary>Header tertiary</Header>
-    <Header quaternary>Header quatnery</Header>
+    <Paragraph v-for="(_, i) in new Array(50)" :key="i">
+      line {{ i + 1 }}
+    </Paragraph>
   </div>
 </template>
 

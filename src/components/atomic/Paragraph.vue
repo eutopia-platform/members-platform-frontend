@@ -19,6 +19,9 @@ export default new Atomic({
 
 .paragraph {
   font-size: $fs-base;
+  line-height: var(--baseline);
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
 }
 
 .small {

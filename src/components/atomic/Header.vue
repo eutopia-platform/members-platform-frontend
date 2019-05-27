@@ -27,17 +27,29 @@ export default new Atomic({
 
 .primary {
   font-size: $fs-header-1;
+  line-height: calc(2 * var(--baseline));
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
 }
 
 .secondary {
   font-size: $fs-header-2;
+  line-height: calc(2 * var(--baseline));
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
 }
 
 .tertiary {
   font-size: $fs-header-3;
+  line-height: calc(2 * var(--baseline));
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
 }
 
 .quaternary {
   font-size: $fs-header-4;
+  line-height: var(--baseline);
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
 }
 </style>
