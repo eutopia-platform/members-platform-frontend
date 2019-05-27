@@ -6,12 +6,24 @@
 import Vue from 'vue'
 import Alert from '/components/atomic/Alert'
 import CubeError from '/error'
+import Baseline from './baseline'
 
 export default {
   name: 'App',
   errorCaptured(err) {
     this.handleError(err)
     return false
+  },
+  data() {
+    return {
+      baseline: new Baseline(),
+    }
+  },
+  mounted() {
+    this.updateBaseline()
+    window.addEventListener('resize', this.updateBaseline)
+
+    this.baseline.show()
   },
   methods: {
     handleError(err) {
@@ -38,6 +50,14 @@ export default {
         new (Vue.extend(Alert))({
           propsData: { ...(msg && msg.length && { msg }) },
         }).$mount().$el
+      )
+    },
+    updateBaseline() {
+      document.documentElement.style.setProperty(
+        '--baseline',
+        Math.floor(
+          parseFloat(getComputedStyle(document.documentElement).fontSize) * 1.5
+        ) + 'px'
       )
     },
   },
