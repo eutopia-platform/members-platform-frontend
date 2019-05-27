@@ -23,7 +23,7 @@ export default {
     this.updateBaseline()
     window.addEventListener('resize', this.updateBaseline)
 
-    this.baseline.show()
+    if ('baseline' in this.$route.query) this.baseline.show()
   },
   methods: {
     handleError(err) {
