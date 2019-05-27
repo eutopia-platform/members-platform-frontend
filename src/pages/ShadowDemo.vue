@@ -92,7 +92,7 @@ const shadowToCSS = (shadow, color = { r: 0, g: 0, b: 0 }) =>
 const intDig = n => (Math.log10(n | 0) + 1) | 0
 
 export default new Component({
-  name: 'Components',
+  name: 'ShadowDemo',
   data: {
     cardHeight: 0,
     ambient: true,

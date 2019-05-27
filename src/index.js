@@ -8,7 +8,7 @@ import Home from './pages/landingPage/Home'
 import { default as LpToolkits } from './pages/landingPage/Toolkits'
 import Workflow from './pages/landingPage/Workflow'
 import Privacy from './pages/Privacy'
-import Components from './pages/Components'
+import ShadowDemo from './pages/ShadowDemo'
 import NotFound from './pages/NotFound'
 import WorkspaceGuard from './pages/workspace/WorkspaceGuard'
 import Onboarding from './pages/Onboarding'
@@ -74,8 +74,11 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/demo/shadow',
+    component: ShadowDemo,
+  },
   { path: '/privacy', component: Privacy },
-  { path: '/components', component: Components },
   { path: '/onboarding', component: Onboarding },
   { path: '/login', component: Login, name: 'login', props: true },
   { path: '/invite/:code', component: Invite },
