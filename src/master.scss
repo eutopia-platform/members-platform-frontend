@@ -1,11 +1,12 @@
-@import "/components/sharedStyles/fluid.scss";
+@import '/components/sharedStyles/fluid.scss';
 
-html,
-body {
+:root {
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  @include fluid(font-size, 14px, 18px, 400px, 1000px);
+  @include fluid(--baseline-raw, 21px, 24px, 400px, 1000px);
+  --baseline: var(--baseline-raw);
+  line-height: var(--baseline);
   font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
-  @include fluid(font-size, 14px, 18px, 400px, 1000px);
 }
