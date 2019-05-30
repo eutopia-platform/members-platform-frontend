@@ -1,7 +1,7 @@
 <template>
   <ViewBase :img="image">
     <div>
-      <Header secondary>What is the name of your company or startup?</Header>
+      <Header s2>What is the name of your company or startup?</Header>
       <div class="input-wrap">
         <Input
           v-model="name"

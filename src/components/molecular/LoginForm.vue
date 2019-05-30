@@ -1,6 +1,6 @@
 <template>
   <form :class="getClass" @submit="login">
-    <Header secondary>Login</Header>
+    <Header s2>Login</Header>
     <Input v-model="email" blend placeholder="email" data-lpignore="true" />
     <Input
       v-model="password"

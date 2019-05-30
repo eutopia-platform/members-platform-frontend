@@ -1,7 +1,7 @@
 <template>
   <ViewBase :img="image">
     <div>
-      <Header secondary>
+      <Header s2>
         What milestone are you working on at the moment?
       </Header>
       <Paragraph>

@@ -3,7 +3,7 @@
     <Shade></Shade>
     <Card class="content">
       <div>
-        <Header quaternary>{{ title }}</Header>
+        <Header s4>{{ title }}</Header>
         <Paragraph>{{ description }}</Paragraph>
         <Input v-model="inputText" />
         <Break></Break>

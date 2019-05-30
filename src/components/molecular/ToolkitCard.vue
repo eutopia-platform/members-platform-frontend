@@ -3,10 +3,10 @@
     <Card class="flipwrap">
       <div class="front">
         <Icon :src="img"></Icon>
-        <Header quaternary>{{ title }}</Header>
+        <Header s4>{{ title }}</Header>
       </div>
       <div class="back">
-        <Header tertiary>
+        <Header s3>
           {{
             description
               ? (t => t[0] + t[1])(description.split(/([\.\?])/))

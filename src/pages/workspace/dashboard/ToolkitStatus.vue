@@ -5,10 +5,10 @@
     @action="addToolkit"
   >
     <div class="table">
-      <Header quaternary>Name</Header>
-      <Header quaternary>Status</Header>
-      <Header quaternary>Progress</Header>
-      <Header quaternary>Lead</Header>
+      <Header s4>Name</Header>
+      <Header s4>Status</Header>
+      <Header s4>Progress</Header>
+      <Header s4>Lead</Header>
       <ToolkitStatusSlip
         v-for="kit in toolkits"
         :key="toolits.indexOf(kit)"

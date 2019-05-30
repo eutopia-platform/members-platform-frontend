@@ -1,9 +1,9 @@
 <template>
   <div class="settings">
-    <Header tertiary>Settings</Header>
+    <Header s3>Settings</Header>
     <div class="content">
       <Card>
-        <Header quaternary>Profile</Header>
+        <Header s4>Profile</Header>
         <LabeledInput
           v-model="user.name"
           label="name"
@@ -22,7 +22,7 @@
         <Button small @click="submitProfile">submit</Button>
       </Card>
       <Card>
-        <Header quaternary>Workspace</Header>
+        <Header s4>Workspace</Header>
         <Paragraph>name: {{ workspace ? workspace.name : '' }}</Paragraph>
         <Paragraph>
           created:
@@ -40,7 +40,7 @@
         <InviteForm @error="onError"></InviteForm>
       </Card>
       <Card class="danger-zone">
-        <Header quaternary>Danger Zone</Header>
+        <Header s4>Danger Zone</Header>
         <Button @click="confirmDelete = true">delete this workspace</Button>
         <Confirmation
           v-if="confirmDelete"

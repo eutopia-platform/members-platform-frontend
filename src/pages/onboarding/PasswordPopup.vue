@@ -3,7 +3,7 @@
     <Popup>
       <div class="create-password">
         <legend>
-          <Header secondary>Set your password</Header>
+          <Header s2>Set your password</Header>
         </legend>
         <Input
           v-model="pw1"

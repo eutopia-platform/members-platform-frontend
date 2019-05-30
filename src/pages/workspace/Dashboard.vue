@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <Header tertiary>Dashboard</Header>
+    <Header s3>Dashboard</Header>
     <div class="content">
       <InfoCard>
         <div>

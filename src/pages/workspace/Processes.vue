@@ -1,6 +1,6 @@
 <template>
   <div class="processes">
-    <Header tertiary>Processes</Header>
+    <Header s3>Processes</Header>
     <div class="content">
       <InfoCard>
         <div>

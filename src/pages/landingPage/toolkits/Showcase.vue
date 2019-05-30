@@ -1,7 +1,7 @@
 <template>
   <div :class="getClass">
     <div class="title">
-      <Header tertiary>{{ kit.name }}</Header>
+      <Header s3>{{ kit.name }}</Header>
       <div class="tags">
         <Paragraph v-for="tag in kit.tags" :key="kit.tags.indexOf(tag)">
           &#35;{{ tag }}

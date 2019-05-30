@@ -1,6 +1,6 @@
 <template>
   <Card :class="getClass" @click="select">
-    <Header quaternary>{{ kit.name }}</Header>
+    <Header s4>{{ kit.name }}</Header>
     <Icon :src="kit.icon"></Icon>
   </Card>
 </template>

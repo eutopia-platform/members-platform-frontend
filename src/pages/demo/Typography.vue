@@ -1,48 +1,48 @@
 <template>
   <div :class="getClass">
-    <Header primary>Header primary</Header>
-    <Header secondary>Header secondary</Header>
-    <Header tertiary>Header tertiary</Header>
-    <Header quaternary>Header quatnery</Header>
+    <Header s1>Header primary</Header>
+    <Header s2>Header secondary</Header>
+    <Header s3>Header tertiary</Header>
+    <Header s4>Header quatnery</Header>
 
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
-    <Header primary>Header primary</Header>
+    <Header s1>Header primary</Header>
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
-    <Header secondary>Header secondary</Header>
+    <Header s2>Header secondary</Header>
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
-    <Header tertiary>Header tertiary</Header>
+    <Header s3>Header tertiary</Header>
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
-    <Header quaternary>Header quatnery</Header>
+    <Header s4>Header quatnery</Header>
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
 
-    <Header secondary>
+    <Header s2>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia dolorem
       incidunt magnam voluptatum quaerat mollitia quas corrupti porro ipsum
       commodi a suscipit molestiae quia natus qui, minima similique consequatur
       eius!
     </Header>
 
-    <Header tertiary>
+    <Header s3>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia dolorem
       incidunt magnam voluptatum quaerat mollitia quas corrupti porro ipsum
       commodi a suscipit molestiae quia natus qui, minima similique consequatur

@@ -2,25 +2,23 @@
   <div class="intro" :style="style">
     <div v-if="showWelcome" class="welcome">
       <Icon :src="logo"></Icon>
-      <Header secondary>{{ welcome_1 }}</Header>
-      <Header primary class="text-big">{{ welcome_2 }}</Header>
+      <Header s2>{{ welcome_1 }}</Header>
+      <Header s1 class="text-big">{{ welcome_2 }}</Header>
     </div>
     <div v-if="showGroup1" class="group-1">
-      <Header tertiary>{{ group1Small }}</Header>
-      <Header secondary>{{ group1Big }}</Header>
+      <Header s3>{{ group1Small }}</Header>
+      <Header s2>{{ group1Big }}</Header>
       <Icon :src="group1Icon" :class="{ rocket: showRocket }"></Icon>
     </div>
     <div v-if="showSignup" class="signup">
       <Icon :src="logo"></Icon>
-      <Header primary :class="{ transparent: !showSignupSmall }">
-        scale your
-      </Header>
-      <Header primary :class="{ transparent: !showSignupBig }">
-        startup
-      </Header>
+      <Header s1 :class="{ transparent: !showSignupSmall }">scale your</Header>
+      <Header s1 :class="{ transparent: !showSignupBig }">startup</Header>
       <EmailSignup :class="{ transparent: !showEmailForm }"></EmailSignup>
     </div>
-    <div class="ring"><div class="ring-inner" :style="style"></div></div>
+    <div class="ring">
+      <div class="ring-inner" :style="style"></div>
+    </div>
     <div
       v-for="i in num_checks"
       :key="i"

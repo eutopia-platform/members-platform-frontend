@@ -2,7 +2,7 @@
   <div class="code-popup">
     <Popup>
       <div class="code-wrap">
-        <Header secondary>Find a secret in your email</Header>
+        <Header s2>Find a secret in your email</Header>
         <Paragraph>
           We have send you a 6 digit confirmation code to {{ info.email }}. It
           will expire shortly, so please enter your code soon.

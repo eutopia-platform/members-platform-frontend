@@ -1,7 +1,7 @@
 <template>
   <ViewBase :img="image">
     <div>
-      <Header secondary>Let's create your workspace</Header>
+      <Header s2>Let's create your workspace</Header>
       <div class="input-wrap">
         <Input
           v-model="email"

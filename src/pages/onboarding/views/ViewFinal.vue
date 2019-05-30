@@ -1,7 +1,7 @@
 <template>
   <ViewBase :img="image">
     <div>
-      <Header secondary>
+      <Header s2>
         That was easy!
         <br />
         Find your teams first initiative:

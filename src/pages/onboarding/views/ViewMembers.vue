@@ -1,7 +1,7 @@
 <template>
   <ViewBase :img="image">
     <div>
-      <Header secondary>Who else is working at {{ info.organization }}?</Header>
+      <Header s2>Who else is working at {{ info.organization }}?</Header>
       <div class="input-wrap">
         <Input
           v-for="(_, i) in members"

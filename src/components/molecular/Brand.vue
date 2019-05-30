@@ -11,7 +11,7 @@
       class="logo"
       aria="Productcube's logo"
     ></Icon>
-    <Header tertiary :class="{ white }">Productcube</Header>
+    <Header s3 :class="{ white }">Productcube</Header>
   </div>
 </template>
 

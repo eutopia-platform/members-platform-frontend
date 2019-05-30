@@ -9,7 +9,7 @@ import Atomic from '../sharedScripts/atomic'
 
 export default new Atomic({
   name: 'Header',
-  types: ['primary', 'secondary', 'tertiary', 'quaternary'],
+  types: ['s1', 's2', 's3', 's4'],
   tags: ['h1', 'h2', 'h3', 'h4'],
 })
 </script>
@@ -27,7 +27,7 @@ export default new Atomic({
   margin-bottom: 0.5em;
 }
 
-.primary {
+.s1 {
   @include fluid(
     font-size,
     $rem-min * pow($fs-scale-min, 3),
@@ -40,7 +40,7 @@ export default new Atomic({
   margin-bottom: var(--baseline);
 }
 
-.secondary {
+.s2 {
   @include fluid(
     font-size,
     $rem-min * pow($fs-scale-min, 2),
@@ -56,7 +56,7 @@ export default new Atomic({
   margin-bottom: var(--baseline);
 }
 
-.tertiary {
+.s3 {
   @include fluid(
     font-size,
     $rem-min * pow($fs-scale-min, 1),
@@ -72,7 +72,7 @@ export default new Atomic({
   margin-bottom: var(--baseline);
 }
 
-.quaternary {
+.s4 {
   @include fluid(
     font-size,
     $rem-min * pow($fs-scale-min, 0),

@@ -1,7 +1,7 @@
 <template>
   <Card class="db-card">
     <div class="title-bar">
-      <Header tertiary>{{ title }}</Header>
+      <Header s3>{{ title }}</Header>
       <Button v-if="button" small :disabled="disabled" @click="$emit('action')">
         {{ button }}
       </Button>
