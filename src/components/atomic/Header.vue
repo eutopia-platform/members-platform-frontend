@@ -1,6 +1,6 @@
 <template>
-  <Component :is="tag" :class="{ s1, s2, s3, s4, s5, inline }">
-    <slot />
+  <Component :is="tag" class="header" :class="{ s1, s2, s3, s4, s5, inline }">
+    <slot/>
   </Component>
 </template>
 
