@@ -1,5 +1,5 @@
 <template>
-  <Component :is="tag" :class="getClass">
+  <Component :is="tag" :class="{ s1, s2, s3, s4, s5, inline }">
     <slot />
   </Component>
 </template>
@@ -11,6 +11,12 @@ export default new Atomic({
   name: 'Header',
   types: ['s1', 's2', 's3', 's4', 's5'],
   tags: ['h1', 'h2', 'h3', 'h4', 'h5'],
+  props: {
+    inline: {
+      type: Boolean,
+      default: false,
+    },
+  },
 })
 </script>
 
@@ -28,6 +34,11 @@ export default new Atomic({
   line-height: var(--baseline);
   margin-top: var(--baseline);
   margin-bottom: var(--baseline);
+}
+
+.inline {
+  margin: 0;
+  display: inline-block;
 }
 
 @for $i from 1 through 5 {
