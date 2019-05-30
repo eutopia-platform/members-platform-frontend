@@ -9,7 +9,6 @@ import Atomic from '../sharedScripts/atomic'
 
 export default new Atomic({
   name: 'Paragraph',
-  types: ['default', 'small'],
   props: {
     inline: {
       type: Boolean,
@@ -28,10 +27,6 @@ export default new Atomic({
   line-height: var(--baseline);
   margin-top: var(--baseline);
   margin-bottom: var(--baseline);
-}
-
-.small {
-  font-size: 80%;
 }
 
 .inline {
