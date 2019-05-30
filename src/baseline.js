@@ -21,12 +21,13 @@ export default class Baseline {
       getComputedStyle(document.documentElement).getPropertyValue('--baseline')
     )
 
+    const offset = 0
     const drawLines = (i = 0) => {
       if (i * step > this.canvas.height) return
       this.ctx.strokeStyle = i % 2 !== 0 ? '#555' : '#f55a'
       this.ctx.beginPath()
-      this.ctx.moveTo(0, i * step + step / 4)
-      this.ctx.lineTo(this.canvas.width, i * step + step / 4)
+      this.ctx.moveTo(0, i * step + offset)
+      this.ctx.lineTo(this.canvas.width, i * step + offset)
       this.ctx.stroke()
       drawLines(i + 1)
     }
