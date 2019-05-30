@@ -8,7 +8,7 @@
   @include fluid(--baseline-raw, 21px, 24px, $fs-min-screen, $fs-max-screen);
   --baseline: var(--baseline-raw);
   line-height: var(--baseline);
-  font-family: 'Nunito', sans-serif;
+  font-family: $font-primary;
   overflow-x: hidden;
 }
 
