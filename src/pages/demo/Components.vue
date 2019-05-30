@@ -10,6 +10,7 @@
     <Big>Big</Big>
     <Big extra>Big (extra)</Big>
     <Button>Button</Button>
+    <Button secondary>Button (secondary)</Button>
   </div>
 </template>
 

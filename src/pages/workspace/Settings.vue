@@ -19,7 +19,7 @@
         <Paragraph>
           Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
         </Paragraph>
-        <Button small @click="submitProfile">submit</Button>
+        <Button @click="submitProfile">submit</Button>
       </Card>
       <Card>
         <Header s4>Workspace</Header>

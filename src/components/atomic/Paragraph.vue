@@ -1,5 +1,5 @@
 <template>
-  <p class="paragraph" :class="{ small, inline }">
+  <p class="paragraph" :class="{ inline }">
     <slot />
   </p>
 </template>
