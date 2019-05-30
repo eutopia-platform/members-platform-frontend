@@ -36,6 +36,21 @@
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
 
+    <Small>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque minus a
+      asperiores, alias esse repudiandae omnis veniam, numquam ut distinctio
+      vero molestias quae ullam, error atque. Suscipit nam voluptates fugit?
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque minus a
+      asperiores, alias esse repudiandae omnis veniam, numquam ut distinctio
+      vero molestias quae ullam, error atque. Suscipit nam voluptates fugit?
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque minus a
+      asperiores, alias esse repudiandae omnis veniam, numquam ut distinctio
+      vero molestias quae ullam, error atque. Suscipit nam voluptates fugit?
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque minus a
+      asperiores, alias esse repudiandae omnis veniam, numquam ut distinctio
+      vero molestias quae ullam, error atque. Suscipit nam voluptates fugit?
+    </Small>
+
     <Header s2>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia dolorem
       incidunt magnam voluptatum quaerat mollitia quas corrupti porro ipsum
