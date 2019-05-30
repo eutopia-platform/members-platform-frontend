@@ -10,6 +10,7 @@ import Workflow from './pages/landingPage/Workflow'
 import Privacy from './pages/Privacy'
 import ShadowDemo from './pages/demo/Shadow'
 import TypographyDemo from './pages/demo/Typography'
+import ComponentsDemo from './pages/demo/Components'
 import NotFound from './pages/NotFound'
 import WorkspaceGuard from './pages/workspace/WorkspaceGuard'
 import Onboarding from './pages/Onboarding'
@@ -82,6 +83,10 @@ const routes = [
   {
     path: '/demo/typography',
     component: TypographyDemo,
+  },
+  {
+    path: '/demo/components',
+    component: ComponentsDemo,
   },
   { path: '/privacy', component: Privacy },
   { path: '/onboarding', component: Onboarding },

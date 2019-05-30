@@ -145,12 +145,4 @@ div:first-child {
   padding-right: 2rem;
   overflow: auto;
 }
-
-canvas {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-}
 </style>
