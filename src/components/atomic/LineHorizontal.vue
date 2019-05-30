@@ -15,6 +15,5 @@ hr {
   height: 2px;
   margin-bottom: 1em;
   border: none;
-  @include colorScheme('secondary');
 }
 </style>

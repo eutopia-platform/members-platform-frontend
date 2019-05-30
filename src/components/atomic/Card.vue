@@ -17,7 +17,7 @@ export default new Atomic({
 @import '../sharedStyles/shadows.scss';
 
 .card {
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
   min-width: 5rem;
   min-height: 5rem;
   padding: 1rem;

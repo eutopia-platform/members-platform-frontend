@@ -65,7 +65,7 @@ export default {
 
 .workspace {
   .page {
-    @include colorScheme('secondary');
+    @include colorScheme('background');
     min-height: 100vh;
     box-sizing: border-box;
     padding: 2rem;

@@ -78,6 +78,6 @@ export default new Component({
 }
 
 .white {
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
 }
 </style>

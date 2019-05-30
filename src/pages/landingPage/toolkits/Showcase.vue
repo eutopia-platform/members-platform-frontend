@@ -63,7 +63,7 @@ export default new Component({
 
   .button {
     background-color: #fffe;
-    color: map-get($colors, 'secondary-font');
+    color: map-get($colors, 'on-secondary');
     width: 15ch;
     position: relative;
     left: 100%;

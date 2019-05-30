@@ -93,7 +93,7 @@ export default {
   box-shadow: $shadow-default;
   z-index: 1000;
 
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
 
   .brand {
     margin-top: 1rem;

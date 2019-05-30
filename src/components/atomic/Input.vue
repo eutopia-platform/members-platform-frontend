@@ -114,9 +114,9 @@ export default new Molecular({
 }
 
 .small {
-  border: 1px solid map-get($colors, 'neutral-font');
+  border: 1px solid map-get($colors, 'on-surface');
   height: 1rem;
-  color: map-get($colors, 'neutral-font');
+  color: map-get($colors, 'on-surface');
   font-size: 0.8rem;
   box-shadow: none;
 }

@@ -59,7 +59,7 @@ export default new Molecular({
   z-index: 1000;
   overflow: hidden;
 
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
   box-shadow: $shadow-default;
 
   @media screen and (min-width: 1000px) {

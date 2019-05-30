@@ -87,7 +87,7 @@ export default new Molecular({
     .back {
       padding: 1rem;
       box-sizing: border-box;
-      @include colorScheme('neutral');
+      @include colorScheme('surface');
       backface-visibility: hidden;
       position: absolute;
       width: 100%;

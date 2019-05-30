@@ -54,6 +54,7 @@ export default {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: #fff;
 }
 
 .newsletter {

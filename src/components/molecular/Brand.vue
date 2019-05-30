@@ -42,7 +42,7 @@ export default new Molecular({
 @import '/components/sharedStyles/colors';
 
 .brand {
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
   width: 11.5rem;
   height: 3rem;
   display: flex;

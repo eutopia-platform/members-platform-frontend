@@ -63,7 +63,6 @@ export default new Molecular({
     width: 100%;
     padding-left: 1.5rem;
     font-size: 1rem;
-    @include colorScheme('neutral');
     border-radius: 0.4rem;
   }
 
