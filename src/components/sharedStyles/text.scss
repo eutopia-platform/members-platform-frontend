@@ -8,10 +8,12 @@ $font-primary: 'Nunito', sans-serif;
 $fs-base: 1rem;
 $fs-step: 1.4;
 
-$fs-header-1: $fs-base * pow($fs-step, 3);
-$fs-header-2: $fs-base * pow($fs-step, 2);
-$fs-header-3: $fs-base * pow($fs-step, 1);
-$fs-header-4: $fs-base * pow($fs-step, 0);
+$rem-min: 14px;
+$rem-max: 18px;
+$fs-scale-min: 1.2;
+$fs-scale-max: 1.41;
+$fs-min-screen: 400px;
+$fs-max-screen: 1000px;
 
 $fs-tagline-1: $fs-base * pow($fs-step, 2);
 $fs-tagline-2: $fs-base * pow($fs-step, 1);
