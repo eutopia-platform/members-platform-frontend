@@ -1,10 +1,10 @@
 <template>
   <div class="process">
     <Header s1>Test your ideas quicker</Header>
-    <Tagline class="tagline">
+    <Big>
       Run data driven experiments with toolkits and processes to build, validate
       and iterate through prototypes quick.
-    </Tagline>
+    </Big>
     <div class="steps">
       <div class="step">
         <Icon :src="img1"></Icon>
@@ -80,19 +80,6 @@ export default {
   * {
     margin-top: 2rem;
     margin-bottom: 2rem;
-  }
-
-  .tagline {
-    width: 80%;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-
-    @media screen and (max-width: 800px) {
-      transform: none;
-      left: 0;
-      width: auto;
-    }
   }
 
   .steps {
