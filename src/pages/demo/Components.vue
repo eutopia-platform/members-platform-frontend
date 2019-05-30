@@ -9,6 +9,7 @@
     <Small>Small</Small>
     <Big>Big</Big>
     <Big extra>Big (extra)</Big>
+    <Button>Button</Button>
   </div>
 </template>
 

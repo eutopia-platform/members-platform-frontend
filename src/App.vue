@@ -69,6 +69,6 @@ export default {
 @import './components/sharedStyles/colors.scss';
 
 .app {
-  @include colorScheme('background');
+  @include colorScheme('surface');
 }
 </style>

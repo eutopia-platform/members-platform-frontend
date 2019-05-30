@@ -1,5 +1,5 @@
 <template>
-  <p class="paragraph" :class="getClass">
+  <p class="paragraph" :class="{ small, inline }">
     <slot />
   </p>
 </template>
@@ -10,6 +10,12 @@ import Atomic from '../sharedScripts/atomic'
 export default new Atomic({
   name: 'Paragraph',
   types: ['default', 'small'],
+  props: {
+    inline: {
+      type: Boolean,
+      default: false,
+    },
+  },
 })
 </script>
 
@@ -26,5 +32,10 @@ export default new Atomic({
 
 .small {
   font-size: 80%;
+}
+
+.inline {
+  margin: 0;
+  display: inline-block;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <li :style="style" @click="click">
     <Icon :src="icon"></Icon>
-    <Paragraph>
+    <Paragraph inline>
       <slot />
     </Paragraph>
   </li>
