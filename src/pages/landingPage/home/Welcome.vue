@@ -17,7 +17,7 @@ export default {
     EmailSignup,
   },
   methods: {
-    signup: () => window.open('/onboarding', '_self'),
+    signup: () => window.open('/signup', '_self'),
   },
 }
 </script>

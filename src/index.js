@@ -13,7 +13,6 @@ import TypographyDemo from './pages/demo/Typography'
 import ComponentsDemo from './pages/demo/Components'
 import NotFound from './pages/NotFound'
 import WorkspaceGuard from './pages/workspace/WorkspaceGuard'
-import Onboarding from './pages/Onboarding'
 import Login from './pages/Login'
 import Dashboard from './pages/workspace/Dashboard'
 import Analytics from './pages/workspace/Analytics'
@@ -89,7 +88,6 @@ const routes = [
     component: ComponentsDemo,
   },
   { path: '/privacy', component: Privacy },
-  { path: '/onboarding', component: Onboarding },
   { path: '/login', component: Login, name: 'login', props: true },
   { path: '/invite/:code', component: Invite },
   { path: '*', component: NotFound },
