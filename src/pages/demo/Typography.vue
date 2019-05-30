@@ -35,6 +35,20 @@
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
 
+    <Header secondary>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia dolorem
+      incidunt magnam voluptatum quaerat mollitia quas corrupti porro ipsum
+      commodi a suscipit molestiae quia natus qui, minima similique consequatur
+      eius!
+    </Header>
+
+    <Header tertiary>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia dolorem
+      incidunt magnam voluptatum quaerat mollitia quas corrupti porro ipsum
+      commodi a suscipit molestiae quia natus qui, minima similique consequatur
+      eius!
+    </Header>
+
     <Paragraph id="textblock">
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse debitis
       libero dolor, necessitatibus tempora illum, voluptatum quidem

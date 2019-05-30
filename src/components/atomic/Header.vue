@@ -49,6 +49,9 @@ export default new Atomic({
     $fs-max-screen
   );
   line-height: calc(2 * var(--baseline));
+  @media screen and (max-width: 500px) {
+    line-height: var(--baseline);
+  }
   margin-top: var(--baseline);
   margin-bottom: var(--baseline);
 }
@@ -62,6 +65,9 @@ export default new Atomic({
     $fs-max-screen
   );
   line-height: calc(2 * var(--baseline));
+  @media screen and (max-width: 850px) {
+    line-height: var(--baseline);
+  }
   margin-top: var(--baseline);
   margin-bottom: var(--baseline);
 }
