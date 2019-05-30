@@ -66,7 +66,7 @@ export default {
 @import '/components/sharedStyles/colors';
 
 .button.text {
-  color: map-get($colors, 'on-surface');
+  color: color('on-surface');
   font-size: 0.7rem;
 }
 </style>

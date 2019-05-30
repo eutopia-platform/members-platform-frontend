@@ -18,7 +18,7 @@ export default new Atomic({
   height: 2rem;
   border: 0.3rem solid lightgray;
   border-radius: 50%;
-  border-top: 0.3rem solid map-get($colors, 'on-surface');
+  border-top: 0.3rem solid color('on-surface');
   animation: spin 2s linear infinite;
 }
 

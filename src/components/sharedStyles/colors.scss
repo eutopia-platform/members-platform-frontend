@@ -1,8 +1,3 @@
-$icon-filter: invert(27%) sepia(16%) saturate(1494%) hue-rotate(174deg)
-  brightness(93%) contrast(88%);
-
-//----------------------
-
 $colors: (
   primary: #2196f3,
   on-primary: rgba(255, 255, 255, 0.87),
@@ -17,6 +12,13 @@ $colors: (
 );
 
 @mixin colorScheme($scheme) {
-  background-color: map-get($colors, $scheme);
-  color: map-get($colors, 'on-' + $scheme);
+  background-color: color($scheme);
+  color: color('on-' + $scheme);
 }
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+$icon-filter: invert(27%) sepia(16%) saturate(1494%) hue-rotate(174deg)
+  brightness(93%) contrast(88%);

@@ -188,7 +188,7 @@ export default new Component({
   }
 
   .danger-zone {
-    border: 0.1rem solid map-get($colors, 'error');
+    border: 0.1rem solid color('error');
   }
 }
 </style>

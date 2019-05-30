@@ -17,6 +17,6 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(map-get($colors, 'surface'), 50%);
+  background-color: rgba(color('surface'), 50%);
 }
 </style>
