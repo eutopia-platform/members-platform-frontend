@@ -3,7 +3,7 @@
     <Header s1>Test your ideas quicker</Header>
     <Big>
       Run data driven experiments with toolkits and processes to build, validate
-      and iterate through prototypes quick.
+      and iterate through prototypes quickly.
     </Big>
     <div class="steps">
       <div class="step">

@@ -1,6 +1,6 @@
 <template>
   <Component :is="tag" class="header" :class="{ s1, s2, s3, s4, s5, inline }">
-    <slot/>
+    <slot />
   </Component>
 </template>
 
@@ -28,7 +28,7 @@ export default new Atomic({
 @import '../sharedStyles/math';
 
 .header {
-  font-weight: bold;
+  font-weight: 500;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   line-height: var(--baseline);
