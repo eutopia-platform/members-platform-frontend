@@ -19,10 +19,11 @@ export default {
       baseline: new Baseline(),
     }
   },
-  mounted() {
+  created() {
     this.updateBaseline()
     window.addEventListener('resize', this.updateBaseline)
-
+  },
+  mounted() {
     if ('baseline' in this.$route.query) this.baseline.show()
   },
   methods: {

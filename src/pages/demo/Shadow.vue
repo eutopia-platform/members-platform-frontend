@@ -190,7 +190,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-.components {
+.shadow-demo {
   padding: 2rem;
   min-height: 100vh;
   box-sizing: border-box;
@@ -205,6 +205,7 @@ export default new Component({
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     text-align: center;
+    box-shadow: none;
   }
 }
 </style>
