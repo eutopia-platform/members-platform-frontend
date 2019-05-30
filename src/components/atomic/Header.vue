@@ -9,8 +9,8 @@ import Atomic from '../sharedScripts/atomic'
 
 export default new Atomic({
   name: 'Header',
-  types: ['s1', 's2', 's3', 's4'],
-  tags: ['h1', 'h2', 'h3', 'h4'],
+  types: ['s1', 's2', 's3', 's4', 's5'],
+  tags: ['h1', 'h2', 'h3', 'h4', 'h5'],
 })
 </script>
 
@@ -77,6 +77,19 @@ export default new Atomic({
     font-size,
     $rem-min * pow($fs-scale-min, 0),
     $rem-max * pow($fs-scale-max, 0),
+    $fs-min-screen,
+    $fs-max-screen
+  );
+  line-height: var(--baseline);
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
+}
+
+.s5 {
+  @include fluid(
+    font-size,
+    $rem-min * pow($fs-scale-min, -1),
+    $rem-max * pow($fs-scale-max, -1),
     $fs-min-screen,
     $fs-max-screen
   );

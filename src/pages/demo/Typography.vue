@@ -1,34 +1,35 @@
 <template>
   <div :class="getClass">
-    <Header s1>Header primary</Header>
-    <Header s2>Header secondary</Header>
-    <Header s3>Header tertiary</Header>
-    <Header s4>Header quatnery</Header>
+    <Header s1>Header s1</Header>
+    <Header s2>Header s2</Header>
+    <Header s3>Header s3</Header>
+    <Header s4>Header s4</Header>
+    <Header s5>Header s5</Header>
 
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
-    <Header s1>Header primary</Header>
+    <Header s1>Header s1</Header>
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
-    <Header s2>Header secondary</Header>
+    <Header s2>Header s2</Header>
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
-    <Header s3>Header tertiary</Header>
+    <Header s3>Header s3</Header>
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
       distinctio error, odit iusto modi omnis qui voluptate at earum!
     </Paragraph>
-    <Header s4>Header quatnery</Header>
+    <Header s4>Header s4</Header>
     <Paragraph>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere inventore
       a sequi eligendi amet! Placeat accusantium, unde, voluptatem id velit
