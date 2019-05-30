@@ -51,6 +51,28 @@
       vero molestias quae ullam, error atque. Suscipit nam voluptates fugit?
     </Small>
 
+    <Big>Big text</Big>
+    <Big>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum cumque
+      expedita voluptatibus voluptatem dolorum culpa nihil ea reprehenderit
+      doloremque, enim quos dolore ad totam impedit non, corporis, fugit odit
+      labore? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum
+      cumque expedita voluptatibus voluptatem dolorum culpa nihil ea
+      reprehenderit doloremque, enim quos dolore ad totam impedit non, corporis,
+      fugit odit labore?
+    </Big>
+
+    <Big extra>Extra big text</Big>
+    <Big extra>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum cumque
+      expedita voluptatibus voluptatem dolorum culpa nihil ea reprehenderit
+      doloremque, enim quos dolore ad totam impedit non, corporis, fugit odit
+      labore? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum
+      cumque expedita voluptatibus voluptatem dolorum culpa nihil ea
+      reprehenderit doloremque, enim quos dolore ad totam impedit non, corporis,
+      fugit odit labore?
+    </Big>
+
     <Header s2>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia dolorem
       incidunt magnam voluptatum quaerat mollitia quas corrupti porro ipsum
