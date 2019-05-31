@@ -20,7 +20,8 @@ export default new Atomic({
   @include colorScheme('surface');
   min-width: 5rem;
   min-height: 5rem;
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   box-sizing: border-box;
   box-shadow: $shadow-default;
 }

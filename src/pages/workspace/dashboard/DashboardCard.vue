@@ -1,53 +1,40 @@
 <template>
-  <Card class="db-card">
-    <div class="title-bar">
+  <Card :class="getClass">
+    <div class="top">
       <Header s3>{{ title }}</Header>
-      <Button v-if="button" small :disabled="disabled" @click="$emit('action')">
-        {{ button }}
-      </Button>
+      <Button>{{ button }}</Button>
     </div>
-    <LineHorizontal class="hl"></LineHorizontal>
-    <slot />
+    <slot></slot>
   </Card>
 </template>
 
 <script>
-export default {
+import Component from '/components/sharedScripts/component'
+
+export default new Component({
   name: 'DashboardCard',
   props: {
     title: {
       type: String,
-      default: 'unknown title',
+      default: 'Dashboard Card',
     },
     button: {
       type: String,
-      default: null,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
+      default: 'Button',
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
-.db-card {
-  min-height: 20rem;
-  padding-top: 0.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-
-  .title-bar {
+.dashboard-card {
+  .top {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    height: calc(3 * var(--baseline));
 
     .button {
-      height: 2rem;
-      position: relative;
-      margin-top: auto;
-      margin-bottom: auto;
+      margin-left: auto;
     }
   }
 }
