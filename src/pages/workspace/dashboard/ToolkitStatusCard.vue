@@ -2,9 +2,14 @@
   <DashboardCard title="Toolkit Status" :class="getClass">
     <Table divide-horizontal :columns="['name', 'status', 'progress', 'lead']">
       <template v-for="(row, iRow) in toolkits">
-        <Paragraph v-for="(e, i) in row" :key="`entry-${iRow}-${i}`">
+        <Component
+          :is="typeof e === 'string' ? 'Paragraph' : 'ProgressBar'"
+          v-for="(e, i) in row"
+          :key="`entry-${iRow}-${i}`"
+          :progress="typeof e === 'number' && e"
+        >
           {{ e }}
-        </Paragraph>
+        </Component>
       </template>
     </Table>
   </DashboardCard>
