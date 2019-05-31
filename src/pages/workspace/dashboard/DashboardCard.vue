@@ -31,7 +31,9 @@ export default new Component({
   .top {
     display: flex;
     align-items: center;
-    height: calc(3 * var(--baseline));
+    height: var(--baseline);
+    margin-top: var(--baseline);
+    margin-bottom: var(--baseline);
 
     .button {
       margin-left: auto;

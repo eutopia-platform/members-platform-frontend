@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import ToolkitStatus from './dashboard/ToolkitStatus'
+import ToolkitStatus from './dashboard/ToolkitStatusCard'
 import Validation from './dashboard/Validation'
 import Process from './dashboard/Process'
 import InfoCard from '/components/molecular/InfoCard'
