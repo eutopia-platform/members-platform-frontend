@@ -29,9 +29,13 @@ export default new Atomic({
 @import '/components/sharedStyles/colors';
 
 .table-cell {
+  height: calc(2 * var(--baseline));
   * {
-    margin-top: calc(var(--baseline) / 2) !important;
-    margin-bottom: calc(var(--baseline) / 2) !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
