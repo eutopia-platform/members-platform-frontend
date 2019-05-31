@@ -29,25 +29,27 @@ export default new Molecular({
     createElement(
       Table,
       { props: { columns: context.props.columns } },
-      context.children
-        .filter(e => e.tag !== undefined)
-        .map((e, i, { length }) =>
-          createElement(
-            Cell,
-            {
-              props: {
-                borderBottom:
-                  context.props.divideHorizontal &&
-                  i < length - context.props.columns.length,
-                borderRight:
-                  context.props.divideVertical &&
-                  i % context.props.columns.length !==
-                    context.props.columns.length - 1,
-              },
-            },
-            [e]
-          )
-        )
+      !context.children
+        ? []
+        : context.children
+            .filter(e => e.tag !== undefined)
+            .map((e, i, { length }) =>
+              createElement(
+                Cell,
+                {
+                  props: {
+                    borderBottom:
+                      context.props.divideHorizontal &&
+                      i < length - context.props.columns.length,
+                    borderRight:
+                      context.props.divideVertical &&
+                      i % context.props.columns.length !==
+                        context.props.columns.length - 1,
+                  },
+                },
+                [e]
+              )
+            )
     ),
   components: {
     Table,
