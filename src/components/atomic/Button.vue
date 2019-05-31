@@ -26,8 +26,8 @@ export default new Atomic({
   min-width: 2rem;
   @include colorScheme('primary');
   height: calc(1.5 * var(--baseline));
-  margin-top: calc(var(--baseline) - var(--baseline) / 6);
-  margin-bottom: calc(var(--baseline) - var(--baseline) / 6);
+  margin-top: calc(var(--baseline) - var(--baseline) / 4);
+  margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border-radius: 0.25rem;
