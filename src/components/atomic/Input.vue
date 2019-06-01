@@ -9,6 +9,8 @@
     :style="size ? { width: size + 'em' } : {}"
     @input="onInput"
     @keyup.enter="onEnter"
+    @focus="$emit('focus')"
+    @blur="$emit('blur')"
   />
 </template>
 
@@ -80,13 +82,14 @@ export default new Molecular({
   margin-top: calc(var(--baseline) - var(--baseline) / 4);
   margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
   background-color: color('surface');
-  border: 0.125rem solid color('on-surface');
+  border: 0.0625rem solid color('on-surface');
   border-radius: 0.25rem;
   box-sizing: border-box;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   font-size: 1rem;
   transition: color, background-color 0.2s ease;
+  min-width: 13rem;
 
   &:focus {
     outline: none;
