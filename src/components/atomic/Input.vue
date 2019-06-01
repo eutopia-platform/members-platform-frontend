@@ -1,7 +1,6 @@
 <template>
   <input
     v-model="value"
-    :name="name"
     :placeholder="placeholder"
     :aria-label="internalAriaLabel"
     :class="getClass"
@@ -23,10 +22,6 @@ export default new Molecular({
     password: {
       type: Boolean,
       default: false,
-    },
-    name: {
-      default: '',
-      type: String,
     },
     placeholder: {
       default: '',
@@ -87,7 +82,7 @@ export default new Molecular({
   box-sizing: border-box;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: color, background-color 0.2s ease;
   min-width: 13rem;
 
@@ -95,6 +90,7 @@ export default new Molecular({
     outline: none;
     border-color: color('primary');
     border-width: 0.125rem;
+    padding-left: calc(0.5rem - 0.125rem / 2);
   }
 }
 </style>

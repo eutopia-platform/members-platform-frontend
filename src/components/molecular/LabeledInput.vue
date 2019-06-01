@@ -2,10 +2,18 @@
   <div class="labeled-input" :class="{ focus }">
     <Input
       :id="`labeled-input-${_uid}`"
+      v-model="value"
+      :placeholder="placeholder"
       @focus="setFocus(true)"
       @blur="setFocus(false)"
     />
-    <label ref="label" :for="`labeled-input-${_uid}`">{{ label }}</label>
+    <label
+      ref="label"
+      :for="`labeled-input-${_uid}`"
+      :class="{ top: focus || placeholder.length || value.length }"
+    >
+      {{ label }}
+    </label>
   </div>
 </template>
 
@@ -19,9 +27,14 @@ export default new Molecular({
       type: String,
       required: true,
     },
+    placeholder: {
+      type: String,
+      default: '',
+    },
   },
   data: {
     focus: false,
+    value: '',
   },
   methods: {
     setFocus(status) {
@@ -36,7 +49,7 @@ export default new Molecular({
 
 .labeled-input {
   display: inline-block;
-  min-width: 17rem;
+  min-width: 14rem;
   position: relative;
   height: calc(1.5 * var(--baseline));
   margin-top: calc(var(--baseline) - var(--baseline) / 4);
@@ -59,13 +72,16 @@ export default new Molecular({
     background: color('surface');
     user-select: none;
   }
+
+  label.top {
+    margin-top: calc(var(--baseline) / 5);
+    transform: scale(0.8);
+  }
 }
 
 .focus {
   label {
     color: color('primary');
-    margin-top: calc(var(--baseline) / 4);
-    transform: scale(0.8);
   }
 }
 </style>
