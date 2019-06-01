@@ -2,11 +2,10 @@
   <input
     v-model="value"
     :name="name"
-    :type="type"
     :placeholder="placeholder"
     :aria-label="internalAriaLabel"
     :class="getClass"
-    :autocomplete="type === 'password' ? 'new-password' : 'true'"
+    :autocomplete="password === 'password' ? 'new-password' : 'true'"
     :style="size ? { width: size + 'em' } : {}"
     @input="onInput"
     @keyup.enter="onEnter"
@@ -18,8 +17,11 @@ import Molecular from '../sharedScripts/molecular'
 
 export default new Molecular({
   name: 'Input',
-  types: ['default', 'blend', 'small'],
   props: {
+    password: {
+      type: Boolean,
+      default: false,
+    },
     name: {
       default: '',
       type: String,
@@ -72,52 +74,23 @@ export default new Molecular({
 
 <style lang="scss" scoped>
 @import '../sharedStyles/colors.scss';
-@import '../sharedStyles/shapes.scss';
-@import '../sharedStyles/text.scss';
 
 .input {
-  display: inline-block;
-  border: $border;
-  border-radius: $border-radius;
-  box-shadow: shadow(2);
-  padding: 0.75rem;
-  cursor: text;
-  outline: none;
-  transition: box-shadow 0.2s, transform 0.2s;
-  transform: translate(0, 0px);
+  height: calc(1.5 * var(--baseline));
+  margin-top: calc(var(--baseline) - var(--baseline) / 4);
+  margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
+  background-color: color('surface');
+  border: 0.125rem solid color('on-surface');
+  border-radius: 0.25rem;
   box-sizing: border-box;
-  border: none;
-
-  &:active {
-    box-shadow: shadow(1);
-    transform: translate(0, 0px);
-    transition-duration: 0.1s;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
-.blend {
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  border-bottom: 1px solid #8ca8a8;
-  padding: 0.5rem;
   padding-left: 0.5rem;
-  font-size: $fs-base;
+  padding-right: 0.5rem;
+  font-size: 1rem;
+  transition: color, background-color 0.2s ease;
 
-  &:active {
-    box-shadow: none;
+  &:focus {
+    outline: none;
+    border-color: color('primary');
   }
-}
-
-.small {
-  border: 1px solid color('on-surface');
-  height: 1rem;
-  color: color('on-surface');
-  font-size: 0.8rem;
-  box-shadow: none;
 }
 </style>
