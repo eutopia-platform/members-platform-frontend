@@ -75,7 +75,6 @@ export default new Component({
   background-color: white;
   box-sizing: border-box;
   position: absolute;
-  box-shadow: $shadow-default;
   padding: 0;
   cursor: grab;
   overflow: hidden;

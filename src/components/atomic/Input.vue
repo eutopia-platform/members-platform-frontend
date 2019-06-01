@@ -79,7 +79,7 @@ export default new Molecular({
   display: inline-block;
   border: $border;
   border-radius: $border-radius;
-  box-shadow: $shadow-default;
+  box-shadow: shadow(2);
   padding: 0.75rem;
   cursor: text;
   outline: none;
@@ -89,7 +89,7 @@ export default new Molecular({
   border: none;
 
   &:active {
-    box-shadow: $shadow-active;
+    box-shadow: shadow(1);
     transform: translate(0, 0px);
     transition-duration: 0.1s;
   }

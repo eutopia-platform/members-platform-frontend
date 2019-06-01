@@ -26,6 +26,6 @@ export default {
   left: 50%;
   padding: 2rem;
   transform: translateX(-50%) translateY(-50%);
-  box-shadow: $shadow-default;
+  box-shadow: shadow(2);
 }
 </style>

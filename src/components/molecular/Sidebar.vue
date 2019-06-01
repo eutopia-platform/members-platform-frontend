@@ -60,7 +60,7 @@ export default new Molecular({
   overflow: hidden;
 
   @include colorScheme('surface');
-  box-shadow: $shadow-default;
+  box-shadow: shadow(7);
 
   @media screen and (min-width: 1000px) {
     width: 300px;

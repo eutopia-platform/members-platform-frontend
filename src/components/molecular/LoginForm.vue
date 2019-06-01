@@ -88,7 +88,7 @@ export default new Molecular({
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: $shadow-default;
+  box-shadow: shadow(2);
 
   .input {
     width: 100%;

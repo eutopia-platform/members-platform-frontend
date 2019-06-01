@@ -50,7 +50,7 @@ export default new Molecular({
   height: 2.8rem;
   text-align: left;
   border-radius: 0.4rem;
-  box-shadow: $shadow-default;
+  box-shadow: shadow(2);
 
   * {
     margin: 0;

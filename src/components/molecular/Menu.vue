@@ -25,7 +25,7 @@ export default new Molecular({
 
 .menu {
   @include colorScheme('surface');
-  box-shadow: $shadow-default;
+  box-shadow: shadow(2);
   position: fixed;
   z-index: 500;
 }
