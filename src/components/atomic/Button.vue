@@ -24,7 +24,9 @@ export default new Atomic({
   border: none;
   font-size: 1rem;
   min-width: 2rem;
-  @include colorScheme('primary');
+  background-color: color('surface');
+  border: 2px solid color('primary');
+  color: color('primary');
   height: calc(1.5 * var(--baseline));
   margin-top: calc(var(--baseline) - var(--baseline) / 4);
   margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
@@ -32,9 +34,21 @@ export default new Atomic({
   padding-right: 0.5rem;
   border-radius: 0.25rem;
   cursor: pointer;
+  transition: color, background-color 0.2s ease;
+
+  &:hover {
+    background-color: color('primary');
+    color: color('on-primary');
+  }
 }
 
 .secondary {
-  @include colorScheme('secondary');
+  border: 2px solid color('secondary');
+  color: color('secondary');
+
+  &:hover {
+    background-color: color('secondary');
+    color: color('on-secondary');
+  }
 }
 </style>
