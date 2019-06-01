@@ -10,7 +10,7 @@
     <label
       ref="label"
       :for="`labeled-input-${_uid}`"
-      :class="{ top: focus || placeholder.length || value.length }"
+      :class="{ top: focus || placeholder || value.length }"
     >
       {{ label }}
     </label>
@@ -29,7 +29,6 @@ export default new Molecular({
     },
     placeholder: {
       type: String,
-      default: '',
     },
   },
   data: {
@@ -39,6 +38,7 @@ export default new Molecular({
   methods: {
     setFocus(status) {
       this.focus = status
+      this.$emit(status ? 'focus' : 'blur')
     },
   },
 })
@@ -60,6 +60,10 @@ export default new Molecular({
     position: absolute;
   }
 
+  .input {
+    width: 100%;
+  }
+
   label {
     font-size: 1rem;
     line-height: var(--baseline);
@@ -71,11 +75,13 @@ export default new Molecular({
     transition: margin-top 0.1s ease, transform 0.1s ease, color 0.1s ease;
     background: color('surface');
     user-select: none;
+    cursor: text;
   }
 
   label.top {
     margin-top: calc(var(--baseline) / 5);
     transform: scale(0.8);
+    cursor: initial;
   }
 }
 

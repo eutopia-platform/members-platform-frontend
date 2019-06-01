@@ -1,23 +1,42 @@
 <template>
   <div class="action-input" :class="{ focus }">
-    <Input @focus="setFocus(true)" @blur="setFocus(false)" />
+    <Component
+      :is="label ? 'LabeledInput' : 'Input'"
+      class="input"
+      :label="label"
+      :placeholder="placeholder"
+      @focus="setFocus(true)"
+      @blur="setFocus(false)"
+    ></Component>
     <Button ref="button">submit</Button>
   </div>
 </template>
 
 <script>
 import Molecular from '/components/sharedScripts/component'
+import LabeledInput from '/components/molecular/LabeledInput'
 
 export default new Molecular({
   name: 'ActionInput',
   data: {
     focus: false,
   },
+  props: {
+    label: {
+      type: String,
+    },
+    placeholder: {
+      type: String,
+    },
+  },
   methods: {
     setFocus(status) {
       this.focus = status
       this.$refs.button.$el.classList.toggle('primary', status)
     },
+  },
+  components: {
+    LabeledInput,
   },
 })
 </script>
@@ -41,6 +60,11 @@ export default new Molecular({
     top: 0;
     right: 0;
     border-width: 0.0625rem;
+  }
+
+  .labeled-input {
+    position: absolute;
+    margin-top: 0;
   }
 }
 
