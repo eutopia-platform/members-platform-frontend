@@ -1,5 +1,10 @@
 <template>
-  <button type="button" :class="getClass" @click="$emit('click')">
+  <button
+    type="button"
+    class="button"
+    :class="{ primary, secondary, disabled }"
+    @click="$emit('click')"
+  >
     <slot></slot>
   </button>
 </template>
@@ -11,7 +16,10 @@ export default new Atomic({
   name: 'Button',
   types: ['default', 'primary', 'secondary'],
   props: {
-    img: String,
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
 })
 </script>
@@ -37,8 +45,8 @@ export default new Atomic({
   cursor: pointer;
   transition: color, background-color 0.2s ease;
 
-  &:hover,
-  &:focus {
+  &:hover:not(.disabled),
+  &:focus:not(.disabled) {
     outline: none;
     background-color: color('on-surface');
     color: color('surface');
@@ -49,8 +57,8 @@ export default new Atomic({
   border: 2px solid color('primary');
   color: color('primary');
 
-  &:hover,
-  &:focus {
+  &:hover:not(.disabled),
+  &:focus:not(.disabled) {
     background-color: color('primary');
     color: color('on-primary');
   }
@@ -60,10 +68,14 @@ export default new Atomic({
   border: 2px solid color('secondary');
   color: color('secondary');
 
-  &:hover,
-  &:focus {
+  &:hover:not(.disabled),
+  &:focus:not(.disabled) {
     background-color: color('secondary');
     color: color('on-secondary');
   }
+}
+
+.disabled {
+  cursor: initial;
 }
 </style>
