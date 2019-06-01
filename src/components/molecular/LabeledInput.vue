@@ -1,61 +1,71 @@
 <template>
-  <div :class="getClass">
-    <label :for="`labeled-input-${_uid}`">{{ label }}:</label>
+  <div class="labeled-input" :class="{ focus }">
     <Input
       :id="`labeled-input-${_uid}`"
-      small
-      :size="size"
-      :placeholder="placeholder"
-      :value="defaultValue"
-      @input="onInput"
+      @focus="setFocus(true)"
+      @blur="setFocus(false)"
     />
+    <label ref="label" :for="`labeled-input-${_uid}`">{{ label }}</label>
   </div>
 </template>
 
 <script>
-import Molecular from '../sharedScripts/molecular'
+import Molecular from '/components/sharedScripts/component'
 
 export default new Molecular({
   name: 'LabeledInput',
   props: {
     label: {
       type: String,
-      default: 'unknown',
-    },
-    defaultValue: {
-      type: String,
-      default: '',
-    },
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    size: {
-      type: Number,
-      default: undefined,
+      required: true,
     },
   },
   data: {
-    value: '',
+    focus: false,
   },
   methods: {
-    onInput: function(value) {
-      this.value = value
-      this.$emit('input', this.value)
+    setFocus(status) {
+      this.focus = status
     },
   },
 })
 </script>
 
 <style lang="scss" scoped>
-.labeled-input {
-  display: flex;
-  align-items: baseline;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+@import '/components/sharedStyles/colors';
 
-  *:first-child {
-    margin-right: 1rem;
+.labeled-input {
+  display: inline-block;
+  min-width: 17rem;
+  position: relative;
+  height: calc(1.5 * var(--baseline));
+  margin-top: calc(var(--baseline) - var(--baseline) / 4);
+  margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
+  position: relative;
+
+  * {
+    position: absolute;
+  }
+
+  label {
+    font-size: 1rem;
+    line-height: var(--baseline);
+    margin-top: var(--baseline);
+    margin-bottom: var(--baseline);
+    margin-left: 0.4rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    transition: margin-top 0.1s ease, transform 0.1s ease, color 0.1s ease;
+    background: color('surface');
+    user-select: none;
+  }
+}
+
+.focus {
+  label {
+    color: color('primary');
+    margin-top: calc(var(--baseline) / 4);
+    transform: scale(0.8);
   }
 }
 </style>

@@ -94,6 +94,7 @@ export default new Molecular({
   &:focus {
     outline: none;
     border-color: color('primary');
+    border-width: 0.125rem;
   }
 }
 </style>

@@ -27,6 +27,9 @@ export default new Molecular({
   display: inline-block;
   min-width: 17rem;
   position: relative;
+  height: calc(1.5 * var(--baseline));
+  margin-top: calc(var(--baseline) - var(--baseline) / 4);
+  margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
 
   .input {
     position: absolute;
