@@ -37,7 +37,9 @@ export default new Atomic({
   cursor: pointer;
   transition: color, background-color 0.2s ease;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: none;
     background-color: color('on-surface');
     color: color('surface');
   }
@@ -47,7 +49,8 @@ export default new Atomic({
   border: 2px solid color('primary');
   color: color('primary');
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: color('primary');
     color: color('on-primary');
   }
@@ -57,7 +60,8 @@ export default new Atomic({
   border: 2px solid color('secondary');
   color: color('secondary');
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: color('secondary');
     color: color('on-secondary');
   }
