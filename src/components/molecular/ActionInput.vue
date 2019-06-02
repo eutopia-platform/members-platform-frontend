@@ -8,7 +8,7 @@
       @focus="setFocus(true)"
       @blur="setFocus(false)"
     ></Component>
-    <Button ref="button">submit</Button>
+    <Button ref="button">{{ button }}</Button>
   </div>
 </template>
 
@@ -28,6 +28,10 @@ export default new Molecular({
     placeholder: {
       type: String,
     },
+    button: {
+      type: String,
+      default: 'submit',
+    },
   },
   methods: {
     setFocus(status) {
@@ -43,12 +47,17 @@ export default new Molecular({
 
 <style lang="scss" scoped>
 .action-input {
-  display: inline-block;
-  min-width: 17rem;
+  width: 17rem;
   position: relative;
   height: calc(1.5 * var(--baseline));
   margin-top: calc(var(--baseline) - var(--baseline) / 4);
   margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
+
+  * {
+    position: absolute;
+    display: block;
+    margin: 0 !important;
+  }
 
   .input {
     position: absolute;

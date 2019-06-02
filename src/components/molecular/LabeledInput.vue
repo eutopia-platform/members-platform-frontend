@@ -81,6 +81,8 @@ export default new Molecular({
 
   * {
     position: absolute;
+    display: block;
+    margin: 0 !important;
   }
 
   .input {
@@ -102,8 +104,7 @@ export default new Molecular({
   }
 
   label.top {
-    margin-top: calc(var(--baseline) / 5);
-    transform: scale(0.8);
+    transform: translateY(-60%) scale(0.8);
     cursor: initial;
   }
 }
