@@ -13,7 +13,7 @@
 import Component from '/components/sharedScripts/component'
 import ActionInput from '/components/molecular/ActionInput'
 import gql from 'graphql-tag'
-import CubeError from '/error'
+import { CubeError } from '/error'
 import { isEmail } from '/components/sharedScripts/validate'
 
 export default new Component({
