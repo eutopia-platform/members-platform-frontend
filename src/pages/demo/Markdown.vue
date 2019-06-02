@@ -9,6 +9,23 @@
 <script>
 import Component from '/components/sharedScripts/component'
 import marked from 'marked'
+import Vue from 'vue'
+
+import Header from '/components/atomic/Header'
+import Paragraph from '/components/atomic/Paragraph'
+
+const createElement = (el, content, props = {}) => {
+  const comp = new (Vue.extend(el))({
+    propsData: props,
+  })
+  comp.$slots.default = content
+  return comp.$mount().$el.outerHTML
+}
+
+const renderer = new marked.Renderer()
+renderer.heading = (text, level) =>
+  createElement(Header, text, { [`s${Math.min(level, 5)}`]: true })
+renderer.paragraph = text => createElement(Paragraph, text)
 
 export default new Component({
   name: 'MarkdownDemo',
@@ -18,6 +35,7 @@ export default new Component({
       marked(markdown, {
         sanitize: true,
         smartypants: true,
+        renderer,
       }),
   },
   data: {
