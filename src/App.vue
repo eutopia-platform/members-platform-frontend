@@ -53,6 +53,13 @@ export default {
         }).$mount().$el
       )
     },
+    showPopup: function({ component, callback, props }) {
+      document.body.appendChild(
+        new (Vue.extend(component))({
+          propsData: { callback, ...props },
+        }).$mount().$el
+      )
+    },
     updateBaseline() {
       document.documentElement.style.setProperty(
         '--baseline',
