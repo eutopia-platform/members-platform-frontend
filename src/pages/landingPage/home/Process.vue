@@ -125,6 +125,10 @@ export default {
         text-align: left;
         margin: 2rem;
       }
+
+      .icon {
+        height: 4rem;
+      }
     }
   }
 }
