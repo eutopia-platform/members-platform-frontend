@@ -63,6 +63,7 @@ export default new Component({
 
   .button {
     background-color: #fffe;
+    border: none;
     color: color('on-surface');
     width: 15ch;
     position: relative;

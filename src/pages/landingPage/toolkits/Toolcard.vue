@@ -40,6 +40,7 @@ export default new Component({
     margin-top: 1rem;
     margin-bottom: 2rem;
     flex-grow: 0.5;
+    height: 3rem;
   }
 }
 </style>
