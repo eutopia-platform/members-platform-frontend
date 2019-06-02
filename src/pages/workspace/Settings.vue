@@ -43,14 +43,7 @@
       </Card>
       <Card class="danger-zone">
         <Header s4>Danger Zone</Header>
-        <Button @click="confirmDelete = true">delete this workspace</Button>
-        <Confirmation
-          v-if="confirmDelete"
-          title="Are you sure?"
-          description="Do you really want to delete this workspace? This action cannot not be undone! Please type the name of this workspace if you want to proceed."
-          :confirmation="workspace.name"
-          @confirmed="deleteWorkspace"
-        ></Confirmation>
+        <Button @click="confirmDelete">delete this workspace</Button>
       </Card>
     </div>
   </div>
@@ -60,7 +53,7 @@
 import gql from 'graphql-tag'
 import Component from '/components/sharedScripts/component'
 import LabeledInput from '/components/molecular/LabeledInput'
-import Confirmation from '/components/molecular/Confirmation'
+import ConfirmDelete from './settings/ConfirmDelete'
 import InviteForm from './settings/InviteForm'
 
 export default new Component({
@@ -111,7 +104,6 @@ export default new Component({
   components: {
     LabeledInput,
     InviteForm,
-    Confirmation,
   },
   data: {
     user: {
@@ -120,7 +112,6 @@ export default new Component({
       email: '',
     },
     workspaces: [],
-    confirmDelete: false,
   },
   methods: {
     submitProfile: function() {
@@ -148,6 +139,15 @@ export default new Component({
         },
       })
     },
+    confirmDelete() {
+      this.$root.$children[0].showPopup({
+        component: ConfirmDelete,
+        callback: this.deleteWorkspace,
+        props: {
+          workspace: this.workspace.name,
+        },
+      })
+    },
     deleteWorkspace() {
       this.$apollo
         .mutate({
@@ -161,7 +161,7 @@ export default new Component({
             workspace: this.workspace.name,
           },
         })
-        .then(() => this.$router.push('/space'))
+        .then(() => this.$router.push({ path: '/space' }))
     },
     onError(err) {
       throw err
