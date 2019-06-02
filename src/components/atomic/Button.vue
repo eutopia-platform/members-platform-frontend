@@ -1,9 +1,10 @@
 <template>
   <button
+    :disabled="disabled"
     type="button"
     class="button"
     :class="{ primary, secondary, disabled }"
-    @click="$emit('click')"
+    @click="onClick"
   >
     <slot></slot>
   </button>
@@ -19,6 +20,11 @@ export default new Atomic({
     disabled: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    onClick() {
+      if (!this.disabled) this.$emit('click')
     },
   },
 })
