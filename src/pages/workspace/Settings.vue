@@ -7,12 +7,14 @@
         <LabeledInput
           v-model="user.name"
           label="name"
+          autocomplete="name"
           :default-value="user.name"
           :size="20"
         ></LabeledInput>
         <LabeledInput
           v-model="user.callname"
           label="nickname"
+          autocomplete="nickname"
           :default-value="user.callname"
           :size="20"
         ></LabeledInput>

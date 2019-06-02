@@ -1,6 +1,11 @@
 <template>
   <form>
-    <ActionInput button="invite" label="email" @submit="onSubmit"></ActionInput>
+    <ActionInput
+      button="invite"
+      type="email"
+      label="email"
+      @submit="onSubmit"
+    ></ActionInput>
   </form>
 </template>
 
