@@ -23,7 +23,7 @@ export default new Atomic({
 @import '../sharedStyles/colors.scss';
 
 .paragraph {
-  font-size: $fs-base;
+  font-size: 1rem;
   line-height: var(--baseline);
   margin-top: var(--baseline);
   margin-bottom: var(--baseline);
