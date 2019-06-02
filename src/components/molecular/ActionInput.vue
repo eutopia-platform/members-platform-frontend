@@ -8,6 +8,7 @@
       :label="label"
       :autocomplete="autocomplete"
       :focus="focus"
+      :default-value="defaultValue"
       @focus="setFocus(true)"
       @blur="setFocus(false)"
       @input="onInput"
@@ -49,14 +50,6 @@ export default new Molecular({
       default: false,
       type: Boolean,
     },
-  },
-  watch: {
-    defaultValue(v) {
-      this.value = v
-    },
-  },
-  created() {
-    this.value = this.defaultValue ? this.defaultValue : ''
   },
   methods: {
     setFocus(status) {
