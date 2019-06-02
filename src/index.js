@@ -11,6 +11,7 @@ import Privacy from './pages/Privacy'
 import ShadowDemo from './pages/demo/Shadow'
 import TypographyDemo from './pages/demo/Typography'
 import ComponentsDemo from './pages/demo/Components'
+import MarkdownDemo from './pages/demo/Markdown'
 import NotFound from './pages/NotFound'
 import WorkspaceGuard from './pages/workspace/WorkspaceGuard'
 import Login from './pages/Login'
@@ -86,6 +87,10 @@ const routes = [
   {
     path: '/demo/components',
     component: ComponentsDemo,
+  },
+  {
+    path: '/demo/markdown',
+    component: MarkdownDemo,
   },
   { path: '/privacy', component: Privacy },
   { path: '/login', component: Login, name: 'login', props: true },
