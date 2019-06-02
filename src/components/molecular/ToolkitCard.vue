@@ -2,7 +2,7 @@
   <div :class="getClass">
     <Card class="flipwrap">
       <div class="front">
-        <Icon :src="img"></Icon>
+        <Icon big :src="img"></Icon>
         <Header s4>{{ title }}</Header>
       </div>
       <div class="back">
@@ -71,6 +71,10 @@ export default new Molecular({
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+
+      .icon {
+        height: 5rem;
+      }
     }
 
     .back {
