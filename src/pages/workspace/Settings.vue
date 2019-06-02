@@ -121,6 +121,8 @@ export default new Component({
             setName(name: "${this.user.name}" callname: "${
           this.user.callname
         }") {
+              id
+              name
               callname
             }
           }
@@ -130,6 +132,8 @@ export default new Component({
             query: gql`
               {
                 user {
+                  id
+                  name
                   callname
                 }
               }
