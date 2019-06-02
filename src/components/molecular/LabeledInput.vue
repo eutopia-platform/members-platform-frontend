@@ -32,7 +32,6 @@ export default new Molecular({
     },
     defaultValue: {
       type: String,
-      default: 'asdf',
     },
     autocomplete: {
       type: String,
@@ -57,7 +56,7 @@ export default new Molecular({
     },
   },
   created() {
-    this.value = this.defaultValue
+    this.value = this.defaultValue ? this.defaultValue : ''
   },
   methods: {
     setFocus(status) {
