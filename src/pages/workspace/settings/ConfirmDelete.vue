@@ -3,7 +3,9 @@
     title="Are you sure?"
     description="Do you really want to delete this workspace? This action cannot not be undone! Please type the name of this workspace if you want to proceed."
     :confirmation="workspace"
+    button-confirm="delete workspace"
     @confirmed="onConfirmed"
+    @cancel="onCancel"
   ></Confirmation>
 </template>
 
@@ -24,6 +26,9 @@ export default new Component({
     },
   },
   methods: {
+    onCancel() {
+      this.$el.remove()
+    },
     onConfirmed() {
       this.$el.remove()
       this.callback()

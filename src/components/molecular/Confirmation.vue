@@ -6,13 +6,16 @@
         <Paragraph>{{ description }}</Paragraph>
         <Input v-model="inputText" />
         <Break></Break>
-        <Button
-          :disabled="inputText !== confirmation"
-          secondary
-          @click="$emit('confirmed')"
-        >
-          Yes, I want to delete this workspace
-        </Button>
+        <div class="buttons">
+          <Button primary @click="$emit('cancel')">cancel</Button>
+          <Button
+            :disabled="inputText !== confirmation"
+            secondary
+            @click="$emit('confirmed')"
+          >
+            {{ buttonConfirm }}
+          </Button>
+        </div>
       </div>
     </Popup>
   </div>
@@ -37,6 +40,10 @@ export default new Molecular({
       type: String,
       default: '',
     },
+    buttonConfirm: {
+      type: String,
+      default: 'confirm',
+    },
   },
   data: {
     inputText: '',
@@ -46,3 +53,12 @@ export default new Molecular({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.buttons {
+  display: flex;
+  * {
+    flex-grow: 1;
+  }
+}
+</style>

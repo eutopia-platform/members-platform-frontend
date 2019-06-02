@@ -56,7 +56,7 @@ export default new Molecular({
     },
   },
   created() {
-    this.value = this.defaultValue ? this.defaultValue : ''
+    this.value = this.defaultValue || ''
   },
   methods: {
     setFocus(status) {
