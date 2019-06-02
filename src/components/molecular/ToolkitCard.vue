@@ -2,11 +2,11 @@
   <div :class="getClass">
     <Card class="flipwrap">
       <div class="front">
-        <Icon :src="img"></Icon>
-        <Header quaternary>{{ title }}</Header>
+        <Icon big :src="img"></Icon>
+        <Header s4>{{ title }}</Header>
       </div>
       <div class="back">
-        <Header tertiary>
+        <Header s3>
           {{
             description
               ? (t => t[0] + t[1])(description.split(/([\.\?])/))
@@ -71,6 +71,10 @@ export default new Molecular({
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+
+      .icon {
+        height: 5rem;
+      }
     }
 
     .back {
@@ -87,7 +91,7 @@ export default new Molecular({
     .back {
       padding: 1rem;
       box-sizing: border-box;
-      @include colorScheme('neutral');
+      @include colorScheme('surface');
       backface-visibility: hidden;
       position: absolute;
       width: 100%;

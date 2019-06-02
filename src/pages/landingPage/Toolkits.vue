@@ -1,6 +1,6 @@
 <template>
   <div class="toolkits">
-    <Header class="selection-title" tertiary>
+    <Header class="selection-title" s3>
       Whatever the goal, our toolkits get you started
     </Header>
     <div class="selection">

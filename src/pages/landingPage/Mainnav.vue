@@ -6,7 +6,7 @@
     <Item text="Workflow" link="/workflow" align="right"></Item>
     <Item text="Toolkits" link="/toolkits" align="right"></Item>
     <Item>
-      <Button @click="$router.push('/login')">Login</Button>
+      <Button primary @click="$router.push('/login')">Login</Button>
     </Item>
   </Menu>
 </template>
@@ -75,9 +75,14 @@ export default new Component({
 .blue {
   background-color: #6bc1ff;
   color: white;
+
+  .button {
+    background: color('primary');
+    color: color('on-primary');
+  }
 }
 
 .white {
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
 }
 </style>

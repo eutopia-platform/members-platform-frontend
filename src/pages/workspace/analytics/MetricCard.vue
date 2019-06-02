@@ -1,7 +1,7 @@
 <template>
   <Card class="metric-card">
     <Icon :src="img"></Icon>
-    <Header secondary>{{ val }}</Header>
+    <Header s2>{{ val }}</Header>
     <Paragraph>{{ name }}</Paragraph>
     <Small :style="cl_percent">{{ percent + '%' }}</Small>
   </Card>

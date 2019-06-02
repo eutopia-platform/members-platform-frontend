@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <Header tertiary>Dashboard</Header>
+    <Header s3>Dashboard</Header>
     <div class="content">
       <InfoCard>
         <div>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import ToolkitStatus from './dashboard/ToolkitStatus'
+import ToolkitStatus from './dashboard/ToolkitStatusCard'
 import Validation from './dashboard/Validation'
 import Process from './dashboard/Process'
 import InfoCard from '/components/molecular/InfoCard'

@@ -56,11 +56,11 @@ export default new Molecular({
   width: 30vw;
   height: 100vh;
   box-sizing: border-box;
-  z-index: 1000;
+  z-index: 100;
   overflow: hidden;
 
-  @include colorScheme('neutral');
-  box-shadow: $shadow-default;
+  @include colorScheme('surface');
+  box-shadow: shadow(7);
 
   @media screen and (min-width: 1000px) {
     width: 300px;

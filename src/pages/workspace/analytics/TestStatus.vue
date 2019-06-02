@@ -4,12 +4,12 @@
     class="test-status"
   >
     <div class="table">
-      <Header quaternary>Toolkit</Header>
-      <Header quaternary>Metric</Header>
-      <Header quaternary>Status</Header>
-      <Header quaternary>Test results</Header>
-      <Header quaternary>Show in charts</Header>
-      <Header quaternary>Lead</Header>
+      <Header s4>Toolkit</Header>
+      <Header s4>Metric</Header>
+      <Header s4>Status</Header>
+      <Header s4>Test results</Header>
+      <Header s4>Show in charts</Header>
+      <Header s4>Lead</Header>
       <TestStatusSlip
         toolkit="Problem Definition"
         metric="Approve problem by 7/10 core users"

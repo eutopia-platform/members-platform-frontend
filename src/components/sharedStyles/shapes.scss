@@ -1,6 +1,6 @@
-@import "./colors.scss";
-@import "./shadows.scss";
+@import './colors.scss';
+@import './shadows.scss';
 
 $border-radius: 0.2rem;
 // $border: solid 1px $c-primary;
-$border: solid 1px map-get($colors, primary-back);
+$border: solid 1px color('on-surface');

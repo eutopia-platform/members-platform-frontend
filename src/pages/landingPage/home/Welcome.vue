@@ -1,11 +1,9 @@
 <template>
   <div class="lp-welcome">
-    <Header primary>
-      A workspace to turn ideas into startups
-    </Header>
-    <Tagline>
+    <Header s1>A workspace to turn ideas into startups</Header>
+    <Big extra>
       Cube is the easiest way for teams to develop products people want.
-    </Tagline>
+    </Big>
     <EmailSignup></EmailSignup>
   </div>
 </template>
@@ -19,7 +17,7 @@ export default {
     EmailSignup,
   },
   methods: {
-    signup: () => window.open('/onboarding', '_self'),
+    signup: () => window.open('/signup', '_self'),
   },
 }
 </script>

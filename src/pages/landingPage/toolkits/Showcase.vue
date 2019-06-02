@@ -1,7 +1,7 @@
 <template>
   <div :class="getClass">
     <div class="title">
-      <Header tertiary>{{ kit.name }}</Header>
+      <Header s3>{{ kit.name }}</Header>
       <div class="tags">
         <Paragraph v-for="tag in kit.tags" :key="kit.tags.indexOf(tag)">
           &#35;{{ tag }}
@@ -63,7 +63,8 @@ export default new Component({
 
   .button {
     background-color: #fffe;
-    color: map-get($colors, 'secondary-font');
+    border: none;
+    color: color('on-surface');
     width: 15ch;
     position: relative;
     left: 100%;

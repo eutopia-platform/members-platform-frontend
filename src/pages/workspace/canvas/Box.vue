@@ -67,6 +67,7 @@ export default new Component({
 
 <style lang="scss" scoped>
 @import '/components/sharedStyles/shadows';
+@import '/components/sharedStyles/text';
 
 .box {
   width: 10rem;
@@ -74,7 +75,6 @@ export default new Component({
   background-color: white;
   box-sizing: border-box;
   position: absolute;
-  box-shadow: $shadow-default;
   padding: 0;
   cursor: grab;
   overflow: hidden;
@@ -91,7 +91,7 @@ export default new Component({
     transform-origin: left top;
 
     pre {
-      font-family: 'Nunito', sans-serif;
+      font-family: $font-primary;
       white-space: pre-wrap;
     }
   }

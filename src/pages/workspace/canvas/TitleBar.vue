@@ -8,7 +8,7 @@
       <Icon name="chat" recolor></Icon>
     </Item>
     <Item algin="right">
-      <Button>share</Button>
+      <Button primary>share</Button>
     </Item>
     <Item align="right">
       <Icon name="info" recolor></Icon>

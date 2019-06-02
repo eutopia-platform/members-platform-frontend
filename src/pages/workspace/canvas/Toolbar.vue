@@ -28,7 +28,7 @@ export default new Component({
   flex-direction: row;
   margin: 1rem;
   z-index: 900;
-  box-shadow: $shadow-default;
+  box-shadow: shadow(2);
 
   .icon {
     cursor: grab;

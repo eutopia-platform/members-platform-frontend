@@ -59,6 +59,7 @@ export default {
   .user-icon {
     height: 100%;
     width: 3rem;
+    margin: 0;
   }
 
   .logout-icon {

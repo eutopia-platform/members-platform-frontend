@@ -1,14 +1,18 @@
 <template>
   <form :class="getClass" @submit="login">
-    <Header secondary>Login</Header>
-    <Input v-model="email" blend placeholder="email" data-lpignore="true" />
-    <Input
+    <Header s2>Login</Header>
+    <LabeledInput
+      v-model="email"
+      type="email"
+      label="email"
+      autocomplete="email"
+    ></LabeledInput>
+    <LabeledInput
       v-model="password"
-      blend
-      placeholder="password"
+      label="password"
       type="password"
-      data-lpignore="true"
-    />
+      autocomplete="current-password"
+    ></LabeledInput>
     <Break />
     <Button :disabled="!emailValid || !passwordValid" @click="login">
       Submit
@@ -20,7 +24,8 @@
 <script>
 import Molecular from '/components/sharedScripts/molecular'
 import logout from '/components/sharedScripts/logout'
-import Popup from './Popup.vue'
+import LabeledInput from '/components/molecular/LabeledInput'
+import { isEmail } from '/components/sharedScripts/validate'
 import gql from 'graphql-tag'
 
 export default new Molecular({
@@ -29,7 +34,7 @@ export default new Molecular({
     $client: 'auth',
   },
   components: {
-    Popup,
+    LabeledInput,
   },
   created() {
     logout(this.$apollo.provider)
@@ -46,10 +51,8 @@ export default new Molecular({
     error: '',
   },
   computed: {
-    emailValid: function() {
-      return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        String(this.email).toLowerCase()
-      )
+    emailValid() {
+      return isEmail(this.email)
     },
     passwordValid: function() {
       return this.password.length >= 8
@@ -88,7 +91,7 @@ export default new Molecular({
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: $shadow-default;
+  box-shadow: shadow(2);
 
   .input {
     width: 100%;

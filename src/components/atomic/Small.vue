@@ -1,20 +1,32 @@
 <template>
-  <small class="small">
-    <slot />
-  </small>
+  <p :class="getClass">
+    <slot></slot>
+  </p>
 </template>
 
 <script>
-export default {
+import Atomic from '/components/sharedScripts/component'
+
+export default new Atomic({
   name: 'Small',
-}
+})
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/text.scss';
-@import '../sharedStyles/colors.scss';
+@import '../sharedStyles/text';
+@import '../sharedStyles/fluid';
+@import '../sharedStyles/math';
 
 .small {
-  font-size: $fs-small;
+  @include fluid(
+    font-size,
+    $rem-min * pow($fs-scale-min, -1),
+    $rem-max * pow($fs-scale-max, -1),
+    $fs-min-screen,
+    $fs-max-screen
+  );
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
+  line-height: var(--baseline);
 }
 </style>

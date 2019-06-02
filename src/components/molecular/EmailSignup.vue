@@ -1,12 +1,16 @@
 <template>
-  <form :class="getClass" @submit="submit">
-    <Input ref="input" v-model="email" placeholder="email" />
-    <Button @click="submit">Subscribe</Button>
-  </form>
+  <ActionInput
+    :class="getClass"
+    label="email"
+    button="subscribe"
+    @submit="submit"
+  ></ActionInput>
 </template>
 
 <script>
 import Molecular from '/components/sharedScripts/molecular'
+import ActionInput from '/components/molecular/ActionInput'
+import handleError from '/error'
 import gql from 'graphql-tag'
 
 export default new Molecular({
@@ -17,24 +21,35 @@ export default new Molecular({
   data: {
     email: '',
   },
+  components: {
+    ActionInput,
+  },
+  mixins: [handleError],
   methods: {
     submit(e) {
-      if (e) e.preventDefault()
-      this.$refs.input.value = ''
-      // gtag('event', 'submit', {
-      //   event_category: 'EmailSignup',
-      //   event_label: `uid: ${this._uid}`,
-      // })
-      this.$apollo.mutate({
-        mutation: gql`
-          mutation newsletter($email: String!) {
-            subscribeNews(email: $email)
+      this.$apollo
+        .mutate({
+          mutation: gql`
+            mutation newsletter($email: String!) {
+              subscribeNews(email: $email)
+            }
+          `,
+          variables: {
+            email: e,
+          },
+        })
+        .catch(err => {
+          switch (err.message.replace('GraphQL error:', '').trim()) {
+            case 'ALREADY_SUBSCRIBED':
+              this.showError('already subscribed')
+              break
+            case 'INVALID_EMAIL':
+              this.showError('invalid email')
+              break
+            default:
+              throw err
           }
-        `,
-        variables: {
-          email: this.email,
-        },
-      })
+        })
     },
   },
 })
@@ -46,33 +61,7 @@ export default new Molecular({
 
 .email-signup {
   display: block;
-  width: 25rem;
-  height: 2.8rem;
+  width: 20rem;
   text-align: left;
-  border-radius: 0.4rem;
-  box-shadow: $shadow-default;
-
-  * {
-    margin: 0;
-    border: none;
-  }
-
-  .input {
-    width: 80%;
-    height: 100%;
-    width: 100%;
-    padding-left: 1.5rem;
-    font-size: 1rem;
-    @include colorScheme('neutral');
-    border-radius: 0.4rem;
-  }
-
-  .button {
-    margin-top: 0;
-    height: 100%;
-    position: relative;
-    transform: translateX(-100%) translateY(-100%);
-    left: 100%;
-  }
 }
 </style>
