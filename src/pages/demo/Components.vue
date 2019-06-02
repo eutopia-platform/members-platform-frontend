@@ -14,7 +14,7 @@
     <Button secondary>Button (secondary)</Button>
     <Break></Break>
     <Input />
-    <Input default-value="with default" />
+    <Input value="with default" />
     <ActionInput></ActionInput>
     <ActionInput label="with label"></ActionInput>
     <ActionInput label="with label" default-value="with default"></ActionInput>

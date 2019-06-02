@@ -1,6 +1,6 @@
 <template>
   <input
-    :value="value"
+    v-model="value"
     :aria-label="internalAriaLabel"
     :class="getClass"
     :autocomplete="autocomplete"
@@ -36,13 +36,14 @@ export default new Molecular({
       default: undefined,
       type: Number,
     },
-    value: {
-      type: String,
-    },
   },
   computed: {
     internalAriaLabel: comp =>
       comp.ariaLabel !== null ? comp.ariaLabel : comp.placeholder,
+  },
+  data: {
+    currentFocus: false,
+    value: '',
   },
   mounted: function() {
     if (this.focus) this.$el.focus()
