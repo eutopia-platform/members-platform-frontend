@@ -91,12 +91,11 @@ export default new Molecular({
 
   label {
     font-size: 1rem;
-    line-height: var(--baseline);
-    margin-top: var(--baseline);
-    margin-bottom: var(--baseline);
-    margin-left: 0.4rem;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
     transition: margin-top 0.1s ease, transform 0.1s ease, color 0.1s ease;
     background: color('surface');
     user-select: none;
@@ -104,7 +103,7 @@ export default new Molecular({
   }
 
   label.top {
-    transform: translateY(-60%) scale(0.8);
+    transform: translateY(calc(var(--baseline) * -1 - 0.4rem)) scale(0.8);
     cursor: initial;
   }
 }
