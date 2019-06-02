@@ -1,7 +1,7 @@
 <template>
   <div class="intro" :style="style">
     <div v-if="showWelcome" class="welcome">
-      <Icon :src="logo"></Icon>
+      <Icon big class="logo" :src="logo"></Icon>
       <Header s2>{{ welcome_1 }}</Header>
       <Header s1 class="text-big">{{ welcome_2 }}</Header>
     </div>
@@ -183,6 +183,10 @@ export default {
     }
   }
 
+  .logo {
+    transform: scale(2) !important;
+  }
+
   * {
     z-index: 1;
     position: absolute;
@@ -226,13 +230,13 @@ export default {
       transform: none;
     }
 
-    .icon {
-      width: 7rem;
+    .email-signup {
+      position: relative;
+      transform: translateX(-50%) !important;
     }
 
-    .email-signup {
-      margin-top: 2rem;
-      max-width: 80vw;
+    .icon {
+      transform: scale(3);
     }
 
     .transparent {
