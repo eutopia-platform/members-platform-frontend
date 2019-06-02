@@ -3,7 +3,7 @@
     <Input
       :id="`labeled-input-${_uid}`"
       v-model="value"
-      :password="password"
+      :[type]="true"
       :autocomplete="autocomplete"
       :focus="focus"
       @focus="setFocus(true)"
@@ -38,13 +38,13 @@ export default new Molecular({
       type: String,
       default: 'off',
     },
-    password: {
-      type: Boolean,
-      default: false,
-    },
     focus: {
       default: false,
       type: Boolean,
+    },
+    type: {
+      type: String,
+      default: null,
     },
   },
   data: {

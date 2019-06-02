@@ -1,14 +1,18 @@
 <template>
-  <div class="action-input" :class="{ focus }">
+  <div class="action-input" :class="{ focus: currentFocus }">
     <Component
       :is="label ? 'LabeledInput' : 'Input'"
+      v-model="value"
       class="input"
+      :[type]="true"
       :label="label"
-      :placeholder="placeholder"
+      :autocomplete="autocomplete"
+      :focus="focus"
       @focus="setFocus(true)"
       @blur="setFocus(false)"
+      @input="onInput"
     ></Component>
-    <Button ref="button">{{ button }}</Button>
+    <Button ref="button" @click="onClick">{{ button }}</Button>
   </div>
 </template>
 
@@ -19,24 +23,49 @@ import LabeledInput from '/components/molecular/LabeledInput'
 export default new Molecular({
   name: 'ActionInput',
   data: {
-    focus: false,
+    currentFocus: false,
+    value: '',
   },
   props: {
-    label: {
-      type: String,
-    },
-    placeholder: {
-      type: String,
-    },
     button: {
       type: String,
       default: 'submit',
     },
+    label: {
+      type: String,
+    },
+    defaultValue: {
+      type: String,
+      default: 'asdf',
+    },
+    autocomplete: {
+      type: String,
+      default: 'off',
+    },
+    type: {
+      type: String,
+      default: null,
+    },
+    focus: {
+      default: false,
+      type: Boolean,
+    },
+  },
+  watch: {
+    defaultValue(v) {
+      this.value = v
+    },
   },
   methods: {
     setFocus(status) {
-      this.focus = status
+      this.currentFocus = status
       this.$refs.button.$el.classList.toggle('primary', status)
+    },
+    onClick() {
+      this.$emit('submit', this.value)
+    },
+    onInput(e) {
+      this.$emit('input', e)
     },
   },
   components: {

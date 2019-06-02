@@ -4,7 +4,7 @@
     :aria-label="internalAriaLabel"
     :class="getClass"
     :autocomplete="autocomplete"
-    :type="password ? 'password' : 'text'"
+    :type="(email && 'email') || (password && 'password') || 'text'"
     :style="size ? { width: size + 'em' } : {}"
     @input="onInput"
     @keyup.enter="onEnter"
@@ -18,11 +18,8 @@ import Molecular from '../sharedScripts/molecular'
 
 export default new Molecular({
   name: 'Input',
+  types: ['default', 'email', 'password'],
   props: {
-    password: {
-      type: Boolean,
-      default: false,
-    },
     autocomplete: {
       type: String,
       default: 'off',
