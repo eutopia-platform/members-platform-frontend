@@ -1,10 +1,10 @@
 <template>
   <input
-    v-model="value"
-    :placeholder="placeholder"
+    :value="value"
     :aria-label="internalAriaLabel"
     :class="getClass"
-    :autocomplete="password === 'password' ? 'new-password' : 'true'"
+    :autocomplete="autocomplete"
+    :type="password ? 'password' : 'text'"
     :style="size ? { width: size + 'em' } : {}"
     @input="onInput"
     @keyup.enter="onEnter"
@@ -23,9 +23,9 @@ export default new Molecular({
       type: Boolean,
       default: false,
     },
-    placeholder: {
-      default: '',
+    autocomplete: {
       type: String,
+      default: 'off',
     },
     ariaLabel: {
       default: null,
@@ -39,9 +39,9 @@ export default new Molecular({
       default: undefined,
       type: Number,
     },
-  },
-  data: {
-    value: '',
+    value: {
+      type: String,
+    },
   },
   computed: {
     internalAriaLabel: comp =>
@@ -53,14 +53,6 @@ export default new Molecular({
   methods: {
     onInput(e) {
       this.$emit('input', e.target.value)
-      this.onChange()
-    },
-    onChange() {
-      const payload = {
-        name: this.name,
-        value: this.value,
-      }
-      this.$emit('valueChange', payload)
     },
     onEnter() {
       this.$emit('submit')

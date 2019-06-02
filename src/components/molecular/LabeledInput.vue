@@ -1,16 +1,19 @@
 <template>
-  <div class="labeled-input" :class="{ focus }">
+  <div class="labeled-input" :class="{ currentFocus }">
     <Input
       :id="`labeled-input-${_uid}`"
       v-model="value"
-      :placeholder="placeholder"
+      :password="password"
+      :autocomplete="autocomplete"
+      :focus="focus"
       @focus="setFocus(true)"
       @blur="setFocus(false)"
+      @input="onInput"
     />
     <label
       ref="label"
       :for="`labeled-input-${_uid}`"
-      :class="{ top: focus || placeholder || value.length }"
+      :class="{ top: currentFocus || value.length }"
     >
       {{ label }}
     </label>
@@ -27,18 +30,39 @@ export default new Molecular({
       type: String,
       required: true,
     },
-    placeholder: {
+    defaultValue: {
       type: String,
+      default: 'asdf',
+    },
+    autocomplete: {
+      type: String,
+      default: 'off',
+    },
+    password: {
+      type: Boolean,
+      default: false,
+    },
+    focus: {
+      default: false,
+      type: Boolean,
     },
   },
   data: {
-    focus: false,
+    currentFocus: false,
     value: '',
+  },
+  watch: {
+    defaultValue(v) {
+      this.value = v
+    },
   },
   methods: {
     setFocus(status) {
-      this.focus = status
+      this.currentFocus = status
       this.$emit(status ? 'focus' : 'blur')
+    },
+    onInput(e) {
+      this.$emit('input', e)
     },
   },
 })
@@ -48,8 +72,7 @@ export default new Molecular({
 @import '/components/sharedStyles/colors';
 
 .labeled-input {
-  display: inline-block;
-  min-width: 14rem;
+  width: 14rem;
   position: relative;
   height: calc(1.5 * var(--baseline));
   margin-top: calc(var(--baseline) - var(--baseline) / 4);
