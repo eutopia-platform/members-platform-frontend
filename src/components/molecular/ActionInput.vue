@@ -56,6 +56,9 @@ export default new Molecular({
       this.value = v
     },
   },
+  created() {
+    this.value = this.defaultValue
+  },
   methods: {
     setFocus(status) {
       this.currentFocus = status
