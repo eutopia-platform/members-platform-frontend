@@ -1,14 +1,17 @@
 <template>
   <form :class="getClass" @submit="login">
     <Header s2>Login</Header>
-    <Input v-model="email" blend placeholder="email" data-lpignore="true" />
-    <Input
+    <LabeledInput
+      v-model="email"
+      label="email"
+      autocomplete="email"
+    ></LabeledInput>
+    <LabeledInput
       v-model="password"
-      blend
-      placeholder="password"
-      type="password"
-      data-lpignore="true"
-    />
+      label="password"
+      password
+      autocomplete="current-password"
+    ></LabeledInput>
     <Break />
     <Button :disabled="!emailValid || !passwordValid" @click="login">
       Submit
@@ -20,7 +23,7 @@
 <script>
 import Molecular from '/components/sharedScripts/molecular'
 import logout from '/components/sharedScripts/logout'
-import Popup from './Popup.vue'
+import LabeledInput from '/components/molecular/LabeledInput'
 import gql from 'graphql-tag'
 
 export default new Molecular({
@@ -29,7 +32,7 @@ export default new Molecular({
     $client: 'auth',
   },
   components: {
-    Popup,
+    LabeledInput,
   },
   created() {
     logout(this.$apollo.provider)
