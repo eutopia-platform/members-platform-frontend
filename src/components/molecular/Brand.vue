@@ -7,11 +7,12 @@
   >
     <Icon
       v-if="!nologo"
+      big
       :src="logo"
       class="logo"
       aria="Productcube's logo"
     ></Icon>
-    <Header s3 inline :class="{ white }">Productcube</Header>
+    <Header s3 :class="{ white }">Productcube</Header>
   </div>
 </template>
 
@@ -46,14 +47,19 @@ export default new Molecular({
   width: 11.5rem;
   height: 3rem;
   display: flex;
-  justify-content: space-between;
   cursor: pointer;
   z-index: 200;
   user-select: none;
   background-color: transparent;
+  align-items: center;
 
-  .logo {
-    height: 100%;
+  * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    &:first-child {
+      margin-right: 1rem;
+    }
   }
 }
 
