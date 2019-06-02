@@ -13,18 +13,6 @@ describe('A Button', () => {
     expect(hasButton).toBe(true)
   })
 
-  it("renders image from source, if it's an icon-button", () => {
-    const src = 'this/is/an/image/source'
-    const button = mount(Button, {
-      propsData: {
-        icon: true,
-        img: src,
-      },
-    })
-    const hasImg = button.contains(`img[src='${src}']`)
-    expect(hasImg).toBe(true)
-  })
-
   it('emits a click event when clicked', () => {
     const button = mount(Button)
     button.find('button').trigger('click')

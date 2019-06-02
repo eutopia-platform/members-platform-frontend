@@ -7,46 +7,55 @@ describe('A Header', () => {
     expect(header.exists()).toBe(true)
   })
 
-  it('renders an h1 as primary header', () => {
+  it('renders an h1 as s1 header', () => {
     const header = mount(Header, {
       propsData: {
-        primary: true,
+        s1: true,
       },
     })
-    expect(header.is('h1.primary')).toBe(true)
+    expect(header.is('h1.s1')).toBe(true)
   })
 
-  it('renders an h2 as secondary header', () => {
+  it('renders an h2 as s2 header', () => {
     const header = mount(Header, {
       propsData: {
-        secondary: true,
+        s2: true,
       },
     })
-    expect(header.is('h2.secondary')).toBe(true)
+    expect(header.is('h2.s2')).toBe(true)
   })
 
-  it('renders an h3 as tertiary header', () => {
+  it('renders an h3 as s3 header', () => {
     const header = mount(Header, {
       propsData: {
-        tertiary: true,
+        s3: true,
       },
     })
-    expect(header.is('h3.tertiary')).toBe(true)
+    expect(header.is('h3.s3')).toBe(true)
   })
 
-  it('renders an h4 as quaternary header', () => {
+  it('renders an h4 as s4 header', () => {
     const header = mount(Header, {
       propsData: {
-        quaternary: true,
+        s4: true,
       },
     })
-    expect(header.is('h4.quaternary')).toBe(true)
+    expect(header.is('h4.s4')).toBe(true)
+  })
+
+  it('renders an h5 as s5 header', () => {
+    const header = mount(Header, {
+      propsData: {
+        s5: true,
+      },
+    })
+    expect(header.is('h5.s5')).toBe(true)
   })
 
   it('renders passed content in header', () => {
     const header = mount(Header, {
       propsData: {
-        primary: true,
+        s1: true,
       },
       slots: {
         default: '<span></span>',
