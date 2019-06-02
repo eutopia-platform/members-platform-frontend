@@ -3,13 +3,14 @@
     <Header s2>Login</Header>
     <LabeledInput
       v-model="email"
+      type="email"
       label="email"
       autocomplete="email"
     ></LabeledInput>
     <LabeledInput
       v-model="password"
       label="password"
-      password
+      type="password"
       autocomplete="current-password"
     ></LabeledInput>
     <Break />
@@ -24,6 +25,7 @@
 import Molecular from '/components/sharedScripts/molecular'
 import logout from '/components/sharedScripts/logout'
 import LabeledInput from '/components/molecular/LabeledInput'
+import { isEmail } from '/components/sharedScripts/validate'
 import gql from 'graphql-tag'
 
 export default new Molecular({
@@ -49,10 +51,8 @@ export default new Molecular({
     error: '',
   },
   computed: {
-    emailValid: function() {
-      return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        String(this.email).toLowerCase()
-      )
+    emailValid() {
+      return isEmail(this.email)
     },
     passwordValid: function() {
       return this.password.length >= 8
