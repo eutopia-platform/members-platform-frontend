@@ -48,7 +48,9 @@ export default new Component({
       }
     },
     scaleContent() {
-      const scale = this.def.vp.initialWidth / this.def.vp.width
+      const scale = this.$el
+        ? 0.1 / (this.def.width / this.$el.offsetWidth)
+        : this.def.vp.initialWidth / this.def.vp.width
 
       return {
         transform: `scale(${scale})`,
