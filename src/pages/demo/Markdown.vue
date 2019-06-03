@@ -14,13 +14,13 @@ import Vue from 'vue'
 import Header from '/components/atomic/Header'
 import Paragraph from '/components/atomic/Paragraph'
 
-const createElement = (el, content, props = {}) => {
-  const comp = new (Vue.extend(el))({
-    propsData: props,
-  })
-  comp.$slots.default = content
-  return comp.$mount().$el.outerHTML
-}
+const createElement = (el, content, props = {}) =>
+  Object.assign(
+    new (Vue.extend(el))({
+      propsData: props,
+    }).$mount().$el,
+    { innerHTML: content }
+  ).outerHTML
 
 const renderer = new marked.Renderer()
 renderer.heading = (text, level) =>
