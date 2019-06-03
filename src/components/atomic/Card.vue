@@ -23,6 +23,7 @@ export default new Atomic({
   padding-left: 1rem;
   padding-right: 1rem;
   box-sizing: border-box;
+  overflow: auto;
   box-shadow: shadow(2);
   z-index: 2;
 }
