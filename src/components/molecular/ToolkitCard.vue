@@ -65,6 +65,7 @@ export default new Molecular({
     position: relative;
     transform-style: preserve-3d;
     background-color: initial;
+    overflow: initial;
 
     .front {
       text-align: center;
