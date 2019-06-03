@@ -2,6 +2,7 @@
   <div :class="getClass" :style="style">
     <div ref="content" :style="scaleContent" class="content">
       <pre><slot></slot></pre>
+      <!-- <MarkdownDisplay :markdown="content"></MarkdownDisplay> -->
     </div>
     <div class="inner"></div>
     <div class="resize res-left"></div>
@@ -13,6 +14,7 @@
 
 <script>
 import Component from '/components/sharedScripts/component'
+import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
 import { Box as BoxDef } from './definition'
 
 export default new Component({
@@ -29,6 +31,10 @@ export default new Component({
     parentHeight: {
       type: Number,
       required: true,
+    },
+    content: {
+      type: String,
+      default: '## Header 2',
     },
   },
   computed: {
@@ -61,6 +67,9 @@ export default new Component({
         ...this.scaleContent,
       }
     },
+  },
+  components: {
+    MarkdownDisplay,
   },
 })
 </script>

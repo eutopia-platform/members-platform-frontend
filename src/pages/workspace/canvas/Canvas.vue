@@ -42,6 +42,9 @@ export default new Component({
     sideRatio(n) {
       this.def.setSideRatio(n)
     },
+    width() {
+      this.onResize()
+    },
   },
   methods: {
     handleDrop(e) {
@@ -63,6 +66,7 @@ export default new Component({
     onResize() {
       this.height = this.$el.offsetHeight
       this.sideRatio = this.$el.offsetHeight / this.$el.offsetWidth
+      this.def.setSideRatio(this.setSideRatio)
     },
     onWheel(e) {
       if (e.ctrlKey)
