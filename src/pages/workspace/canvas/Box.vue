@@ -1,8 +1,13 @@
 <template>
-  <div :class="getClass" :style="style">
+  <div :class="getClass" :style="style" tabindex="1" @focus="setFocus(true)">
     <div ref="content" :style="scaleContent" class="content">
-      <pre><slot></slot></pre>
-      <!-- <MarkdownDisplay :markdown="content"></MarkdownDisplay> -->
+      <Component
+        :is="contentDisplay"
+        ref="contentDisplay"
+        v-model="content"
+        :markdown="content"
+        @blur="setFocus(false)"
+      ></Component>
     </div>
     <div class="inner"></div>
     <div class="resize res-left"></div>
@@ -15,10 +20,15 @@
 <script>
 import Component from '/components/sharedScripts/component'
 import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
+import Textedit from '/components/molecular/Textedit'
 import { Box as BoxDef } from './definition'
 
 export default new Component({
   name: 'Box',
+  data: {
+    content: '# Header 2',
+    contentDisplay: 'MarkdownDisplay',
+  },
   props: {
     def: {
       type: BoxDef,
@@ -31,10 +41,6 @@ export default new Component({
     parentHeight: {
       type: Number,
       required: true,
-    },
-    content: {
-      type: String,
-      default: '## Header 2',
     },
   },
   computed: {
@@ -69,9 +75,21 @@ export default new Component({
         ...this.scaleContent,
       }
     },
+    setFocus(focus) {
+      if (!focus) this.contentDisplay = 'MarkdownDisplay'
+      else {
+        this.contentDisplay = 'Textedit'
+        const text = this.content
+        this.$nextTick(() => {
+          this.$refs.contentDisplay.$el.focus()
+          this.$refs.contentDisplay.$el.value = text
+        })
+      }
+    },
   },
   components: {
     MarkdownDisplay,
+    Textedit,
   },
 })
 </script>
@@ -91,7 +109,8 @@ export default new Component({
   overflow: hidden;
 
   .content {
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -100,11 +119,6 @@ export default new Component({
     user-select: none;
     transform-origin: center;
     transform-origin: left top;
-
-    pre {
-      font-family: $font-primary;
-      white-space: pre-wrap;
-    }
   }
 
   $res-margin: 0.2rem;

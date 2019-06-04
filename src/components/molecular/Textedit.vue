@@ -2,6 +2,7 @@
   <textarea
     v-model="text"
     :class="getClass"
+    @blur="$emit('blur')"
     @input="$emit('input', $event.target.value)"
   ></textarea>
 </template>
