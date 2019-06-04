@@ -60,7 +60,9 @@ export default class Component {
 
   _addData(...data) {
     for (const prop of data)
-      this.dataFuncs.push(typeof prop === 'function' ? prop : () => prop)
+      this.dataFuncs.push(
+        typeof prop === 'function' ? prop : () => Object.assign({}, prop)
+      )
     this.data = comp =>
       Object.assign(...this.dataFuncs.map(func => func.call(comp)))
   }
