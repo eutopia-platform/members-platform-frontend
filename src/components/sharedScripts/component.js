@@ -2,10 +2,11 @@ import { assert } from './debug'
 
 export default class Component {
   constructor(def) {
+    this.dataFuncs = []
+
     // copy properties
     for (let prop in def) {
       if (prop === 'data') {
-        assert(() => typeof def[prop] === 'object', 'data must be object')
         this._addData(def[prop])
         continue
       }
@@ -58,13 +59,10 @@ export default class Component {
   }
 
   _addData(...data) {
-    for (let prop of data) {
-      const dataOld = this.data ? this.data() : {}
-      this.data = () => ({
-        ...dataOld,
-        ...prop,
-      })
-    }
+    for (const prop of data)
+      this.dataFuncs.push(typeof prop === 'function' ? prop : () => prop)
+    this.data = comp =>
+      Object.assign(...this.dataFuncs.map(func => func.call(comp)))
   }
 
   created() {
