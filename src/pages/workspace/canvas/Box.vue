@@ -75,12 +75,6 @@ export default new Component({
     },
   },
   methods: {
-    updateLayout() {
-      this.$el.style = {
-        ...this.$el,
-        ...this.scaleContent,
-      }
-    },
     setActive(focus) {
       if (this.def.isMoving) {
         this.def.isMoving = false
