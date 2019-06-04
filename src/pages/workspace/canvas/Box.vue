@@ -25,9 +25,9 @@ import { Box as BoxDef } from './definition'
 
 export default new Component({
   name: 'Box',
-  data: {
-    content: '# Header 2',
-    contentDisplay: 'MarkdownDisplay',
+  components: {
+    MarkdownDisplay,
+    Textedit,
   },
   props: {
     def: {
@@ -42,6 +42,12 @@ export default new Component({
       type: Number,
       required: true,
     },
+  },
+  data() {
+    return {
+      content: this.def.content,
+      contentDisplay: 'MarkdownDisplay',
+    }
   },
   computed: {
     style() {
@@ -86,10 +92,6 @@ export default new Component({
         })
       }
     },
-  },
-  components: {
-    MarkdownDisplay,
-    Textedit,
   },
 })
 </script>
