@@ -1,12 +1,12 @@
 <template>
-  <div :class="getClass" :style="style" tabindex="1" @focus="setFocus(true)">
+  <div :class="getClass" :style="style" @click="setActive(true)">
     <div ref="content" :style="scaleContent" class="content">
       <Component
         :is="contentDisplay"
         ref="contentDisplay"
         v-model="content"
         :markdown="content"
-        @blur="setFocus(false)"
+        @blur="setActive(false)"
       ></Component>
     </div>
     <div class="inner"></div>
@@ -81,7 +81,11 @@ export default new Component({
         ...this.scaleContent,
       }
     },
-    setFocus(focus) {
+    setActive(focus) {
+      if (this.def.isMoving) {
+        this.def.isMoving = false
+        return
+      }
       if (!focus) this.contentDisplay = 'MarkdownDisplay'
       else {
         this.contentDisplay = 'Textedit'

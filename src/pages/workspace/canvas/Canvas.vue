@@ -114,6 +114,7 @@ export default new Component({
       this.$el.removeEventListener('mousemove', this.onBoxResize)
     },
     onDrag({ clientX: x, clientY: y }) {
+      this.dragTarget.el.def.isMoving = true
       this.dragTarget.el.def.move(
         (x - this.dragTarget.off.x - this.$el.offsetLeft) /
           this.$el.offsetWidth,
