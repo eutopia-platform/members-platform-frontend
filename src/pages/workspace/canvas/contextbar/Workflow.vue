@@ -1,7 +1,6 @@
 <template>
   <div :class="getClass">
     <div class="title">
-      <Header s4>Workflow</Header>
       <Header s4>Customer Journey Map</Header>
     </div>
     <Paragraph>1. Actor</Paragraph>

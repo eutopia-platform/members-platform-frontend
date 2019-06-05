@@ -1,13 +1,19 @@
 <template>
   <Sidebar
     ref="sidebar"
+    :class="getClass"
     right
     collapsable
     @collapse="onCollapse"
     @expand="onExpand"
     @changeWidth="w => $emit('changeWidth', w)"
   >
-    <Workflow ref="content"></Workflow>
+    <div class="title">
+      <Icon name="chevron_left" @click="changePanel('prev')"></Icon>
+      <Header s3>{{ activePanel }}</Header>
+      <Icon name="chevron_right" @click="changePanel('next')"></Icon>
+    </div>
+    <Component :is="activePanel" ref="content"></Component>
   </Sidebar>
 </template>
 
@@ -15,12 +21,14 @@
 import Component from '/components/sharedScripts/component'
 import Sidebar from '/components/molecular/Sidebar'
 import Workflow from './contextbar/Workflow'
+import Learning from './contextbar/Learning'
 
 export default new Component({
   name: 'ContextBar',
   components: {
     Sidebar,
     Workflow,
+    Learning,
   },
   methods: {
     onCollapse() {
@@ -29,12 +37,46 @@ export default new Component({
     onExpand() {
       this.$refs.content.$el.style.display = 'initial'
     },
+    changePanel(dir) {
+      if (dir === 'next')
+        this.activePanel = this.panels[
+          (this.panels.indexOf(this.activePanel) + 1) % this.panels.length
+        ]
+      else
+        this.activePanel = this.panels[
+          this.panels.indexOf(this.activePanel) - 1 < 0
+            ? this.panels.length - 1
+            : this.panels.indexOf(this.activePanel) - 1
+        ]
+    },
+  },
+  data() {
+    const panels = ['Workflow', 'Learning']
+    return {
+      panels,
+      activePanel: panels[0],
+    }
   },
 })
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
+.context-bar {
   padding: 2rem;
+  overflow: hidden;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    * {
+      margin: 0;
+    }
+
+    .icon {
+      cursor: pointer;
+    }
+  }
 }
 </style>
