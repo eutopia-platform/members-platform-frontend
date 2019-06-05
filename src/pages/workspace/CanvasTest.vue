@@ -76,6 +76,7 @@ export default new Component({
 .canvas-test {
   padding: 0 !important;
   height: 100vh;
+  overflow: hidden;
 
   .center {
     height: 100vh;
