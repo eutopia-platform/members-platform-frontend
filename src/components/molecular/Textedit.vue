@@ -12,9 +12,9 @@ import Molecular from '/components/sharedScripts/component'
 
 export default new Molecular({
   name: 'Textedit',
-  data: {
+  data: () => ({
     text: '',
-  },
+  }),
 })
 </script>
 

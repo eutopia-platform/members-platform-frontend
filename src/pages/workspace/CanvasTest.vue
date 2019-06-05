@@ -22,10 +22,10 @@ export default new Component({
     TitleBar,
     ContextBar,
   },
-  data: {
+  data: () => ({
     sidebarWidth: 0,
     titlebarHeight: 0,
-  },
+  }),
   props: {
     offsetLeft: {
       type: Number | String,

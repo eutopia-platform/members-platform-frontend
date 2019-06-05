@@ -18,8 +18,10 @@ export default new Molecular({
   apollo: {
     $client: 'mail',
   },
-  data: {
-    email: '',
+  data() {
+    return {
+      email: '',
+    }
   },
   components: {
     ActionInput,

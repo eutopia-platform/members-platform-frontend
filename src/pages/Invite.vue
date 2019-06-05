@@ -45,10 +45,10 @@ export default new Component({
       },
     },
   },
-  data: {
+  data: () => ({
     screen: 'LoadingScreen',
     space: '',
-  },
+  }),
   components: {
     LoadingScreen,
     InviteError,

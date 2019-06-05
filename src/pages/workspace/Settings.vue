@@ -105,14 +105,14 @@ export default new Component({
     LabeledInput,
     InviteForm,
   },
-  data: {
+  data: () => ({
     user: {
       name: '',
       callName: '',
       email: '',
     },
     workspaces: [],
-  },
+  }),
   methods: {
     submitProfile: function() {
       this.$apollo.mutate({

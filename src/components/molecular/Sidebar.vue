@@ -23,9 +23,9 @@ export default new Molecular({
       default: false,
     },
   },
-  data: {
+  data: () => ({
     collapsed: false,
-  },
+  }),
   methods: {
     toggleCollapse() {
       this.collapsed = !this.collapsed

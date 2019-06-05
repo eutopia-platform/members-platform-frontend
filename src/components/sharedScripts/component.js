@@ -7,6 +7,10 @@ export default class Component {
     // copy properties
     for (let prop in def) {
       if (prop === 'data') {
+        assert(
+          () => typeof def[prop] === 'function',
+          `component data must be a function (${def.name})`
+        )
         this._addData(def[prop])
         continue
       }

@@ -46,9 +46,11 @@ export default new Molecular({
       default: null,
     },
   },
-  data: {
-    currentFocus: false,
-    value: '',
+  data() {
+    return {
+      currentFocus: false,
+      value: '',
+    }
   },
   watch: {
     defaultValue(v) {

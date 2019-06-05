@@ -18,9 +18,9 @@ import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
 
 export default new Component({
   name: 'MarkdownDemo',
-  data: {
+  data: () => ({
     input: '',
-  },
+  }),
   components: {
     Textedit,
     MarkdownDisplay,

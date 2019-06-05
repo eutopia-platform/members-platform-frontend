@@ -93,7 +93,7 @@ const intDig = n => (Math.log10(n | 0) + 1) | 0
 
 export default new Component({
   name: 'ShadowDemo',
-  data: {
+  data: () => ({
     cardHeight: 0,
     ambient: true,
     spot: true,
@@ -102,7 +102,7 @@ export default new Component({
     lightPos: 0,
     blur: true,
     alpha: true,
-  },
+  }),
   computed: {
     backColor() {
       return {

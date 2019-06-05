@@ -45,11 +45,11 @@ export default new Molecular({
       default: '/space/',
     },
   },
-  data: {
+  data: () => ({
     email: '',
     password: '',
     error: '',
-  },
+  }),
   computed: {
     emailValid() {
       return isEmail(this.email)

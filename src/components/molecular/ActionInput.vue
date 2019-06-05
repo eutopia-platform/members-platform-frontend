@@ -23,9 +23,11 @@ import LabeledInput from '/components/molecular/LabeledInput'
 
 export default new Molecular({
   name: 'ActionInput',
-  data: {
-    currentFocus: false,
-    value: '',
+  data() {
+    return {
+      currentFocus: false,
+      value: '',
+    }
   },
   props: {
     button: {

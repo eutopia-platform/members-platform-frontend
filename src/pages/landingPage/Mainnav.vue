@@ -24,10 +24,10 @@ export default new Component({
     Item,
     Brand,
   },
-  data: {
+  data: () => ({
     lastScrollPos: 0,
     hidden: false,
-  },
+  }),
   computed: {
     theme() {
       return this.$route.path === '/' ? 'white' : 'blue'

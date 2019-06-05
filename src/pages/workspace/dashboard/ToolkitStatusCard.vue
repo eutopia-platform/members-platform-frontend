@@ -26,7 +26,7 @@ export default new Component({
     DashboardCard,
     Table,
   },
-  data: {
+  data: () => ({
     toolkits: [
       {
         name: 'Foo',
@@ -35,7 +35,7 @@ export default new Component({
         lead: 'person',
       },
     ],
-  },
+  }),
 })
 </script>
 
