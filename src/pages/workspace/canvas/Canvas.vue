@@ -27,10 +27,12 @@ export default new Component({
     Box,
     Toolbar,
   },
-  data: {
-    def: new Canvas(),
-    sideRatio: 1,
-    height: window.innerHeight,
+  data() {
+    return {
+      def: new Canvas(),
+      sideRatio: 1,
+      height: window.innerHeight,
+    }
   },
   props: {
     width: {
@@ -41,6 +43,9 @@ export default new Component({
   watch: {
     sideRatio(n) {
       this.def.setSideRatio(n)
+    },
+    width() {
+      this.onResize()
     },
   },
   methods: {
@@ -63,6 +68,7 @@ export default new Component({
     onResize() {
       this.height = this.$el.offsetHeight
       this.sideRatio = this.$el.offsetHeight / this.$el.offsetWidth
+      this.def.setSideRatio(this.setSideRatio)
     },
     onWheel(e) {
       if (e.ctrlKey)
@@ -110,6 +116,7 @@ export default new Component({
       this.$el.removeEventListener('mousemove', this.onBoxResize)
     },
     onDrag({ clientX: x, clientY: y }) {
+      this.dragTarget.el.def.isMoving = true
       this.dragTarget.el.def.move(
         (x - this.dragTarget.off.x - this.$el.offsetLeft) /
           this.$el.offsetWidth,
@@ -155,7 +162,6 @@ export default new Component({
       }
 
       this.resizeTarget.el.def.resize(dim, anchor)
-      this.resizeTarget.el.updateLayout()
     },
     scroll(x, y) {
       this.def.scroll(x, y)

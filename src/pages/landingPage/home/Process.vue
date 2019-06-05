@@ -1,14 +1,14 @@
 <template>
   <div class="process">
-    <Header primary>Test your ideas quicker</Header>
-    <Tagline class="tagline">
+    <Header s1>Test your ideas quicker</Header>
+    <Big>
       Run data driven experiments with toolkits and processes to build, validate
-      and iterate through prototypes quick.
-    </Tagline>
+      and iterate through prototypes quickly.
+    </Big>
     <div class="steps">
       <div class="step">
         <Icon :src="img1"></Icon>
-        <Header tertiary>Choose a toolkit</Header>
+        <Header s3>Choose a toolkit</Header>
         <Paragraph>
           Toolkits help you get the job done. No matter if you want to identify
           your customer, develop a new feature or even an entire MVP.
@@ -16,7 +16,7 @@
       </div>
       <div class="step">
         <Icon :src="img2"></Icon>
-        <Header tertiary>Set a hypothesis</Header>
+        <Header s3>Set a hypothesis</Header>
         <Paragraph>
           Every toolkit require you to write a hypothesis and a metric to
           measure your result by.
@@ -24,7 +24,7 @@
       </div>
       <div class="step">
         <Icon :src="img3"></Icon>
-        <Header tertiary>User-test it</Header>
+        <Header s3>User-test it</Header>
         <Paragraph>
           We make it easy to test your result by offering a way to setup user
           tests in under five minuts.
@@ -32,7 +32,7 @@
       </div>
       <div class="step">
         <Icon :src="img4"></Icon>
-        <Header tertiary>Validate or pivot</Header>
+        <Header s3>Validate or pivot</Header>
         <Paragraph>
           Use the result of your user test to back up your strategic decision
           and iterate towards product-market fit.
@@ -82,19 +82,6 @@ export default {
     margin-bottom: 2rem;
   }
 
-  .tagline {
-    width: 80%;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-
-    @media screen and (max-width: 800px) {
-      transform: none;
-      left: 0;
-      width: auto;
-    }
-  }
-
   .steps {
     width: 100%;
     display: flex;
@@ -137,6 +124,10 @@ export default {
       .paragraph {
         text-align: left;
         margin: 2rem;
+      }
+
+      .icon {
+        height: 4rem;
       }
     }
   }

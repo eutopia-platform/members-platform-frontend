@@ -22,10 +22,10 @@ export default new Component({
     TitleBar,
     ContextBar,
   },
-  data: {
+  data: () => ({
     sidebarWidth: 0,
     titlebarHeight: 0,
-  },
+  }),
   props: {
     offsetLeft: {
       type: Number | String,
@@ -76,6 +76,7 @@ export default new Component({
 .canvas-test {
   padding: 0 !important;
   height: 100vh;
+  overflow: hidden;
 
   .center {
     height: 100vh;

@@ -1,28 +1,30 @@
 <template>
   <div class="settings">
-    <Header tertiary>Settings</Header>
+    <Header s3>Settings</Header>
     <div class="content">
       <Card>
-        <Header quaternary>Profile</Header>
+        <Header s4>Profile</Header>
         <LabeledInput
           v-model="user.name"
           label="name"
+          autocomplete="name"
           :default-value="user.name"
           :size="20"
         ></LabeledInput>
         <LabeledInput
           v-model="user.callname"
           label="nickname"
+          autocomplete="nickname"
           :default-value="user.callname"
           :size="20"
         ></LabeledInput>
         <Paragraph>
           Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
         </Paragraph>
-        <Button small @click="submitProfile">submit</Button>
+        <Button @click="submitProfile">submit</Button>
       </Card>
       <Card>
-        <Header quaternary>Workspace</Header>
+        <Header s4>Workspace</Header>
         <Paragraph>name: {{ workspace ? workspace.name : '' }}</Paragraph>
         <Paragraph>
           created:
@@ -40,15 +42,8 @@
         <InviteForm @error="onError"></InviteForm>
       </Card>
       <Card class="danger-zone">
-        <Header quaternary>Danger Zone</Header>
-        <Button @click="confirmDelete = true">delete this workspace</Button>
-        <Confirmation
-          v-if="confirmDelete"
-          title="Are you sure?"
-          description="Do you really want to delete this workspace? This action cannot not be undone! Please type the name of this workspace if you want to proceed."
-          :confirmation="workspace.name"
-          @confirmed="deleteWorkspace"
-        ></Confirmation>
+        <Header s4>Danger Zone</Header>
+        <Button @click="confirmDelete">delete this workspace</Button>
       </Card>
     </div>
   </div>
@@ -58,7 +53,7 @@
 import gql from 'graphql-tag'
 import Component from '/components/sharedScripts/component'
 import LabeledInput from '/components/molecular/LabeledInput'
-import Confirmation from '/components/molecular/Confirmation'
+import ConfirmDelete from './settings/ConfirmDelete'
 import InviteForm from './settings/InviteForm'
 
 export default new Component({
@@ -109,17 +104,15 @@ export default new Component({
   components: {
     LabeledInput,
     InviteForm,
-    Confirmation,
   },
-  data: {
+  data: () => ({
     user: {
       name: '',
       callName: '',
       email: '',
     },
     workspaces: [],
-    confirmDelete: false,
-  },
+  }),
   methods: {
     submitProfile: function() {
       this.$apollo.mutate({
@@ -128,6 +121,8 @@ export default new Component({
             setName(name: "${this.user.name}" callname: "${
           this.user.callname
         }") {
+              id
+              name
               callname
             }
           }
@@ -137,12 +132,23 @@ export default new Component({
             query: gql`
               {
                 user {
+                  id
+                  name
                   callname
                 }
               }
             `,
             data: { user: setName },
           })
+        },
+      })
+    },
+    confirmDelete() {
+      this.$root.$children[0].showPopup({
+        component: ConfirmDelete,
+        callback: this.deleteWorkspace,
+        props: {
+          workspace: this.workspace.name,
         },
       })
     },
@@ -159,7 +165,7 @@ export default new Component({
             workspace: this.workspace.name,
           },
         })
-        .then(() => this.$router.push('/space'))
+        .then(() => this.$router.push({ path: '/space' }))
     },
     onError(err) {
       throw err
@@ -188,7 +194,7 @@ export default new Component({
   }
 
   .danger-zone {
-    border: 0.1rem solid $c-error;
+    border: 0.1rem solid color('error');
   }
 }
 </style>

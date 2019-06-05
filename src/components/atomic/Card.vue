@@ -17,11 +17,14 @@ export default new Atomic({
 @import '../sharedStyles/shadows.scss';
 
 .card {
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
   min-width: 5rem;
   min-height: 5rem;
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   box-sizing: border-box;
-  box-shadow: $shadow-default;
+  overflow: auto;
+  box-shadow: shadow(2);
+  z-index: 2;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <Card :class="getClass" @click="select">
-    <Header quaternary>{{ kit.name }}</Header>
+    <Header s4>{{ kit.name }}</Header>
     <Icon :src="kit.icon"></Icon>
   </Card>
 </template>
@@ -40,6 +40,7 @@ export default new Component({
     margin-top: 1rem;
     margin-bottom: 2rem;
     flex-grow: 0.5;
+    height: 3rem;
   }
 }
 </style>

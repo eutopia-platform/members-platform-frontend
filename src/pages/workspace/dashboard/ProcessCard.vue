@@ -5,7 +5,7 @@
         `https://s3.eu-central-1.amazonaws.com/eutopia.media/process/process_${imgNum}.svg`
       "
     ></Icon>
-    <Header quaternary>{{ title }}</Header>
+    <Header s4>{{ title }}</Header>
   </Card>
 </template>
 

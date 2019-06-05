@@ -40,6 +40,7 @@ export default new Component({
     top: 0;
     width: 100%;
     height: 100%;
+    margin-top: 0;
   }
 }
 </style>

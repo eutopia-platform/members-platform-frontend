@@ -1,6 +1,6 @@
 <template>
   <div class="analytics">
-    <Header tertiary>Analytics</Header>
+    <Header s3>Analytics</Header>
     <div class="content">
       <InfoCard>
         <div>

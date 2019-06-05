@@ -1,7 +1,7 @@
 <template>
   <div :class="getClass">
     <Card class="content">
-      <Header tertiary>
+      <Header s3>
         You have been invited to join the {{ space }} workspace.
       </Header>
       <Button @click="accept">accept invitation</Button>

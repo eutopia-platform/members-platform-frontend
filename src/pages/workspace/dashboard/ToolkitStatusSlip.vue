@@ -1,7 +1,7 @@
 <template>
   <div class="slip">
-    <Paragraph small>{{ name }}</Paragraph>
-    <Paragraph small>{{ status }}</Paragraph>
+    <Small>{{ name }}</Small>
+    <Small>{{ status }}</Small>
     <ProgressBar
       :progress="progress"
       class="progress"

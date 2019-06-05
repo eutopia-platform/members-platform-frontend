@@ -2,11 +2,11 @@
   <div :class="getClass">
     <Card class="flipwrap">
       <div class="front">
-        <Icon :src="img"></Icon>
-        <Header quaternary>{{ title }}</Header>
+        <Icon big :src="img"></Icon>
+        <Header s4>{{ title }}</Header>
       </div>
       <div class="back">
-        <Header tertiary>
+        <Header s4>
           {{
             description
               ? (t => t[0] + t[1])(description.split(/([\.\?])/))
@@ -49,7 +49,7 @@ export default new Molecular({
 
 .toolkit-card {
   background-color: transparent;
-  height: 20rem;
+  height: 22rem;
   perspective: 1000px;
 
   &:hover {
@@ -65,12 +65,17 @@ export default new Molecular({
     position: relative;
     transform-style: preserve-3d;
     background-color: initial;
+    overflow: initial;
 
     .front {
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+
+      .icon {
+        height: 5rem;
+      }
     }
 
     .back {
@@ -87,7 +92,7 @@ export default new Molecular({
     .back {
       padding: 1rem;
       box-sizing: border-box;
-      @include colorScheme('neutral');
+      @include colorScheme('surface');
       backface-visibility: hidden;
       position: absolute;
       width: 100%;

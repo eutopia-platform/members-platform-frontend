@@ -8,6 +8,7 @@ export class Box {
     this.height = h
     this.vp = vp
     this.content = content
+    this.isMoving = false
   }
 
   render() {

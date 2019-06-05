@@ -1,23 +1,11 @@
-@import "./utils.scss";
-@import "/components/sharedStyles/fluid.scss";
+@import './utils.scss';
+@import '/components/sharedStyles/fluid.scss';
 
-// fonts
-$font-primary: 'Nunito', sans-serif;
+$font-primary: 'IBM Plex Sans', sans-serif;
 
-// font sizes
-$fs-base: 1rem;
-$fs-step: 1.4;
-
-$fs-header-1: $fs-base * pow($fs-step, 3);
-$fs-header-2: $fs-base * pow($fs-step, 2);
-$fs-header-3: $fs-base * pow($fs-step, 1);
-$fs-header-4: $fs-base * pow($fs-step, 0);
-
-$fs-tagline-1: $fs-base * pow($fs-step, 2);
-$fs-tagline-2: $fs-base * pow($fs-step, 1);
-
-$fs-small: $fs-base * pow(1 + ($fs-step - 1) / 2, -1);
-
-@mixin fontSize($n) {
-  @include fluid(font-size, 1rem, 4rem, 400px, 1000px);
-}
+$rem-min: 14px;
+$rem-max: 18px;
+$fs-scale-min: 1.2;
+$fs-scale-max: 1.41;
+$fs-min-screen: 400px;
+$fs-max-screen: 1000px;

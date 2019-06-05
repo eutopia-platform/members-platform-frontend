@@ -1,7 +1,7 @@
 <template>
   <li :style="style" @click="click">
-    <Icon :src="icon"></Icon>
-    <Paragraph>
+    <Icon small :src="icon"></Icon>
+    <Paragraph inline>
       <slot />
     </Paragraph>
   </li>
@@ -37,18 +37,16 @@ export default {
 @import '/components/sharedStyles/colors.scss';
 
 li {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: row;
   cursor: pointer;
+  margin-bottom: 1rem;
 
   *:nth-child(2n) {
     margin-left: 1rem;
-    margin-top: 0.15rem;
   }
 
   * {
-    margin: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }
 </style>

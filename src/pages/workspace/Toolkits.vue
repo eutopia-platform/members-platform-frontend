@@ -1,6 +1,6 @@
 <template>
   <div class="toolkits">
-    <Header tertiary>Toolkits</Header>
+    <Header s3>Toolkits</Header>
     <div class="grid">
       <InfoCard>
         <Paragraph>

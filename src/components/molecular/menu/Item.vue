@@ -23,9 +23,9 @@ export default new Molecular({
       default: null,
     },
   },
-  data: {
+  data: () => ({
     alignment: '',
-  },
+  }),
   computed: {
     alignStyle() {
       // TODO: allow left aligned items after right aligned items

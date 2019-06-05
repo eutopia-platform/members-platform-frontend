@@ -43,9 +43,9 @@ export default new Atomic({
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   box-sizing: border-box;
-  background-color: $c-error;
+  @include colorScheme('error');
   color: white;
-  box-shadow: $shadow-default;
+  box-shadow: shadow(2);
   z-index: 1000;
 }
 </style>

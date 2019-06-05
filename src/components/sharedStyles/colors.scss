@@ -1,23 +1,24 @@
-$c-accent: #109cf1;
-$c-error: #b42a43;
-
-$icon-filter: invert(27%) sepia(16%) saturate(1494%) hue-rotate(174deg)
-  brightness(93%) contrast(88%);
-
-//----------------------
-
 $colors: (
-  neutral-back: white,
-  neutral-font: #334d6e,
-  primary-back: #596dee,
-  primary-font: #ffffff,
-  secondary-back: #e9f5fd,
-  secondary-font: #334d6e,
-  tertiary-back: #253dbc,
-  tertiary-font: #ffffff,
+  primary: #2196f3,
+  on-primary: rgba(255, 255, 255, 0.87),
+  secondary: #ff5722,
+  on-secondary: rgba(255, 255, 255, 0.87),
+  background: #e3f2fd,
+  on-background: #1c1e47,
+  surface: white,
+  on-surface: #1c1e47,
+  error: #ff5722,
+  on-error: rgba(255, 255, 255, 0.87),
 );
 
 @mixin colorScheme($scheme) {
-  background-color: map-get($colors, $scheme + '-back');
-  color: map-get($colors, $scheme + '-font');
+  background-color: color($scheme);
+  color: color('on-' + $scheme);
 }
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+$icon-filter: invert(27%) sepia(16%) saturate(1494%) hue-rotate(174deg)
+  brightness(93%) contrast(88%);

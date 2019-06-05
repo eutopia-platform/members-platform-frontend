@@ -1,5 +1,5 @@
 <template>
-  <Component :is="tag" :class="getClass">
+  <Component :is="tag" class="header" :class="{ s1, s2, s3, s4, s5, inline }">
     <slot />
   </Component>
 </template>
@@ -9,35 +9,63 @@ import Atomic from '../sharedScripts/atomic'
 
 export default new Atomic({
   name: 'Header',
-  types: ['primary', 'secondary', 'tertiary', 'quaternary'],
-  tags: ['h1', 'h2', 'h3', 'h4'],
+  types: ['s1', 's2', 's3', 's4', 's5'],
+  tags: ['h1', 'h2', 'h3', 'h4', 'h5'],
+  props: {
+    inline: {
+      type: Boolean,
+      default: false,
+    },
+  },
 })
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/colors.scss';
-@import '../sharedStyles/shapes.scss';
-@import '../sharedStyles/text.scss';
+@import '../sharedStyles/colors';
+@import '../sharedStyles/shapes';
+@import '../sharedStyles/text';
+@import '../sharedStyles/fluid';
+@import '../sharedStyles/math';
 
 .header {
-  font-weight: bold;
+  font-weight: 500;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  line-height: var(--baseline);
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
 }
 
-.primary {
-  font-size: $fs-header-1;
+.inline {
+  margin: 0;
+  display: inline-block;
 }
 
-.secondary {
-  font-size: $fs-header-2;
+@for $i from 1 through 5 {
+  .s#{$i} {
+    @include fluid(
+      font-size,
+      $rem-min * pow($fs-scale-min, 4 - $i),
+      $rem-max * pow($fs-scale-max, 4 - $i),
+      $fs-min-screen,
+      $fs-max-screen
+    );
+  }
 }
 
-.tertiary {
-  font-size: $fs-header-3;
+.s1 {
+  line-height: calc(2 * var(--baseline));
 }
 
-.quaternary {
-  font-size: $fs-header-4;
+.s2 {
+  @media screen and (min-width: 500px) {
+    line-height: calc(2 * var(--baseline));
+  }
+}
+
+.s3 {
+  @media screen and (min-width: 850px) {
+    line-height: calc(2 * var(--baseline));
+  }
 }
 </style>

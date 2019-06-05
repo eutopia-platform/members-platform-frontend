@@ -23,9 +23,9 @@ export default new Molecular({
       default: false,
     },
   },
-  data: {
+  data: () => ({
     collapsed: false,
-  },
+  }),
   methods: {
     toggleCollapse() {
       this.collapsed = !this.collapsed
@@ -57,10 +57,10 @@ export default new Molecular({
   height: 100vh;
   box-sizing: border-box;
   z-index: 1000;
-  overflow: hidden;
+  overflow: scroll;
 
-  @include colorScheme('neutral');
-  box-shadow: $shadow-default;
+  @include colorScheme('surface');
+  box-shadow: shadow(7);
 
   @media screen and (min-width: 1000px) {
     width: 300px;

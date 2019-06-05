@@ -1,7 +1,7 @@
 <template>
   <img
     class="icon"
-    :class="{ color: recolor }"
+    :class="{ color: recolor, small, big }"
     :src="
       name.length === 0
         ? src
@@ -15,8 +15,11 @@
 </template>
 
 <script>
-export default {
+import Atomic from '/components/sharedScripts/atomic'
+
+export default new Atomic({
   name: 'Icon',
+  types: ['default', 'small', 'big'],
   props: {
     src: {
       type: String,
@@ -35,11 +38,29 @@ export default {
       default: false,
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
 @import '/components/sharedStyles/colors';
+
+.icon {
+  height: var(--baseline);
+  margin-top: var(--baseline);
+  margin-bottom: var(--baseline);
+}
+
+.small {
+  height: calc(2 / 3 * var(--baseline));
+  margin-top: calc(var(--baseline) + var(--baseline) / 6);
+  margin-top: calc(var(--baseline) + var(--baseline) / 6);
+}
+
+.big {
+  height: calc(4 / 3 * var(--baseline));
+  margin-top: calc(var(--baseline) - var(--baseline) / 6);
+  margin-top: calc(var(--baseline) - var(--baseline) / 6);
+}
 
 .color {
   filter: $icon-filter;

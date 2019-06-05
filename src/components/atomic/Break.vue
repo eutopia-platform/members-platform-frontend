@@ -1,9 +1,11 @@
 <template>
-  <br />
+  <br :class="getClass" />
 </template>
 
 <script>
-export default {
+import Atomic from '/components/sharedScripts/component'
+
+export default new Atomic({
   name: 'Break',
-}
+})
 </script>

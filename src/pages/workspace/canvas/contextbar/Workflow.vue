@@ -1,8 +1,7 @@
 <template>
   <div :class="getClass">
     <div class="title">
-      <Header quaternary>Workflow</Header>
-      <Header quaternary>Customer Journey Map</Header>
+      <Header s4>Customer Journey Map</Header>
     </div>
     <Paragraph>1. Actor</Paragraph>
     <Paragraph>2. Scenario and goals</Paragraph>
@@ -10,6 +9,7 @@
     <Paragraph>4. Actions, mindset and emotions</Paragraph>
     <Paragraph>5. Insights, opportunities and ownership</Paragraph>
     <Paragraph>6. Use the result for the design process</Paragraph>
+    <Button secondary>Milestone Challenge</Button>
   </div>
 </template>
 
@@ -26,6 +26,12 @@ export default new Component({
   .title {
     text-align: center;
     margin-bottom: 2rem;
+  }
+
+  .button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 </style>

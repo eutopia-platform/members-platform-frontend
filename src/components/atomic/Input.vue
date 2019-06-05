@@ -1,15 +1,15 @@
 <template>
   <input
     v-model="value"
-    :name="name"
-    :type="type"
-    :placeholder="placeholder"
     :aria-label="internalAriaLabel"
     :class="getClass"
-    :autocomplete="type === 'password' ? 'new-password' : 'true'"
+    :autocomplete="autocomplete"
+    :type="(email && 'email') || (password && 'password') || 'text'"
     :style="size ? { width: size + 'em' } : {}"
     @input="onInput"
     @keyup.enter="onEnter"
+    @focus="$emit('focus')"
+    @blur="$emit('blur')"
   />
 </template>
 
@@ -18,15 +18,11 @@ import Molecular from '../sharedScripts/molecular'
 
 export default new Molecular({
   name: 'Input',
-  types: ['default', 'blend', 'small'],
+  types: ['default', 'email', 'password'],
   props: {
-    name: {
-      default: '',
+    autocomplete: {
       type: String,
-    },
-    placeholder: {
-      default: '',
-      type: String,
+      default: 'off',
     },
     ariaLabel: {
       default: null,
@@ -41,12 +37,15 @@ export default new Molecular({
       type: Number,
     },
   },
-  data: {
-    value: '',
-  },
   computed: {
     internalAriaLabel: comp =>
       comp.ariaLabel !== null ? comp.ariaLabel : comp.placeholder,
+  },
+  data() {
+    return {
+      currentFocus: false,
+      value: '',
+    }
   },
   mounted: function() {
     if (this.focus) this.$el.focus()
@@ -54,14 +53,6 @@ export default new Molecular({
   methods: {
     onInput(e) {
       this.$emit('input', e.target.value)
-      this.onChange()
-    },
-    onChange() {
-      const payload = {
-        name: this.name,
-        value: this.value,
-      }
-      this.$emit('valueChange', payload)
     },
     onEnter() {
       this.$emit('submit')
@@ -72,52 +63,26 @@ export default new Molecular({
 
 <style lang="scss" scoped>
 @import '../sharedStyles/colors.scss';
-@import '../sharedStyles/shapes.scss';
-@import '../sharedStyles/text.scss';
 
 .input {
-  display: inline-block;
-  border: $border;
-  border-radius: $border-radius;
-  box-shadow: $shadow-default;
-  padding: 0.75rem;
-  cursor: text;
-  outline: none;
-  transition: box-shadow 0.2s, transform 0.2s;
-  transform: translate(0, 0px);
+  height: calc(1.5 * var(--baseline));
+  margin-top: calc(var(--baseline) - var(--baseline) / 4);
+  margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
+  background-color: color('surface');
+  border: 0.0625rem solid color('on-surface');
+  border-radius: 0.25rem;
   box-sizing: border-box;
-  border: none;
-
-  &:active {
-    box-shadow: $shadow-active;
-    transform: translate(0, 0px);
-    transition-duration: 0.1s;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
-.blend {
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  border-bottom: 1px solid #8ca8a8;
-  padding: 0.5rem;
   padding-left: 0.5rem;
-  font-size: $fs-base;
+  padding-right: 0.5rem;
+  font-size: 0.9rem;
+  transition: color, background-color 0.2s ease;
+  min-width: 13rem;
 
-  &:active {
-    box-shadow: none;
+  &:focus {
+    outline: none;
+    border-color: color('primary');
+    border-width: 0.125rem;
+    padding-left: calc(0.5rem - 0.125rem / 2);
   }
-}
-
-.small {
-  border: 1px solid map-get($colors, 'neutral-font');
-  height: 1rem;
-  color: map-get($colors, 'neutral-font');
-  font-size: 0.8rem;
-  box-shadow: none;
 }
 </style>

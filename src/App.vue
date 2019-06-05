@@ -5,13 +5,26 @@
 <script>
 import Vue from 'vue'
 import Alert from '/components/atomic/Alert'
-import CubeError from '/error'
+import { CubeError } from '/error'
+import Baseline from './baseline'
 
 export default {
   name: 'App',
   errorCaptured(err) {
     this.handleError(err)
     return false
+  },
+  data() {
+    return {
+      baseline: new Baseline(),
+    }
+  },
+  created() {
+    this.updateBaseline()
+    window.addEventListener('resize', this.updateBaseline)
+  },
+  mounted() {
+    if ('baseline' in this.$route.query) this.baseline.show()
   },
   methods: {
     handleError(err) {
@@ -40,6 +53,21 @@ export default {
         }).$mount().$el
       )
     },
+    showPopup: function({ component, callback, props }) {
+      document.body.appendChild(
+        new (Vue.extend(component))({
+          propsData: { callback, ...props },
+        }).$mount().$el
+      )
+    },
+    updateBaseline() {
+      document.documentElement.style.setProperty(
+        '--baseline',
+        Math.floor(
+          parseFloat(getComputedStyle(document.documentElement).fontSize) * 1.5
+        ) + 'px'
+      )
+    },
   },
 }
 </script>
@@ -48,6 +76,6 @@ export default {
 @import './components/sharedStyles/colors.scss';
 
 .app {
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
 }
 </style>

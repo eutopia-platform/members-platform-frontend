@@ -1,7 +1,12 @@
 <template>
-  <button type="button" :class="getClass" @click="$emit('click')">
-    <slot v-if="type !== 'icon'"></slot>
-    <img v-if="type === 'icon'" :src="img" />
+  <button
+    :disabled="disabled"
+    type="button"
+    class="button"
+    :class="{ primary, secondary, disabled }"
+    @click="onClick"
+  >
+    <slot></slot>
   </button>
 </template>
 
@@ -10,75 +15,73 @@ import Atomic from '../sharedScripts/atomic'
 
 export default new Atomic({
   name: 'Button',
-  types: ['default', 'text', 'icon', 'big', 'small'],
+  types: ['default', 'primary', 'secondary'],
   props: {
-    img: String,
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  methods: {
+    onClick() {
+      if (!this.disabled) this.$emit('click')
+    },
   },
 })
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors.scss';
-@import '/components/sharedStyles/shadows.scss';
+@import '/components/sharedStyles/colors';
+@import '/components/sharedStyles/shadows';
 
 .button {
-  border: none;
   font-size: 1rem;
   min-width: 2rem;
-
-  &:not(.icon) {
-    border-radius: 0.4rem;
-  }
-
-  &:not(.text, .small) {
-    box-sizing: border-box;
-    min-height: 2rem;
-    vertical-align: top;
-  }
-
-  &:not(.text):not(.icon) {
-    box-shadow: $shadow-default;
-  }
-
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  margin-top: 1rem;
-
-  background-color: #6bc1ff; // TODO: standardize colors
-  color: white;
-  box-shadow: none;
+  background-color: color('surface');
+  border: 0.125rem solid color('on-surface');
+  border-radius: 0.25rem;
+  color: color('on-surface');
+  height: calc(1.5 * var(--baseline));
+  margin-top: calc(var(--baseline) - var(--baseline) / 4);
+  margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
   cursor: pointer;
+  transition: color, background-color 0.2s ease;
 
-  &:disabled {
-    background-color: #d3d3d3;
+  &:hover:not(.disabled),
+  &:focus:not(.disabled) {
+    outline: none;
+    background-color: color('on-surface');
+    color: color('surface');
   }
 }
 
-.text {
-  background-color: inherit;
-  color: #6bc1ff;
-}
+.primary {
+  border: 2px solid color('primary');
+  color: color('primary');
 
-.big {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
-}
-
-.small {
-  font-size: 0.8rem;
-  line-height: 1rem;
-  border-radius: 0.3rem;
-}
-
-.icon {
-  background-color: inherit;
-  padding: 0;
-  * {
-    margin: 0;
+  &:hover:not(.disabled),
+  &:focus:not(.disabled) {
+    background-color: color('primary');
+    color: color('on-primary');
   }
+}
+
+.secondary {
+  border: 2px solid color('secondary');
+  color: color('secondary');
+
+  &:hover:not(.disabled),
+  &:focus:not(.disabled) {
+    background-color: color('secondary');
+    color: color('on-secondary');
+  }
+}
+
+.disabled {
+  cursor: initial;
 }
 </style>

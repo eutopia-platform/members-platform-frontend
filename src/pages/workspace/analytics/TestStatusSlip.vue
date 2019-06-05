@@ -1,8 +1,8 @@
 <template>
   <div class="slip">
-    <Paragraph small>{{ toolkit }}</Paragraph>
-    <Paragraph small>{{ metric }}</Paragraph>
-    <Paragraph small>{{ status }}</Paragraph>
+    <Small>{{ toolkit }}</Small>
+    <Small>{{ metric }}</Small>
+    <Small>{{ status }}</Small>
     <ProgressBar
       :progress="progress"
       class="progress"

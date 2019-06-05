@@ -2,13 +2,7 @@
   <Card :class="getClass">
     <Icon :src="iconInfo"></Icon>
     <slot></slot>
-    <Button
-      icon
-      class="close"
-      type="icon"
-      :img="iconClose"
-      @click="close"
-    ></Button>
+    <Icon class="close" name="close" @click="close"></Icon>
   </Card>
 </template>
 

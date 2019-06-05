@@ -1,6 +1,6 @@
 <template>
   <div :class="getClass">
-    <Header secondary>Cube, one workspace for all your projects.</Header>
+    <Header s2>Cube, one workspace for all your projects.</Header>
     <Paragraph>
       Enter your email to be notified about future product updates.
     </Paragraph>

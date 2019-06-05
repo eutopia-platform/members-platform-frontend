@@ -1,22 +1,29 @@
 <template>
   <form>
-    <Input v-model="email" blend placeholder="email" />
-    <Button @click="onSubmit">invite</Button>
+    <ActionInput
+      button="invite"
+      type="email"
+      label="email"
+      @submit="onSubmit"
+    ></ActionInput>
   </form>
 </template>
 
 <script>
 import Component from '/components/sharedScripts/component'
+import ActionInput from '/components/molecular/ActionInput'
 import gql from 'graphql-tag'
-import CubeError from '/error'
+import { CubeError } from '/error'
+import { isEmail } from '/components/sharedScripts/validate'
 
 export default new Component({
   name: 'InviteForm',
-  data: {
-    email: '',
+  components: {
+    ActionInput,
   },
   methods: {
-    onSubmit() {
+    onSubmit(e) {
+      if (!isEmail(e)) throw new CubeError('invalid email')
       this.$apollo
         .mutate({
           mutation: gql`
@@ -25,7 +32,7 @@ export default new Component({
             }
           `,
           variables: {
-            email: this.email,
+            email: e,
             workspace: localStorage.getItem('workspace'),
           },
           client: 'work',

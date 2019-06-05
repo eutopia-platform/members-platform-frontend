@@ -90,10 +90,9 @@ export default {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   user-select: none;
-  box-shadow: $shadow-default;
   z-index: 1000;
 
-  @include colorScheme('neutral');
+  @include colorScheme('surface');
 
   .brand {
     margin-top: 1rem;
