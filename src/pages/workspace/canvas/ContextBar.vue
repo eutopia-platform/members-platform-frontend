@@ -63,7 +63,7 @@ export default new Component({
 <style lang="scss" scoped>
 .context-bar {
   padding: 2rem;
-  overflow: hidden;
+  overflow: scroll;
 
   .title {
     display: flex;

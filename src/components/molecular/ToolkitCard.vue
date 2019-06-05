@@ -6,7 +6,7 @@
         <Header s4>{{ title }}</Header>
       </div>
       <div class="back">
-        <Header s3>
+        <Header s4>
           {{
             description
               ? (t => t[0] + t[1])(description.split(/([\.\?])/))
@@ -49,7 +49,7 @@ export default new Molecular({
 
 .toolkit-card {
   background-color: transparent;
-  height: 20rem;
+  height: 22rem;
   perspective: 1000px;
 
   &:hover {

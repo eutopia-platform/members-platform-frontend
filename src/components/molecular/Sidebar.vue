@@ -57,7 +57,7 @@ export default new Molecular({
   height: 100vh;
   box-sizing: border-box;
   z-index: 1000;
-  overflow: hidden;
+  overflow: scroll;
 
   @include colorScheme('surface');
   box-shadow: shadow(7);
