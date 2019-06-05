@@ -1,5 +1,10 @@
 <template>
-  <DashboardCard title="Toolkit Status" :class="getClass">
+  <DashboardCard
+    title="Toolkit Status"
+    button="add a toolkit"
+    :class="getClass"
+    @click="$router.push($route.path + '/toolkits')"
+  >
     <Table divide-horizontal :columns="['name', 'status', 'progress', 'lead']">
       <template v-for="(row, iRow) in toolkits">
         <Component
@@ -26,7 +31,7 @@ export default new Component({
     DashboardCard,
     Table,
   },
-  data: {
+  data: () => ({
     toolkits: [
       {
         name: 'Foo',
@@ -35,7 +40,7 @@ export default new Component({
         lead: 'person',
       },
     ],
-  },
+  }),
 })
 </script>
 

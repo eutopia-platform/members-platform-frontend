@@ -41,9 +41,11 @@ export default new Molecular({
     internalAriaLabel: comp =>
       comp.ariaLabel !== null ? comp.ariaLabel : comp.placeholder,
   },
-  data: {
-    currentFocus: false,
-    value: '',
+  data() {
+    return {
+      currentFocus: false,
+      value: '',
+    }
   },
   mounted: function() {
     if (this.focus) this.$el.focus()

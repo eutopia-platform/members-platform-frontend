@@ -1,7 +1,13 @@
 <template>
-  <div :class="getClass" :style="style">
+  <div :class="getClass" :style="style" @click="setActive(true)">
     <div ref="content" :style="scaleContent" class="content">
-      <pre><slot></slot></pre>
+      <Component
+        :is="contentDisplay"
+        ref="contentDisplay"
+        v-model="content"
+        :markdown="content"
+        @blur="setActive(false)"
+      ></Component>
     </div>
     <div class="inner"></div>
     <div class="resize res-left"></div>
@@ -13,10 +19,16 @@
 
 <script>
 import Component from '/components/sharedScripts/component'
+import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
+import Textedit from '/components/molecular/Textedit'
 import { Box as BoxDef } from './definition'
 
 export default new Component({
   name: 'Box',
+  components: {
+    MarkdownDisplay,
+    Textedit,
+  },
   props: {
     def: {
       type: BoxDef,
@@ -31,6 +43,12 @@ export default new Component({
       required: true,
     },
   },
+  data() {
+    return {
+      content: this.def.content,
+      contentDisplay: 'MarkdownDisplay',
+    }
+  },
   computed: {
     style() {
       const frame = this.def.render()
@@ -42,7 +60,9 @@ export default new Component({
       }
     },
     scaleContent() {
-      const scale = this.def.vp.initialWidth / this.def.vp.width
+      const scale = this.$el
+        ? 0.1 / (this.def.width / this.$el.offsetWidth)
+        : this.def.vp.initialWidth / this.def.vp.width
 
       return {
         transform: `scale(${scale})`,
@@ -55,10 +75,19 @@ export default new Component({
     },
   },
   methods: {
-    updateLayout() {
-      this.$el.style = {
-        ...this.$el,
-        ...this.scaleContent,
+    setActive(focus) {
+      if (this.def.isMoving) {
+        this.def.isMoving = false
+        return
+      }
+      if (!focus) this.contentDisplay = 'MarkdownDisplay'
+      else {
+        this.contentDisplay = 'Textedit'
+        const text = this.content
+        this.$nextTick(() => {
+          this.$refs.contentDisplay.$el.focus()
+          this.$refs.contentDisplay.$el.value = text
+        })
       }
     },
   },
@@ -80,7 +109,9 @@ export default new Component({
   overflow: hidden;
 
   .content {
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -89,11 +120,6 @@ export default new Component({
     user-select: none;
     transform-origin: center;
     transform-origin: left top;
-
-    pre {
-      font-family: $font-primary;
-      white-space: pre-wrap;
-    }
   }
 
   $res-margin: 0.2rem;

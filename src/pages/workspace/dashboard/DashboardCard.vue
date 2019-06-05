@@ -2,7 +2,7 @@
   <Card :class="getClass">
     <div class="top">
       <Header s3>{{ title }}</Header>
-      <Button primary>{{ button }}</Button>
+      <Button primary @click="$emit('click')">{{ button }}</Button>
     </div>
     <slot></slot>
   </Card>

@@ -2,6 +2,7 @@
   <textarea
     v-model="text"
     :class="getClass"
+    @blur="$emit('blur')"
     @input="$emit('input', $event.target.value)"
   ></textarea>
 </template>
@@ -11,9 +12,9 @@ import Molecular from '/components/sharedScripts/component'
 
 export default new Molecular({
   name: 'Textedit',
-  data: {
+  data: () => ({
     text: '',
-  },
+  }),
 })
 </script>
 

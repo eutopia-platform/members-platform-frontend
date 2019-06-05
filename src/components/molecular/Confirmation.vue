@@ -45,8 +45,10 @@ export default new Molecular({
       default: 'confirm',
     },
   },
-  data: {
-    inputText: '',
+  data() {
+    return {
+      inputText: '',
+    }
   },
   components: {
     Popup,

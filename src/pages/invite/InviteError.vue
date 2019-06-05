@@ -42,12 +42,12 @@ export default new Component({
       fetchPolicy: 'network-only',
     },
   },
-  data: {
+  data: () => ({
     user: {
       name: '',
       email: '',
     },
-  },
+  }),
   methods: {
     logout() {
       this.$router.push({
