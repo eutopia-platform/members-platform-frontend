@@ -27,10 +27,12 @@ export default new Component({
     Box,
     Toolbar,
   },
-  data: {
-    def: new Canvas(),
-    sideRatio: 1,
-    height: window.innerHeight,
+  data() {
+    return {
+      def: new Canvas(),
+      sideRatio: 1,
+      height: window.innerHeight,
+    }
   },
   props: {
     width: {
