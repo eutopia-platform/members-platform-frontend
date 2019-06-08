@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "width": 1
+  },
+  "boxes": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 1,
+      "h": 0.4,
+      "content": "###%20Introduction%20Customer%20Journey%20Map%0A%0AA%20customer%20journey%20map%20is%20a%20collaborative%20visualization%20tool%20that%20tells%20a%20narrative%20of%20the%20end%20user%20that%20is%20trying%20to%20achieve%20a%20specific%20outcome,%20complete%20a%20task%20or%20goal."
+    }
+  ]
+}

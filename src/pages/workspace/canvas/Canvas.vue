@@ -19,7 +19,7 @@ import Box from './Box'
 import Toolbar from './Toolbar'
 import { Canvas } from './definition'
 import Template from './template'
-import customerJourney from './templates/customerJourney'
+import customerJourney from './templates/customerJourney.json'
 
 export default new Component({
   name: 'Canvas',
