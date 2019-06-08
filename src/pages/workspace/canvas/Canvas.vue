@@ -189,6 +189,10 @@ export default new Component({
     this.$el.removeEventListener('mousedown', this.onMouseDown)
     this.$el.removeEventListener('mouseup', this.onMouseUp)
   },
+  created() {
+    if (this.template)
+      this.def.loadTemplate(new Template(this.def.viewport, this.template))
+  },
 })
 </script>
 
