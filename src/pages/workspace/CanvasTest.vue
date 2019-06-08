@@ -1,7 +1,11 @@
 <template>
   <div :class="getClass">
     <div class="center" :style="centerWidth">
-      <TitleBar ref="titlebar" :style="titleBarWidth"></TitleBar>
+      <TitleBar
+        ref="titlebar"
+        :toolkit="toolkit"
+        :style="titleBarWidth"
+      ></TitleBar>
       <Canvas
         :style="canvasPos"
         :width="canvasWidth"
