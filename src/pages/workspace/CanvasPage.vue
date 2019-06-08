@@ -25,7 +25,7 @@ import { parseLength } from '/components/sharedScripts/parseCSS'
 import gql from 'graphql-tag'
 
 export default new Component({
-  name: 'CanvasTest',
+  name: 'CanvasPage',
   components: {
     Canvas,
     TitleBar,
@@ -101,7 +101,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-.canvas-test {
+.canvas-page {
   padding: 0 !important;
   height: 100vh;
   overflow: hidden;
