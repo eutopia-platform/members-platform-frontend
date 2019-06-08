@@ -6,6 +6,7 @@
         ref="contentDisplay"
         v-model="content"
         :markdown="content"
+        :encoded="true"
         @blur="setActive(false)"
       ></Component>
     </div>
