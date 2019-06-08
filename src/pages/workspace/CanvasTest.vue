@@ -2,7 +2,11 @@
   <div :class="getClass">
     <div class="center" :style="centerWidth">
       <TitleBar ref="titlebar" :style="titleBarWidth"></TitleBar>
-      <Canvas :style="canvasPos" :width="canvasWidth"></Canvas>
+      <Canvas
+        :style="canvasPos"
+        :width="canvasWidth"
+        :template="template"
+      ></Canvas>
     </div>
     <ContextBar @changeWidth="updateSidebarWidth"></ContextBar>
   </div>
@@ -14,6 +18,7 @@ import Canvas from './canvas/Canvas'
 import ContextBar from './canvas/ContextBar'
 import TitleBar from './canvas/TitleBar'
 import { parseLength } from '/components/sharedScripts/parseCSS'
+import gql from 'graphql-tag'
 
 export default new Component({
   name: 'CanvasTest',
@@ -21,6 +26,22 @@ export default new Component({
     Canvas,
     TitleBar,
     ContextBar,
+  },
+  apollo: {
+    toolkit: {
+      client: 'tool',
+      query: gql`
+        query currentToolkit($id: ID!) {
+          toolkit(id: $id) {
+            title
+            canvas
+          }
+        }
+      `,
+      variables: {
+        id: '3b4d0ef7-ca20-403d-9413-0349026ad620',
+      },
+    },
   },
   data: () => ({
     sidebarWidth: 0,
@@ -59,6 +80,9 @@ export default new Component({
         top: `${this.titlebarHeight}px`,
         height: `calc(100% - ${this.titlebarHeight}px)`,
       }
+    },
+    template() {
+      return this.toolkit ? JSON.parse(this.toolkit.canvas) : null
     },
   },
   methods: {
