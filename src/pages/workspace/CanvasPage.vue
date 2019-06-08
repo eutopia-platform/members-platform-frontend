@@ -39,6 +39,7 @@ export default new Component({
           toolkit(id: $id) {
             title
             canvas
+            learning
           }
         }
       `,
