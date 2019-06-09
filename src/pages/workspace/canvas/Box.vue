@@ -6,7 +6,6 @@
         ref="contentDisplay"
         v-model="content"
         :markdown="content"
-        :encoded="true"
         @blur="setActive(false)"
       ></Component>
     </div>
@@ -46,7 +45,7 @@ export default new Component({
   },
   data() {
     return {
-      content: this.def.content,
+      content: decodeURI(this.def.content),
       contentDisplay: 'MarkdownDisplay',
     }
   },
