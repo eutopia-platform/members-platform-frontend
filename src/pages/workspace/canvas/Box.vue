@@ -45,7 +45,7 @@ export default new Component({
   },
   data() {
     return {
-      content: this.def.content,
+      content: decodeURI(this.def.content),
       contentDisplay: 'MarkdownDisplay',
     }
   },
@@ -80,11 +80,14 @@ export default new Component({
         this.def.isMoving = false
         return
       }
-      if (!focus) this.contentDisplay = 'MarkdownDisplay'
-      else {
+      if (!focus) {
+        this.contentDisplay = 'MarkdownDisplay'
+        this.$refs.content.style.pointerEvents = 'none'
+      } else {
         this.contentDisplay = 'Textedit'
         const text = this.content
         this.$nextTick(() => {
+          this.$refs.content.style.pointerEvents = 'initial'
           this.$refs.contentDisplay.$el.focus()
           this.$refs.contentDisplay.$el.value = text
         })

@@ -19,7 +19,6 @@ import Box from './Box'
 import Toolbar from './Toolbar'
 import { Canvas } from './definition'
 import Template from './template'
-import customerJourney from './templates/customerJourney'
 
 export default new Component({
   name: 'Canvas',
@@ -39,6 +38,10 @@ export default new Component({
       type: Number,
       default: 0,
     },
+    template: {
+      type: Object,
+      default: null,
+    },
   },
   watch: {
     sideRatio(n) {
@@ -46,6 +49,9 @@ export default new Component({
     },
     width() {
       this.onResize()
+    },
+    template(t) {
+      if (t) this.def.loadTemplate(new Template(this.def.viewport, t))
     },
   },
   methods: {
@@ -184,7 +190,8 @@ export default new Component({
     this.$el.removeEventListener('mouseup', this.onMouseUp)
   },
   created() {
-    this.def.loadTemplate(new Template(this.def.viewport, customerJourney))
+    if (this.template)
+      this.def.loadTemplate(new Template(this.def.viewport, this.template))
   },
 })
 </script>

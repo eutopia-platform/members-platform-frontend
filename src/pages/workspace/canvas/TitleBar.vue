@@ -3,7 +3,7 @@
     <Item algin="right">
       <Icon name="person" recolor></Icon>
     </Item>
-    <Item text="Toolkit" align="center"></Item>
+    <Item :text="toolkit.title" align="center"></Item>
     <Item align="right">
       <Icon name="chat" recolor></Icon>
     </Item>
@@ -26,6 +26,14 @@ export default new Component({
   components: {
     Menu,
     Item,
+  },
+  props: {
+    toolkit: {
+      type: Object,
+      default: () => ({
+        title: 'unknown',
+      }),
+    },
   },
 })
 </script>

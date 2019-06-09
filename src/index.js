@@ -20,7 +20,7 @@ import Analytics from './pages/workspace/Analytics'
 import Toolkits from './pages/workspace/Toolkits'
 import Processes from './pages/workspace/Processes'
 import Settings from './pages/workspace/Settings'
-import CanvasTest from './pages/workspace/CanvasTest'
+import Canvas from './pages/workspace/CanvasPage'
 import Invite from './pages/Invite'
 import clients from './connections'
 
@@ -72,7 +72,7 @@ const routes = [
       },
       {
         path: 'canvas',
-        component: CanvasTest,
+        component: Canvas,
       },
     ],
   },

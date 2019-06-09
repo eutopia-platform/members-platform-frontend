@@ -1,8 +1,16 @@
 <template>
   <div :class="getClass">
     <div class="center" :style="centerWidth">
-      <TitleBar ref="titlebar" :style="titleBarWidth"></TitleBar>
-      <Canvas :style="canvasPos" :width="canvasWidth"></Canvas>
+      <TitleBar
+        ref="titlebar"
+        :toolkit="toolkit"
+        :style="titleBarWidth"
+      ></TitleBar>
+      <Canvas
+        :style="canvasPos"
+        :width="canvasWidth"
+        :template="template"
+      ></Canvas>
     </div>
     <ContextBar @changeWidth="updateSidebarWidth"></ContextBar>
   </div>
@@ -14,13 +22,31 @@ import Canvas from './canvas/Canvas'
 import ContextBar from './canvas/ContextBar'
 import TitleBar from './canvas/TitleBar'
 import { parseLength } from '/components/sharedScripts/parseCSS'
+import gql from 'graphql-tag'
 
 export default new Component({
-  name: 'CanvasTest',
+  name: 'CanvasPage',
   components: {
     Canvas,
     TitleBar,
     ContextBar,
+  },
+  apollo: {
+    toolkit: {
+      client: 'tool',
+      query: gql`
+        query currentToolkit($id: ID!) {
+          toolkit(id: $id) {
+            title
+            canvas
+            learning
+          }
+        }
+      `,
+      variables: {
+        id: '3b4d0ef7-ca20-403d-9413-0349026ad620',
+      },
+    },
   },
   data: () => ({
     sidebarWidth: 0,
@@ -60,6 +86,9 @@ export default new Component({
         height: `calc(100% - ${this.titlebarHeight}px)`,
       }
     },
+    template() {
+      return this.toolkit ? JSON.parse(this.toolkit.canvas) : null
+    },
   },
   methods: {
     updateSidebarWidth(width) {
@@ -73,7 +102,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-.canvas-test {
+.canvas-page {
   padding: 0 !important;
   height: 100vh;
   overflow: hidden;
