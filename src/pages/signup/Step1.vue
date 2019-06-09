@@ -87,6 +87,7 @@ export default new Component({
         })
         .then(({ data: { signup: token } }) => {
           localStorage.setItem('sessionToken', token)
+          this.$emit('done')
         })
         .catch(err => {
           if (err.message.includes('ALREADY_EXIST'))
