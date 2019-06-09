@@ -22,6 +22,7 @@ import Processes from './pages/workspace/Processes'
 import Settings from './pages/workspace/Settings'
 import Canvas from './pages/workspace/CanvasPage'
 import Invite from './pages/Invite'
+import Admin from './pages/Admin'
 import clients from './connections'
 
 import '/master.scss'
@@ -95,6 +96,7 @@ const routes = [
   { path: '/privacy', component: Privacy },
   { path: '/login', component: Login, name: 'login', props: true },
   { path: '/invite/:code', component: Invite },
+  { path: '/admin', component: Admin },
   { path: '*', component: NotFound },
 ]
 
