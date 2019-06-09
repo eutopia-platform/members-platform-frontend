@@ -4,6 +4,7 @@
     :class="getClass"
     @blur="$emit('blur')"
     @input="$emit('input', $event.target.value)"
+    @keyup.escape="$el.blur"
   ></textarea>
 </template>
 
