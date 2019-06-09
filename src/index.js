@@ -25,6 +25,7 @@ import Invite from './pages/Invite'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
 import CreateWorkspace from './pages/CreateWorkspace'
+import Admin from './pages/Admin'
 import clients from './connections'
 
 import '/master.scss'
@@ -101,6 +102,7 @@ const routes = [
   { path: '/profile', component: Profile },
   { path: '/new', component: CreateWorkspace },
   { path: '/invite/:code', component: Invite },
+  { path: '/admin', component: Admin },
   { path: '*', component: NotFound },
 ]
 
