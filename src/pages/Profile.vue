@@ -8,6 +8,12 @@
       <Paragraph>joined {{ user.joined }}</Paragraph>
     </div>
     <div class="workspace-list">
+      <Invitation
+        v-for="(name, i) in user.invitations"
+        :key="i"
+        class="invite"
+        :space="name"
+      ></Invitation>
       <Header s3>Workspaces</Header>
       <Paragraph v-for="(space, i) in workspaces" :key="i">
         <RouterLink :to="`/space/${space.name}`">{{ space.name }}</RouterLink>
@@ -22,10 +28,14 @@
 
 <script>
 import Component from '/components/sharedScripts/component'
+import Invitation from './profile/Invitation'
 import gql from 'graphql-tag'
 
 export default new Component({
   name: 'Profile',
+  components: {
+    Invitation,
+  },
   apollo: {
     user: {
       query: gql`
@@ -36,6 +46,7 @@ export default new Component({
             email
             id
             joined
+            invitations
           }
         }
       `,
@@ -66,6 +77,7 @@ export default new Component({
         callname: '',
         email: '',
         id: '',
+        invitations: [],
       },
       workspaces: [],
     }
@@ -92,6 +104,7 @@ export default new Component({
 
   .workspace-list {
     margin-left: 2rem;
+    padding-top: 2rem;
   }
 }
 </style>
