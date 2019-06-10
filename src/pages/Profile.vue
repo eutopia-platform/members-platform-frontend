@@ -10,7 +10,7 @@
     <div class="workspace-list">
       <Header s3>Workspaces</Header>
       <Paragraph v-for="(space, i) in workspaces" :key="i">
-        {{ space }}
+        <RouterLink :to="`/space/${space.name}`">{{ space.name }}</RouterLink>
       </Paragraph>
       <Paragraph v-if="workspaces.length === 0">
         You aren't a member of any workspace
