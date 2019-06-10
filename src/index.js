@@ -24,6 +24,7 @@ import Canvas from './pages/workspace/CanvasPage'
 import Invite from './pages/Invite'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
+import CreateWorkspace from './pages/CreateWorkspace'
 import clients from './connections'
 
 import '/master.scss'
@@ -98,6 +99,7 @@ const routes = [
   { path: '/login', component: Login, name: 'login', props: true },
   { path: '/signup', component: Signup },
   { path: '/profile', component: Profile },
+  { path: '/new', component: CreateWorkspace },
   { path: '/invite/:code', component: Invite },
   { path: '*', component: NotFound },
 ]
