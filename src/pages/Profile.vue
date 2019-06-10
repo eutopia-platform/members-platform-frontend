@@ -7,6 +7,16 @@
       <Paragraph>{{ user.email }}</Paragraph>
       <Paragraph>joined {{ user.joined }}</Paragraph>
     </div>
+    <div class="workspace-list">
+      <Header s3>Workspaces</Header>
+      <Paragraph v-for="(space, i) in workspaces" :key="i">
+        {{ space }}
+      </Paragraph>
+      <Paragraph v-if="workspaces.length === 0">
+        You aren't a member of any workspace
+      </Paragraph>
+      <Button @click="$router.push('/new')">create new workspace</Button>
+    </div>
   </div>
 </template>
 
@@ -38,6 +48,16 @@ export default new Component({
         return true
       },
     },
+    workspaces: {
+      query: gql`
+        {
+          workspaces {
+            name
+          }
+        }
+      `,
+      client: 'work',
+    },
   },
   data() {
     return {
@@ -47,6 +67,7 @@ export default new Component({
         email: '',
         id: '',
       },
+      workspaces: [],
     }
   },
 })
@@ -54,6 +75,8 @@ export default new Component({
 
 <style lang="scss" scoped>
 .profile {
+  display: flex;
+
   .profile-box {
     width: 17rem;
     padding: 1rem;
@@ -65,6 +88,10 @@ export default new Component({
       height: 13rem;
       display: block;
     }
+  }
+
+  .workspace-list {
+    margin-left: 2rem;
   }
 }
 </style>
