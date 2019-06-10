@@ -68,6 +68,11 @@ export default new Atomic({
     background-color: color('primary');
     color: color('on-primary');
   }
+
+  &:disabled {
+    border-color: desaturate($color: color('primary'), $amount: 30);
+    color: desaturate($color: color('primary'), $amount: 30);
+  }
 }
 
 .secondary {
@@ -78,6 +83,11 @@ export default new Atomic({
   &:focus:not(.disabled) {
     background-color: color('secondary');
     color: color('on-secondary');
+  }
+
+  &:disabled {
+    border-color: desaturate($color: color('secondary'), $amount: 30);
+    color: desaturate($color: color('secondary'), $amount: 30);
   }
 }
 

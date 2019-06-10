@@ -12,7 +12,7 @@ export default async apolloProvider => {
     await apolloProvider.clients.auth.mutate({
       mutation: gql`
         mutation logoutUser($sessionToken: ID!) {
-          logout(token: $sessionToken)
+          logout(sessionToken: $sessionToken)
         }
       `,
       variables: {

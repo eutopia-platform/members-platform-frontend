@@ -23,21 +23,6 @@ const createClient = (url, sendToken = false) => {
     ]),
     cache: new InMemoryCache(),
   })
-  client.cache.writeData({
-    data: {
-      user: {
-        name: '',
-        callname: '',
-        email: '',
-        id: '',
-        __typename: 'User',
-      },
-      workspace: {
-        name: 'unknown',
-        __typename: 'Workspace',
-      },
-    },
-  })
   return client
 }
 
