@@ -13,13 +13,19 @@ export default new Atomic({
       type: String,
       default: '',
     },
+    size: {
+      type: Number,
+      default: 250,
+    },
   },
   computed: {
     img: function() {
       try {
         return (
           'data:image/png;base64,' +
-          new Identicon(base64ToHex(this.userId)).toString()
+          new Identicon(base64ToHex(this.userId), {
+            size: this.size,
+          }).toString()
         )
       } catch (e) {
         return 'https://s3.eu-central-1.amazonaws.com/eutopia.media/profile_pic_placeholder.svg'

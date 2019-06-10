@@ -23,6 +23,7 @@ import Settings from './pages/workspace/Settings'
 import Canvas from './pages/workspace/CanvasPage'
 import Invite from './pages/Invite'
 import Signup from './pages/Signup'
+import Profile from './pages/Profile'
 import clients from './connections'
 
 import '/master.scss'
@@ -96,6 +97,7 @@ const routes = [
   { path: '/privacy', component: Privacy },
   { path: '/login', component: Login, name: 'login', props: true },
   { path: '/signup', component: Signup },
+  { path: '/profile', component: Profile },
   { path: '/invite/:code', component: Invite },
   { path: '*', component: NotFound },
 ]
