@@ -9,10 +9,10 @@
 
     <div class="field-title">
       <Header s3>Description</Header>
-      <Button>save</Button>
+      <Button @click="saveDescription">save</Button>
     </div>
     <MarkdownEdit
-      v-model="toolkit.markdown_description"
+      v-model="toolkit.description_markdown"
       view
       :default-text="toolkit.description_markdown"
     ></MarkdownEdit>
@@ -65,6 +65,25 @@ export default new Component({
   components: {
     ActionInput,
     MarkdownEdit,
+  },
+  methods: {
+    saveDescription() {
+      this.$apollo.mutate({
+        client: 'tool',
+        mutation: gql`
+          mutation updateDescription($id: ID!, $description: String) {
+            editToolkit(toolkit: { id: $id, description: $description }) {
+              id
+              description
+            }
+          }
+        `,
+        variables: {
+          id: this.toolkit.id,
+          description: encodeURI(this.toolkit.description_markdown),
+        },
+      })
+    },
   },
 })
 </script>
