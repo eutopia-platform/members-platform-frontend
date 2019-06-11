@@ -10,7 +10,7 @@
         </Paragraph>
       </Card>
       <template v-else>
-        <Header s2>Admin Dashboard</Header>
+        <RouterView></RouterView>
       </template>
     </template>
   </div>
