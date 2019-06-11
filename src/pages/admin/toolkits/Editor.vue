@@ -1,12 +1,7 @@
 <template>
   <div :class="getClass">
     <Paragraph>ID: {{ toolkit.id }}</Paragraph>
-    <ActionInput
-      label="title"
-      button="update"
-      :default-value="toolkit.title"
-      @submit="saveTitle"
-    ></ActionInput>
+    <ActionInput label="title" button="update" :default-value="toolkit.title" @submit="saveTitle"></ActionInput>
 
     <div class="field-title">
       <Header s3>Description</Header>
@@ -22,11 +17,13 @@
       <Header s3>Learning</Header>
       <Button @click="saveLearning">save</Button>
     </div>
-    <MarkdownEdit
-      v-model="toolkit.learning"
-      view
-      :default-text="toolkit.learning"
-    ></MarkdownEdit>
+    <MarkdownEdit v-model="toolkit.learning" view :default-text="toolkit.learning"></MarkdownEdit>
+
+    <div class="field-title">
+      <Header s3>Canvas</Header>
+      <Button>save</Button>
+    </div>
+    <CanvasEdit :canvas="toolkit.canvas"></CanvasEdit>
   </div>
 </template>
 
@@ -34,6 +31,7 @@
 import Component from '/components/sharedScripts/component'
 import ActionInput from '/components/molecular/ActionInput'
 import MarkdownEdit from '/components/molecular/MarkdownEdit'
+import CanvasEdit from './editor/CanvasEdit'
 import gql from 'graphql-tag'
 
 export default new Component({
@@ -60,6 +58,14 @@ export default new Component({
       result({ data: { toolkit } }) {
         toolkit.description_markdown = decodeURI(toolkit.description_markdown)
         toolkit.learning = decodeURI(toolkit.learning)
+        // console.log(typeof toolkit.canvas)
+        // toolkit.canvas = decodeURI(toolkit.canvas)
+        console.log(JSON.parse(toolkit.canvas))
+        toolkit.canvas = JSON.parse(toolkit.canvas)
+        toolkit.canvas.boxes.forEach(
+          box => (box.content = decodeURI(box.content))
+        )
+        // console.log(toolkit.canvas[119])
       },
     },
   },
@@ -69,7 +75,7 @@ export default new Component({
         id: '',
         title: '',
         description_markdown: '',
-        canvas: '',
+        canvas: { boxes: [] },
         learning: '',
       },
     }
@@ -77,6 +83,7 @@ export default new Component({
   components: {
     ActionInput,
     MarkdownEdit,
+    CanvasEdit,
   },
   methods: {
     saveTitle(title) {
