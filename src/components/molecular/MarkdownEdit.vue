@@ -36,7 +36,7 @@ export default new Component({
   data() {
     return {
       tab: 'edit',
-      text: this.defaultText,
+      text: '',
     }
   },
   props: {
