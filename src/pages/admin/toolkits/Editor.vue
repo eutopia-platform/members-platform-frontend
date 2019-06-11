@@ -17,6 +17,16 @@
       view
       :default-text="toolkit.description_markdown"
     ></MarkdownEdit>
+
+    <div class="field-title">
+      <Header s3>Learning</Header>
+      <Button @click="saveLearning">save</Button>
+    </div>
+    <MarkdownEdit
+      v-model="toolkit.learning"
+      view
+      :default-text="toolkit.learning"
+    ></MarkdownEdit>
   </div>
 </template>
 
@@ -49,6 +59,7 @@ export default new Component({
       },
       result({ data: { toolkit } }) {
         toolkit.description_markdown = decodeURI(toolkit.description_markdown)
+        toolkit.learning = decodeURI(toolkit.learning)
       },
     },
   },
@@ -102,12 +113,31 @@ export default new Component({
         },
       })
     },
+    saveLearning() {
+      this.$apollo.mutate({
+        client: 'tool',
+        mutation: gql`
+          mutation updateLearning($id: ID!, $learning: String) {
+            editToolkit(toolkit: { id: $id, learning: $learning }) {
+              id
+              learning
+            }
+          }
+        `,
+        variables: {
+          id: this.toolkit.id,
+          learning: encodeURI(this.toolkit.learning),
+        },
+      })
+    },
   },
 })
 </script>
 
 <style lang="scss" scoped>
 .editor {
+  padding-bottom: 5rem;
+
   .field-title {
     margin-top: 2rem;
     margin-bottom: 1rem;
