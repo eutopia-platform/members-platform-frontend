@@ -35,7 +35,7 @@ export default new Component({
   },
   data() {
     return {
-      tab: 'edit',
+      tab: this.view ? 'view' : 'edit',
       text: '',
     }
   },
@@ -43,6 +43,10 @@ export default new Component({
     defaultText: {
       type: String,
       default: '',
+    },
+    view: {
+      type: Boolean,
+      default: false,
     },
   },
   watch: {
