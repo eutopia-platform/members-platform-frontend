@@ -5,6 +5,7 @@
       label="title"
       button="update"
       :default-value="toolkit.title"
+      @submit="saveTitle"
     ></ActionInput>
 
     <div class="field-title">
@@ -67,6 +68,23 @@ export default new Component({
     MarkdownEdit,
   },
   methods: {
+    saveTitle(title) {
+      this.$apollo.mutate({
+        client: 'tool',
+        mutation: gql`
+          mutation updateTitle($id: ID!, $title: String) {
+            editToolkit(toolkit: { id: $id, title: $title }) {
+              id
+              title
+            }
+          }
+        `,
+        variables: {
+          id: this.toolkit.id,
+          title,
+        },
+      })
+    },
     saveDescription() {
       this.$apollo.mutate({
         client: 'tool',
