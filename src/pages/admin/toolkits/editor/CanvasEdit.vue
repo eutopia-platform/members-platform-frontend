@@ -1,6 +1,12 @@
 <template>
   <div :class="getClass">
-    <BoxEdit v-for="(box, i) in canvas.boxes" :key="i" :box="box" :index="i"></BoxEdit>
+    <BoxEdit
+      v-for="(box, i) in boxes"
+      :key="i"
+      v-model="boxes[i]"
+      :box="box"
+      :index="i"
+    ></BoxEdit>
   </div>
 </template>
 
@@ -16,11 +22,23 @@ export default new Component({
       required: true,
     },
   },
+  data() {
+    return {
+      boxes: this.canvas.boxes.map(box => Object.assign({}, box)),
+    }
+  },
+  watch: {
+    canvas: {
+      handler(v) {
+        this.boxes = v.boxes.map(box => Object.assign({}, box))
+      },
+      deep: true,
+    },
+  },
   components: {
     BoxEdit,
   },
 })
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

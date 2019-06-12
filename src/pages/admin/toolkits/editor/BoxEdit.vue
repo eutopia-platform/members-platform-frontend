@@ -6,15 +6,35 @@
         <Button>remove</Button>
       </div>
       <div class="pos">
-        <LabeledInput label="x" :default-value="box.x.toString()"></LabeledInput>
-        <LabeledInput label="y" :default-value="box.y.toString()"></LabeledInput>
+        <LabeledInput
+          v-model="value.x"
+          label="x"
+          :default-value="box.x.toString()"
+        ></LabeledInput>
+        <LabeledInput
+          v-model="value.y"
+          label="y"
+          :default-value="box.y.toString()"
+        ></LabeledInput>
       </div>
       <div class="scale">
-        <LabeledInput label="width" :default-value="box.w.toString()"></LabeledInput>
-        <LabeledInput label="height" :default-value="box.h.toString()"></LabeledInput>
+        <LabeledInput
+          v-model="value.w"
+          label="width"
+          :default-value="box.w.toString()"
+        ></LabeledInput>
+        <LabeledInput
+          v-model="value.h"
+          label="height"
+          :default-value="box.h.toString()"
+        ></LabeledInput>
       </div>
     </div>
-    <Textedit class="content" :default-text="box.content"></Textedit>
+    <Textedit
+      v-model="value.content"
+      class="content"
+      :default-text="box.content"
+    ></Textedit>
   </div>
 </template>
 
@@ -38,6 +58,21 @@ export default new Component({
   components: {
     LabeledInput,
     Textedit,
+  },
+  data() {
+    return {
+      value: Object.assign({}, this.box),
+    }
+  },
+  watch: {
+    value: {
+      handler() {
+        for (let p of ['x', 'y', 'w', 'h'])
+          this.value[p] = parseFloat(this.value[p]) || 0
+        this.$emit('input', this.value)
+      },
+      deep: true,
+    },
   },
 })
 </script>

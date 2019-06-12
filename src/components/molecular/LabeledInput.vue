@@ -14,7 +14,9 @@
       ref="label"
       :for="`labeled-input-${_uid}`"
       :class="{ top: currentFocus || value.length }"
-    >{{ label }}</label>
+    >
+      {{ label }}
+    </label>
   </div>
 </template>
 
