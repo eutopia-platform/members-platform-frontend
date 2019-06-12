@@ -1,10 +1,6 @@
 <template>
   <div :class="getClass">
-    <Canvas
-      v-if="canvas.meta"
-      :template="canvas"
-      :width="$el.offsetWidth"
-    ></Canvas>
+    <Canvas v-if="showCanvas" :template="canvas" :width="width"></Canvas>
   </div>
 </template>
 
@@ -20,8 +16,18 @@ export default new Component({
       required: true,
     },
   },
+  data() {
+    return {
+      width: 500,
+      showCanvas: false,
+    }
+  },
   components: {
     Canvas,
+  },
+  mounted() {
+    this.width = this.$el.offsetWidth
+    this.showCanvas = true
   },
 })
 </script>
