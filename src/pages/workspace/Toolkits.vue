@@ -12,14 +12,17 @@
         </Paragraph>
       </InfoCard>
       <Toolkit
-        v-for="i in toolkits"
-        :key="toolkits.indexOf(i)"
-        :title="i.title"
-        :description="decodeURI(i.description)"
+        v-for="kit in toolkits"
+        :id="kit.id"
+        :key="kit.id"
+        :title="kit.title"
+        :description="decodeURI(kit.description)"
         :img="
-          `https://s3.eu-central-1.amazonaws.com/eutopia.media/tool_${toolkits.indexOf(
-            i
-          ) + 1}.svg`
+          `https://s3.eu-central-1.amazonaws.com/eutopia.media/tool_${(toolkits.indexOf(
+            kit
+          ) %
+            6) +
+            1}.svg`
         "
       ></Toolkit>
     </div>
@@ -38,6 +41,7 @@ export default {
     toolkits: gql`
       {
         toolkits {
+          id
           title
           description: description_markdown
         }

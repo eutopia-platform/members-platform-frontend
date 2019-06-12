@@ -7,7 +7,7 @@
       </div>
       <div class="back">
         <MarkdownDisplay :markdown="description"></MarkdownDisplay>
-        <Button @click="$router.push('canvas')">Use Toolkit</Button>
+        <Button @click="$router.push(`canvas/${id}`)">Use Toolkit</Button>
       </div>
     </Card>
   </div>
@@ -20,6 +20,10 @@ import MarkdownDisplay from './MarkdownDisplay'
 export default new Molecular({
   name: 'ToolkitCard',
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       default: 'unknown toolkit',

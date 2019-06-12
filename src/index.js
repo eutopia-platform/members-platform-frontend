@@ -78,8 +78,9 @@ const routes = [
         component: Settings,
       },
       {
-        path: 'canvas',
+        path: 'canvas/:id',
         component: Canvas,
+        props: true,
       },
     ],
   },

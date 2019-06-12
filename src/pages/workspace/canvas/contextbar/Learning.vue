@@ -27,8 +27,10 @@ export default new Component({
           }
         }
       `,
-      variables: {
-        id: '3b4d0ef7-ca20-403d-9413-0349026ad620',
+      variables() {
+        return {
+          id: this.$route.params.id,
+        }
       },
       fetchPolicy: 'cache-only',
     },
