@@ -14,14 +14,11 @@ import gql from 'graphql-tag'
 
 export default {
   name: 'UserStatus',
-  data: () => ({
-    srcLogout: require('/../data/img/ui/logout.svg'),
-  }),
   apollo: {
     user: {
       query: gql`
         {
-          user @client {
+          user {
             email
             callname
             id
@@ -29,6 +26,16 @@ export default {
         }
       `,
     },
+  },
+  data() {
+    return {
+      srcLogout: require('/../data/img/ui/logout.svg'),
+      user: {
+        id: '',
+        email: '',
+        callname: '',
+      },
+    }
   },
   methods: {
     logout() {

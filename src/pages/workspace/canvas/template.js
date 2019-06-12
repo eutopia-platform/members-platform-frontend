@@ -10,29 +10,39 @@ export default class Template {
 
   buildTemplate(template, vp) {
     assert(
-      template.hasOwnProperty('width') || template.hasOwnProperty('height'),
+      () =>
+        'meta' in template &&
+        ('width' in template.meta || 'height' in template.meta),
       'template needs to specify width or height'
     )
-    const offLeft = Math.min(...template.boxes.map(box => box[0]))
-    const offTop = Math.min(...template.boxes.map(box => box[1]))
-    const scale = template.hasOwnProperty('width')
-      ? (template.width * vp.width) /
-        Math.max(...template.boxes.map(box => box[2] - offLeft))
-      : (template.height * vp.height) /
-        Math.max(...template.boxes.map(box => box[3] - offTop))
-    const spacing = template.spacing || 0
+
+    const margin = 5
+
+    const offLeft = Math.min(...template.boxes.map(box => box.x))
+    const offTop = Math.min(...template.boxes.map(box => box.y))
+    const scale =
+      'width' in template.meta
+        ? (template.meta.width * vp.width) /
+            Math.max(...template.boxes.map(box => box.w - offLeft)) -
+          margin * 2
+        : (template.meta.height * vp.height) /
+            Math.max(...template.boxes.map(box => box.h - offTop)) -
+          margin * 2
+    const spacing = template.meta.spacing || 0
     vp.offX =
       -(
         vp.width -
-        Math.max(...template.boxes.map(box => box[2] - offLeft)) * scale
+        Math.max(...template.boxes.map(box => box.w - offLeft)) * scale
       ) / 2
+    vp.offY -= margin
+
     return {
       boxes: template.boxes.map(box => [
-        (box[0] + spacing / 2) * scale,
-        (box[1] + spacing / 2) * scale,
-        (box[2] - spacing) * scale,
-        (box[3] - spacing) * scale,
-        box[4],
+        (box.x + spacing / 2) * scale,
+        (box.y + spacing / 2) * scale,
+        (box.w - spacing) * scale,
+        (box.h - spacing) * scale,
+        box.content,
       ]),
     }
   }

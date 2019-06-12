@@ -4,6 +4,7 @@
     :class="getClass"
     @blur="$emit('blur')"
     @input="$emit('input', $event.target.value)"
+    @keyup.escape="$el.blur"
   ></textarea>
 </template>
 
@@ -12,9 +13,22 @@ import Molecular from '/components/sharedScripts/component'
 
 export default new Molecular({
   name: 'Textedit',
-  data: () => ({
-    text: '',
-  }),
+  data() {
+    return {
+      text: this.defaultText,
+    }
+  },
+  props: {
+    defaultText: {
+      type: String,
+      default: '',
+    },
+  },
+  watch: {
+    defaultText(txt) {
+      this.text = txt
+    },
+  },
 })
 </script>
 

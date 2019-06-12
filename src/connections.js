@@ -23,21 +23,6 @@ const createClient = (url, sendToken = false) => {
     ]),
     cache: new InMemoryCache(),
   })
-  client.cache.writeData({
-    data: {
-      user: {
-        name: '',
-        callname: '',
-        email: '',
-        id: '',
-        __typename: 'User',
-      },
-      workspace: {
-        name: 'unknown',
-        __typename: 'Workspace',
-      },
-    },
-  })
   return client
 }
 
@@ -45,14 +30,14 @@ export default (process.env.NODE_ENV === 'development'
   ? {
       auth: createClient('http://localhost:4000'),
       user: createClient('http://localhost:5000', true),
-      tool: createClient('http://localhost:7000'),
+      tool: createClient('http://localhost:7000', true),
       mail: createClient('http://localhost:9000'),
       work: createClient('http://localhost:11000', true),
     }
   : {
       auth: createClient('https://auth.api.productcube.io/'),
       user: createClient('https://user.api.productcube.io', true),
-      tool: createClient('https://tool.api.productcube.io'),
+      tool: createClient('https://tool.api.productcube.io', true),
       mail: createClient('https://mail.api.productcube.io'),
       work: createClient('https://work.api.productcube.io', true),
     })

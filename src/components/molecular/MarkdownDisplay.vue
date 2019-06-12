@@ -1,5 +1,8 @@
 <template>
-  <div :class="getClass" v-html="parseMarkdown(markdown)"></div>
+  <div
+    :class="getClass"
+    v-html="parseMarkdown(encoded ? decodeURI(markdown) : markdown)"
+  ></div>
 </template>
 
 <script>
@@ -30,6 +33,10 @@ export default new Molecular({
     markdown: {
       type: String,
       required: true,
+    },
+    encoded: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

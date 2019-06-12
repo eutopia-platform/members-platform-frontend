@@ -91,6 +91,7 @@ export default new Molecular({
 
   .input {
     width: 100%;
+    min-width: initial;
   }
 
   label {

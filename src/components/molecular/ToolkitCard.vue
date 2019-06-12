@@ -6,22 +6,7 @@
         <Header s4>{{ title }}</Header>
       </div>
       <div class="back">
-        <Header s4>
-          {{
-            description
-              ? (t => t[0] + t[1])(description.split(/([\.\?])/))
-              : 'unknown'
-          }}
-        </Header>
-        <Paragraph>
-          {{
-            description
-              ? (t => t.splice(2, t.length).join(''))(
-                  description.split(/([\.\?])/)
-                )
-              : 'unknown'
-          }}
-        </Paragraph>
+        <MarkdownDisplay :markdown="description"></MarkdownDisplay>
         <Button @click="$router.push('canvas')">Use Toolkit</Button>
       </div>
     </Card>
@@ -30,6 +15,7 @@
 
 <script>
 import Molecular from '/components/sharedScripts/molecular'
+import MarkdownDisplay from './MarkdownDisplay'
 
 export default new Molecular({
   name: 'ToolkitCard',
@@ -38,8 +24,14 @@ export default new Molecular({
       type: String,
       default: 'unknown toolkit',
     },
-    description: String,
+    description: {
+      type: String,
+      required: true,
+    },
     img: String,
+  },
+  components: {
+    MarkdownDisplay,
   },
 })
 </script>

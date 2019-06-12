@@ -2,8 +2,8 @@
   <div :class="getClass" @dragover="e => e.preventDefault()" @drop="handleDrop">
     <Toolbar></Toolbar>
     <Box
-      v-for="box in def.boxes"
-      :key="def.boxes.indexOf(box)"
+      v-for="box in boxes"
+      :key="box.content"
       :parent-width="width"
       :parent-height="height"
       :def="box"
@@ -19,7 +19,6 @@ import Box from './Box'
 import Toolbar from './Toolbar'
 import { Canvas } from './definition'
 import Template from './template'
-import customerJourney from './templates/customerJourney'
 
 export default new Component({
   name: 'Canvas',
@@ -32,12 +31,17 @@ export default new Component({
       def: new Canvas(),
       sideRatio: 1,
       height: window.innerHeight,
+      boxes: [],
     }
   },
   props: {
     width: {
       type: Number,
       default: 0,
+    },
+    template: {
+      type: Object,
+      default: null,
     },
   },
   watch: {
@@ -46,6 +50,17 @@ export default new Component({
     },
     width() {
       this.onResize()
+    },
+    template: {
+      handler(t) {
+        if (t) {
+          this.def.boxes = []
+          this.boxes = []
+          this.def.loadTemplate(new Template(this.def.viewport, t))
+          this.boxes = this.def.boxes
+        }
+      },
+      deep: true,
     },
   },
   methods: {
@@ -184,7 +199,10 @@ export default new Component({
     this.$el.removeEventListener('mouseup', this.onMouseUp)
   },
   created() {
-    this.def.loadTemplate(new Template(this.def.viewport, customerJourney))
+    if (this.template) {
+      this.def.loadTemplate(new Template(this.def.viewport, this.template))
+      this.boxes = this.def.boxes
+    }
   },
 })
 </script>

@@ -45,7 +45,7 @@ export default new Component({
   },
   data() {
     return {
-      content: this.def.content,
+      content: decodeURI(this.def.content),
       contentDisplay: 'MarkdownDisplay',
     }
   },
@@ -63,7 +63,6 @@ export default new Component({
       const scale = this.$el
         ? 0.1 / (this.def.width / this.$el.offsetWidth)
         : this.def.vp.initialWidth / this.def.vp.width
-
       return {
         transform: `scale(${scale})`,
         width: `${((this.def.width / this.def.vp.width) * this.parentWidth) /
@@ -80,11 +79,14 @@ export default new Component({
         this.def.isMoving = false
         return
       }
-      if (!focus) this.contentDisplay = 'MarkdownDisplay'
-      else {
+      if (!focus) {
+        this.contentDisplay = 'MarkdownDisplay'
+        this.$refs.content.style.pointerEvents = 'none'
+      } else {
         this.contentDisplay = 'Textedit'
         const text = this.content
         this.$nextTick(() => {
+          this.$refs.content.style.pointerEvents = 'initial'
           this.$refs.contentDisplay.$el.focus()
           this.$refs.contentDisplay.$el.value = text
         })

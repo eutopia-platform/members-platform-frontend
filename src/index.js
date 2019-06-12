@@ -20,8 +20,15 @@ import Analytics from './pages/workspace/Analytics'
 import Toolkits from './pages/workspace/Toolkits'
 import Processes from './pages/workspace/Processes'
 import Settings from './pages/workspace/Settings'
-import CanvasTest from './pages/workspace/CanvasTest'
+import Canvas from './pages/workspace/CanvasPage'
 import Invite from './pages/Invite'
+import Signup from './pages/Signup'
+import Profile from './pages/Profile'
+import CreateWorkspace from './pages/CreateWorkspace'
+import Admin from './pages/Admin'
+import AdminDashboard from './pages/admin/Dashboard'
+import AdminToolkits from './pages/admin/Toolkits'
+import ToolkitEditor from './pages/admin/toolkits/Editor'
 import clients from './connections'
 
 import '/master.scss'
@@ -72,7 +79,7 @@ const routes = [
       },
       {
         path: 'canvas',
-        component: CanvasTest,
+        component: Canvas,
       },
     ],
   },
@@ -94,7 +101,28 @@ const routes = [
   },
   { path: '/privacy', component: Privacy },
   { path: '/login', component: Login, name: 'login', props: true },
+  { path: '/signup', component: Signup },
+  { path: '/profile', component: Profile },
+  { path: '/new', component: CreateWorkspace },
   { path: '/invite/:code', component: Invite },
+  {
+    path: '/admin',
+    component: Admin,
+    children: [
+      {
+        path: '/',
+        component: AdminDashboard,
+      },
+      {
+        path: 'toolkits',
+        component: AdminToolkits,
+      },
+      {
+        path: 'toolkits/:id',
+        component: ToolkitEditor,
+      },
+    ],
+  },
   { path: '*', component: NotFound },
 ]
 
