@@ -8,6 +8,8 @@
       @submit="saveTitle"
     ></ActionInput>
 
+    <Button @click="deleteToolkit">Delete Toolkit</Button>
+
     <div class="field-title">
       <Header s3>Description</Header>
       <Button @click="saveDescription">save</Button>
@@ -165,6 +167,21 @@ export default new Component({
           canvas,
         },
       })
+    },
+    deleteToolkit() {
+      this.$apollo
+        .mutate({
+          client: 'tool',
+          mutation: gql`
+            mutation deleteToolkit($id: ID!) {
+              deleteToolkit(id: $id)
+            }
+          `,
+          variables: {
+            id: this.toolkit.id,
+          },
+        })
+        .then(() => this.$router.push('/admin/toolkits'))
     },
   },
 })

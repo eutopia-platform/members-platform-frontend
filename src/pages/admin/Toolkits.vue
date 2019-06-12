@@ -4,6 +4,7 @@
     <Paragraph v-for="(kit, i) in toolkits" :key="i">
       <RouterLink :to="kit.id" append>{{ kit.title }}</RouterLink>
     </Paragraph>
+    <Button @click="addToolkit">Add Toolkit</Button>
   </div>
 </template>
 
@@ -33,6 +34,21 @@ export default new Component({
     return {
       toolkits: [],
     }
+  },
+  methods: {
+    addToolkit() {
+      this.$apollo.mutate({
+        client: 'tool',
+        mutation: gql`
+          mutation addToolkit {
+            createToolkit {
+              id
+              title
+            }
+          }
+        `,
+      })
+    },
   },
 })
 </script>
