@@ -57,6 +57,7 @@ export default new Molecular({
     setFocus(status) {
       this.currentFocus = status
       this.$refs.button.$el.classList.toggle('primary', status)
+      this.$emit(status ? 'focus' : 'blur')
     },
     onClick() {
       this.$emit('submit', this.value)

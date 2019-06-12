@@ -25,6 +25,10 @@ import Invite from './pages/Invite'
 import Signup from './pages/Signup'
 import Profile from './pages/Profile'
 import CreateWorkspace from './pages/CreateWorkspace'
+import Admin from './pages/Admin'
+import AdminDashboard from './pages/admin/Dashboard'
+import AdminToolkits from './pages/admin/Toolkits'
+import ToolkitEditor from './pages/admin/toolkits/Editor'
 import clients from './connections'
 
 import '/master.scss'
@@ -101,6 +105,24 @@ const routes = [
   { path: '/profile', component: Profile },
   { path: '/new', component: CreateWorkspace },
   { path: '/invite/:code', component: Invite },
+  {
+    path: '/admin',
+    component: Admin,
+    children: [
+      {
+        path: '/',
+        component: AdminDashboard,
+      },
+      {
+        path: 'toolkits',
+        component: AdminToolkits,
+      },
+      {
+        path: 'toolkits/:id',
+        component: ToolkitEditor,
+      },
+    ],
+  },
   { path: '*', component: NotFound },
 ]
 

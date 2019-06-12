@@ -5,7 +5,8 @@
       <Header s3>{{ user.callname }}</Header>
       <Paragraph>({{ user.name }})</Paragraph>
       <Paragraph>{{ user.email }}</Paragraph>
-      <Paragraph>joined {{ user.joined }}</Paragraph>
+      <Paragraph>joined {{ joinDate }}</Paragraph>
+      <Paragraph v-if="user.role === 'ADMIN'">You are a Cube Admin</Paragraph>
     </div>
     <div class="workspace-list">
       <Invitation
@@ -28,6 +29,7 @@
 
 <script>
 import Component from '/components/sharedScripts/component'
+import { formatDate, parseDate } from '/components/sharedScripts/date'
 import Invitation from './profile/Invitation'
 import gql from 'graphql-tag'
 
@@ -47,6 +49,7 @@ export default new Component({
             id
             joined
             invitations
+            role
           }
         }
       `,
@@ -78,9 +81,15 @@ export default new Component({
         email: '',
         id: '',
         invitations: [],
+        role: '',
       },
       workspaces: [],
     }
+  },
+  computed: {
+    joinDate() {
+      return this.user.joined ? formatDate(parseDate(this.user.joined)) : ''
+    },
   },
 })
 </script>
