@@ -21,6 +21,7 @@
       :index="i"
       @delete="deleteBox"
     ></BoxEdit>
+    <Button @click="addBox">add new box</Button>
     <Preview v-if="boxes.length" :canvas="template"></Preview>
   </div>
 </template>
@@ -68,6 +69,9 @@ export default new Component({
   methods: {
     deleteBox(index) {
       this.boxes.splice(index, 1)
+    },
+    addBox() {
+      this.boxes.push({ x: 0, y: -0.2, w: 0.1, h: 0.1, content: 'new box' })
     },
   },
 })
