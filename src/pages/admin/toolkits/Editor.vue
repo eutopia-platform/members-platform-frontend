@@ -30,9 +30,9 @@
 
     <div class="field-title">
       <Header s3>Canvas</Header>
-      <Button>save</Button>
+      <Button @click="saveCanvas">save</Button>
     </div>
-    <CanvasEdit :canvas="toolkit.canvas"></CanvasEdit>
+    <CanvasEdit v-model="canvas" :canvas="toolkit.canvas"></CanvasEdit>
   </div>
 </template>
 
@@ -83,6 +83,7 @@ export default new Component({
         canvas: { boxes: [] },
         learning: '',
       },
+      canvas: {},
     }
   },
   components: {
@@ -139,6 +140,29 @@ export default new Component({
         variables: {
           id: this.toolkit.id,
           learning: encodeURI(this.toolkit.learning),
+        },
+      })
+    },
+    saveCanvas() {
+      const canvas = JSON.stringify({
+        meta: this.canvas.meta,
+        boxes: this.canvas.boxes.map(box =>
+          Object.assign({}, box, { content: encodeURI(box.content) })
+        ),
+      })
+      this.$apollo.mutate({
+        client: 'tool',
+        mutation: gql`
+          mutation updateCanvas($id: ID!, $canvas: String) {
+            editToolkit(toolkit: { id: $id, canvas: $canvas }) {
+              id
+              canvas
+            }
+          }
+        `,
+        variables: {
+          id: this.toolkit.id,
+          canvas,
         },
       })
     },

@@ -22,7 +22,7 @@
       @delete="deleteBox"
     ></BoxEdit>
     <Button @click="addBox">add new box</Button>
-    <Preview v-if="boxes.length" :canvas="template"></Preview>
+    <Preview v-if="boxes.length" :canvas="value"></Preview>
   </div>
 </template>
 
@@ -41,7 +41,7 @@ export default new Component({
     },
   },
   computed: {
-    template() {
+    value() {
       return {
         meta: this.canvas.meta,
         boxes: this.boxes,
@@ -57,6 +57,7 @@ export default new Component({
     canvas: {
       handler(v) {
         this.boxes = v.boxes.map(box => Object.assign({}, box))
+        this.$emit('input', this.value)
       },
       deep: true,
     },
