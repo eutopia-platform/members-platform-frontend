@@ -6,6 +6,7 @@
       v-model="boxes[i]"
       :box="box"
       :index="i"
+      @delete="deleteBox"
     ></BoxEdit>
   </div>
 </template>
@@ -37,6 +38,11 @@ export default new Component({
   },
   components: {
     BoxEdit,
+  },
+  methods: {
+    deleteBox(index) {
+      this.boxes.splice(index, 1)
+    },
   },
 })
 </script>

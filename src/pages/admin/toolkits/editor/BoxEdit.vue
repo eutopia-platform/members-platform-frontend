@@ -3,7 +3,7 @@
     <div class="left">
       <div class="title">
         <Paragraph>Box {{ index }}</Paragraph>
-        <Button>remove</Button>
+        <Button @click="$emit('delete', index)">delete</Button>
       </div>
       <div class="pos">
         <LabeledInput
