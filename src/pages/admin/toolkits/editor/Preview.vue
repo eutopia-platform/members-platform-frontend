@@ -1,6 +1,10 @@
 <template>
   <div :class="getClass">
-    <Canvas v-if="canvas.meta" :template="canvas"></Canvas>
+    <Canvas
+      v-if="canvas.meta"
+      :template="canvas"
+      :width="$el.offsetWidth"
+    ></Canvas>
   </div>
 </template>
 
