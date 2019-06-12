@@ -51,7 +51,10 @@ export default new Component({
       this.onResize()
     },
     template(t) {
-      if (t) this.def.loadTemplate(new Template(this.def.viewport, t))
+      if (t) {
+        this.def.boxes = []
+        this.def.loadTemplate(new Template(this.def.viewport, t))
+      }
     },
   },
   methods: {

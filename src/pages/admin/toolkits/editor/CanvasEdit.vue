@@ -8,12 +8,14 @@
       :index="i"
       @delete="deleteBox"
     ></BoxEdit>
+    <Preview :canvas="template"></Preview>
   </div>
 </template>
 
 <script>
 import Component from '/components/sharedScripts/component'
 import BoxEdit from './BoxEdit'
+import Preview from './Preview'
 
 export default new Component({
   name: 'CanvasEdit',
@@ -21,6 +23,14 @@ export default new Component({
     canvas: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    template() {
+      return {
+        meta: this.canvas.meta,
+        boxes: this.boxes,
+      }
     },
   },
   data() {
@@ -38,6 +48,7 @@ export default new Component({
   },
   components: {
     BoxEdit,
+    Preview,
   },
   methods: {
     deleteBox(index) {
