@@ -8,6 +8,16 @@
       @submit="saveTitle"
     ></ActionInput>
 
+    <div class="visibility">
+      <Paragraph>
+        This toolkit is
+        {{ toolkit.visibility === 'PUBLIC' ? 'public' : 'not public' }}
+      </Paragraph>
+      <Button v-if="toolkit.visibility !== 'PUBLIC'" @click="publishToolkit">
+        Publish
+      </Button>
+    </div>
+
     <Button @click="deleteToolkit">Delete Toolkit</Button>
 
     <div class="field-title">
@@ -58,6 +68,7 @@ export default new Component({
             description_markdown
             canvas
             learning
+            visibility
           }
         }
       `,
@@ -84,6 +95,7 @@ export default new Component({
         description_markdown: '',
         canvas: { boxes: [] },
         learning: '',
+        visibility: '',
       },
       canvas: {},
     }
@@ -183,6 +195,23 @@ export default new Component({
         })
         .then(() => this.$router.push('/admin/toolkits'))
     },
+    publishToolkit() {
+      this.$apollo.mutate({
+        client: 'tool',
+        mutation: gql`
+          mutation publishToolkit($id: ID!, $status: String!) {
+            setVisibility(id: $id, status: $status) {
+              id
+              visibility
+            }
+          }
+        `,
+        variables: {
+          id: this.toolkit.id,
+          status: 'PUBLIC',
+        },
+      })
+    },
   },
 })
 </script>
@@ -205,6 +234,13 @@ export default new Component({
 
   .markdown-edit {
     width: 100%;
+  }
+
+  .visibility {
+    display: flex;
+    .button {
+      margin-left: 2rem;
+    }
   }
 }
 </style>
