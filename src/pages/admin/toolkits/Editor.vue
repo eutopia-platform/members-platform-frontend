@@ -91,6 +91,7 @@ export default new Component({
       result({ data: { toolkit } }) {
         toolkit.description_markdown = decodeURI(toolkit.description_markdown)
         toolkit.learning = decodeURI(toolkit.learning)
+        toolkit.workflow = decodeURI(toolkit.workflow)
         toolkit.canvas = JSON.parse(toolkit.canvas)
         toolkit.canvas.boxes.forEach(
           box => (box.content = decodeURI(box.content))
