@@ -40,6 +40,7 @@ export default new Component({
             title
             canvas
             learning
+            workflow
             id
           }
         }
