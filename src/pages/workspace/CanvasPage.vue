@@ -40,11 +40,15 @@ export default new Component({
             title
             canvas
             learning
+            workflow
+            id
           }
         }
       `,
-      variables: {
-        id: '3b4d0ef7-ca20-403d-9413-0349026ad620',
+      variables() {
+        return {
+          id: this.id,
+        }
       },
     },
   },
@@ -56,6 +60,10 @@ export default new Component({
     offsetLeft: {
       type: Number | String,
       required: true,
+    },
+    id: {
+      type: String,
+      default: '',
     },
   },
   computed: {

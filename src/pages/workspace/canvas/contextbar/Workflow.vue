@@ -1,23 +1,50 @@
 <template>
   <div :class="getClass">
-    <div class="title">
-      <Header s4>Customer Journey Map</Header>
-    </div>
-    <Paragraph>1. Actor</Paragraph>
-    <Paragraph>2. Scenario and goals</Paragraph>
-    <Paragraph>3. Phases of the customer journey</Paragraph>
-    <Paragraph>4. Actions, mindset and emotions</Paragraph>
-    <Paragraph>5. Insights, opportunities and ownership</Paragraph>
-    <Paragraph>6. Use the result for the design process</Paragraph>
+    <MarkdownDisplay
+      v-if="toolkit && toolkit.workflow.length"
+      :markdown="toolkit.workflow"
+      :encoded="true"
+    ></MarkdownDisplay>
+    <Paragraph v-else>no workflow available</Paragraph>
     <Button secondary>Milestone Challenge</Button>
   </div>
 </template>
 
 <script>
 import Component from '/components/sharedScripts/component'
+import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
+import gql from 'graphql-tag'
 
 export default new Component({
   name: 'Workflow',
+  apollo: {
+    toolkit: {
+      client: 'tool',
+      query: gql`
+        query getWorkflow($id: ID!) {
+          toolkit(id: $id) {
+            workflow
+          }
+        }
+      `,
+      variables() {
+        return {
+          id: this.$route.params.id,
+        }
+      },
+      fetchPolicy: 'cache-only',
+    },
+  },
+  data() {
+    return {
+      toolkit: {
+        workflow: 'loading...',
+      },
+    }
+  },
+  components: {
+    MarkdownDisplay,
+  },
 })
 </script>
 

@@ -31,6 +31,16 @@
     ></MarkdownEdit>
 
     <div class="field-title">
+      <Header s3>Workflow</Header>
+      <Button @click="saveWorkflow">save</Button>
+    </div>
+    <MarkdownEdit
+      v-model="toolkit.workflow"
+      view
+      :default-text="toolkit.workflow"
+    ></MarkdownEdit>
+
+    <div class="field-title">
       <Header s3>Learning</Header>
       <Button @click="saveLearning">save</Button>
     </div>
@@ -69,6 +79,7 @@ export default new Component({
             canvas
             learning
             visibility
+            workflow
           }
         }
       `,
@@ -80,6 +91,7 @@ export default new Component({
       result({ data: { toolkit } }) {
         toolkit.description_markdown = decodeURI(toolkit.description_markdown)
         toolkit.learning = decodeURI(toolkit.learning)
+        toolkit.workflow = decodeURI(toolkit.workflow)
         toolkit.canvas = JSON.parse(toolkit.canvas)
         toolkit.canvas.boxes.forEach(
           box => (box.content = decodeURI(box.content))
@@ -96,6 +108,7 @@ export default new Component({
         canvas: { boxes: [] },
         learning: '',
         visibility: '',
+        workflow: '',
       },
       canvas: {},
     }
@@ -137,6 +150,23 @@ export default new Component({
         variables: {
           id: this.toolkit.id,
           description: encodeURI(this.toolkit.description_markdown),
+        },
+      })
+    },
+    saveWorkflow() {
+      this.$apollo.mutate({
+        client: 'tool',
+        mutation: gql`
+          mutation updateWorkflow($id: ID!, $workflow: String) {
+            editToolkit(toolkit: { id: $id, workflow: $workflow }) {
+              id
+              workflow
+            }
+          }
+        `,
+        variables: {
+          id: this.toolkit.id,
+          workflow: encodeURI(this.toolkit.workflow),
         },
       })
     },
