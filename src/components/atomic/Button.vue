@@ -53,6 +53,7 @@ export default new Atomic({
   height: calc(1.5 * var(--baseline));
   margin-top: calc(var(--baseline) - var(--baseline) / 4);
   margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
+  border-radius: 0.25rem;
   transition: color, background-color 0.2s ease;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -74,13 +75,24 @@ export default new Atomic({
   &.cl-secondary {
     color: color('secondary');
   }
+
+  &:hover {
+    &.cl-default {
+      background-color: rgba(color('on-surface'), $alpha: 5%);
+    }
+    &.cl-primary {
+      background-color: rgba(color('primary'), $alpha: 5%);
+    }
+    &.cl-secondary {
+      background-color: rgba(color('secondary'), $alpha: 5%);
+    }
+  }
 }
 
 .outlined {
   background-color: color('surface');
   border-style: solid;
   border-width: 0.125rem;
-  border-radius: 0.25rem;
 
   &.cl-default {
     color: color('on-surface');
@@ -116,7 +128,6 @@ export default new Atomic({
 .raised,
 .unelevated {
   border-style: none;
-  border-radius: 0.25rem;
   box-shadow: shadow(2.5);
 
   &:hover {
