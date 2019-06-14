@@ -9,9 +9,21 @@
     <Small>Small</Small>
     <Big>Big</Big>
     <Big extra>Big (extra)</Big>
-    <Button>Button</Button>
-    <Button primary>Button (primary)</Button>
-    <Button secondary>Button (secondary)</Button>
+    <Button text>Button Text</Button>
+    <Button text color="primary">Button Text</Button>
+    <Button text color="secondary">Button Text</Button>
+    <Break></Break>
+    <Button outlined>Button Outlined</Button>
+    <Button outlined color="primary">Button Outlined</Button>
+    <Button outlined color="secondary">Button Outlined</Button>
+    <Break></Break>
+    <Button raised>Button Raised</Button>
+    <Button raised color="primary">Button Raised</Button>
+    <Button raised color="secondary">Button Raised</Button>
+    <Break></Break>
+    <Button unelevated>Button Unelevated</Button>
+    <Button unelevated color="primary">Button Unelevated</Button>
+    <Button unelevated color="secondary">Button Unelevated</Button>
     <Break></Break>
     <Input />
     <Input value="with default" />

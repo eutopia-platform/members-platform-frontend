@@ -3,7 +3,15 @@
     :disabled="disabled"
     type="button"
     class="button"
-    :class="{ primary, secondary, disabled }"
+    :class="{
+      text,
+      outlined,
+      raised,
+      unelevated,
+      'cl-default': color === 'default',
+      'cl-primary': color === 'primary',
+      'cl-secondary': color === 'secondary',
+    }"
     @click="onClick"
   >
     <slot></slot>
@@ -15,11 +23,16 @@ import Atomic from '/scripts/atomic'
 
 export default new Atomic({
   name: 'Button',
-  types: ['default', 'primary', 'secondary'],
+  types: ['text', 'outlined', 'raised', 'unelevated'],
+  defaultType: 'outlined',
   props: {
     disabled: {
       type: Boolean,
       default: false,
+    },
+    color: {
+      type: String,
+      default: 'default',
     },
   },
   methods: {
@@ -37,57 +50,114 @@ export default new Atomic({
 .button {
   font-size: 1rem;
   min-width: 2rem;
-  background-color: color('surface');
-  border: 0.125rem solid color('on-surface');
-  border-radius: 0.25rem;
-  color: color('on-surface');
   height: calc(1.5 * var(--baseline));
   margin-top: calc(var(--baseline) - var(--baseline) / 4);
   margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  cursor: pointer;
   transition: color, background-color 0.2s ease;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  transition-property: box-shadow, background-color;
+}
 
-  &:hover:not(.disabled),
-  &:focus:not(.disabled) {
-    outline: none;
-    background-color: color('on-surface');
-    color: color('surface');
+.text {
+  background-color: transparent;
+  border: none;
+
+  &.cl-default {
+    color: color('on-surface');
+  }
+
+  &.cl-primary {
+    color: color('primary');
+  }
+
+  &.cl-secondary {
+    color: color('secondary');
   }
 }
 
-.primary {
-  border: 2px solid color('primary');
-  color: color('primary');
+.outlined {
+  background-color: color('surface');
+  border-style: solid;
+  border-width: 0.125rem;
+  border-radius: 0.25rem;
 
-  &:hover:not(.disabled),
-  &:focus:not(.disabled) {
-    background-color: color('primary');
+  &.cl-default {
+    color: color('on-surface');
+    border-color: color('on-surface');
+    &:hover {
+      background-color: color('on-surface');
+      color: color('surface');
+      border-color: color('surface');
+    }
+  }
+
+  &.cl-primary {
+    color: color('primary');
+    border-color: color('primary');
+    &:hover {
+      background-color: color('primary');
+      color: color('on-primary');
+      border-color: color('on-primary');
+    }
+  }
+
+  &.cl-secondary {
+    color: color('secondary');
+    border-color: color('secondary');
+    &:hover {
+      background-color: color('secondary');
+      color: color('on-secondary');
+      border-color: color('on-secondary');
+    }
+  }
+}
+
+.raised,
+.unelevated {
+  border-style: none;
+  border-radius: 0.25rem;
+  box-shadow: shadow(2.5);
+
+  &:hover {
+    box-shadow: shadow(1);
+  }
+
+  &.cl-default {
+    color: color('on-surface');
+    background-color: color('surface');
+  }
+
+  &.cl-primary {
     color: color('on-primary');
+    background-color: color('primary');
   }
 
-  &:disabled {
-    border-color: desaturate($color: color('primary'), $amount: 30);
-    color: desaturate($color: color('primary'), $amount: 30);
+  &.cl-secondary {
+    color: color('on-secondary');
+    background-color: color('secondary');
   }
 }
 
-.secondary {
-  border: 2px solid color('secondary');
-  color: color('secondary');
+.unelevated {
+  box-shadow: none;
 
-  &:hover:not(.disabled),
-  &:focus:not(.disabled) {
-    background-color: color('secondary');
-    color: color('on-secondary');
+  &.cl-default {
+    color: color('surface');
+    background-color: color('on-surface');
   }
 
-  &:disabled {
-    border-color: desaturate($color: color('secondary'), $amount: 30);
-    color: desaturate($color: color('secondary'), $amount: 30);
+  &:hover {
+    box-shadow: none;
+    &.cl-default {
+      background-color: lighten(color('on-surface'), 10%);
+    }
+    &.cl-primary {
+      background-color: lighten(color('primary'), 10%);
+    }
+    &.cl-secondary {
+      background-color: lighten(color('secondary'), 10%);
+    }
   }
 }
 
