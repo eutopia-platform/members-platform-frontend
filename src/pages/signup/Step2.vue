@@ -11,7 +11,7 @@
       label="display name"
       :default-value="user.callname"
     ></LabeledInput>
-    <Button primary @click="submit">continue</Button>
+    <Button outlined primary @click="submit">continue</Button>
   </Card>
 </template>
 

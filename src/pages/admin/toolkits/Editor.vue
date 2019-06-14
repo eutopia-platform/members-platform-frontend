@@ -13,16 +13,20 @@
         This toolkit is
         {{ toolkit.visibility === 'PUBLIC' ? 'public' : 'not public' }}
       </Paragraph>
-      <Button v-if="toolkit.visibility !== 'PUBLIC'" @click="publishToolkit">
+      <Button
+        v-if="toolkit.visibility !== 'PUBLIC'"
+        outlined
+        @click="publishToolkit"
+      >
         Publish
       </Button>
     </div>
 
-    <Button @click="deleteToolkit">Delete Toolkit</Button>
+    <Button outlined @click="deleteToolkit">Delete Toolkit</Button>
 
     <div class="field-title">
       <Header s3>Description</Header>
-      <Button @click="saveDescription">save</Button>
+      <Button outlined @click="saveDescription">save</Button>
     </div>
     <MarkdownEdit
       v-model="toolkit.description_markdown"
@@ -32,7 +36,7 @@
 
     <div class="field-title">
       <Header s3>Workflow</Header>
-      <Button @click="saveWorkflow">save</Button>
+      <Button outlined @click="saveWorkflow">save</Button>
     </div>
     <MarkdownEdit
       v-model="toolkit.workflow"
@@ -42,7 +46,7 @@
 
     <div class="field-title">
       <Header s3>Learning</Header>
-      <Button @click="saveLearning">save</Button>
+      <Button outlined @click="saveLearning">save</Button>
     </div>
     <MarkdownEdit
       v-model="toolkit.learning"
@@ -52,7 +56,7 @@
 
     <div class="field-title">
       <Header s3>Canvas</Header>
-      <Button @click="saveCanvas">save</Button>
+      <Button outlined @click="saveCanvas">save</Button>
     </div>
     <CanvasEdit v-model="canvas" :canvas="toolkit.canvas"></CanvasEdit>
   </div>

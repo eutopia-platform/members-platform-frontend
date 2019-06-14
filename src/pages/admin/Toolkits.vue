@@ -4,7 +4,7 @@
     <Paragraph v-for="(kit, i) in toolkits" :key="i">
       <RouterLink :to="kit.id" append>{{ kit.title }}</RouterLink>
     </Paragraph>
-    <Button @click="addToolkit">Add Toolkit</Button>
+    <Button outlined @click="addToolkit">Add Toolkit</Button>
   </div>
 </template>
 

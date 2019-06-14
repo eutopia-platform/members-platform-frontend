@@ -18,8 +18,8 @@
       autocomplete="new-password"
     ></LabeledInput>
     <div class="button-wrap">
-      <Button @click="$router.push('/login')">sign in instead</Button>
-      <Button secondary @click="submit">continue</Button>
+      <Button outlined @click="$router.push('/login')">sign in instead</Button>
+      <Button outlined secondary @click="submit">continue</Button>
     </div>
   </Card>
 </template>

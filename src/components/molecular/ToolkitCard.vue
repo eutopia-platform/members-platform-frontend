@@ -7,7 +7,9 @@
       </div>
       <div class="back">
         <MarkdownDisplay :markdown="description"></MarkdownDisplay>
-        <Button @click="$router.push(`canvas/${id}`)">Use Toolkit</Button>
+        <Button outlined @click="$router.push(`canvas/${id}`)">
+          Use Toolkit
+        </Button>
       </div>
     </Card>
   </div>

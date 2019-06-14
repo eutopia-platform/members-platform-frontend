@@ -6,7 +6,7 @@
       :encoded="true"
     ></MarkdownDisplay>
     <Paragraph v-else>no workflow available</Paragraph>
-    <Button secondary>Milestone Challenge</Button>
+    <Button outlined color="secondary">Milestone Challenge</Button>
   </div>
 </template>
 

@@ -6,8 +6,8 @@
       workspace.
     </Paragraph>
     <div class="button-wrap">
-      <Button @click="decline">decline</Button>
-      <Button @click="accept">accept</Button>
+      <Button outlined @click="decline">decline</Button>
+      <Button outlined @click="accept">accept</Button>
     </div>
   </div>
 </template>

@@ -13,7 +13,7 @@
       @blur="setFocus(false)"
       @input="onInput"
     ></Component>
-    <Button ref="button" @click="onClick">{{ button }}</Button>
+    <Button ref="button" outlined @click="onClick">{{ button }}</Button>
   </div>
 </template>
 

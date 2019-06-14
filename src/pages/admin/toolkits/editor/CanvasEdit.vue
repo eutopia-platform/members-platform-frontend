@@ -21,7 +21,7 @@
       :index="i"
       @delete="deleteBox"
     ></BoxEdit>
-    <Button @click="addBox">add new box</Button>
+    <Button outlined @click="addBox">add new box</Button>
     <Preview v-if="boxes.length" :canvas="value"></Preview>
   </div>
 </template>

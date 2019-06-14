@@ -14,7 +14,7 @@
       autocomplete="current-password"
     ></LabeledInput>
     <Break />
-    <Button :disabled="!emailValid || !passwordValid" @click="login">
+    <Button outlined :disabled="!emailValid || !passwordValid" @click="login">
       Submit
     </Button>
     <Paragraph v-if="error">{{ error }}</Paragraph>

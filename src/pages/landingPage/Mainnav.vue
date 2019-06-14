@@ -6,7 +6,7 @@
     <Item text="Workflow" link="/workflow" align="right"></Item>
     <Item text="Toolkits" link="/toolkits" align="right"></Item>
     <Item>
-      <Button primary @click="$router.push('/login')">Login</Button>
+      <Button outlined primary @click="$router.push('/login')">Login</Button>
     </Item>
   </Menu>
 </template>

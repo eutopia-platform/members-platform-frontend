@@ -2,7 +2,7 @@
   <div :class="getClass">
     <Card class="content">
       <Paragraph>You have not been invited to this workspace.</Paragraph>
-      <Button @click="logout">switch account</Button>
+      <Button outlined @click="logout">switch account</Button>
       <Break />
       <Small>
         currently logged in as:

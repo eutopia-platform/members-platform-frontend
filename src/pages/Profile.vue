@@ -22,7 +22,9 @@
       <Paragraph v-if="workspaces.length === 0">
         You aren't a member of any workspace
       </Paragraph>
-      <Button @click="$router.push('/new')">create new workspace</Button>
+      <Button outlined @click="$router.push('/new')">
+        create new workspace
+      </Button>
     </div>
   </div>
 </template>

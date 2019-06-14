@@ -21,7 +21,7 @@
         <Paragraph>
           Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
         </Paragraph>
-        <Button @click="submitProfile">submit</Button>
+        <Button outlined @click="submitProfile">submit</Button>
       </Card>
       <Card>
         <Header s4>Workspace</Header>
@@ -43,7 +43,7 @@
       </Card>
       <Card class="danger-zone">
         <Header s4>Danger Zone</Header>
-        <Button @click="confirmDelete">delete this workspace</Button>
+        <Button outlined @click="confirmDelete">delete this workspace</Button>
       </Card>
     </div>
   </div>

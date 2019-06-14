@@ -7,8 +7,9 @@
         <Input v-model="inputText" />
         <Break></Break>
         <div class="buttons">
-          <Button primary @click="$emit('cancel')">cancel</Button>
+          <Button outlined primary @click="$emit('cancel')">cancel</Button>
           <Button
+            outlined
             :disabled="inputText !== confirmation"
             secondary
             @click="$emit('confirmed')"
