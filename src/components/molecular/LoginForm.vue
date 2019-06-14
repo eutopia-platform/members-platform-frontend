@@ -17,6 +17,7 @@
     <Button outlined :disabled="!emailValid || !passwordValid" @click="login">
       Submit
     </Button>
+    <Button text link="/signup">Create account</Button>
     <Paragraph v-if="error">{{ error }}</Paragraph>
   </form>
 </template>
