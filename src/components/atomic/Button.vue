@@ -40,8 +40,17 @@ export default new Atomic({
     },
   },
   methods: {
-    onClick() {
-      if (this.link) this.$router.push(this.link)
+    onClick({ offsetX, offsetY }) {
+      this.$el.style.setProperty(
+        '--ripple-off-x',
+        `${(offsetX / this.$el.offsetWidth) * 100 - 50}%`
+      )
+      this.$el.style.setProperty(
+        '--ripple-off-y',
+        `${(offsetY / this.$el.offsetHeight) * 100 - 50}%`
+      )
+
+      if (!this.disabled && this.link) this.$router.push(this.link)
       if (!this.disabled) this.$emit('click')
       setTimeout(() => this.$el.blur(), 500)
     },
