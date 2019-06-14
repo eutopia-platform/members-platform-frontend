@@ -1,0 +1,23 @@
+@import './colors';
+
+@mixin ripple($color: color('surface')) {
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-image: radial-gradient(circle, $color 10%, transparent 10%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(0);
+    transition: all 0s ease-out;
+  }
+
+  &:not(.disabled):focus:after {
+    transform: scale(10);
+    opacity: 0;
+    transition: 0.4s;
+  }
+}

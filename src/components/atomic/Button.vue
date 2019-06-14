@@ -51,6 +51,7 @@ export default new Atomic({
 <style lang="scss" scoped>
 @import '/styles/colors';
 @import '/styles/shadows';
+@import '/styles/ripple';
 
 .button {
   display: block;
@@ -64,10 +65,14 @@ export default new Atomic({
   cursor: pointer;
   transition: all 0.2s ease;
   transition-property: box-shadow, background-color;
+  position: relative;
+  overflow: hidden;
 
   &:focus {
-    outline: none;
+    outline: 0;
   }
+
+  @include ripple();
 
   &.disabled {
     cursor: initial;
@@ -115,6 +120,7 @@ export default new Atomic({
   &.cl-default {
     color: color('on-surface');
     border-color: color('on-surface');
+
     &:hover {
       background-color: color('on-surface');
       color: color('surface');
@@ -152,6 +158,7 @@ export default new Atomic({
   &.cl-default {
     color: color('on-surface');
     background-color: color('surface');
+    @include ripple(color('on-surface'));
   }
 
   &.cl-primary {
@@ -177,6 +184,7 @@ export default new Atomic({
     box-shadow: none;
     &.cl-default {
       background-color: lighten(color('on-surface'), 10%);
+      @include ripple(color('surface'));
     }
     &.cl-primary {
       background-color: lighten(color('primary'), 10%);
