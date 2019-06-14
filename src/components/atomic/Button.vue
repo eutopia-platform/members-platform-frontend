@@ -31,8 +31,8 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
-@import '/components/sharedStyles/shadows';
+@import '/styles/colors';
+@import '/styles/shadows';
 
 .button {
   font-size: 1rem;

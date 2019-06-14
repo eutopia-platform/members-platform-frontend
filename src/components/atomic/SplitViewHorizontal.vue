@@ -16,9 +16,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/colors.scss';
-@import '../sharedStyles/shapes.scss';
-@import '../sharedStyles/responsive.scss';
+@import '/styles/colors.scss';
+@import '/styles/shapes.scss';
+@import '/styles/responsive.scss';
 
 .splitview-horizontal {
   width: 100%;

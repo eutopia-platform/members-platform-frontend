@@ -61,7 +61,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .mainnav {
   transition: transform 0.5s ease;

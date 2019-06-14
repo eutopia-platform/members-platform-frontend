@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/colors.scss';
+@import '/styles/colors.scss';
 
 hr {
   height: 2px;

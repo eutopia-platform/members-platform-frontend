@@ -78,7 +78,7 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/shadows.scss';
+@import '/styles/shadows.scss';
 
 .login-form {
   width: 30rem;

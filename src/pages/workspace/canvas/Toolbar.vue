@@ -18,7 +18,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/shadows';
+@import '/styles/shadows';
 
 .toolbar {
   position: absolute;

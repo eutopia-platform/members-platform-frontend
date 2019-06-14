@@ -73,7 +73,7 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .labeled-input {
   width: 14rem;

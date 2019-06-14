@@ -11,7 +11,7 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .loader {
   width: 2rem;

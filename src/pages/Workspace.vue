@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/components/sharedStyles/colors.scss';
+@import '/styles/colors.scss';
 
 .workspace {
   .page {

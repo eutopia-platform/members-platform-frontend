@@ -47,8 +47,8 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/shadows';
-@import '/components/sharedStyles/colors';
+@import '/styles/shadows';
+@import '/styles/colors';
 
 .sidebar {
   position: fixed;

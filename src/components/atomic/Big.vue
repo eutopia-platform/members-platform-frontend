@@ -14,9 +14,9 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/text';
-@import '../sharedStyles/fluid';
-@import '../sharedStyles/math';
+@import '/styles/text';
+@import '/styles/fluid';
+@import '/styles/math';
 
 .big {
   line-height: var(--baseline);

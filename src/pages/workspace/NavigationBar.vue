@@ -81,8 +81,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/components/sharedStyles/colors.scss';
-@import 'src/components/sharedStyles/shadows.scss';
+@import '/styles/colors.scss';
+@import '/styles/shadows.scss';
 
 .navigation {
   height: 100vh;

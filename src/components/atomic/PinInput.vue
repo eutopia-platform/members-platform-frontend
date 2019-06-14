@@ -108,7 +108,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/shapes.scss';
+@import '/styles/shapes.scss';
 
 .pin-input {
   .pin-group {

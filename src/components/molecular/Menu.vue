@@ -20,8 +20,8 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
-@import '/components/sharedStyles/shadows';
+@import '/styles/colors';
+@import '/styles/shadows';
 
 .menu {
   @include colorScheme('surface');

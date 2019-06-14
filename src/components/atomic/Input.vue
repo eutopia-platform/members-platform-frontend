@@ -62,7 +62,7 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/colors.scss';
+@import '/styles/colors.scss';
 
 .input {
   height: calc(1.5 * var(--baseline));

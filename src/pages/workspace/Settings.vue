@@ -183,7 +183,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors.scss';
+@import '/styles/colors.scss';
 
 .settings {
   display: flex;

@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/shadows.scss';
+@import '/styles/shadows.scss';
 
 .content {
   position: fixed;

@@ -100,7 +100,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .step1 {
   width: 20rem;

@@ -42,7 +42,7 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .icon {
   height: var(--baseline);

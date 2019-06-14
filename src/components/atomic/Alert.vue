@@ -22,8 +22,8 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/shadows.scss';
-@import '/components/sharedStyles/colors.scss';
+@import '/styles/shadows.scss';
+@import '/styles/colors.scss';
 
 .alert {
   position: fixed;

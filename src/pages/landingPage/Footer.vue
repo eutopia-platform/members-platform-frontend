@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../components/sharedStyles/colors.scss';
+@import '/styles/colors.scss';
 
 .footer {
   @include colorScheme('primary');

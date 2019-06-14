@@ -19,8 +19,8 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/text.scss';
-@import '../sharedStyles/colors.scss';
+@import '/styles/text.scss';
+@import '/styles/colors.scss';
 
 .paragraph {
   font-size: 1rem;
