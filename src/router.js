@@ -37,6 +37,10 @@ export default new Router({
         { path: 'workflow', component: Workflow },
         { path: 'toolkits', component: LpToolkits },
       ],
+      beforeEnter(to, from, next) {
+        if ('sessionToken' in localStorage) next('/space')
+        next()
+      },
     },
     {
       path: '/space/:workspace?',
