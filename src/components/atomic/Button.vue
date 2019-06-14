@@ -43,6 +43,7 @@ export default new Atomic({
     onClick() {
       if (this.link) this.$router.push(this.link)
       if (!this.disabled) this.$emit('click')
+      setTimeout(() => this.$el.blur(), 500)
     },
   },
 })
