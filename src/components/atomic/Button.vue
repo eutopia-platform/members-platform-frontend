@@ -64,6 +64,14 @@ export default new Atomic({
   cursor: pointer;
   transition: all 0.2s ease;
   transition-property: box-shadow, background-color;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.disabled {
+    cursor: initial;
+  }
 }
 
 .text {
@@ -177,9 +185,5 @@ export default new Atomic({
       background-color: lighten(color('secondary'), 10%);
     }
   }
-}
-
-.disabled {
-  cursor: initial;
 }
 </style>
