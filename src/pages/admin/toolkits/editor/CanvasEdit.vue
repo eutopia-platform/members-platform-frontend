@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import BoxEdit from './BoxEdit'
 import Preview from './Preview'
 import LabeledInput from '/components/molecular/LabeledInput'

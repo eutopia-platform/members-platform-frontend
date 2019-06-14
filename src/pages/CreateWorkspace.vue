@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import ActionInput from '/components/molecular/ActionInput'
 import gql from 'graphql-tag'
 

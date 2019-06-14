@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/component'
+import Molecular from '/scripts/component'
 
 import marked from 'marked'
 import Vue from 'vue'

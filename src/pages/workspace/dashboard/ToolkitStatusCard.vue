@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import DashboardCard from './DashboardCard'
 import Table from '/components/molecular/DataTable'
 

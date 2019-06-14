@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import Canvas from './canvas/Canvas'
 import ContextBar from './canvas/ContextBar'
 import TitleBar from './canvas/TitleBar'
-import { parseLength } from '/components/sharedScripts/parseCSS'
+import { parseLength } from '/scripts/parseCSS'
 import gql from 'graphql-tag'
 
 export default new Component({

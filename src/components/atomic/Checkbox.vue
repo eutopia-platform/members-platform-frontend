@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Atomic from '../sharedScripts/atomic'
+import Atomic from '/scripts/atomic'
 
 export default new Atomic({
   name: 'Checkbox',

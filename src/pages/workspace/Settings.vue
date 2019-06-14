@@ -51,11 +51,11 @@
 
 <script>
 import gql from 'graphql-tag'
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import LabeledInput from '/components/molecular/LabeledInput'
 import ConfirmDelete from './settings/ConfirmDelete'
 import InviteForm from './settings/InviteForm'
-import { formatDate, parseDate } from '/components/sharedScripts/date'
+import { formatDate, parseDate } from '/scripts/date'
 
 export default new Component({
   name: 'Settings',

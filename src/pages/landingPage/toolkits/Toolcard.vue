@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import Toolkit from './toolkit'
 
 export default new Component({

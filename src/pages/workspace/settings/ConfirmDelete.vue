@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import Confirmation from '/components/molecular/Confirmation'
 
 export default new Component({

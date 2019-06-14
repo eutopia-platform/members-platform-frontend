@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import Canvas from '/pages/workspace/canvas/Canvas'
 
 export default new Component({

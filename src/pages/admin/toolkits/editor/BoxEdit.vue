@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import LabeledInput from '/components/molecular/LabeledInput'
 import Textedit from '/components/molecular/Textedit'
 

@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import { isEmail } from '/components/sharedScripts/validate'
+import Component from '/scripts/component'
+import { isEmail } from '/scripts/validate'
 import LabeledInput from '/components/molecular/LabeledInput'
 import gql from 'graphql-tag'
 

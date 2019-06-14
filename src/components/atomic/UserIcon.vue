@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Atomic from '../sharedScripts/atomic'
+import Atomic from '/scripts/atomic'
 import Identicon from 'identicon.js'
 
 export default new Atomic({

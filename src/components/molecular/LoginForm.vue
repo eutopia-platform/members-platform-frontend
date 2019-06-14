@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
-import logout from '/components/sharedScripts/logout'
+import Molecular from '/scripts/molecular'
+import logout from '/scripts/logout'
 import LabeledInput from '/components/molecular/LabeledInput'
-import { isEmail } from '/components/sharedScripts/validate'
+import { isEmail } from '/scripts/validate'
 import gql from 'graphql-tag'
 
 export default new Molecular({

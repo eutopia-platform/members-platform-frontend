@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/component'
+import Molecular from '/scripts/component'
 
 export default new Molecular({
   name: 'LabeledInput',

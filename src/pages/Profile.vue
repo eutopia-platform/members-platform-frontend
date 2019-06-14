@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import { formatDate, parseDate } from '/components/sharedScripts/date'
+import Component from '/scripts/component'
+import { formatDate, parseDate } from '/scripts/date'
 import Invitation from './profile/Invitation'
 import gql from 'graphql-tag'
 

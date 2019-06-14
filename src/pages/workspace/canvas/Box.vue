@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
 import Textedit from '/components/molecular/Textedit'
 import { Box as BoxDef } from './definition'

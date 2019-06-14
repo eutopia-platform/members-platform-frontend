@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Atomic from '/components/sharedScripts/atomic'
+import Atomic from '/scripts/atomic'
 
 export default new Atomic({
   name: 'Alert',

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import Step1 from './signup/Step1'
 import Step2 from './signup/Step2'
 

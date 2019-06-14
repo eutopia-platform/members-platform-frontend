@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import Menu from '/components/molecular/Menu'
 import Item from '/components/molecular/menu/Item'
 import Brand from '/components/molecular/Brand'

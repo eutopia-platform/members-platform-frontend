@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
+import Molecular from '/scripts/molecular'
 import Popup from '/components/molecular/Popup'
 
 export default new Molecular({

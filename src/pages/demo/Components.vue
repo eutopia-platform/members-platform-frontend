@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import ActionInput from '/components/molecular/ActionInput'
 import LabeledInput from '/components/molecular/LabeledInput'
 import EmailSignup from '/components/molecular/EmailSignup'

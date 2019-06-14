@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import Sidebar from '/components/molecular/Sidebar'
 import Workflow from './contextbar/Workflow'
 import Learning from './contextbar/Learning'

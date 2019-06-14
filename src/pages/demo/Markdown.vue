@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '/scripts/component'
 import Textedit from '/components/molecular/Textedit'
 import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
 

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
+import Molecular from '/scripts/molecular'
 
 export default new Molecular({
   name: 'Item',
