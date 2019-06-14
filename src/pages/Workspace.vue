@@ -13,27 +13,11 @@
 <script>
 import Navbar from './workspace/NavigationBar'
 import Dashboard from './workspace/Dashboard'
-import gql from 'graphql-tag'
 
 export default {
   name: 'Workspace',
   components: {
     Navbar,
-  },
-  apollo: {
-    user: {
-      query: gql`
-        {
-          user {
-            name
-            callname
-            email
-            id
-          }
-        }
-      `,
-      fetchPolicy: 'network-only',
-    },
   },
   data() {
     return {

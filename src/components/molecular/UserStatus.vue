@@ -10,22 +10,12 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import currentUserQuery from '/gql/user'
 
 export default {
   name: 'UserStatus',
   apollo: {
-    user: {
-      query: gql`
-        {
-          user {
-            email
-            callname
-            id
-          }
-        }
-      `,
-    },
+    user: currentUserQuery,
   },
   data() {
     return {
