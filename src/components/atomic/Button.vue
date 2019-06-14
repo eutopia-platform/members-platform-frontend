@@ -100,7 +100,6 @@ export default new Atomic({
     &:hover {
       background-color: color('on-surface');
       color: color('surface');
-      border-color: color('surface');
     }
   }
 
@@ -110,7 +109,6 @@ export default new Atomic({
     &:hover {
       background-color: color('primary');
       color: color('on-primary');
-      border-color: color('on-primary');
     }
   }
 
@@ -120,7 +118,6 @@ export default new Atomic({
     &:hover {
       background-color: color('secondary');
       color: color('on-secondary');
-      border-color: color('on-secondary');
     }
   }
 }
