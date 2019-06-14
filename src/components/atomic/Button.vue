@@ -34,9 +34,14 @@ export default new Atomic({
       type: String,
       default: 'default',
     },
+    link: {
+      type: String,
+      default: null,
+    },
   },
   methods: {
     onClick() {
+      if (this.link) this.$router.push(this.link)
       if (!this.disabled) this.$emit('click')
     },
   },
@@ -48,6 +53,7 @@ export default new Atomic({
 @import '/styles/shadows';
 
 .button {
+  display: block;
   font-size: 1rem;
   min-width: 2rem;
   height: calc(1.5 * var(--baseline));
@@ -63,6 +69,10 @@ export default new Atomic({
 .text {
   background-color: transparent;
   border: none;
+  padding: 0;
+  height: var(--baseline);
+  margin-top: calc(var(--baseline));
+  margin-bottom: calc(var(--baseline));
 
   &.cl-default {
     color: color('on-surface');
