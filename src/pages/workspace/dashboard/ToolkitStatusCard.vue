@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
+import Component from '~/scripts/component'
 import DashboardCard from './DashboardCard'
-import Table from '/components/molecular/DataTable'
+import Table from '~/components/molecular/DataTable'
 
 export default new Component({
   name: 'ToolkitStatusCard',

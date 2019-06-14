@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import Molecular from '/scripts/component'
-import LabeledInput from '/components/molecular/LabeledInput'
+import Molecular from '~/scripts/component'
+import LabeledInput from '~/components/molecular/LabeledInput'
 
 export default new Molecular({
   name: 'ActionInput',

@@ -63,9 +63,9 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import ActionInput from '/components/molecular/ActionInput'
-import MarkdownEdit from '/components/molecular/MarkdownEdit'
+import Component from '~/scripts/component'
+import ActionInput from '~/components/molecular/ActionInput'
+import MarkdownEdit from '~/components/molecular/MarkdownEdit'
 import CanvasEdit from './editor/CanvasEdit'
 import gql from 'graphql-tag'
 

@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
+import Component from '~/scripts/component'
 import BoxEdit from './BoxEdit'
 import Preview from './Preview'
-import LabeledInput from '/components/molecular/LabeledInput'
+import LabeledInput from '~/components/molecular/LabeledInput'
 
 export default new Component({
   name: 'CanvasEdit',

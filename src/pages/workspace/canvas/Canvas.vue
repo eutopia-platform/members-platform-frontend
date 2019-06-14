@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
+import Component from '~/scripts/component'
 import Box from './Box'
 import Toolbar from './Toolbar'
 import { Canvas } from './definition'

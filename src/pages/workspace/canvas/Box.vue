@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
-import Textedit from '/components/molecular/Textedit'
+import Component from '~/scripts/component'
+import MarkdownDisplay from '~/components/molecular/MarkdownDisplay'
+import Textedit from '~/components/molecular/Textedit'
 import { Box as BoxDef } from './definition'
 
 export default new Component({

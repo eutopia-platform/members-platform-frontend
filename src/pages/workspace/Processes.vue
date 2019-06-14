@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import InfoCard from '/components/molecular/InfoCard'
+import InfoCard from '~/components/molecular/InfoCard'
 import ProcessCard from './processes/ProcessCard'
 
 export default {

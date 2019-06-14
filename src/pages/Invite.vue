@@ -3,12 +3,12 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import LoadingScreen from '/pages/LoadingScreen'
+import Component from '~/scripts/component'
+import LoadingScreen from '~/pages/LoadingScreen'
 import InviteError from './invite/InviteError'
 import InviteInfo from './invite/InviteInfo'
 import gql from 'graphql-tag'
-import { CubeError } from '/error'
+import { CubeError } from '~/error'
 
 export default new Component({
   name: 'Invite',

@@ -31,8 +31,8 @@
 
 <script>
 import gql from 'graphql-tag'
-import Toolkit from '/components/molecular/ToolkitCard'
-import InfoCard from '/components/molecular/InfoCard'
+import Toolkit from '~/components/molecular/ToolkitCard'
+import InfoCard from '~/components/molecular/InfoCard'
 
 export default {
   name: 'Toolkits',

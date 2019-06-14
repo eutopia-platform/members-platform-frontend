@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Molecular from '/scripts/molecular'
+import Molecular from '~/scripts/molecular'
 import MarkdownDisplay from './MarkdownDisplay'
 
 export default new Molecular({

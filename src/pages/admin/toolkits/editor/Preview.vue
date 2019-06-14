@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import Canvas from '/pages/workspace/canvas/Canvas'
+import Component from '~/scripts/component'
+import Canvas from '~/pages/workspace/canvas/Canvas'
 
 export default new Component({
   name: 'Preview',

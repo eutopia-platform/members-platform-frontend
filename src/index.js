@@ -2,11 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import VueApollo from 'vue-apollo'
-import App from './App.vue'
-import clients from './connections'
-import router from '/router'
+import App from '~/App.vue'
+import clients from '~/connections'
+import router from '~/router'
 
-import '/master.scss'
+import '~/styles/master.scss'
 
 const apolloProvider = new VueApollo({
   clients,

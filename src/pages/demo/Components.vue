@@ -40,10 +40,10 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import ActionInput from '/components/molecular/ActionInput'
-import LabeledInput from '/components/molecular/LabeledInput'
-import EmailSignup from '/components/molecular/EmailSignup'
+import Component from '~/scripts/component'
+import ActionInput from '~/components/molecular/ActionInput'
+import LabeledInput from '~/components/molecular/LabeledInput'
+import EmailSignup from '~/components/molecular/EmailSignup'
 
 export default new Component({
   name: 'Components',

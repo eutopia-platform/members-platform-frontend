@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import Sidebar from '/components/molecular/Sidebar'
+import Component from '~/scripts/component'
+import Sidebar from '~/components/molecular/Sidebar'
 import Workflow from './contextbar/Workflow'
 import Learning from './contextbar/Learning'
 

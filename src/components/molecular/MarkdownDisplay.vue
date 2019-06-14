@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import Molecular from '/scripts/component'
+import Molecular from '~/scripts/component'
 
 import marked from 'marked'
 import Vue from 'vue'
 
-import Header from '/components/atomic/Header'
-import Paragraph from '/components/atomic/Paragraph'
+import Header from '~/components/atomic/Header'
+import Paragraph from '~/components/atomic/Paragraph'
 
 const createElement = (el, content, props = {}) =>
   Object.assign(

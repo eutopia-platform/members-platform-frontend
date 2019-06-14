@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Molecular from '/scripts/component'
+import Molecular from '~/scripts/component'
 
 export default new Molecular({
   name: 'Sidebar',

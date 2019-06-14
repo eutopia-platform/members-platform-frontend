@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import InfoCard from '/components/molecular/InfoCard'
+import InfoCard from '~/components/molecular/InfoCard'
 import TestStatus from './analytics/TestStatus'
 import MetricCard from './analytics/MetricCard'
 

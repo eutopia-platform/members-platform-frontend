@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
+import Component from '~/scripts/component'
 import gql from 'graphql-tag'
 
 export default new Component({

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
+import Component from '~/scripts/component'
 
 export default new Component({
   name: 'DashboardCard',

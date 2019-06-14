@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
+import Component from '~/scripts/component'
 import Toolcard from './Toolcard'
 import Toolkit from './toolkit'
 

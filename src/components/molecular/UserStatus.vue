@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import currentUserQuery from '/gql/user'
+import currentUserQuery from '~/gql/user'
 
 export default {
   name: 'UserStatus',

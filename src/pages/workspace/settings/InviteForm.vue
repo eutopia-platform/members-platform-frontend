@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import ActionInput from '/components/molecular/ActionInput'
+import Component from '~/scripts/component'
+import ActionInput from '~/components/molecular/ActionInput'
 import gql from 'graphql-tag'
-import { CubeError } from '/error'
-import { isEmail } from '/scripts/validate'
+import { CubeError } from '~/error'
+import { isEmail } from '~/scripts/validate'
 
 export default new Component({
   name: 'InviteForm',

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Atomic from '/scripts/component'
+import Atomic from '~/scripts/component'
 
 export default new Atomic({
   name: 'Big',

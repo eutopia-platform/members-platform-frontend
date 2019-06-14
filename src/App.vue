@@ -4,10 +4,10 @@
 
 <script>
 import Vue from 'vue'
-import Alert from '/components/atomic/Alert'
-import { CubeError } from '/error'
-import Baseline from './baseline'
-import currentUserQuery from '/gql/user'
+import Alert from '~/components/atomic/Alert'
+import { CubeError } from '~/error'
+import Baseline from '~/scripts/baseline'
+import currentUserQuery from '~/gql/user'
 
 export default {
   name: 'App',

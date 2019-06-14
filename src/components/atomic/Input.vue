@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Molecular from '/scripts/molecular'
+import Molecular from '~/scripts/molecular'
 
 export default new Molecular({
   name: 'Input',

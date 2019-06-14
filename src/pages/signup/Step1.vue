@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import { isEmail } from '/scripts/validate'
-import LabeledInput from '/components/molecular/LabeledInput'
+import Component from '~/scripts/component'
+import { isEmail } from '~/scripts/validate'
+import LabeledInput from '~/components/molecular/LabeledInput'
 import gql from 'graphql-tag'
 
 export default new Component({

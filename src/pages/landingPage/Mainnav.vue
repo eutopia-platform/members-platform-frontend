@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import Menu from '/components/molecular/Menu'
-import Item from '/components/molecular/menu/Item'
-import Brand from '/components/molecular/Brand'
+import Component from '~/scripts/component'
+import Menu from '~/components/molecular/Menu'
+import Item from '~/components/molecular/menu/Item'
+import Brand from '~/components/molecular/Brand'
 
 export default new Component({
   name: 'Mainnav',

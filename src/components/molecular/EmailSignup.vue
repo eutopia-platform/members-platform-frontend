@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Molecular from '/scripts/molecular'
-import ActionInput from '/components/molecular/ActionInput'
-import handleError from '/error'
+import Molecular from '~/scripts/molecular'
+import ActionInput from '~/components/molecular/ActionInput'
+import handleError from '~/error'
 import gql from 'graphql-tag'
 
 export default new Molecular({

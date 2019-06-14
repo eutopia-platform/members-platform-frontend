@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import Menu from '/components/molecular/Menu'
-import Item from '/components/molecular/menu/Item'
+import Component from '~/scripts/component'
+import Menu from '~/components/molecular/Menu'
+import Item from '~/components/molecular/menu/Item'
 
 export default new Component({
   name: 'TitleBar',

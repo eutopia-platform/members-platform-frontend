@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import LoginForm from '/components/molecular/LoginForm'
+import Component from '~/scripts/component'
+import LoginForm from '~/components/molecular/LoginForm'
 import gql from 'graphql-tag'
 
 export default new Component({

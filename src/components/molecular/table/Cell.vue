@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Atomic from '/scripts/atomic'
+import Atomic from '~/scripts/atomic'
 
 export default new Atomic({
   name: 'TableCell',

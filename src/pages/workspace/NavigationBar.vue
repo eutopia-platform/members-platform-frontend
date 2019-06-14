@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import UserStatus from '/components/molecular/UserStatus'
-import Brand from '/components/molecular/Brand'
+import UserStatus from '~/components/molecular/UserStatus'
+import Brand from '~/components/molecular/Brand'
 import Item from './NavigationBarItem'
 import WorkspaceIndicator from './WorkspaceIndicator'
-import Sidebar from '/components/molecular/Sidebar'
+import Sidebar from '~/components/molecular/Sidebar'
 
 export default {
   name: 'NavigationBar',

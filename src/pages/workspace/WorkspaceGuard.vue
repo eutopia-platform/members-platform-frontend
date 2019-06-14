@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import Workspace from '/pages/Workspace'
-import NotFound from '/pages/NotFound'
-import LoadingScreen from '/pages/LoadingScreen'
+import Workspace from '~/pages/Workspace'
+import NotFound from '~/pages/NotFound'
+import LoadingScreen from '~/pages/LoadingScreen'
 import gql from 'graphql-tag'
 
 export default {

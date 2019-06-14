@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import Confirmation from '/components/molecular/Confirmation'
+import Component from '~/scripts/component'
+import Confirmation from '~/components/molecular/Confirmation'
 
 export default new Component({
   name: 'ConfirmDelete',

@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import Molecular from '/scripts/molecular'
-import Popup from '/components/molecular/Popup'
+import Molecular from '~/scripts/molecular'
+import Popup from '~/components/molecular/Popup'
 
 export default new Molecular({
   name: 'Confirmation',

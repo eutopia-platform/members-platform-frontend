@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
+import Component from '~/scripts/component'
+import MarkdownDisplay from '~/components/molecular/MarkdownDisplay'
 import gql from 'graphql-tag'
 
 export default new Component({

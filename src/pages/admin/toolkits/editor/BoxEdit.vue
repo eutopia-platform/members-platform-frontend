@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import Component from '/scripts/component'
-import LabeledInput from '/components/molecular/LabeledInput'
-import Textedit from '/components/molecular/Textedit'
+import Component from '~/scripts/component'
+import LabeledInput from '~/components/molecular/LabeledInput'
+import Textedit from '~/components/molecular/Textedit'
 
 export default new Component({
   name: 'BoxEdit',
