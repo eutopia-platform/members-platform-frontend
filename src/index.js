@@ -5,8 +5,13 @@ import VueApollo from 'vue-apollo'
 import App from '~/App.vue'
 import clients from '~/connections'
 import router from '~/router'
+import * as Sentry from '@sentry/browser'
 
 import '~/styles/master.scss'
+
+Sentry.init({
+  dsn: 'https://2fc83a3cc17e49a2a00d88d8bc6478e8@sentry.io/1482895',
+})
 
 const apolloProvider = new VueApollo({
   clients,

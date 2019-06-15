@@ -1,7 +1,9 @@
 <template>
   <div :class="getClass">
     <Header s2>Cube, one workspace for all your projects.</Header>
-    <Paragraph>Enter your email to be notified about future product updates.</Paragraph>
+    <Paragraph>
+      Enter your email to be notified about future product updates.
+    </Paragraph>
     <EmailSignup></EmailSignup>
   </div>
 </template>

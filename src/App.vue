@@ -4,8 +4,6 @@
 
 <script>
 import Vue from 'vue'
-import Alert from '~/components/atomic/Alert'
-import { CubeError } from '~/error'
 import Baseline from '~/scripts/baseline'
 import currentUserQuery from '~/gql/user'
 

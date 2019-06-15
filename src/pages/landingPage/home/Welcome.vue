@@ -1,7 +1,9 @@
 <template>
   <div class="lp-welcome">
     <Header s1>A workspace to turn ideas into startups</Header>
-    <Big extra>Cube is the easiest way for teams to develop products people want.</Big>
+    <Big extra>
+      Cube is the easiest way for teams to develop products people want.
+    </Big>
     <EmailSignup></EmailSignup>
   </div>
 </template>

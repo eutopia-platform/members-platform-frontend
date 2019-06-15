@@ -1,5 +1,10 @@
 <template>
-  <ActionInput :class="getClass" label="email" button="subscribe" @submit="submit"></ActionInput>
+  <ActionInput
+    :class="getClass"
+    label="email"
+    button="subscribe"
+    @submit="submit"
+  ></ActionInput>
 </template>
 
 <script>
