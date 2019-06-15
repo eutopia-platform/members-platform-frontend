@@ -1,6 +1,11 @@
 export class CubeError extends Error {
-  constructor(msg) {
-    super(msg)
+  constructor(error) {
+    super(typeof error === 'string' ? error : error.message)
+    this.code = this.message.replace('GraphQL error:', '').trim()
+  }
+
+  get notLoggedIn() {
+    return this.code === 'NOT_LOGGED_IN'
   }
 }
 
