@@ -4,21 +4,23 @@
 
 <script>
 import Component from '~/scripts/component'
-import gql from 'graphql-tag'
+import queryWorkspace from '~/gql/workspace'
 
 export default new Component({
   name: 'WorkspaceIndicator',
   apollo: {
     workspace: {
-      query: gql`
-        {
-          workspace @client {
-            name
-          }
-        }
-      `,
       client: 'work',
+      query: queryWorkspace,
+      fetchPolicy: 'cache-only',
     },
+  },
+  data() {
+    return {
+      workspace: {
+        name: 'unknown',
+      },
+    }
   },
 })
 </script>

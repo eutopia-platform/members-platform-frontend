@@ -37,9 +37,6 @@ export default new Molecular({
   components: {
     LabeledInput,
   },
-  created() {
-    logout(this.$apollo.provider)
-  },
   props: {
     redirect: {
       type: String,
@@ -60,7 +57,8 @@ export default new Molecular({
     },
   },
   methods: {
-    login(e) {
+    async login(e) {
+      await logout(this)
       if (e) e.preventDefault()
       this.$apollo
         .mutate({

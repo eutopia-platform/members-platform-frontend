@@ -11,6 +11,7 @@
 
 <script>
 import currentUserQuery from '~/gql/user'
+import logout from '~/scripts/logout'
 
 export default {
   name: 'UserStatus',
@@ -29,7 +30,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$router.push('/login')
+      logout(this)
     },
   },
 }
