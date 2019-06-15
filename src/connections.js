@@ -3,6 +3,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
+import { onError } from 'apollo-link-error'
+import { handleGraphError } from '~/error'
 
 const createClient = (url, sendToken = false) => {
   const client = new ApolloClient({
@@ -16,6 +18,7 @@ const createClient = (url, sendToken = false) => {
             })),
           ]
         : []),
+      onError(handleGraphError),
       createHttpLink({
         uri: url,
         credentials: 'same-origin',

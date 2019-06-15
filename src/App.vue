@@ -15,11 +15,6 @@ export default {
     user: {
       query: currentUserQuery,
       skip: !('sessionToken' in localStorage),
-      error(err) {
-        err = new CubeError(err)
-        if (err.notLoggedIn) this.$router.push('/login')
-      },
-      errorPolicy: 'ignore',
     },
   },
   errorCaptured(err) {
