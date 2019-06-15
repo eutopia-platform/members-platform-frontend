@@ -1,5 +1,6 @@
 <template>
-  <Header s4 :class="getClass">{{ workspace.name }}</Header>
+  <!-- <Header s4 :class="getClass">{{ workspace.name }}</Header> -->
+  <Header s4>hello</Header>
 </template>
 
 <script>

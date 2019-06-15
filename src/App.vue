@@ -1,5 +1,5 @@
 <template>
-  <RouterView class="app" role="alert" @error="handleError"></RouterView>
+  <RouterView class="app" role="alert"></RouterView>
 </template>
 
 <script>
@@ -17,10 +17,6 @@ export default {
       skip: !('sessionToken' in localStorage),
     },
   },
-  errorCaptured(err) {
-    this.handleError(err)
-    return false
-  },
   data() {
     return {
       baseline: new Baseline(),
@@ -34,32 +30,6 @@ export default {
     if ('baseline' in this.$route.query) this.baseline.show()
   },
   methods: {
-    handleError(err) {
-      if (
-        err.message.startsWith('Network error') ||
-        (err.graphQLErrors &&
-          err.graphQLErrors.some(err =>
-            err.message.startsWith('Network error')
-          ))
-      ) {
-        this.showAlert(
-          'there seems to be a problem with the internet connection...'
-        )
-        return
-      }
-      if (err instanceof CubeError) {
-        this.showAlert(err.message)
-        return
-      }
-      throw err
-    },
-    showAlert(msg) {
-      document.body.appendChild(
-        new (Vue.extend(Alert))({
-          propsData: { ...(msg && msg.length && { msg }) },
-        }).$mount().$el
-      )
-    },
     showPopup: function({ component, callback, props }) {
       document.body.appendChild(
         new (Vue.extend(component))({

@@ -32,6 +32,7 @@ export default async ({ $apollo: apollo, $router: router }) => {
           },
         })
       },
+      errorPolicy: 'ignore',
     })
     localStorage.removeItem('sessionToken')
   }

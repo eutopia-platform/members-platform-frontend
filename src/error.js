@@ -1,5 +1,6 @@
 import cacheDefault from '~/cacheDefault'
 import router from '~/router'
+import Vue from 'vue'
 
 export class CubeError extends Error {
   constructor(error) {
@@ -12,12 +13,12 @@ export class CubeError extends Error {
   }
 }
 
-export default {
-  methods: {
-    showError(msg = 'Error') {
-      this.$root.$children[0].handleError(new CubeError(msg))
-    },
-  },
+export const displayError = msg => {
+  document.body.appendChild(
+    new (Vue.extend(Vue.component('Alert')))({
+      propsData: { ...(msg && msg.length && { msg }) },
+    }).$mount().$el
+  )
 }
 
 export const handleGraphError = ({
@@ -27,14 +28,26 @@ export const handleGraphError = ({
 }) => {
   if (client) {
     client.forEach(err => {
-      if (err.extensions.code === 'UNAUTHENTICATED') {
-        if (operation.operationName in cacheDefault) {
-          response.data = cacheDefault[operation.operationName]
-          response.errors = null
-        }
-        if (operation.operationName === 'currentUser') {
-          if (router.currentRoute.name !== 'login') router.push('/login')
-        }
+      if (!err.extensions) return
+      switch (err.extensions.code) {
+        case 'UNAUTHENTICATED':
+          if (operation.operationName in cacheDefault) {
+            response.data = cacheDefault[operation.operationName]
+            response.errors = null
+          }
+          if (operation.operationName === 'currentUser') {
+            if (router.currentRoute.name !== 'login') router.push('/login')
+          }
+          break
+        case 'BAD_USER_INPUT':
+          //
+          break
+        case 'INTERNAL_SERVER_ERROR':
+          displayError('something went wrong')
+          break
+        default:
+          //
+          break
       }
     })
   }

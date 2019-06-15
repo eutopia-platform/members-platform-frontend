@@ -33,9 +33,6 @@ export default {
       }
     },
   },
-  created: function() {
-    // if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
-  },
   methods: {
     updateSidebarWidth(width) {
       this.sidebarWidth = width
