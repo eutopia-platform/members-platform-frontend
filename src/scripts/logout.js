@@ -1,37 +1,43 @@
 import { assert } from './debug'
 import VueApollo from 'vue-apollo'
-import gql from 'graphql-tag'
+import VueRouter from 'vue-router'
+import logoutMutation from '~gql/logout'
+import userQuery from '~gql/user'
 
-export default async apolloProvider => {
+export default async ({ $apollo: apollo, $router: router }) => {
   assert(
-    () => apolloProvider instanceof VueApollo,
-    'logout requires access to apollo provider'
+    () => apollo.provider instanceof VueApollo && router instanceof VueRouter,
+    'logout requires access to apollo & router'
   )
 
-  if (localStorage.getItem('sessionToken'))
-    await apolloProvider.clients.auth.mutate({
-      mutation: gql`
-        mutation logoutUser($sessionToken: ID!) {
-          logout(sessionToken: $sessionToken)
-        }
-      `,
+  if ('sessionToken' in localStorage) {
+    await apollo.mutate({
+      client: 'auth',
+      mutation: logoutMutation,
       variables: {
         sessionToken: localStorage.getItem('sessionToken'),
       },
-    })
-
-  localStorage.removeItem('sessionToken')
-  localStorage.removeItem('workspace')
-
-  apolloProvider.clients.user.cache.writeData({
-    data: {
-      user: {
-        name: '',
-        callname: '',
-        email: '',
-        id: '',
-        __typename: 'User',
+      update(store) {
+        store.writeQuery({
+          query: userQuery,
+          data: {
+            user: {
+              id: null,
+              name: null,
+              callname: null,
+              email: null,
+              joined: null,
+              __typename: 'User',
+            },
+          },
+        })
       },
-    },
-  })
+    })
+    localStorage.removeItem('sessionToken')
+  }
+
+  if ('workspace' in localStorage) localStorage.removeItem('workspace')
+
+  if (router.currentRoute.path.replace('/', '') !== 'login')
+    router.push('/login')
 }
