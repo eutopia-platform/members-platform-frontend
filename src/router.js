@@ -45,6 +45,10 @@ export default new Router({
     {
       path: '/space/:workspace?',
       component: WorkspaceGuard,
+      beforeEnter(to, from, next) {
+        if (!('sessionToken' in localStorage)) next('/login')
+        next()
+      },
       children: [
         {
           path: '/',
