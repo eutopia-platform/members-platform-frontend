@@ -10,7 +10,7 @@ import queryUserSpaces from '~/gql/workspaces'
 import queryWorkspace from '~/gql/workspace'
 
 import { mapMutations } from 'vuex'
-import { SET_WORKSPACE } from '~/store/mutation-types'
+import { SET_WORKSPACE } from '~/store/workspace/mutation-types'
 
 export default {
   name: 'WorkspaceGuard',
@@ -64,7 +64,7 @@ export default {
       return this.workspace ? 'Workspace' : 'NotFound'
     },
   },
-  methods: mapMutations([SET_WORKSPACE]),
+  methods: mapMutations('workspace', [SET_WORKSPACE]),
   created() {
     if (!this.$route.params.workspace && localStorage.getItem('workspace'))
       this.$router.push({
