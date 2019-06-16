@@ -9,7 +9,7 @@ import { mapState } from 'vuex'
 
 export default new Component({
   name: 'WorkspaceIndicator',
-  computed: mapState(['workspace']),
+  computed: mapState('workspace', ['workspace']),
 })
 </script>
 

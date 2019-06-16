@@ -1,1 +1,3 @@
 export const SET_WORKSPACE = 'SET_WORKSPACE'
+export const SET_LAST_WORKSPACE = 'SET_LAST_WORKSPACE'
+export const SET_ACCESS = 'SET_ACCESS'
