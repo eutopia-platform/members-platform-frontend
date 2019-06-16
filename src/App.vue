@@ -5,7 +5,7 @@
 <script>
 import Vue from 'vue'
 import Baseline from '~/scripts/baseline'
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -14,12 +14,13 @@ export default {
       baseline: new Baseline(),
     }
   },
+  computed: mapState('user', ['loggedIn']),
   created() {
+    if (this.loggedIn) this.loadUser()
     this.updateBaseline()
     window.addEventListener('resize', this.updateBaseline)
   },
   mounted() {
-    this.loadUser()
     if ('baseline' in this.$route.query) this.baseline.show()
   },
   methods: {

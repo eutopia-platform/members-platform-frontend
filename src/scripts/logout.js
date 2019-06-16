@@ -27,6 +27,8 @@ export default async ({ $apollo: apollo, $router: router }) => {
               callname: null,
               email: null,
               joined: null,
+              invitations: [],
+              role: null,
               __typename: 'User',
             },
           },

@@ -14,7 +14,7 @@
       autocomplete="current-password"
     ></LabeledInput>
     <Break />
-    <Button outlined :disabled="!emailValid || !passwordValid" @click="login">
+    <Button outlined :disabled="!emailValid || !passwordValid" @click="submit">
       Submit
     </Button>
     <Button text link="/signup">Create account</Button>
@@ -27,7 +27,7 @@ import Molecular from '~/scripts/molecular'
 import logout from '~/scripts/logout'
 import LabeledInput from '~/components/molecular/LabeledInput'
 import { isEmail } from '~/scripts/validate'
-import gql from 'graphql-tag'
+import { mapActions } from 'vuex'
 
 export default new Molecular({
   name: 'LoginForm',
@@ -57,20 +57,12 @@ export default new Molecular({
     },
   },
   methods: {
-    async login(e) {
+    ...mapActions('user', ['login']),
+    async submit(e) {
       await logout(this)
       if (e) e.preventDefault()
-      this.$apollo
-        .mutate({
-          mutation: gql`mutation {
-          login(email: "${this.email}", password: "${this.password}")
-        }`,
-        })
-        .then(res => {
-          localStorage.setItem('sessionToken', res.data.login)
-          this.$router.push(this.redirect)
-        })
-        .catch(() => (this.error = 'incorrect'))
+      await this.login({ email: this.email, password: this.password })
+      this.$router.push(this.redirect)
     },
   },
 })
