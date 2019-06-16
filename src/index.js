@@ -2,10 +2,11 @@ import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
 import Vue from 'vue'
 
-Sentry.init({
-  dsn: 'https://2fc83a3cc17e49a2a00d88d8bc6478e8@sentry.io/1482895',
-  integrations: [new Integrations.Vue({ Vue, attachProps: true })],
-})
+if (process.env.NODE_ENV === 'production')
+  Sentry.init({
+    dsn: 'https://2fc83a3cc17e49a2a00d88d8bc6478e8@sentry.io/1482895',
+    integrations: [new Integrations.Vue({ Vue, attachProps: true })],
+  })
 
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
