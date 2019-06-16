@@ -17,7 +17,6 @@ import Toolkits from '~/pages/workspace/Toolkits'
 import Processes from '~/pages/workspace/Processes'
 import Settings from '~/pages/workspace/Settings'
 import Canvas from '~/pages/workspace/CanvasPage'
-import Invite from '~/pages/Invite'
 import Signup from '~/pages/Signup'
 import Profile from '~/pages/Profile'
 import CreateWorkspace from '~/pages/CreateWorkspace'
@@ -101,7 +100,6 @@ export default new Router({
     { path: '/signup', component: Signup },
     { path: '/profile', component: Profile },
     { path: '/new', component: CreateWorkspace },
-    { path: '/invite/:code', component: Invite },
     {
       path: '/admin',
       component: Admin,
