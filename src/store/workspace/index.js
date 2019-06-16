@@ -13,10 +13,11 @@ export default {
     workspace: {
       name: '',
     },
+    workspaces: [],
   },
   mutations: {
     [types.SET_WORKSPACE](state, workspace) {
-      Object.assign(state.workspace, workspace)
+      state.workspace = Object.assign({}, workspace)
     },
     [types.SET_LAST_WORKSPACE](state, name) {
       state.lastWorkspace = name
@@ -24,6 +25,9 @@ export default {
     },
     [types.SET_ACCESS](state, value) {
       state.access = value
+    },
+    [types.SET_WORKSPACES](state, payload) {
+      state.workspaces = Object.assign([], payload)
     },
   },
   actions: {
@@ -64,6 +68,13 @@ export default {
           commit(types.SET_ACCESS, false)
           throw err
         })
+    },
+
+    async loadUserWorkspaces({ commit }) {
+      const {
+        data: { workspaces },
+      } = await api.work.query({ query: queryWorkspaces })
+      commit(types.SET_WORKSPACES, workspaces)
     },
   },
 }
