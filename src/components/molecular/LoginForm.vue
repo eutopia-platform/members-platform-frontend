@@ -24,7 +24,6 @@
 
 <script>
 import Molecular from '~/scripts/molecular'
-import logout from '~/scripts/logout'
 import LabeledInput from '~/components/molecular/LabeledInput'
 import { isEmail } from '~/scripts/validate'
 import { mapActions } from 'vuex'
@@ -59,7 +58,6 @@ export default new Molecular({
   methods: {
     ...mapActions('user', ['login']),
     async submit(e) {
-      await logout(this)
       if (e) e.preventDefault()
       await this.login({ email: this.email, password: this.password })
       this.$router.push(this.redirect)

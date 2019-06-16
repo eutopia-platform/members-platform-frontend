@@ -10,8 +10,7 @@
 </template>
 
 <script>
-import logout from '~/scripts/logout'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'UserStatus',
@@ -21,11 +20,7 @@ export default {
     }
   },
   computed: mapState('user', ['info']),
-  methods: {
-    logout() {
-      logout(this)
-    },
-  },
+  methods: mapActions('user', ['logout']),
 }
 </script>
 
