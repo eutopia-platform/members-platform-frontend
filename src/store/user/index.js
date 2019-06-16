@@ -8,7 +8,7 @@ import api from '~/connections'
 export default {
   namespaced: true,
   state: {
-    loggedIn: false,
+    loggedIn: !!localStorage.getItem('sessionToken'),
     loading: false,
     info: {
       id: '',
