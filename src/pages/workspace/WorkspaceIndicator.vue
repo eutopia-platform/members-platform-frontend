@@ -1,28 +1,15 @@
 <template>
-  <!-- <Header s4 :class="getClass">{{ workspace.name }}</Header> -->
-  <Header s4>hello</Header>
+  <Header s4>{{ workspace.name }}</Header>
 </template>
 
 <script>
 import Component from '~/scripts/component'
-import queryWorkspace from '~/gql/workspace'
+
+import { mapState } from 'vuex'
 
 export default new Component({
   name: 'WorkspaceIndicator',
-  apollo: {
-    workspace: {
-      client: 'work',
-      query: queryWorkspace,
-      fetchPolicy: 'cache-only',
-    },
-  },
-  data() {
-    return {
-      workspace: {
-        name: 'unknown',
-      },
-    }
-  },
+  computed: mapState(['workspace']),
 })
 </script>
 

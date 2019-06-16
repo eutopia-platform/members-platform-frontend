@@ -38,7 +38,10 @@ export default new Router({
         { path: 'toolkits', component: LpToolkits },
       ],
       beforeEnter(to, from, next) {
-        if ('sessionToken' in localStorage) next('/space')
+        if ('sessionToken' in localStorage) {
+          next('/space')
+          return
+        }
         next()
       },
     },
