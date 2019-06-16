@@ -29,10 +29,13 @@ export default {
     [types.SET_WORKSPACES](state, payload) {
       state.workspaces = Object.assign([], payload)
     },
+    [types.SET_LOADING](state, value) {
+      state.loading = value
+    },
   },
   actions: {
-    async loadWorkspace({ state, dispatch }) {
-      state.loading = true
+    async loadWorkspace({ state, commit, dispatch }) {
+      commit(types.SET_LOADING, true)
 
       let target = router.currentRoute.params.workspace
       if (!target) {
@@ -42,7 +45,7 @@ export default {
       }
       await dispatch('loadWorkspaceByName', target)
 
-      state.loading = false
+      commit(types.SET_LOADING, false)
     },
 
     async fetchLastWorkspace({ commit }) {
