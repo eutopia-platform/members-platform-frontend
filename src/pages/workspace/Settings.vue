@@ -18,9 +18,6 @@
           :default-value="user.callname"
           :size="20"
         ></LabeledInput>
-        <Paragraph>
-          Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
-        </Paragraph>
         <Button outlined @click="submitProfile">submit</Button>
       </Card>
       <Card>
@@ -70,17 +67,6 @@ export default new Component({
         }
       }
     `,
-    workspaces: {
-      query: gql`
-        {
-          workspaces {
-            name
-            created
-          }
-        }
-      `,
-      client: 'work',
-    },
     workspace: {
       query: gql`
         query getWorkspace($name: String!) {
@@ -119,7 +105,6 @@ export default new Component({
       callName: '',
       email: '',
     },
-    workspaces: [],
   }),
   methods: {
     submitProfile: function() {
