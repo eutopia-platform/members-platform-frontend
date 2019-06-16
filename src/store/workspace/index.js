@@ -20,6 +20,7 @@ export default {
     },
     [types.SET_LAST_WORKSPACE](state, name) {
       state.lastWorkspace = name
+      localStorage.setItem('workspace', name)
     },
     [types.SET_ACCESS](state, value) {
       state.access = value
@@ -41,11 +42,14 @@ export default {
     },
 
     async fetchLastWorkspace({ commit }) {
-      await api.work
-        .query({ query: queryWorkspaces })
-        .then(({ data: { workspaces: [{ name }] } }) => {
-          commit(types.SET_LAST_WORKSPACE, name)
-        })
+      const last =
+        localStorage.getItem('workspace') ||
+        (await api.work
+          .query({ query: queryWorkspaces })
+          .then(({ data: { workspaces: [{ name }] } }) => {
+            return name
+          }))
+      commit(types.SET_LAST_WORKSPACE, last)
     },
 
     async loadWorkspaceByName({ commit }, name) {
@@ -54,6 +58,7 @@ export default {
         .then(({ data: { workspace } }) => {
           commit(types.SET_WORKSPACE, workspace)
           commit(types.SET_ACCESS, true)
+          commit(types.SET_LAST_WORKSPACE, name)
         })
         .catch(err => {
           commit(types.SET_ACCESS, false)

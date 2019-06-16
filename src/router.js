@@ -39,7 +39,7 @@ export default new Router({
       ],
       beforeEnter(to, from, next) {
         if ('sessionToken' in localStorage) {
-          next('/space')
+          next(`/space/${localStorage.getItem('workspace') || ''}`)
           return
         }
         next()
