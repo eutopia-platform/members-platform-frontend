@@ -5,16 +5,10 @@
 <script>
 import Vue from 'vue'
 import Baseline from '~/scripts/baseline'
-import currentUserQuery from '~/gql/user'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
-  apollo: {
-    user: {
-      query: currentUserQuery,
-      skip: !('sessionToken' in localStorage),
-    },
-  },
   data() {
     return {
       baseline: new Baseline(),
@@ -25,9 +19,11 @@ export default {
     window.addEventListener('resize', this.updateBaseline)
   },
   mounted() {
+    this.loadUser()
     if ('baseline' in this.$route.query) this.baseline.show()
   },
   methods: {
+    ...mapActions('user', ['loadUser']),
     showPopup: function({ component, callback, props }) {
       document.body.appendChild(
         new (Vue.extend(component))({
