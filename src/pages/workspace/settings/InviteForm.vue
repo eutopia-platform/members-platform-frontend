@@ -4,6 +4,7 @@
       button="invite"
       type="email"
       label="email"
+      :input-clear="true"
       @submit="onSubmit"
     ></ActionInput>
   </form>

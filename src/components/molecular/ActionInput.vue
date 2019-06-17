@@ -49,8 +49,12 @@ export default new Molecular({
       default: null,
     },
     focus: {
-      default: false,
       type: Boolean,
+      default: false,
+    },
+    inputClear: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -61,6 +65,10 @@ export default new Molecular({
     },
     onClick() {
       this.$emit('submit', this.value)
+      if (this.inputClear) {
+        this.$el.querySelector('input').value = ''
+        this.$el.querySelector('input').dispatchEvent(new Event('input'))
+      }
     },
     onInput(e) {
       this.$emit('input', e)

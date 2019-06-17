@@ -3,6 +3,7 @@
     :class="getClass"
     label="email"
     button="subscribe"
+    :input-clear="true"
     @submit="submit"
   ></ActionInput>
 </template>
