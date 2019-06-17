@@ -1,64 +1,67 @@
 <template>
   <div :class="getClass">
-    <Paragraph>ID: {{ toolkit.id }}</Paragraph>
-    <ActionInput
-      label="title"
-      button="update"
-      :default-value="toolkit.title"
-      @submit="saveTitle"
-    ></ActionInput>
+    <Loader v-if="toolkit === null"></Loader>
+    <template v-else>
+      <Paragraph>ID: {{ toolkit.id }}</Paragraph>
+      <ActionInput
+        label="title"
+        button="update"
+        :default-value="toolkit.title"
+        @submit="saveTitle"
+      ></ActionInput>
 
-    <div class="visibility">
-      <Paragraph>
-        This toolkit is
-        {{ toolkit.visibility === 'PUBLIC' ? 'public' : 'not public' }}
-      </Paragraph>
-      <Button
-        v-if="toolkit.visibility !== 'PUBLIC'"
-        outlined
-        @click="publishToolkit"
-      >
-        Publish
-      </Button>
-    </div>
+      <div class="visibility">
+        <Paragraph>
+          This toolkit is
+          {{ toolkit.visibility === 'PUBLIC' ? 'public' : 'not public' }}
+        </Paragraph>
+        <Button
+          v-if="toolkit.visibility !== 'PUBLIC'"
+          outlined
+          @click="publishToolkit"
+        >
+          Publish
+        </Button>
+      </div>
 
-    <Button outlined @click="deleteToolkit">Delete Toolkit</Button>
+      <Button outlined @click="deleteToolkit">Delete Toolkit</Button>
 
-    <div class="field-title">
-      <Header s3>Description</Header>
-      <Button outlined @click="saveDescription">save</Button>
-    </div>
-    <MarkdownEdit
-      v-model="toolkit.description_markdown"
-      view
-      :default-text="toolkit.description_markdown"
-    ></MarkdownEdit>
+      <div class="field-title">
+        <Header s3>Description</Header>
+        <Button outlined @click="saveDescription">save</Button>
+      </div>
+      <MarkdownEdit
+        v-model="toolkit.description_markdown"
+        view
+        :default-text="toolkit.description_markdown"
+      ></MarkdownEdit>
 
-    <div class="field-title">
-      <Header s3>Workflow</Header>
-      <Button outlined @click="saveWorkflow">save</Button>
-    </div>
-    <MarkdownEdit
-      v-model="toolkit.workflow"
-      view
-      :default-text="toolkit.workflow"
-    ></MarkdownEdit>
+      <div class="field-title">
+        <Header s3>Workflow</Header>
+        <Button outlined @click="saveWorkflow">save</Button>
+      </div>
+      <MarkdownEdit
+        v-model="toolkit.workflow"
+        view
+        :default-text="toolkit.workflow"
+      ></MarkdownEdit>
 
-    <div class="field-title">
-      <Header s3>Learning</Header>
-      <Button outlined @click="saveLearning">save</Button>
-    </div>
-    <MarkdownEdit
-      v-model="toolkit.learning"
-      view
-      :default-text="toolkit.learning"
-    ></MarkdownEdit>
+      <div class="field-title">
+        <Header s3>Learning</Header>
+        <Button outlined @click="saveLearning">save</Button>
+      </div>
+      <MarkdownEdit
+        v-model="toolkit.learning"
+        view
+        :default-text="toolkit.learning"
+      ></MarkdownEdit>
 
-    <div class="field-title">
-      <Header s3>Canvas</Header>
-      <Button outlined @click="saveCanvas">save</Button>
-    </div>
-    <CanvasEdit v-model="canvas" :canvas="toolkit.canvas"></CanvasEdit>
+      <div class="field-title">
+        <Header s3>Canvas</Header>
+        <Button outlined @click="saveCanvas">save</Button>
+      </div>
+      <CanvasEdit v-model="canvas" :canvas="toolkit.canvas"></CanvasEdit>
+    </template>
   </div>
 </template>
 
@@ -68,52 +71,16 @@ import ActionInput from '~/components/molecular/ActionInput'
 import MarkdownEdit from '~/components/molecular/MarkdownEdit'
 import CanvasEdit from './editor/CanvasEdit'
 import gql from 'graphql-tag'
+import { mapState, mapActions } from 'vuex'
 
 export default new Component({
   name: 'Editor',
-  apollo: {
-    toolkit: {
-      client: 'tool',
-      query: gql`
-        query editorKit($id: ID!) {
-          toolkit(id: $id) {
-            id
-            title
-            description_markdown
-            canvas
-            learning
-            visibility
-            workflow
-          }
-        }
-      `,
-      variables() {
-        return {
-          id: this.$route.params.id,
-        }
-      },
-      result({ data: { toolkit } }) {
-        toolkit.description_markdown = decodeURI(toolkit.description_markdown)
-        toolkit.learning = decodeURI(toolkit.learning)
-        toolkit.workflow = decodeURI(toolkit.workflow)
-        toolkit.canvas = JSON.parse(toolkit.canvas)
-        toolkit.canvas.boxes.forEach(
-          box => (box.content = decodeURI(box.content))
-        )
-      },
-    },
+  computed: mapState('toolkit', { toolkit: 'currentKit' }),
+  created() {
+    this.fetchToolkit(this.$route.params.id)
   },
   data() {
     return {
-      toolkit: {
-        id: '',
-        title: '',
-        description_markdown: '',
-        canvas: { boxes: [] },
-        learning: '',
-        visibility: '',
-        workflow: '',
-      },
       canvas: {},
     }
   },
@@ -123,6 +90,7 @@ export default new Component({
     CanvasEdit,
   },
   methods: {
+    ...mapActions('toolkit', ['fetchToolkit']),
     saveTitle(title) {
       this.$apollo.mutate({
         client: 'tool',
