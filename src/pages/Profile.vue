@@ -11,12 +11,12 @@
     <div class="workspace-list">
       <Invitation
         v-for="(name, i) in user.invitations"
-        :key="i"
+        :key="`invite${i}`"
         class="invite"
         :space="name"
       ></Invitation>
       <Header s3>Workspaces</Header>
-      <Paragraph v-for="(space, i) in workspaces" :key="i">
+      <Paragraph v-for="(space, i) in workspaces" :key="`space${i}`">
         <RouterLink :to="`/space/${space.name}`">{{ space.name }}</RouterLink>
       </Paragraph>
       <Paragraph v-if="workspaces.length === 0">
