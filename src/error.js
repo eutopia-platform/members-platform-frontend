@@ -1,6 +1,6 @@
 import cacheDefault from '~/cacheDefault'
-import router from '~/router'
 import Vue from 'vue'
+import store from '~/store'
 
 export class CubeError extends Error {
   constructor(error) {
@@ -35,9 +35,8 @@ export const handleGraphError = ({
             response.data = cacheDefault[operation.operationName]
             response.errors = null
           }
-          if (operation.operationName === 'currentUser') {
-            if (router.currentRoute.name !== 'login') router.push('/login')
-          }
+          if (operation.operationName === 'currentUser')
+            store.dispatch('logout')
           break
         case 'BAD_USER_INPUT':
           break
