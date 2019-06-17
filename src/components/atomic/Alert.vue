@@ -1,5 +1,5 @@
 <template>
-  <div :class="getClass" @click="close">{{ msg }}</div>
+  <div :class="getClass" class="out-of-screen" @click="close">{{ msg }}</div>
 </template>
 
 <script>
@@ -12,11 +12,20 @@ export default new Atomic({
       type: String,
       default: 'something went wrong...',
     },
+    timeout: {
+      type: Number,
+      default: 3000,
+    },
   },
   methods: {
     close() {
-      this.$el.remove()
+      this.$el.classList.add('out-of-screen')
+      setTimeout(() => this.$el.remove(), 500)
     },
+  },
+  mounted() {
+    setTimeout(() => this.$el.classList.remove('out-of-screen'), 100)
+    setTimeout(() => this.close(), this.timeout)
   },
 })
 </script>
@@ -44,8 +53,13 @@ export default new Atomic({
   padding-bottom: 0.5rem;
   box-sizing: border-box;
   @include colorScheme('error');
-  color: white;
-  box-shadow: shadow(2);
+  box-shadow: shadow(10);
   z-index: 1000;
+  transition: transform 0.2s ease-out;
+}
+
+.out-of-screen {
+  transform: translateX(-50%) translateY(10rem);
+  transition: transform 0.2s ease-in;
 }
 </style>
