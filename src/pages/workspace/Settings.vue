@@ -3,6 +3,13 @@
     <Header s3>Settings</Header>
     <div class="content">
       <Card>
+        <Header s4>Account</Header>
+        <Paragraph>name: {{ user.name }}</Paragraph>
+        <Paragraph>display name: {{ user.callname }}</Paragraph>
+        <Paragraph>email: {{ user.email }}</Paragraph>
+        <Button link="/profile">edit</Button>
+      </Card>
+      <Card>
         <Header s4>Workspace</Header>
         <Paragraph>name: {{ workspace.name }}</Paragraph>
         <Paragraph>
@@ -48,6 +55,7 @@ export default new Component({
   },
   computed: {
     ...mapState('workspace', ['workspace']),
+    ...mapState('user', { user: 'info' }),
     creationDate() {
       return this.workspace
         ? formatDate(parseDate(this.workspace.created))
