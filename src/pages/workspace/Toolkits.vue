@@ -16,7 +16,7 @@
         :id="kit.id"
         :key="kit.id"
         :title="kit.title"
-        :description="decodeURI(kit.description)"
+        :description="kit.description"
         :img="
           `https://s3.eu-central-1.amazonaws.com/eutopia.media/tool_${(toolkits.indexOf(
             kit

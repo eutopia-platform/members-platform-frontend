@@ -44,16 +44,31 @@ export default {
       const {
         data: { toolkits },
       } = await api.tool.query({ query: queryToolkits })
+      toolkits.forEach(kit => (kit.description = decodeURI(kit.description)))
       commit(types.ADD_TOOLKITS, toolkits)
       commit(types.SET_LOADING, false)
     },
+
     async fetchToolkit({ commit, getters }, id) {
       const {
         data: { toolkit },
       } = await api.tool.query({ query: queryToolkit, variables: { id } })
+
+      Object.assign(toolkit, {
+        description: decodeURI(toolkit.description),
+        workflow: decodeURI(toolkit.workflow),
+        learning: decodeURI(toolkit.learning),
+        canvas: JSON.parse(toolkit.canvas),
+      })
+      toolkit.canvas.boxes = toolkit.canvas.boxes.map(box => ({
+        ...box,
+        ...{ content: decodeURI(box.content) },
+      }))
+
       commit(types.UPDATE_TOOLKIT, toolkit)
       commit(types.SET_CURRENT_KIT, getters.getKitById(toolkit.id))
     },
+
     async createToolkit({ commit }) {
       const {
         data: {

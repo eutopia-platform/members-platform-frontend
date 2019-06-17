@@ -45,7 +45,7 @@ export default new Component({
   },
   data() {
     return {
-      content: decodeURI(this.def.content),
+      content: this.def.content,
       contentDisplay: 'MarkdownDisplay',
     }
   },

@@ -2,11 +2,7 @@
   <div :class="getClass">
     <div class="center" :style="centerWidth">
       <TitleBar ref="titlebar" :style="titleBarWidth"></TitleBar>
-      <Canvas
-        :style="canvasPos"
-        :width="canvasWidth"
-        :template="template"
-      ></Canvas>
+      <Canvas :style="canvasPos" :width="canvasWidth"></Canvas>
     </div>
     <ContextBar @changeWidth="updateSidebarWidth"></ContextBar>
   </div>
@@ -68,9 +64,6 @@ export default new Component({
         top: `${this.titlebarHeight}px`,
         height: `calc(100% - ${this.titlebarHeight}px)`,
       }
-    },
-    template() {
-      return this.toolkit ? JSON.parse(this.toolkit.canvas) : null
     },
   },
   created() {

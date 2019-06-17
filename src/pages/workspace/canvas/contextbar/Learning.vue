@@ -1,6 +1,6 @@
 <template>
   <div :class="getClass">
-    <MarkdownDisplay :markdown="learning" :encoded="true"></MarkdownDisplay>
+    <MarkdownDisplay :markdown="learning"></MarkdownDisplay>
   </div>
 </template>
 

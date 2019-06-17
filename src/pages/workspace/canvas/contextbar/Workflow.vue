@@ -3,7 +3,6 @@
     <MarkdownDisplay
       v-if="workflow.length"
       :markdown="workflow"
-      :encoded="true"
     ></MarkdownDisplay>
     <Paragraph v-else>no workflow available</Paragraph>
     <Button outlined color="secondary">Milestone Challenge</Button>

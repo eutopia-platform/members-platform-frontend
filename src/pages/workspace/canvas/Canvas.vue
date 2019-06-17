@@ -19,6 +19,7 @@ import Box from './Box'
 import Toolbar from './Toolbar'
 import { Canvas } from './definition'
 import Template from './template'
+import { mapState } from 'vuex'
 
 export default new Component({
   name: 'Canvas',
@@ -34,14 +35,16 @@ export default new Component({
       boxes: [],
     }
   },
+  computed: {
+    ...mapState('toolkit', { toolkit: 'currentKit' }),
+    template() {
+      return this.toolkit ? this.toolkit.canvas : null
+    },
+  },
   props: {
     width: {
       type: Number,
       default: 0,
-    },
-    template: {
-      type: Object,
-      default: null,
     },
   },
   watch: {
