@@ -1,11 +1,7 @@
 <template>
   <div :class="getClass">
     <div class="center" :style="centerWidth">
-      <TitleBar
-        ref="titlebar"
-        :toolkit="toolkit"
-        :style="titleBarWidth"
-      ></TitleBar>
+      <TitleBar ref="titlebar" :style="titleBarWidth"></TitleBar>
       <Canvas
         :style="canvasPos"
         :width="canvasWidth"
@@ -22,7 +18,7 @@ import Canvas from './canvas/Canvas'
 import ContextBar from './canvas/ContextBar'
 import TitleBar from './canvas/TitleBar'
 import { parseLength } from '~/scripts/parseCSS'
-import { mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default new Component({
   name: 'CanvasPage',
@@ -46,10 +42,7 @@ export default new Component({
     },
   },
   computed: {
-    ...mapGetters('toolkit', ['getKitById']),
-    toolkit() {
-      return this.getKitById(this.id)
-    },
+    ...mapState('toolkit', { toolkit: 'currentKit' }),
     navbarWidth() {
       return parseLength(this.offsetLeft)
     },

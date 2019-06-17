@@ -3,7 +3,7 @@
     <Item algin="right">
       <Icon name="person" recolor></Icon>
     </Item>
-    <Item :text="toolkit.title" align="center"></Item>
+    <Item :text="title" align="center"></Item>
     <Item align="right">
       <Icon name="chat" recolor></Icon>
     </Item>
@@ -20,6 +20,7 @@
 import Component from '~/scripts/component'
 import Menu from '~/components/molecular/Menu'
 import Item from '~/components/molecular/menu/Item'
+import { mapGetters } from 'vuex'
 
 export default new Component({
   name: 'TitleBar',
@@ -27,14 +28,7 @@ export default new Component({
     Menu,
     Item,
   },
-  props: {
-    toolkit: {
-      type: Object,
-      default: () => ({
-        title: 'unknown',
-      }),
-    },
-  },
+  computed: mapGetters('toolkit', ['title']),
 })
 </script>
 

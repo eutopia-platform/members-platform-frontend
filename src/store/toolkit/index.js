@@ -12,6 +12,9 @@ export default {
   },
   getters: {
     getKitById: state => id => state.toolkits.find(kit => kit.id === id),
+    title: state => (state.currentKit ? state.currentKit.title : ''),
+    workflow: state => (state.currentKit ? state.currentKit.workflow : ''),
+    learning: state => (state.currentKit ? state.currentKit.learning : ''),
   },
   mutations: {
     [types.ADD_TOOLKITS](state, payload) {
@@ -43,11 +46,12 @@ export default {
       commit(types.ADD_TOOLKITS, toolkits)
       commit(types.SET_LOADING, false)
     },
-    async fetchToolkit({ commit }, id) {
+    async fetchToolkit({ commit, getters }, id) {
       const {
         data: { toolkit },
       } = await api.tool.query({ query: queryToolkit, variables: { id } })
       commit(types.UPDATE_TOOLKIT, toolkit)
+      commit(types.SET_CURRENT_KIT, getters.getKitById(toolkit.id))
     },
   },
 }
