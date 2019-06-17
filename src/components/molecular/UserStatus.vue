@@ -20,7 +20,7 @@ export default {
     }
   },
   computed: mapState('user', ['info']),
-  methods: mapActions('user', ['logout']),
+  methods: mapActions(['logout']),
 }
 </script>
 

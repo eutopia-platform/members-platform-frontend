@@ -46,12 +46,14 @@ export default {
     },
 
     async login({ commit, dispatch }, credentials) {
-      if (localStorage.getItem('sessionToken')) await dispatch('logout')
+      if (localStorage.getItem('sessionToken'))
+        await dispatch('logout', null, { root: true })
       const {
         data: { login: token },
       } = await api.auth.mutate({
         mutation: loginMutation,
         variables: credentials,
+        fetchPolicy: 'no-cache',
       })
       localStorage.setItem('sessionToken', token)
       commit(types.SET_SESSION_TOKEN, token)
@@ -59,18 +61,22 @@ export default {
       dispatch('loadUser')
     },
 
-    async logout({ dispatch }) {
-      if ('sessionToken' in localStorage)
-        await api.auth.mutate({
-          mutation: logoutMutation,
-          variables: {
-            sessionToken: localStorage.getItem('sessionToken'),
-          },
-          errorPolicy: 'all',
-        })
-      localStorage.removeItem('sessionToken')
-      localStorage.removeItem('workspace')
-      dispatch('tabLogout')
+    logout: {
+      root: true,
+      handler: async ({ dispatch }) => {
+        if ('sessionToken' in localStorage)
+          await api.auth.mutate({
+            mutation: logoutMutation,
+            variables: {
+              sessionToken: localStorage.getItem('sessionToken'),
+            },
+            errorPolicy: 'all',
+            fetchPolicy: 'no-cache',
+          })
+        localStorage.removeItem('sessionToken')
+        localStorage.removeItem('workspace')
+        dispatch('tabLogout')
+      },
     },
 
     async tabLogout({ commit }) {
@@ -84,6 +90,9 @@ export default {
         invitations: [],
         role: '',
       })
+      for (const client in api)
+        if (api.hasOwnProperty(client) && client !== 'defaultClient')
+          api[client].store.reset()
       if (router.currentRoute.path.replace('/', '') !== 'login')
         router.push('/login')
     },

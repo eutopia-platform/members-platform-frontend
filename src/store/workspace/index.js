@@ -6,19 +6,25 @@ import queryWorkspaceByName from '~/gql/workspace'
 import queryWorkspaceMembers from '~/gql/workspaceMembers'
 import mutateDeleteWorkspace from '~/gql/deleteWorkspace'
 
+const defaultState = () =>
+  Object.assign(
+    {},
+    {
+      loading: true,
+      access: false,
+      lastWorkspace: null,
+      workspace: {
+        name: '',
+        created: '',
+        members: [],
+      },
+      workspaces: [],
+    }
+  )
+
 export default {
   namespaced: true,
-  state: {
-    loading: true,
-    access: false,
-    lastWorkspace: null,
-    workspace: {
-      name: '',
-      created: '',
-      members: [],
-    },
-    workspaces: [],
-  },
+  state: defaultState(),
   mutations: {
     [types.SET_WORKSPACE](state, payload) {
       state.workspace = Object.assign({}, payload)
@@ -39,6 +45,7 @@ export default {
     [types.SET_LOADING](state, value) {
       state.loading = value
     },
+    [types.RESET]: state => void Object.assign(state, defaultState()),
   },
   actions: {
     async loadWorkspace({ state, commit, dispatch }) {
@@ -115,6 +122,11 @@ export default {
       commit(types.SET_ACCESS, false)
       commit(types.SET_LAST_WORKSPACE, null)
       router.push('/profile')
+    },
+
+    logout: {
+      root: true,
+      handler: ({ commit }) => commit(types.RESET),
     },
   },
 }
