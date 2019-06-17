@@ -3,6 +3,8 @@ import router from '~/router'
 import currentUserQuery from '~/gql/user'
 import loginMutation from '~/gql/login'
 import logoutMutation from '~/gql/logout'
+import declineInviteMutation from '~/gql/declineInvitation'
+import acceptInviteMutation from '~/gql/acceptInvitation'
 import api from '~/connections'
 
 export default {
@@ -23,7 +25,7 @@ export default {
   },
   mutations: {
     [types.SET_INFO](state, payload) {
-      Object.assign(state.info, payload)
+      state.info = Object.assign({}, payload)
     },
     [types.SET_LOADING](state, value) {
       state.loading = value
@@ -33,6 +35,9 @@ export default {
     },
     [types.SET_SESSION_TOKEN](state, value) {
       state.sessionToken = value
+    },
+    [types.SET_INVITATIONS](state, payload) {
+      state.info.invitations = Object.assign({}, payload)
     },
   },
   actions: {
@@ -95,6 +100,33 @@ export default {
           api[client].store.reset()
       if (router.currentRoute.path.replace('/', '') !== 'login')
         router.push('/login')
+    },
+
+    async declineInvitation({ state, commit }, workspace) {
+      await api.work.mutate({
+        mutation: declineInviteMutation,
+        variables: { workspace },
+      })
+      commit(
+        types.SET_INVITATIONS,
+        state.info.invitations.filter(name => name !== workspace)
+      )
+    },
+
+    async acceptInvitation({ rootState, state, commit }, workspace) {
+      await api.work.mutate({
+        mutation: acceptInviteMutation,
+        variables: { workspace },
+      })
+      commit(
+        types.SET_INVITATIONS,
+        state.info.invitations.filter(name => name !== workspace)
+      )
+      commit(
+        'workspace/SET_WORKSPACES',
+        [...rootState.workspace.workspaces, ...[{ name: workspace }]],
+        { root: true }
+      )
     },
   },
 }
