@@ -25,36 +25,27 @@
             1}.svg`
         "
       ></Toolkit>
+      <Loader v-if="loading"></Loader>
     </div>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
 import Toolkit from '~/components/molecular/ToolkitCard'
 import InfoCard from '~/components/molecular/InfoCard'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Toolkits',
-  apollo: {
-    $client: 'tool',
-    toolkits: gql`
-      {
-        toolkits {
-          id
-          title
-          description: description_markdown
-        }
-      }
-    `,
-  },
   components: {
     Toolkit,
     InfoCard,
   },
-  data: () => ({
-    toolkits: [],
-  }),
+  created() {
+    if (this.toolkits.length === 0) this.fetchToolkits()
+  },
+  computed: mapState('toolkit', ['toolkits', 'loading']),
+  methods: mapActions('toolkit', ['fetchToolkits']),
 }
 </script>
 
