@@ -3,32 +3,14 @@
     <Header s3>Settings</Header>
     <div class="content">
       <Card>
-        <Header s4>Profile</Header>
-        <LabeledInput
-          v-model="user.name"
-          label="name"
-          autocomplete="name"
-          :default-value="user.name"
-          :size="20"
-        ></LabeledInput>
-        <LabeledInput
-          v-model="user.callname"
-          label="nickname"
-          autocomplete="nickname"
-          :default-value="user.callname"
-          :size="20"
-        ></LabeledInput>
-        <Button outlined @click="submitProfile">submit</Button>
-      </Card>
-      <Card>
         <Header s4>Workspace</Header>
-        <Paragraph>name: {{ workspace ? workspace.name : '' }}</Paragraph>
+        <Paragraph>name: {{ workspace.name }}</Paragraph>
         <Paragraph>
           created:
           {{ creationDate }}
         </Paragraph>
         <Paragraph>Members:</Paragraph>
-        <ul v-if="workspace && workspace.members">
+        <ul v-if="workspace.members">
           <li
             v-for="m in workspace.members"
             :key="workspace.members.indexOf(m)"
@@ -53,60 +35,27 @@ import LabeledInput from '~/components/molecular/LabeledInput'
 import ConfirmDelete from './settings/ConfirmDelete'
 import InviteForm from './settings/InviteForm'
 import { formatDate, parseDate } from '~/scripts/date'
+import { mapState, mapActions } from 'vuex'
 
 export default new Component({
   name: 'Settings',
-  apollo: {
-    user: gql`
-      {
-        user {
-          name
-          callname
-          email
-          id
-        }
-      }
-    `,
-    workspace: {
-      query: gql`
-        query getWorkspace($name: String!) {
-          workspace(name: $name) {
-            name
-            created
-            members {
-              callname
-              email
-            }
-          }
-        }
-      `,
-      client: 'work',
-      variables() {
-        return {
-          name: localStorage.getItem('workspace'),
-        }
-      },
-    },
-  },
   components: {
     LabeledInput,
     InviteForm,
   },
+  created() {
+    this.fetchMembers()
+  },
   computed: {
+    ...mapState('workspace', ['workspace']),
     creationDate() {
       return this.workspace
         ? formatDate(parseDate(this.workspace.created))
         : 'unknown'
     },
   },
-  data: () => ({
-    user: {
-      name: '',
-      callName: '',
-      email: '',
-    },
-  }),
   methods: {
+    ...mapActions('workspace', ['fetchMembers']),
     submitProfile: function() {
       this.$apollo.mutate({
         mutation: gql`

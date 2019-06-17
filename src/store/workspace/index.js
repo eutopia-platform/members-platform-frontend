@@ -3,6 +3,7 @@ import router from '~/router'
 import api from '~/connections'
 import queryWorkspaces from '~/gql/workspaces'
 import queryWorkspaceByName from '~/gql/workspace'
+import queryWorkspaceMembers from '~/gql/workspaceMembers'
 
 export default {
   namespaced: true,
@@ -12,12 +13,17 @@ export default {
     lastWorkspace: null,
     workspace: {
       name: '',
+      created: '',
+      members: [],
     },
     workspaces: [],
   },
   mutations: {
-    [types.SET_WORKSPACE](state, workspace) {
-      state.workspace = Object.assign({}, workspace)
+    [types.SET_WORKSPACE](state, payload) {
+      state.workspace = Object.assign({}, payload)
+    },
+    [types.UPDATE_WORKSPACE](state, payload) {
+      Object.assign(state.workspace, payload)
     },
     [types.SET_LAST_WORKSPACE](state, name) {
       state.lastWorkspace = name
@@ -63,7 +69,7 @@ export default {
       await api.work
         .query({ query: queryWorkspaceByName, variables: { name } })
         .then(({ data: { workspace } }) => {
-          commit(types.SET_WORKSPACE, workspace)
+          commit(types.UPDATE_WORKSPACE, workspace)
           commit(types.SET_ACCESS, true)
           commit(types.SET_LAST_WORKSPACE, name)
         })
@@ -78,6 +84,16 @@ export default {
         data: { workspaces },
       } = await api.work.query({ query: queryWorkspaces })
       commit(types.SET_WORKSPACES, workspaces)
+    },
+
+    async fetchMembers({ state, commit }) {
+      const {
+        data: { workspace },
+      } = await api.work.query({
+        query: queryWorkspaceMembers,
+        variables: { name: state.workspace.name },
+      })
+      commit(types.UPDATE_WORKSPACE, workspace)
     },
   },
 }
