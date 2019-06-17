@@ -1,5 +1,7 @@
 <template>
-  <Header s4>{{ workspace.name }}</Header>
+  <div :class="getClass">
+    <Header s4>{{ workspace.name }}</Header>
+  </div>
 </template>
 
 <script>

@@ -12,7 +12,6 @@ import NotFound from '~/pages/NotFound'
 import WorkspaceGuard from '~/pages/workspace/WorkspaceGuard'
 import Login from '~/pages/Login'
 import Dashboard from '~/pages/workspace/Dashboard'
-import Analytics from '~/pages/workspace/Analytics'
 import Toolkits from '~/pages/workspace/Toolkits'
 import Processes from '~/pages/workspace/Processes'
 import Settings from '~/pages/workspace/Settings'
@@ -55,10 +54,6 @@ export default new Router({
         {
           path: '/',
           component: Dashboard,
-        },
-        {
-          path: 'analytics',
-          component: Analytics,
         },
         {
           path: 'toolkits',
