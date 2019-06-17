@@ -25,7 +25,7 @@
             {{ `${m.callname} (${m.email})` }}
           </li>
         </ul>
-        <InviteForm @error="onError"></InviteForm>
+        <InviteForm></InviteForm>
       </Card>
       <Card class="danger-zone">
         <Header s4>Danger Zone</Header>
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
 import Component from '~/scripts/component'
 import LabeledInput from '~/components/molecular/LabeledInput'
 import ConfirmDelete from './settings/ConfirmDelete'
@@ -63,36 +62,7 @@ export default new Component({
     },
   },
   methods: {
-    ...mapActions('workspace', ['fetchMembers']),
-    submitProfile: function() {
-      this.$apollo.mutate({
-        mutation: gql`
-          mutation { 
-            setName(name: "${this.user.name}" callname: "${
-          this.user.callname
-        }") {
-              id
-              name
-              callname
-            }
-          }
-        `,
-        update: (store, { data: { setName } }) => {
-          store.writeQuery({
-            query: gql`
-              {
-                user {
-                  id
-                  name
-                  callname
-                }
-              }
-            `,
-            data: { user: setName },
-          })
-        },
-      })
-    },
+    ...mapActions('workspace', ['fetchMembers', 'deleteWorkspace']),
     confirmDelete() {
       this.$root.$children[0].showPopup({
         component: ConfirmDelete,
@@ -101,24 +71,6 @@ export default new Component({
           workspace: this.workspace.name,
         },
       })
-    },
-    deleteWorkspace() {
-      this.$apollo
-        .mutate({
-          client: 'work',
-          mutation: gql`
-            mutation deleteCurrentWorkspace($workspace: String!) {
-              deleteWorkspace(name: $workspace)
-            }
-          `,
-          variables: {
-            workspace: this.workspace.name,
-          },
-        })
-        .then(() => this.$router.push({ path: '/space' }))
-    },
-    onError(err) {
-      throw err
     },
   },
 })

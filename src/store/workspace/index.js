@@ -4,6 +4,7 @@ import api from '~/connections'
 import queryWorkspaces from '~/gql/workspaces'
 import queryWorkspaceByName from '~/gql/workspace'
 import queryWorkspaceMembers from '~/gql/workspaceMembers'
+import mutateDeleteWorkspace from '~/gql/deleteWorkspace'
 
 export default {
   namespaced: true,
@@ -94,6 +95,26 @@ export default {
         variables: { name: state.workspace.name },
       })
       commit(types.UPDATE_WORKSPACE, workspace)
+    },
+
+    async deleteWorkspace({ state, commit }) {
+      const deleteName = state.workspace.name
+      await api.work.mutate({
+        mutation: mutateDeleteWorkspace,
+        variables: { workspace: deleteName },
+      })
+      commit(types.SET_WORKSPACE, {
+        name: '',
+        created: '',
+        members: [],
+      })
+      commit(
+        types.SET_WORKSPACES,
+        state.workspaces.filter(space => space !== deleteName)
+      )
+      commit(types.SET_ACCESS, false)
+      commit(types.SET_LAST_WORKSPACE, null)
+      router.push('/profile')
     },
   },
 }
