@@ -19,33 +19,14 @@
 <script>
 import Component from '~/scripts/component'
 import LoginForm from '~/components/molecular/LoginForm'
-import gql from 'graphql-tag'
+import { mapState } from 'vuex'
 
 export default new Component({
   name: 'Admin',
-  apollo: {
-    user: gql`
-      {
-        user {
-          name
-          email
-          role
-        }
-      }
-    `,
-  },
-  data() {
-    return {
-      user: {
-        name: '',
-        email: '',
-        role: null,
-      },
-    }
-  },
   components: {
     LoginForm,
   },
+  computed: mapState('user', { user: 'info' }),
 })
 </script>
 

@@ -1,6 +1,7 @@
 import * as types from './mutation-types'
 import queryToolkits from '~/gql/toolkitList'
 import queryToolkit from '~/gql/toolkit'
+import mutationCreateToolkit from '~/gql/createToolkit'
 import api from '~/connections'
 
 export default {
@@ -52,6 +53,16 @@ export default {
       } = await api.tool.query({ query: queryToolkit, variables: { id } })
       commit(types.UPDATE_TOOLKIT, toolkit)
       commit(types.SET_CURRENT_KIT, getters.getKitById(toolkit.id))
+    },
+    async createToolkit({ commit }) {
+      const {
+        data: {
+          createToolkit: { id, title },
+        },
+      } = await api.tool.mutate({
+        mutation: mutationCreateToolkit,
+      })
+      commit(types.ADD_TOOLKITS, [{ id, title }])
     },
   },
 }

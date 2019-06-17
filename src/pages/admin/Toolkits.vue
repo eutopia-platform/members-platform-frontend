@@ -1,55 +1,27 @@
 <template>
   <div :class="getClass">
     <Header s2>Toolkits</Header>
-    <Paragraph v-for="(kit, i) in toolkits" :key="i">
-      <RouterLink :to="kit.id" append>{{ kit.title }}</RouterLink>
-    </Paragraph>
-    <Button outlined @click="addToolkit">Add Toolkit</Button>
+    <template v-if="!loading">
+      <Paragraph v-for="(kit, i) in toolkits" :key="i">
+        <RouterLink :to="kit.id" append>{{ kit.title }}</RouterLink>
+      </Paragraph>
+    </template>
+    <Loader v-else></Loader>
+    <Button outlined @click="createToolkit">Add Toolkit</Button>
   </div>
 </template>
 
 <script>
 import Component from '~/scripts/component'
-import gql from 'graphql-tag'
+import { mapState, mapActions } from 'vuex'
 
 export default new Component({
   name: 'Toolkits',
-  apollo: {
-    toolkits: {
-      client: 'tool',
-      query: gql`
-        query adminToolkits {
-          toolkits {
-            id
-            title
-            description_markdown
-            canvas
-            learning
-          }
-        }
-      `,
-    },
+  computed: mapState('toolkit', ['toolkits', 'loading']),
+  created() {
+    if (this.toolkits.length === 0) this.fetchToolkits()
   },
-  data() {
-    return {
-      toolkits: [],
-    }
-  },
-  methods: {
-    addToolkit() {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation addToolkit {
-            createToolkit {
-              id
-              title
-            }
-          }
-        `,
-      })
-    },
-  },
+  methods: mapActions('toolkit', ['fetchToolkits', 'createToolkit']),
 })
 </script>
 
