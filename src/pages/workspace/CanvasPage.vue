@@ -22,7 +22,7 @@ import Canvas from './canvas/Canvas'
 import ContextBar from './canvas/ContextBar'
 import TitleBar from './canvas/TitleBar'
 import { parseLength } from '~/scripts/parseCSS'
-import gql from 'graphql-tag'
+import { mapGetters, mapActions } from 'vuex'
 
 export default new Component({
   name: 'CanvasPage',
@@ -30,27 +30,6 @@ export default new Component({
     Canvas,
     TitleBar,
     ContextBar,
-  },
-  apollo: {
-    toolkit: {
-      client: 'tool',
-      query: gql`
-        query currentToolkit($id: ID!) {
-          toolkit(id: $id) {
-            title
-            canvas
-            learning
-            workflow
-            id
-          }
-        }
-      `,
-      variables() {
-        return {
-          id: this.id,
-        }
-      },
-    },
   },
   data: () => ({
     sidebarWidth: 0,
@@ -67,6 +46,10 @@ export default new Component({
     },
   },
   computed: {
+    ...mapGetters('toolkit', ['getKitById']),
+    toolkit() {
+      return this.getKitById(this.id)
+    },
     navbarWidth() {
       return parseLength(this.offsetLeft)
     },
@@ -77,7 +60,6 @@ export default new Component({
         parseLength(this.sidebarWidth)
       )
     },
-
     centerWidth() {
       return {
         width: `calc(100% - ${this.sidebarWidth})`,
@@ -98,7 +80,11 @@ export default new Component({
       return this.toolkit ? JSON.parse(this.toolkit.canvas) : null
     },
   },
+  created() {
+    this.fetchToolkit(this.id)
+  },
   methods: {
+    ...mapActions('toolkit', ['fetchToolkit']),
     updateSidebarWidth(width) {
       this.sidebarWidth = width
     },

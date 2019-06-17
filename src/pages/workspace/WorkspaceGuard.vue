@@ -23,9 +23,9 @@ export default {
       return this.access ? 'Workspace' : 'NotFound'
     },
   },
-  methods: mapActions('workspace', ['loadWorkspace']),
   created() {
     this.loadWorkspace()
   },
+  methods: mapActions('workspace', ['loadWorkspace']),
 }
 </script>

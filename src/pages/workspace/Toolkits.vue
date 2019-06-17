@@ -41,10 +41,10 @@ export default {
     Toolkit,
     InfoCard,
   },
+  computed: mapState('toolkit', ['toolkits', 'loading']),
   created() {
     if (this.toolkits.length === 0) this.fetchToolkits()
   },
-  computed: mapState('toolkit', ['toolkits', 'loading']),
   methods: mapActions('toolkit', ['fetchToolkits']),
 }
 </script>
