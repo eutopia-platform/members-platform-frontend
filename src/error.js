@@ -40,13 +40,11 @@ export const handleGraphError = ({
           }
           break
         case 'BAD_USER_INPUT':
-          //
           break
         case 'INTERNAL_SERVER_ERROR':
           displayError('something went wrong')
           break
         default:
-          //
           break
       }
     })
