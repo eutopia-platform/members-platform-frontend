@@ -14,17 +14,25 @@ export default {
       baseline: new Baseline(),
     }
   },
-  computed: mapState('user', ['loggedIn']),
+  computed: mapState('user', ['loggedIn', 'sessionToken']),
   created() {
     if (this.loggedIn) this.loadUser()
     this.updateBaseline()
     window.addEventListener('resize', this.updateBaseline)
+    window.addEventListener('storage', ({ key }) => {
+      if (
+        key === 'sessionToken' &&
+        localStorage.getItem('sessionToken') !== this.sessionToken
+      ) {
+        this.tabLogout()
+      }
+    })
   },
   mounted() {
     if ('baseline' in this.$route.query) this.baseline.show()
   },
   methods: {
-    ...mapActions('user', ['loadUser']),
+    ...mapActions('user', ['loadUser', 'tabLogout']),
     showPopup: function({ component, callback, props }) {
       document.body.appendChild(
         new (Vue.extend(component))({

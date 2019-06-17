@@ -9,6 +9,7 @@ export default {
   namespaced: true,
   state: {
     loggedIn: !!localStorage.getItem('sessionToken'),
+    sessionToken: '',
     loading: false,
     info: {
       id: '',
@@ -30,6 +31,9 @@ export default {
     [types.SET_LOGGED_IN](state, value) {
       state.loggedIn = value
     },
+    [types.SET_SESSION_TOKEN](state, value) {
+      state.sessionToken = value
+    },
   },
   actions: {
     async loadUser({ commit }) {
@@ -50,11 +54,12 @@ export default {
         variables: credentials,
       })
       localStorage.setItem('sessionToken', token)
+      commit(types.SET_SESSION_TOKEN, token)
       commit(types.SET_LOGGED_IN, true)
       dispatch('loadUser')
     },
 
-    async logout({ commit }) {
+    async logout({ dispatch }) {
       if ('sessionToken' in localStorage)
         await api.auth.mutate({
           mutation: logoutMutation,
@@ -65,6 +70,10 @@ export default {
         })
       localStorage.removeItem('sessionToken')
       localStorage.removeItem('workspace')
+      dispatch('tabLogout')
+    },
+
+    async tabLogout({ commit }) {
       commit(types.SET_LOGGED_IN, false)
       commit(types.SET_INFO, {
         id: '',
