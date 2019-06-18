@@ -17,7 +17,7 @@ export default class Array_ extends Type_ {
     if (this._every !== null) {
       const every = this._every
       const check = !Array.isArray(every)
-        ? every.check
+        ? e => every.check(e)
         : e => every.some(c => c.check(e))
       return v.every(e => check(e))
     }
