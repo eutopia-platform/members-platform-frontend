@@ -150,4 +150,15 @@ describe('Object_', () => {
     expect(NAND.check(def01)).toBe(true)
     expect(NAND.check(def11)).toBe(false)
   })
+
+  it('correctly checks for without', () => {
+    expect(new Object_().without(['a']).check({ a: '' })).toBe(false)
+
+    expect(() =>
+      new Object_().entries({ a: new Number_() }).without(['a'])
+    ).toThrow()
+    expect(() =>
+      new Object_().without(['a']).entries({ a: new Number_() })
+    ).toThrow()
+  })
 })
