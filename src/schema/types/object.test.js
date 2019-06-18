@@ -119,4 +119,35 @@ describe('Object_', () => {
     expect(obj.check({ a: 0, b: 1 })).toBe(true)
     expect(obj.check({ a: 0, b: 1, c: 2 })).toBe(false)
   })
+
+  it('correctly checks relations', () => {
+    const OR = new Object_().relation('a OR b')
+    const XOR = new Object_().relation('a XOR b')
+    const AND = new Object_().relation('a AND b')
+    const NAND = new Object_().relation('a NAND b')
+    const def00 = {}
+    const def10 = { a: 'a' }
+    const def01 = { b: 'b' }
+    const def11 = { a: 'a', b: 'b' }
+
+    expect(OR.check(def00)).toBe(false)
+    expect(OR.check(def10)).toBe(true)
+    expect(OR.check(def01)).toBe(true)
+    expect(OR.check(def11)).toBe(true)
+
+    expect(XOR.check(def00)).toBe(false)
+    expect(XOR.check(def10)).toBe(true)
+    expect(XOR.check(def01)).toBe(true)
+    expect(XOR.check(def11)).toBe(false)
+
+    expect(AND.check(def00)).toBe(false)
+    expect(AND.check(def10)).toBe(false)
+    expect(AND.check(def01)).toBe(false)
+    expect(AND.check(def11)).toBe(true)
+
+    expect(NAND.check(def00)).toBe(true)
+    expect(NAND.check(def10)).toBe(true)
+    expect(NAND.check(def01)).toBe(true)
+    expect(NAND.check(def11)).toBe(false)
+  })
 })
