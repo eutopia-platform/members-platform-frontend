@@ -1,5 +1,5 @@
-import Type_ from '.'
-import { String_ } from '.'
+import Type_ from './type'
+import String_ from './string'
 
 describe('String_', () => {
   it('extends Type_', () => {
