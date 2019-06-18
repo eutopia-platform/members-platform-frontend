@@ -18,15 +18,19 @@ export default class Number_ extends Type_ {
   }
 
   min(n) {
-    assert(typeof n === 'number', 'must be number')
-    assert(this._max === null || n <= this._max, 'must be <= max')
+    if (n !== null) {
+      assert(typeof n === 'number', 'must be number')
+      assert(this._max === null || n <= this._max, 'must be <= max')
+    }
     this._min = n
     return this
   }
 
   max(n) {
-    assert(typeof n === 'number', 'must be number')
-    assert(this._min === null || n >= this._min, 'must be >= min')
+    if (n !== null) {
+      assert(typeof n === 'number', 'must be number')
+      assert(this._min === null || n >= this._min, 'must be >= min')
+    }
     this._max = n
     return this
   }
