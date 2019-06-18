@@ -8,6 +8,7 @@ export default class Object_ extends Type_ {
     this._optional = {}
     this._exclusive = false
     this._relations = []
+    this._without = []
   }
 
   check(v) {
@@ -33,6 +34,8 @@ export default class Object_ extends Type_ {
         return false
     }
 
+    for (let e of this._without) if (keys.includes(e)) return false
+
     return Object.entries(v).every(e =>
       Object.keys(allChecks).includes(e[0]) ? allChecks[e[0]].check(e[1]) : true
     )
@@ -44,6 +47,19 @@ export default class Object_ extends Type_ {
 
   optional(entr) {
     return this._addTo(entr, this._optional)
+  }
+
+  without(keys) {
+    assert(Array.isArray(keys))
+    assert(
+      keys.every(
+        key =>
+          !Object.keys(this._entries).includes(key) &&
+          !Object.keys(this._optional).includes(key)
+      )
+    )
+    this._without = this._without.concat(keys)
+    return this
   }
 
   exclusive() {
@@ -61,6 +77,7 @@ export default class Object_ extends Type_ {
 
   _addTo(entr, target) {
     assert(typeof entr === 'object')
+    assert(Object.keys(entr).every(key => !this._without.includes(key)))
     assert(
       Object.values(entr).every(v => v instanceof Type_),
       'Object_ entries must be children of Type_'
