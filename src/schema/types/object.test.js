@@ -85,4 +85,38 @@ describe('Object_', () => {
       new Object_().entries({ a: new String_() }).entries({ a: new Number_() })
     ).toThrow()
   })
+
+  it('detects missing property', () => {
+    const obj = new Object_().entries({ a: new String_(), b: new String_() })
+    expect(obj.check({ a: 'a', b: 'b' })).toBe(true)
+    expect(obj.check({ a: 'a' })).toBe(false)
+  })
+
+  it('checks optional properties', () => {
+    const obj = new Object_()
+      .entries({ a: new String_() })
+      .optional({ b: new String_() })
+    expect(obj.check({ a: 'a' })).toBe(true)
+    expect(obj.check({ a: 'a', b: 'b' })).toBe(true)
+    expect(obj.check({ a: 'a', b: 0 })).toBe(false)
+  })
+
+  it('allows additional properties without exclusive', () => {
+    const obj = new Object_()
+      .entries({ a: new Number_() })
+      .optional({ b: new Number_() })
+
+    expect(obj.check({ a: 0, b: 1 })).toBe(true)
+    expect(obj.check({ a: 0, b: 1, c: 2 })).toBe(true)
+  })
+
+  it('correctly checks with exclusive', () => {
+    const obj = new Object_()
+      .entries({ a: new Number_() })
+      .optional({ b: new Number_() })
+      .exclusive()
+
+    expect(obj.check({ a: 0, b: 1 })).toBe(true)
+    expect(obj.check({ a: 0, b: 1, c: 2 })).toBe(false)
+  })
 })
