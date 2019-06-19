@@ -7,7 +7,7 @@ export const getNested = (obj, ...keys) => {
 export const setNested = (obj, value, ...keys) => {
   if (keys.length === 0) return value
   return {
-    ...(obj !== undefined && obj),
+    ...obj,
     ...{
       [keys[0]]: setNested(obj[keys[0]] || {}, value, ...keys.slice(1)),
     },
