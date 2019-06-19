@@ -17,6 +17,8 @@ const int = (min = null, max = null) => num(min, max).integer()
 
 const str = () => new String_()
 
+const uuid = () => new UUID_()
+
 export {
   Type_,
   String_,
@@ -29,4 +31,5 @@ export {
   num,
   int,
   str,
+  uuid,
 }

@@ -2,7 +2,10 @@ import * as types from './mutation-types'
 import queryToolkits from '~/gql/toolkitList'
 import queryToolkit from '~/gql/toolkit'
 import mutationCreateToolkit from '~/gql/createToolkit'
+import mutationEditToolkit from '~/gql/editToolkit'
 import api from '~/connections'
+import Toolkit from '~/schema/Toolkit'
+import { displayError } from '~/error'
 
 export default {
   namespaced: true,
@@ -65,6 +68,11 @@ export default {
         ...{ content: decodeURI(box.content) },
       }))
 
+      if (toolkit.canvas.meta.width)
+        toolkit.canvas.meta.width = parseFloat(toolkit.canvas.meta.width)
+      if (toolkit.canvas.meta.height)
+        toolkit.canvas.meta.height = parseFloat(toolkit.canvas.meta.height)
+
       commit(types.UPDATE_TOOLKIT, toolkit)
       commit(types.SET_CURRENT_KIT, getters.getKitById(toolkit.id))
     },
@@ -78,6 +86,20 @@ export default {
         mutation: mutationCreateToolkit,
       })
       commit(types.ADD_TOOLKITS, [{ id, title }])
+    },
+
+    async editToolkit({ commit }, toolkit) {
+      if (!toolkit.valid) {
+        displayError('invalid update')
+        return
+      }
+      const {
+        data: { editToolkit },
+      } = await api.tool.mutate({
+        mutation: mutationEditToolkit,
+        variables: toolkit.encode(),
+      })
+      commit(types.UPDATE_TOOLKIT, new Toolkit(editToolkit, { decode: true }))
     },
   },
 }
