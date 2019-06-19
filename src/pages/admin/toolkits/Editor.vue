@@ -25,7 +25,7 @@
         </Button>
       </div>
 
-      <Button outlined @click="deleteToolkit">Delete Toolkit</Button>
+      <Button outlined @click="deleteKit">Delete Toolkit</Button>
 
       <div class="field-title">
         <Header s3>Description</Header>
@@ -84,7 +84,6 @@ export default new Component({
   watch: {
     currentKit(v) {
       this.toolkit = new Toolkit(v)
-      this.kit = new Toolkit(v)
     },
   },
   created() {
@@ -101,24 +100,13 @@ export default new Component({
     CanvasEdit,
   },
   methods: {
-    ...mapActions('toolkit', ['fetchToolkit', 'editToolkit']),
+    ...mapActions('toolkit', ['fetchToolkit', 'editToolkit', 'deleteToolkit']),
     submitChange() {
       this.editToolkit(this.toolkit)
     },
-    deleteToolkit() {
-      this.$apollo
-        .mutate({
-          client: 'tool',
-          mutation: gql`
-            mutation deleteToolkit($id: ID!) {
-              deleteToolkit(id: $id)
-            }
-          `,
-          variables: {
-            id: this.toolkit.id,
-          },
-        })
-        .then(() => this.$router.push('/admin/toolkits'))
+    deleteKit() {
+      this.deleteToolkit(this.toolkit.id)
+      this.$router.push('/admin/toolkits')
     },
     publishToolkit() {
       this.$apollo.mutate({

@@ -2,6 +2,7 @@ import * as types from './mutation-types'
 import queryToolkits from '~/gql/toolkitList'
 import queryToolkit from '~/gql/toolkit'
 import mutationCreateToolkit from '~/gql/createToolkit'
+import mutationDeleteToolkit from '~/gql/deleteToolkit'
 import mutationEditToolkit from '~/gql/editToolkit'
 import api from '~/connections'
 import Toolkit from '~/schema/toolkit'
@@ -39,6 +40,11 @@ export default {
     },
     [types.SET_CURRENT_KIT](state, ref) {
       state.currentKit = ref
+    },
+    [types.REMOVE_TOOLKIT](state, id) {
+      if (state.currentKit.id === id) state.currentKit = null
+      const toolkit = state.toolkits.find(kit => kit.id === id)
+      if (toolkit) state.toolkits.splice(state.toolkits.indexOf(toolkit), 1)
     },
   },
   actions: {
@@ -86,6 +92,14 @@ export default {
         mutation: mutationCreateToolkit,
       })
       commit(types.ADD_TOOLKITS, [{ id, title }])
+    },
+
+    async deleteToolkit({ commit }, id) {
+      await api.tool.mutate({
+        mutation: mutationDeleteToolkit,
+        variables: { id },
+      })
+      commit(types.REMOVE_TOOLKIT, id)
     },
 
     async editToolkit({ commit }, toolkit) {
