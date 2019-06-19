@@ -2,14 +2,17 @@
   <div :class="getClass">
     <Loader v-if="toolkit === null"></Loader>
     <template v-else>
-      <Paragraph>ID: {{ toolkit.id }}</Paragraph>
-      <ActionInput
+      <div class="title-bar">
+        <Header s2>Editor: {{ toolkit.title }}</Header>
+        <Button outlined color="secondary" @click="submitChange">
+          save changes
+        </Button>
+      </div>
+      <LabeledInput
         v-model="toolkit.title"
         label="title"
-        button="update"
         :default-value="toolkit.title"
-        @submit="submitChange"
-      ></ActionInput>
+      ></LabeledInput>
 
       <div class="visibility">
         <Paragraph>
@@ -29,7 +32,6 @@
 
       <div class="field-title">
         <Header s3>Description</Header>
-        <Button outlined @click="submitChange">save</Button>
       </div>
       <MarkdownEdit
         v-model="toolkit.description"
@@ -39,7 +41,6 @@
 
       <div class="field-title">
         <Header s3>Workflow</Header>
-        <Button outlined @click="submitChange">save</Button>
       </div>
       <MarkdownEdit
         v-model="toolkit.workflow"
@@ -49,7 +50,6 @@
 
       <div class="field-title">
         <Header s3>Learning</Header>
-        <Button outlined @click="submitChange">save</Button>
       </div>
       <MarkdownEdit
         v-model="toolkit.learning"
@@ -59,7 +59,6 @@
 
       <div class="field-title">
         <Header s3>Canvas</Header>
-        <Button outlined @click="submitChange">save</Button>
       </div>
       <CanvasEdit
         v-model="toolkit.canvas"
@@ -71,7 +70,7 @@
 
 <script>
 import Component from '~/scripts/component'
-import ActionInput from '~/components/molecular/ActionInput'
+import LabeledInput from '~/components/molecular/LabeledInput'
 import MarkdownEdit from '~/components/molecular/MarkdownEdit'
 import CanvasEdit from './editor/CanvasEdit'
 import gql from 'graphql-tag'
@@ -95,7 +94,7 @@ export default new Component({
     }
   },
   components: {
-    ActionInput,
+    LabeledInput,
     MarkdownEdit,
     CanvasEdit,
   },
@@ -132,6 +131,18 @@ export default new Component({
 <style lang="scss" scoped>
 .editor {
   padding-bottom: 5rem;
+
+  .title-bar {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    * {
+      margin: 0;
+    }
+  }
 
   .field-title {
     margin-top: 2rem;
