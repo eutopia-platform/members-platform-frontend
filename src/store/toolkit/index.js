@@ -4,7 +4,7 @@ import queryToolkit from '~/gql/toolkit'
 import mutationCreateToolkit from '~/gql/createToolkit'
 import mutationEditToolkit from '~/gql/editToolkit'
 import api from '~/connections'
-import Toolkit from '~/schema/Toolkit'
+import Toolkit from '~/schema/toolkit'
 import { displayError } from '~/error'
 
 export default {

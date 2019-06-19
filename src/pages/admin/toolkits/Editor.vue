@@ -4,10 +4,11 @@
     <template v-else>
       <Paragraph>ID: {{ toolkit.id }}</Paragraph>
       <ActionInput
+        v-model="toolkit.title"
         label="title"
         button="update"
         :default-value="toolkit.title"
-        @submit="saveTitle"
+        @submit="submitChange"
       ></ActionInput>
 
       <div class="visibility">
@@ -28,17 +29,17 @@
 
       <div class="field-title">
         <Header s3>Description</Header>
-        <Button outlined @click="saveDescription">save</Button>
+        <Button outlined @click="submitChange">save</Button>
       </div>
       <MarkdownEdit
-        v-model="toolkit.description_markdown"
+        v-model="toolkit.description"
         view
-        :default-text="toolkit.description_markdown"
+        :default-text="toolkit.description"
       ></MarkdownEdit>
 
       <div class="field-title">
         <Header s3>Workflow</Header>
-        <Button outlined @click="saveWorkflow">save</Button>
+        <Button outlined @click="submitChange">save</Button>
       </div>
       <MarkdownEdit
         v-model="toolkit.workflow"
@@ -48,7 +49,7 @@
 
       <div class="field-title">
         <Header s3>Learning</Header>
-        <Button outlined @click="saveLearning">save</Button>
+        <Button outlined @click="submitChange">save</Button>
       </div>
       <MarkdownEdit
         v-model="toolkit.learning"
@@ -58,9 +59,12 @@
 
       <div class="field-title">
         <Header s3>Canvas</Header>
-        <Button outlined @click="saveCanvas">save</Button>
+        <Button outlined @click="submitChange">save</Button>
       </div>
-      <CanvasEdit v-model="canvas" :canvas="toolkit.canvas"></CanvasEdit>
+      <CanvasEdit
+        v-model="toolkit.canvas"
+        :canvas="toolkit.canvas"
+      ></CanvasEdit>
     </template>
   </div>
 </template>
@@ -72,16 +76,23 @@ import MarkdownEdit from '~/components/molecular/MarkdownEdit'
 import CanvasEdit from './editor/CanvasEdit'
 import gql from 'graphql-tag'
 import { mapState, mapActions } from 'vuex'
+import Toolkit from '~/schema/toolkit'
 
 export default new Component({
   name: 'Editor',
-  computed: mapState('toolkit', { toolkit: 'currentKit' }),
+  computed: mapState('toolkit', ['currentKit']),
+  watch: {
+    currentKit(v) {
+      this.toolkit = new Toolkit(v)
+      this.kit = new Toolkit(v)
+    },
+  },
   created() {
     this.fetchToolkit(this.$route.params.id)
   },
   data() {
     return {
-      canvas: {},
+      toolkit: null,
     }
   },
   components: {
@@ -90,97 +101,9 @@ export default new Component({
     CanvasEdit,
   },
   methods: {
-    ...mapActions('toolkit', ['fetchToolkit']),
-    saveTitle(title) {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateTitle($id: ID!, $title: String) {
-            editToolkit(toolkit: { id: $id, title: $title }) {
-              id
-              title
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          title,
-        },
-      })
-    },
-    saveDescription() {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateDescription($id: ID!, $description: String) {
-            editToolkit(toolkit: { id: $id, description: $description }) {
-              id
-              description
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          description: encodeURI(this.toolkit.description_markdown),
-        },
-      })
-    },
-    saveWorkflow() {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateWorkflow($id: ID!, $workflow: String) {
-            editToolkit(toolkit: { id: $id, workflow: $workflow }) {
-              id
-              workflow
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          workflow: encodeURI(this.toolkit.workflow),
-        },
-      })
-    },
-    saveLearning() {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateLearning($id: ID!, $learning: String) {
-            editToolkit(toolkit: { id: $id, learning: $learning }) {
-              id
-              learning
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          learning: encodeURI(this.toolkit.learning),
-        },
-      })
-    },
-    saveCanvas() {
-      const canvas = JSON.stringify({
-        meta: this.canvas.meta,
-        boxes: this.canvas.boxes.map(box =>
-          Object.assign({}, box, { content: encodeURI(box.content) })
-        ),
-      })
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateCanvas($id: ID!, $canvas: String) {
-            editToolkit(toolkit: { id: $id, canvas: $canvas }) {
-              id
-              canvas
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          canvas,
-        },
-      })
+    ...mapActions('toolkit', ['fetchToolkit', 'editToolkit']),
+    submitChange() {
+      this.editToolkit(this.toolkit)
     },
     deleteToolkit() {
       this.$apollo

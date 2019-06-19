@@ -3,7 +3,7 @@
     <Toolbar></Toolbar>
     <Box
       v-for="box in boxes"
-      :key="box.content"
+      :key="`box-${boxes.indexOf(box)}`"
       :parent-width="width"
       :parent-height="height"
       :def="box"

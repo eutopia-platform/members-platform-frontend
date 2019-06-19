@@ -54,6 +54,9 @@ export default new Component({
       this.text = txt
     },
   },
+  created() {
+    this.text = this.defaultText
+  },
   methods: {
     textInput() {
       this.$emit('input', this.text)

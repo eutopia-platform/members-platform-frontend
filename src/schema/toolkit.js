@@ -6,6 +6,7 @@ export default class Toolkit {
     if (!def) return
 
     if (opt && opt.decode) def = Toolkit._decode(def)
+    else def = JSON.parse(JSON.stringify(def))
 
     const copy = path => {
       const val = getNested(def, ...path.split('.'))
