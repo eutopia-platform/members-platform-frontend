@@ -91,8 +91,8 @@ export default new Component({
     onWheel(e) {
       if (e.ctrlKey)
         this.pinch(e.deltaY, {
-          x: (e.clientX - this.$el.offsetLeft) / this.$el.offsetWidth,
-          y: (e.clientY - this.$el.offsetTop) / this.$el.offsetHeight,
+          x: (e.pageX - this.$el.offsetLeft) / this.$el.offsetWidth,
+          y: (e.pageY - this.$el.offsetTop) / this.$el.offsetHeight,
         })
       else this.scroll(e.deltaX, e.deltaY)
       e.preventDefault()
