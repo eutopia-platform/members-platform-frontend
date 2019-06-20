@@ -61,7 +61,11 @@ export default {
     async fetchToolkit({ commit, getters }, id) {
       const {
         data: { toolkit },
-      } = await api.tool.query({ query: queryToolkit, variables: { id } })
+      } = await api.tool.query({
+        query: queryToolkit,
+        variables: { id },
+        fetchPolicy: 'no-cache',
+      })
 
       Object.assign(toolkit, {
         description: decodeURI(toolkit.description),

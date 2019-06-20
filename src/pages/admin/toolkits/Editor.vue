@@ -2,11 +2,10 @@
   <div :class="getClass">
     <Loader v-if="toolkit === null"></Loader>
     <template v-else>
+      <Button text link="/admin/toolkits">back to toolkits</Button>
       <div class="title-bar">
         <Header s2>Editor: {{ toolkit.title }}</Header>
-        <Button outlined color="secondary" @click="submitChange">
-          save changes
-        </Button>
+        <Button color="secondary" @click="submitChange">save changes</Button>
       </div>
       <LabeledInput
         v-model="toolkit.title"
@@ -86,11 +85,13 @@ export default new Component({
     },
   },
   created() {
-    this.fetchToolkit(this.$route.params.id)
+    if (this.currentKit && this.currentKit.id === this.$route.params.id)
+      this.toolkit = new Toolkit(this.currentKit)
+    else this.fetchToolkit(this.$route.params.id)
   },
   data() {
     return {
-      toolkit: null,
+      toolkit: this.currentKit ? new Toolkit(this.currentKit) : null,
     }
   },
   components: {
@@ -131,6 +132,8 @@ export default new Component({
 <style lang="scss" scoped>
 .editor {
   padding-bottom: 5rem;
+  max-width: 1000px;
+  margin: auto;
 
   .title-bar {
     margin-top: 1rem;
@@ -166,5 +169,12 @@ export default new Component({
       margin-left: 2rem;
     }
   }
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 </style>

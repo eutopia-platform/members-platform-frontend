@@ -53,17 +53,19 @@ export default {
     async login({ commit, dispatch }, credentials) {
       if (localStorage.getItem('sessionToken'))
         await dispatch('logout', null, { root: true })
-      const {
-        data: { login: token },
-      } = await api.auth.mutate({
+      const { data } = await api.auth.mutate({
         mutation: loginMutation,
         variables: credentials,
         fetchPolicy: 'no-cache',
       })
+      if (!data) return false
+
+      const token = data.login
       localStorage.setItem('sessionToken', token)
       commit(types.SET_SESSION_TOKEN, token)
       commit(types.SET_LOGGED_IN, true)
       dispatch('loadUser')
+      return true
     },
 
     logout: {

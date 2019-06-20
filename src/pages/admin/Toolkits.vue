@@ -19,7 +19,7 @@ export default new Component({
   name: 'Toolkits',
   computed: mapState('toolkit', ['toolkits', 'loading']),
   created() {
-    if (this.toolkits.length === 0) this.fetchToolkits()
+    this.fetchToolkits()
   },
   methods: mapActions('toolkit', ['fetchToolkits', 'createToolkit']),
 })
