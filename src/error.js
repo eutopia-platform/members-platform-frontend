@@ -39,6 +39,10 @@ export const handleGraphError = ({
             store.dispatch('logout')
           break
         case 'BAD_USER_INPUT':
+          if (operation.operationName === 'login') {
+            displayError('wrong email or password')
+            response.errors = null
+          }
           break
         case 'INTERNAL_SERVER_ERROR':
           displayError('something went wrong')

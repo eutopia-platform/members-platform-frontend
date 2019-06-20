@@ -59,8 +59,8 @@ export default new Molecular({
     ...mapActions('user', ['login']),
     async submit(e) {
       if (e) e.preventDefault()
-      await this.login({ email: this.email, password: this.password })
-      this.$router.push(this.redirect)
+      if (await this.login({ email: this.email, password: this.password }))
+        this.$router.push(this.redirect)
     },
   },
 })
