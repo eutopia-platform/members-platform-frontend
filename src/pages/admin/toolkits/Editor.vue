@@ -29,36 +29,28 @@
 
       <Button outlined @click="deleteKit">Delete Toolkit</Button>
 
-      <div class="field-title">
-        <Header s3>Description</Header>
-      </div>
+      <Header s3>Description</Header>
       <MarkdownEdit
         v-model="toolkit.description"
         view
         :default-text="toolkit.description"
       ></MarkdownEdit>
 
-      <div class="field-title">
-        <Header s3>Workflow</Header>
-      </div>
+      <Header s3>Workflow</Header>
       <MarkdownEdit
         v-model="toolkit.workflow"
         view
         :default-text="toolkit.workflow"
       ></MarkdownEdit>
 
-      <div class="field-title">
-        <Header s3>Learning</Header>
-      </div>
+      <Header s3>Learning</Header>
       <MarkdownEdit
         v-model="toolkit.learning"
         view
         :default-text="toolkit.learning"
       ></MarkdownEdit>
 
-      <div class="field-title">
-        <Header s3>Canvas</Header>
-      </div>
+      <Header s3>Canvas</Header>
       <CanvasEdit
         v-model="toolkit.canvas"
         :canvas="toolkit.canvas"
@@ -73,12 +65,12 @@ import LabeledInput from '~/components/molecular/LabeledInput'
 import MarkdownEdit from '~/components/molecular/MarkdownEdit'
 import CanvasEdit from './editor/CanvasEdit'
 import gql from 'graphql-tag'
-import { mapState, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Toolkit from '~/schema/toolkit'
 
 export default new Component({
   name: 'Editor',
-  computed: mapState('toolkit', ['currentKit']),
+  computed: mapGetters('toolkit', ['currentKit']),
   watch: {
     currentKit(v) {
       this.toolkit = new Toolkit(v)
