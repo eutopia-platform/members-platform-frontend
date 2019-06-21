@@ -3,7 +3,7 @@
     <div class="left">
       <div class="title">
         <Paragraph>Box {{ index }}</Paragraph>
-        <Button @click="$emit('delete', index)">delete</Button>
+        <Button outlined @click="$emit('delete', index)">delete</Button>
       </div>
       <div class="pos">
         <LabeledInput
@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import LabeledInput from '/components/molecular/LabeledInput'
-import Textedit from '/components/molecular/Textedit'
+import Component from '~/scripts/component'
+import LabeledInput from '~/components/molecular/LabeledInput'
+import Textedit from '~/components/molecular/Textedit'
 
 export default new Component({
   name: 'BoxEdit',

@@ -1,4 +1,4 @@
-import { assert } from '/components/sharedScripts/debug'
+import { assert } from '~/scripts/debug'
 import { Box } from './definition'
 
 export default class Template {

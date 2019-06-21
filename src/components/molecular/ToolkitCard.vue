@@ -7,14 +7,16 @@
       </div>
       <div class="back">
         <MarkdownDisplay :markdown="description"></MarkdownDisplay>
-        <Button @click="$router.push(`canvas/${id}`)">Use Toolkit</Button>
+        <Button outlined @click="$router.push(`canvas/${id}`)">
+          Use Toolkit
+        </Button>
       </div>
     </Card>
   </div>
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
+import Molecular from '~/scripts/molecular'
 import MarkdownDisplay from './MarkdownDisplay'
 
 export default new Molecular({
@@ -41,7 +43,7 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors.scss';
+@import '/styles/colors.scss';
 
 .toolkit-card {
   background-color: transparent;

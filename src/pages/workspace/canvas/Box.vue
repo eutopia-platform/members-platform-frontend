@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import MarkdownDisplay from '/components/molecular/MarkdownDisplay'
-import Textedit from '/components/molecular/Textedit'
+import Component from '~/scripts/component'
+import MarkdownDisplay from '~/components/molecular/MarkdownDisplay'
+import Textedit from '~/components/molecular/Textedit'
 import { Box as BoxDef } from './definition'
 
 export default new Component({
@@ -45,7 +45,7 @@ export default new Component({
   },
   data() {
     return {
-      content: decodeURI(this.def.content),
+      content: this.def.content,
       contentDisplay: 'MarkdownDisplay',
     }
   },
@@ -97,8 +97,8 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/shadows';
-@import '/components/sharedStyles/text';
+@import '/styles/shadows';
+@import '/styles/text';
 
 .box {
   width: 10rem;

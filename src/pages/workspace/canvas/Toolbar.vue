@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '~/scripts/component'
 import ToolbarIcon from './ToolbarIcon'
 
 export default new Component({
@@ -18,7 +18,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/shadows';
+@import '/styles/shadows';
 
 .toolbar {
   position: absolute;

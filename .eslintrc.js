@@ -14,6 +14,7 @@ const config = {
     describe: true,
     it: true,
     expect: true,
+    test: true,
   },
   rules: {
     'vue/max-attributes-per-line': false,

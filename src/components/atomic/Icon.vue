@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Atomic from '/components/sharedScripts/atomic'
+import Atomic from '~/scripts/atomic'
 
 export default new Atomic({
   name: 'Icon',
@@ -42,7 +42,7 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .icon {
   height: var(--baseline);

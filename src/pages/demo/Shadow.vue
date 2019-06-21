@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '~/scripts/component'
 
 const shadowToCSS = (shadow, color = { r: 0, g: 0, b: 0 }) =>
   `${shadow.x}px ${shadow.y}px ${shadow.blur}px rgba(${color.r}, ${color.g}, ${

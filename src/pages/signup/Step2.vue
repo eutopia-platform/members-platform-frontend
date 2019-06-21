@@ -11,13 +11,13 @@
       label="display name"
       :default-value="user.callname"
     ></LabeledInput>
-    <Button primary @click="submit">continue</Button>
+    <Button outlined primary @click="submit">continue</Button>
   </Card>
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import LabeledInput from '/components/molecular/LabeledInput'
+import Component from '~/scripts/component'
+import LabeledInput from '~/components/molecular/LabeledInput'
 import gql from 'graphql-tag'
 
 export default new Component({
@@ -83,7 +83,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .step2 {
   width: 20rem;

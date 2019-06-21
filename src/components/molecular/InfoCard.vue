@@ -1,13 +1,13 @@
 <template>
   <Card :class="getClass">
-    <Icon :src="iconInfo"></Icon>
+    <Icon n :src="iconInfo"></Icon>
     <slot></slot>
     <Icon class="close" name="close" @click="close"></Icon>
   </Card>
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
+import Molecular from '~/scripts/molecular'
 
 export default new Molecular({
   name: 'InfoCard',
@@ -24,7 +24,8 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-.info-card {
+.card.info-card {
+  overflow: hidden;
   grid-column: 1/-1;
   position: relative;
   display: flex;

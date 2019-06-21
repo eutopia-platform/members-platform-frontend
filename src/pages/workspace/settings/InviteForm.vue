@@ -4,17 +4,18 @@
       button="invite"
       type="email"
       label="email"
+      :input-clear="true"
       @submit="onSubmit"
     ></ActionInput>
   </form>
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import ActionInput from '/components/molecular/ActionInput'
+import Component from '~/scripts/component'
+import ActionInput from '~/components/molecular/ActionInput'
 import gql from 'graphql-tag'
-import { CubeError } from '/error'
-import { isEmail } from '/components/sharedScripts/validate'
+import { displayError } from '~/error'
+import { isEmail } from '~/scripts/validate'
 
 export default new Component({
   name: 'InviteForm',
@@ -23,7 +24,10 @@ export default new Component({
   },
   methods: {
     onSubmit(e) {
-      if (!isEmail(e)) throw new CubeError('invalid email')
+      if (!isEmail(e)) {
+        displayError('invalid email')
+        return
+      }
       this.$apollo
         .mutate({
           mutation: gql`
@@ -40,16 +44,16 @@ export default new Component({
         .catch(err => {
           switch (err.message.replace('GraphQL error:', '').trim()) {
             case 'ALREADY_INVITED':
-              this.$emit('error', new CubeError('already invited to workspace'))
+              displayError('already invited')
               break
             case 'INVALID_EMAIL':
-              this.$emit('error', new CubeError('invalid email'))
+              displayError('invalid email')
               break
             case 'ALREADY_MEMBER':
-              this.$emit('error', new CubeError('already member of workspace'))
+              displayError('already member')
               break
             default:
-              this.$emit('error', new CubeError())
+              displayError()
               throw err
           }
         })

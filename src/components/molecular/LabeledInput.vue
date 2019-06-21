@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/component'
+import Molecular from '~/scripts/component'
 
 export default new Molecular({
   name: 'LabeledInput',
@@ -73,7 +73,7 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .labeled-input {
   width: 14rem;

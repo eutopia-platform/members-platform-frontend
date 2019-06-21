@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import ActionInput from '/components/molecular/ActionInput'
+import Component from '~/scripts/component'
+import ActionInput from '~/components/molecular/ActionInput'
 import gql from 'graphql-tag'
 
 export default new Component({
@@ -61,7 +61,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .create-workspace {
   .card {

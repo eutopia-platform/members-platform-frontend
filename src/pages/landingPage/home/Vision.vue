@@ -62,8 +62,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../components/sharedStyles/colors.scss';
-@import '../../components/sharedStyles/responsive.scss';
+@import '/styles/colors.scss';
+@import '/styles/responsive.scss';
 
 .lp-vision {
   align-content: center;

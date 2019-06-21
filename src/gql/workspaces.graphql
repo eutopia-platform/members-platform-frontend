@@ -1,0 +1,5 @@
+query userWorkspaces {
+  workspaces {
+    name
+  }
+}

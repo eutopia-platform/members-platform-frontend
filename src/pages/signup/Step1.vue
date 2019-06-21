@@ -18,16 +18,16 @@
       autocomplete="new-password"
     ></LabeledInput>
     <div class="button-wrap">
-      <Button @click="$router.push('/login')">sign in instead</Button>
-      <Button secondary @click="submit">continue</Button>
+      <Button outlined @click="$router.push('/login')">sign in instead</Button>
+      <Button outlined secondary @click="submit">continue</Button>
     </div>
   </Card>
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import { isEmail } from '/components/sharedScripts/validate'
-import LabeledInput from '/components/molecular/LabeledInput'
+import Component from '~/scripts/component'
+import { isEmail } from '~/scripts/validate'
+import LabeledInput from '~/components/molecular/LabeledInput'
 import gql from 'graphql-tag'
 
 export default new Component({
@@ -100,7 +100,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .step1 {
   width: 20rem;

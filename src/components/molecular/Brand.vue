@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
+import Molecular from '~/scripts/molecular'
 
 export default new Molecular({
   name: 'Brand',
@@ -40,7 +40,7 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .brand {
   @include colorScheme('surface');

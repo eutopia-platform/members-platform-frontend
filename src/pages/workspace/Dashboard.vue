@@ -24,7 +24,7 @@
 import ToolkitStatus from './dashboard/ToolkitStatusCard'
 import Validation from './dashboard/Validation'
 import Process from './dashboard/Process'
-import InfoCard from '/components/molecular/InfoCard'
+import InfoCard from '~/components/molecular/InfoCard'
 
 export default {
   name: 'Dashboard',

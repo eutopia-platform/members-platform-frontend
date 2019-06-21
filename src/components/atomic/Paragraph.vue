@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Atomic from '../sharedScripts/atomic'
+import Atomic from '~/scripts/atomic'
 
 export default new Atomic({
   name: 'Paragraph',
@@ -19,8 +19,8 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/text.scss';
-@import '../sharedStyles/colors.scss';
+@import '/styles/text.scss';
+@import '/styles/colors.scss';
 
 .paragraph {
   font-size: 1rem;

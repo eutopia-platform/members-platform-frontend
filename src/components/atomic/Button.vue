@@ -3,7 +3,12 @@
     :disabled="disabled"
     type="button"
     class="button"
-    :class="{ primary, secondary, disabled }"
+    :class="{
+      ...getClass.reduce((a, c) => Object.assign(a, { [c]: true }), {}),
+      'cl-default': color === 'default',
+      'cl-primary': color === 'primary',
+      'cl-secondary': color === 'secondary',
+    }"
     @click="onClick"
   >
     <slot></slot>
@@ -11,87 +16,189 @@
 </template>
 
 <script>
-import Atomic from '../sharedScripts/atomic'
+import Atomic from '~/scripts/atomic'
 
 export default new Atomic({
   name: 'Button',
-  types: ['default', 'primary', 'secondary'],
+  types: ['text', 'outlined', 'raised', 'unelevated'],
+  defaultType: 'outlined',
   props: {
     disabled: {
       type: Boolean,
       default: false,
     },
+    color: {
+      type: String,
+      default: 'default',
+    },
+    link: {
+      type: String,
+      default: null,
+    },
   },
   methods: {
-    onClick() {
+    onClick({ offsetX, offsetY }) {
+      this.$el.style.setProperty(
+        '--ripple-off-x',
+        `${(offsetX / this.$el.offsetWidth) * 100 - 50}%`
+      )
+      this.$el.style.setProperty(
+        '--ripple-off-y',
+        `${(offsetY / this.$el.offsetHeight) * 100 - 50}%`
+      )
+
+      if (!this.disabled && this.link) this.$router.push(this.link)
       if (!this.disabled) this.$emit('click')
+      setTimeout(() => this.$el.blur(), 500)
     },
   },
 })
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
-@import '/components/sharedStyles/shadows';
+@import '/styles/colors';
+@import '/styles/shadows';
+@import '/styles/ripple';
 
 .button {
+  display: block;
   font-size: 1rem;
   min-width: 2rem;
-  background-color: color('surface');
-  border: 0.125rem solid color('on-surface');
-  border-radius: 0.25rem;
-  color: color('on-surface');
   height: calc(1.5 * var(--baseline));
   margin-top: calc(var(--baseline) - var(--baseline) / 4);
   margin-bottom: calc(var(--baseline) - var(--baseline) / 4);
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  cursor: pointer;
+  border-radius: 0.25rem;
   transition: color, background-color 0.2s ease;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  transition-property: box-shadow, background-color;
+  position: relative;
+  overflow: hidden;
 
-  &:hover:not(.disabled),
-  &:focus:not(.disabled) {
-    outline: none;
-    background-color: color('on-surface');
-    color: color('surface');
+  &:focus {
+    outline: 0;
+  }
+
+  @include ripple();
+
+  &.disabled {
+    cursor: initial;
   }
 }
 
-.primary {
-  border: 2px solid color('primary');
-  color: color('primary');
+.text {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  height: var(--baseline);
+  margin-top: calc(var(--baseline));
+  margin-bottom: calc(var(--baseline));
 
-  &:hover:not(.disabled),
-  &:focus:not(.disabled) {
-    background-color: color('primary');
+  &.cl-default {
+    color: color('on-surface');
+  }
+
+  &.cl-primary {
+    color: color('primary');
+  }
+
+  &.cl-secondary {
+    color: color('secondary');
+  }
+
+  &:hover {
+    &.cl-default {
+      background-color: rgba(color('on-surface'), $alpha: 5%);
+    }
+    &.cl-primary {
+      background-color: rgba(color('primary'), $alpha: 5%);
+    }
+    &.cl-secondary {
+      background-color: rgba(color('secondary'), $alpha: 5%);
+    }
+  }
+}
+
+.outlined {
+  background-color: color('surface');
+  border-style: solid;
+  border-width: 0.125rem;
+
+  &.cl-default {
+    color: color('on-surface');
+    border-color: color('on-surface');
+
+    &:hover {
+      background-color: color('on-surface');
+      color: color('surface');
+    }
+  }
+
+  &.cl-primary {
+    color: color('primary');
+    border-color: color('primary');
+    &:hover {
+      background-color: color('primary');
+      color: color('on-primary');
+    }
+  }
+
+  &.cl-secondary {
+    color: color('secondary');
+    border-color: color('secondary');
+    &:hover {
+      background-color: color('secondary');
+      color: color('on-secondary');
+    }
+  }
+}
+
+.raised,
+.unelevated {
+  border-style: none;
+  box-shadow: shadow(2.5);
+
+  &:hover {
+    box-shadow: shadow(1);
+  }
+
+  &.cl-default {
+    color: color('on-surface');
+    background-color: color('surface');
+    @include ripple(color('on-surface'));
+  }
+
+  &.cl-primary {
     color: color('on-primary');
+    background-color: color('primary');
   }
 
-  &:disabled {
-    border-color: desaturate($color: color('primary'), $amount: 30);
-    color: desaturate($color: color('primary'), $amount: 30);
-  }
-}
-
-.secondary {
-  border: 2px solid color('secondary');
-  color: color('secondary');
-
-  &:hover:not(.disabled),
-  &:focus:not(.disabled) {
-    background-color: color('secondary');
+  &.cl-secondary {
     color: color('on-secondary');
-  }
-
-  &:disabled {
-    border-color: desaturate($color: color('secondary'), $amount: 30);
-    color: desaturate($color: color('secondary'), $amount: 30);
+    background-color: color('secondary');
   }
 }
 
-.disabled {
-  cursor: initial;
+.unelevated {
+  box-shadow: none;
+
+  &.cl-default {
+    color: color('surface');
+    background-color: color('on-surface');
+  }
+
+  &:hover {
+    box-shadow: none;
+    &.cl-default {
+      background-color: lighten(color('on-surface'), 10%);
+      @include ripple(color('surface'));
+    }
+    &.cl-primary {
+      background-color: lighten(color('primary'), 10%);
+    }
+    &.cl-secondary {
+      background-color: lighten(color('secondary'), 10%);
+    }
+  }
 }
 </style>

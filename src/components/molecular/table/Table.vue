@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
+import Molecular from '~/scripts/molecular'
 import Cell from './Cell'
 
 export default new Molecular({

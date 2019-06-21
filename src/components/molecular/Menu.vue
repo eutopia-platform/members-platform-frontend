@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
+import Molecular from '~/scripts/molecular'
 
 export default new Molecular({
   name: 'Menu',
@@ -20,8 +20,8 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
-@import '/components/sharedStyles/shadows';
+@import '/styles/colors';
+@import '/styles/shadows';
 
 .menu {
   @include colorScheme('surface');

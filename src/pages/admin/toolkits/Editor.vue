@@ -1,229 +1,104 @@
 <template>
   <div :class="getClass">
-    <Paragraph>ID: {{ toolkit.id }}</Paragraph>
-    <ActionInput
-      label="title"
-      button="update"
-      :default-value="toolkit.title"
-      @submit="saveTitle"
-    ></ActionInput>
+    <Loader v-if="toolkit === null"></Loader>
+    <template v-else>
+      <Button text link="/admin/toolkits">back to toolkits</Button>
+      <div class="title-bar">
+        <Header s2>Editor: {{ toolkit.title }}</Header>
+        <Button color="secondary" @click="submitChange">save changes</Button>
+      </div>
+      <LabeledInput
+        v-model="toolkit.title"
+        label="title"
+        :default-value="toolkit.title"
+      ></LabeledInput>
 
-    <div class="visibility">
-      <Paragraph>
-        This toolkit is
-        {{ toolkit.visibility === 'PUBLIC' ? 'public' : 'not public' }}
-      </Paragraph>
-      <Button v-if="toolkit.visibility !== 'PUBLIC'" @click="publishToolkit">
-        Publish
-      </Button>
-    </div>
+      <div class="visibility">
+        <Paragraph>
+          This toolkit is
+          {{ toolkit.visibility === 'PUBLIC' ? 'public' : 'not public' }}
+        </Paragraph>
+        <Button
+          v-if="toolkit.visibility !== 'PUBLIC'"
+          outlined
+          @click="publishToolkit"
+        >
+          Publish
+        </Button>
+      </div>
 
-    <Button @click="deleteToolkit">Delete Toolkit</Button>
+      <Button outlined @click="deleteKit">Delete Toolkit</Button>
 
-    <div class="field-title">
       <Header s3>Description</Header>
-      <Button @click="saveDescription">save</Button>
-    </div>
-    <MarkdownEdit
-      v-model="toolkit.description_markdown"
-      view
-      :default-text="toolkit.description_markdown"
-    ></MarkdownEdit>
+      <MarkdownEdit
+        v-model="toolkit.description"
+        view
+        :default-text="toolkit.description"
+      ></MarkdownEdit>
 
-    <div class="field-title">
       <Header s3>Workflow</Header>
-      <Button @click="saveWorkflow">save</Button>
-    </div>
-    <MarkdownEdit
-      v-model="toolkit.workflow"
-      view
-      :default-text="toolkit.workflow"
-    ></MarkdownEdit>
+      <MarkdownEdit
+        v-model="toolkit.workflow"
+        view
+        :default-text="toolkit.workflow"
+      ></MarkdownEdit>
 
-    <div class="field-title">
       <Header s3>Learning</Header>
-      <Button @click="saveLearning">save</Button>
-    </div>
-    <MarkdownEdit
-      v-model="toolkit.learning"
-      view
-      :default-text="toolkit.learning"
-    ></MarkdownEdit>
+      <MarkdownEdit
+        v-model="toolkit.learning"
+        view
+        :default-text="toolkit.learning"
+      ></MarkdownEdit>
 
-    <div class="field-title">
       <Header s3>Canvas</Header>
-      <Button @click="saveCanvas">save</Button>
-    </div>
-    <CanvasEdit v-model="canvas" :canvas="toolkit.canvas"></CanvasEdit>
+      <CanvasEdit
+        v-model="toolkit.canvas"
+        :canvas="toolkit.canvas"
+      ></CanvasEdit>
+    </template>
   </div>
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import ActionInput from '/components/molecular/ActionInput'
-import MarkdownEdit from '/components/molecular/MarkdownEdit'
+import Component from '~/scripts/component'
+import LabeledInput from '~/components/molecular/LabeledInput'
+import MarkdownEdit from '~/components/molecular/MarkdownEdit'
 import CanvasEdit from './editor/CanvasEdit'
 import gql from 'graphql-tag'
+import { mapGetters, mapActions } from 'vuex'
+import Toolkit from '~/schema/toolkit'
 
 export default new Component({
   name: 'Editor',
-  apollo: {
-    toolkit: {
-      client: 'tool',
-      query: gql`
-        query editorKit($id: ID!) {
-          toolkit(id: $id) {
-            id
-            title
-            description_markdown
-            canvas
-            learning
-            visibility
-            workflow
-          }
-        }
-      `,
-      variables() {
-        return {
-          id: this.$route.params.id,
-        }
-      },
-      result({ data: { toolkit } }) {
-        toolkit.description_markdown = decodeURI(toolkit.description_markdown)
-        toolkit.learning = decodeURI(toolkit.learning)
-        toolkit.workflow = decodeURI(toolkit.workflow)
-        toolkit.canvas = JSON.parse(toolkit.canvas)
-        toolkit.canvas.boxes.forEach(
-          box => (box.content = decodeURI(box.content))
-        )
-      },
+  computed: mapGetters('toolkit', ['currentKit']),
+  watch: {
+    currentKit(v) {
+      this.toolkit = new Toolkit(v)
     },
+  },
+  created() {
+    if (this.currentKit && this.currentKit.id === this.$route.params.id)
+      this.toolkit = new Toolkit(this.currentKit)
+    else this.fetchToolkit(this.$route.params.id)
   },
   data() {
     return {
-      toolkit: {
-        id: '',
-        title: '',
-        description_markdown: '',
-        canvas: { boxes: [] },
-        learning: '',
-        visibility: '',
-        workflow: '',
-      },
-      canvas: {},
+      toolkit: this.currentKit ? new Toolkit(this.currentKit) : null,
     }
   },
   components: {
-    ActionInput,
+    LabeledInput,
     MarkdownEdit,
     CanvasEdit,
   },
   methods: {
-    saveTitle(title) {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateTitle($id: ID!, $title: String) {
-            editToolkit(toolkit: { id: $id, title: $title }) {
-              id
-              title
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          title,
-        },
-      })
+    ...mapActions('toolkit', ['fetchToolkit', 'editToolkit', 'deleteToolkit']),
+    submitChange() {
+      this.editToolkit(this.toolkit)
     },
-    saveDescription() {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateDescription($id: ID!, $description: String) {
-            editToolkit(toolkit: { id: $id, description: $description }) {
-              id
-              description
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          description: encodeURI(this.toolkit.description_markdown),
-        },
-      })
-    },
-    saveWorkflow() {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateWorkflow($id: ID!, $workflow: String) {
-            editToolkit(toolkit: { id: $id, workflow: $workflow }) {
-              id
-              workflow
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          workflow: encodeURI(this.toolkit.workflow),
-        },
-      })
-    },
-    saveLearning() {
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateLearning($id: ID!, $learning: String) {
-            editToolkit(toolkit: { id: $id, learning: $learning }) {
-              id
-              learning
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          learning: encodeURI(this.toolkit.learning),
-        },
-      })
-    },
-    saveCanvas() {
-      const canvas = JSON.stringify({
-        meta: this.canvas.meta,
-        boxes: this.canvas.boxes.map(box =>
-          Object.assign({}, box, { content: encodeURI(box.content) })
-        ),
-      })
-      this.$apollo.mutate({
-        client: 'tool',
-        mutation: gql`
-          mutation updateCanvas($id: ID!, $canvas: String) {
-            editToolkit(toolkit: { id: $id, canvas: $canvas }) {
-              id
-              canvas
-            }
-          }
-        `,
-        variables: {
-          id: this.toolkit.id,
-          canvas,
-        },
-      })
-    },
-    deleteToolkit() {
-      this.$apollo
-        .mutate({
-          client: 'tool',
-          mutation: gql`
-            mutation deleteToolkit($id: ID!) {
-              deleteToolkit(id: $id)
-            }
-          `,
-          variables: {
-            id: this.toolkit.id,
-          },
-        })
-        .then(() => this.$router.push('/admin/toolkits'))
+    deleteKit() {
+      this.deleteToolkit(this.toolkit.id)
+      this.$router.push('/admin/toolkits')
     },
     publishToolkit() {
       this.$apollo.mutate({
@@ -249,6 +124,20 @@ export default new Component({
 <style lang="scss" scoped>
 .editor {
   padding-bottom: 5rem;
+  max-width: 1000px;
+  margin: auto;
+
+  .title-bar {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    * {
+      margin: 0;
+    }
+  }
 
   .field-title {
     margin-top: 2rem;
@@ -272,5 +161,12 @@ export default new Component({
       margin-left: 2rem;
     }
   }
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 </style>

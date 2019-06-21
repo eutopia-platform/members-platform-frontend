@@ -3,15 +3,16 @@
     :class="getClass"
     label="email"
     button="subscribe"
+    :input-clear="true"
     @submit="submit"
   ></ActionInput>
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
-import ActionInput from '/components/molecular/ActionInput'
-import handleError from '/error'
+import Molecular from '~/scripts/molecular'
+import ActionInput from '~/components/molecular/ActionInput'
 import gql from 'graphql-tag'
+import { displayError } from '~/error'
 
 export default new Molecular({
   name: 'EmailSignup',
@@ -26,7 +27,6 @@ export default new Molecular({
   components: {
     ActionInput,
   },
-  mixins: [handleError],
   methods: {
     submit(e) {
       this.$apollo
@@ -43,10 +43,10 @@ export default new Molecular({
         .catch(err => {
           switch (err.message.replace('GraphQL error:', '').trim()) {
             case 'ALREADY_SUBSCRIBED':
-              this.showError('already subscribed')
+              displayError('already subscribed')
               break
             case 'INVALID_EMAIL':
-              this.showError('invalid email')
+              displayError('invalid email')
               break
             default:
               throw err
@@ -58,8 +58,8 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
-@import '/components/sharedStyles/shadows';
+@import '/styles/colors';
+@import '/styles/shadows';
 
 .email-signup {
   display: block;

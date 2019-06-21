@@ -6,16 +6,16 @@
     <Item text="Workflow" link="/workflow" align="right"></Item>
     <Item text="Toolkits" link="/toolkits" align="right"></Item>
     <Item>
-      <Button primary @click="$router.push('/login')">Login</Button>
+      <Button outlined primary @click="$router.push('/login')">Login</Button>
     </Item>
   </Menu>
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
-import Menu from '/components/molecular/Menu'
-import Item from '/components/molecular/menu/Item'
-import Brand from '/components/molecular/Brand'
+import Component from '~/scripts/component'
+import Menu from '~/components/molecular/Menu'
+import Item from '~/components/molecular/menu/Item'
+import Brand from '~/components/molecular/Brand'
 
 export default new Component({
   name: 'Mainnav',
@@ -61,7 +61,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .mainnav {
   transition: transform 0.5s ease;

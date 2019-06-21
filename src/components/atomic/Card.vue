@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Atomic from '../sharedScripts/atomic'
+import Atomic from '~/scripts/atomic'
 
 export default new Atomic({
   name: 'Card',
@@ -13,8 +13,8 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/colors.scss';
-@import '../sharedStyles/shadows.scss';
+@import '/styles/colors.scss';
+@import '/styles/shadows.scss';
 
 .card {
   @include colorScheme('surface');

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import EmailSignup from '/components/molecular/EmailSignup'
+import EmailSignup from '~/components/molecular/EmailSignup'
 
 export default {
   name: 'Welcome',

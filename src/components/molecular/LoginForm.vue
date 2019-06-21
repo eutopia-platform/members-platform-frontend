@@ -14,19 +14,19 @@
       autocomplete="current-password"
     ></LabeledInput>
     <Break />
-    <Button :disabled="!emailValid || !passwordValid" @click="login">
+    <Button outlined :disabled="!emailValid || !passwordValid" @click="submit">
       Submit
     </Button>
+    <Button text link="/signup">Create account</Button>
     <Paragraph v-if="error">{{ error }}</Paragraph>
   </form>
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/molecular'
-import logout from '/components/sharedScripts/logout'
-import LabeledInput from '/components/molecular/LabeledInput'
-import { isEmail } from '/components/sharedScripts/validate'
-import gql from 'graphql-tag'
+import Molecular from '~/scripts/molecular'
+import LabeledInput from '~/components/molecular/LabeledInput'
+import { isEmail } from '~/scripts/validate'
+import { mapActions } from 'vuex'
 
 export default new Molecular({
   name: 'LoginForm',
@@ -35,9 +35,6 @@ export default new Molecular({
   },
   components: {
     LabeledInput,
-  },
-  created() {
-    logout(this.$apollo.provider)
   },
   props: {
     redirect: {
@@ -59,26 +56,18 @@ export default new Molecular({
     },
   },
   methods: {
-    login(e) {
+    ...mapActions('user', ['login']),
+    async submit(e) {
       if (e) e.preventDefault()
-      this.$apollo
-        .mutate({
-          mutation: gql`mutation {
-          login(email: "${this.email}", password: "${this.password}")
-        }`,
-        })
-        .then(res => {
-          localStorage.setItem('sessionToken', res.data.login)
-          this.$router.push(this.redirect)
-        })
-        .catch(() => (this.error = 'incorrect'))
+      if (await this.login({ email: this.email, password: this.password }))
+        this.$router.push(this.redirect)
     },
   },
 })
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/shadows.scss';
+@import '/styles/shadows.scss';
 
 .login-form {
   width: 30rem;

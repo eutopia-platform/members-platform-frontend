@@ -1,0 +1,5 @@
+mutation acceptInvitation($workspace: String!) {
+  acceptInvitation(workspace: $workspace) {
+    name
+  }
+}

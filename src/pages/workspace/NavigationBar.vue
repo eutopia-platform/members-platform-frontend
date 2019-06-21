@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import UserStatus from '/components/molecular/UserStatus'
-import Brand from '/components/molecular/Brand'
+import UserStatus from '~/components/molecular/UserStatus'
+import Brand from '~/components/molecular/Brand'
 import Item from './NavigationBarItem'
 import WorkspaceIndicator from './WorkspaceIndicator'
-import Sidebar from '/components/molecular/Sidebar'
+import Sidebar from '~/components/molecular/Sidebar'
 
 export default {
   name: 'NavigationBar',
@@ -48,11 +48,6 @@ export default {
           name: 'Dashboard',
           icon: require('/../data/img/workspace/navbar/dashboard.svg'),
           link: `/space/${this.workspace}`,
-        },
-        {
-          name: 'Analytics',
-          icon: require('/../data/img/workspace/navbar/analytics.svg'),
-          link: `/space/${this.workspace}/analytics`,
         },
         {
           name: 'Toolkits',
@@ -81,8 +76,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/components/sharedStyles/colors.scss';
-@import 'src/components/sharedStyles/shadows.scss';
+@import '/styles/colors.scss';
+@import '/styles/shadows.scss';
 
 .navigation {
   height: 100vh;

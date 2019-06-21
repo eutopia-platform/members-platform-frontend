@@ -16,7 +16,7 @@
         :id="kit.id"
         :key="kit.id"
         :title="kit.title"
-        :description="decodeURI(kit.description)"
+        :description="kit.description"
         :img="
           `https://s3.eu-central-1.amazonaws.com/eutopia.media/tool_${(toolkits.indexOf(
             kit
@@ -25,36 +25,27 @@
             1}.svg`
         "
       ></Toolkit>
+      <Loader v-if="loading"></Loader>
     </div>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
-import Toolkit from '/components/molecular/ToolkitCard'
-import InfoCard from '/components/molecular/InfoCard'
+import Toolkit from '~/components/molecular/ToolkitCard'
+import InfoCard from '~/components/molecular/InfoCard'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Toolkits',
-  apollo: {
-    $client: 'tool',
-    toolkits: gql`
-      {
-        toolkits {
-          id
-          title
-          description: description_markdown
-        }
-      }
-    `,
-  },
   components: {
     Toolkit,
     InfoCard,
   },
-  data: () => ({
-    toolkits: [],
-  }),
+  computed: mapState('toolkit', ['toolkits', 'loading']),
+  created() {
+    if (this.toolkits.length === 0) this.fetchToolkits()
+  },
+  methods: mapActions('toolkit', ['fetchToolkits']),
 }
 </script>
 

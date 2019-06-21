@@ -31,7 +31,7 @@
 
 <script>
 import frames from './animation'
-import EmailSignup from '/components/molecular/EmailSignup'
+import EmailSignup from '~/components/molecular/EmailSignup'
 
 export default {
   name: 'Introduction',

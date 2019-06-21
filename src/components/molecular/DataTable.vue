@@ -4,7 +4,7 @@ Elements in the default slot are wrapped into Table Cells and Cell borders are s
 -->
 
 <script>
-import Molecular from '/components/sharedScripts/component'
+import Molecular from '~/scripts/component'
 import Table from './table/Table'
 import Cell from './table/Cell'
 

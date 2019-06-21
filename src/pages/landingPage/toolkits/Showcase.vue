@@ -8,7 +8,7 @@
         </Paragraph>
       </div>
     </div>
-    <Button @click="$router.push('/login')">Use Toolkit</Button>
+    <Button outlined @click="$router.push('/login')">Use Toolkit</Button>
     <div class="description">
       <Paragraph v-for="t in kit.description" :key="kit.description.indexOf(t)">
         {{ t }}
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '~/scripts/component'
 import Toolcard from './Toolcard'
 import Toolkit from './toolkit'
 
@@ -38,7 +38,7 @@ export default new Component({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .showcase {
   width: 80vw;

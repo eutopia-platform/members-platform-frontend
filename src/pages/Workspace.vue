@@ -13,27 +13,11 @@
 <script>
 import Navbar from './workspace/NavigationBar'
 import Dashboard from './workspace/Dashboard'
-import gql from 'graphql-tag'
 
 export default {
   name: 'Workspace',
   components: {
     Navbar,
-  },
-  apollo: {
-    user: {
-      query: gql`
-        {
-          user {
-            name
-            callname
-            email
-            id
-          }
-        }
-      `,
-      fetchPolicy: 'network-only',
-    },
   },
   data() {
     return {
@@ -49,9 +33,6 @@ export default {
       }
     },
   },
-  created: function() {
-    if (!localStorage.getItem('sessionToken')) this.$router.push('/login')
-  },
   methods: {
     updateSidebarWidth(width) {
       this.sidebarWidth = width
@@ -61,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/components/sharedStyles/colors.scss';
+@import '/styles/colors.scss';
 
 .workspace {
   .page {

@@ -3,35 +3,21 @@
     <Header s3>Settings</Header>
     <div class="content">
       <Card>
-        <Header s4>Profile</Header>
-        <LabeledInput
-          v-model="user.name"
-          label="name"
-          autocomplete="name"
-          :default-value="user.name"
-          :size="20"
-        ></LabeledInput>
-        <LabeledInput
-          v-model="user.callname"
-          label="nickname"
-          autocomplete="nickname"
-          :default-value="user.callname"
-          :size="20"
-        ></LabeledInput>
-        <Paragraph>
-          Workspaces: {{ workspaces.map(s => s.name).join(', ') }}
-        </Paragraph>
-        <Button @click="submitProfile">submit</Button>
+        <Header s4>Account</Header>
+        <Paragraph>name: {{ user.name }}</Paragraph>
+        <Paragraph>display name: {{ user.callname }}</Paragraph>
+        <Paragraph>email: {{ user.email }}</Paragraph>
+        <Button link="/profile">edit</Button>
       </Card>
       <Card>
         <Header s4>Workspace</Header>
-        <Paragraph>name: {{ workspace ? workspace.name : '' }}</Paragraph>
+        <Paragraph>name: {{ workspace.name }}</Paragraph>
         <Paragraph>
           created:
           {{ creationDate }}
         </Paragraph>
         <Paragraph>Members:</Paragraph>
-        <ul v-if="workspace && workspace.members">
+        <ul v-if="workspace.members">
           <li
             v-for="m in workspace.members"
             :key="workspace.members.indexOf(m)"
@@ -39,118 +25,44 @@
             {{ `${m.callname} (${m.email})` }}
           </li>
         </ul>
-        <InviteForm @error="onError"></InviteForm>
+        <InviteForm></InviteForm>
       </Card>
       <Card class="danger-zone">
         <Header s4>Danger Zone</Header>
-        <Button @click="confirmDelete">delete this workspace</Button>
+        <Button outlined @click="confirmDelete">delete this workspace</Button>
       </Card>
     </div>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
-import Component from '/components/sharedScripts/component'
-import LabeledInput from '/components/molecular/LabeledInput'
+import Component from '~/scripts/component'
+import LabeledInput from '~/components/molecular/LabeledInput'
 import ConfirmDelete from './settings/ConfirmDelete'
 import InviteForm from './settings/InviteForm'
-import { formatDate, parseDate } from '/components/sharedScripts/date'
+import { formatDate, parseDate } from '~/scripts/date'
+import { mapState, mapActions } from 'vuex'
 
 export default new Component({
   name: 'Settings',
-  apollo: {
-    user: gql`
-      {
-        user {
-          name
-          callname
-          email
-          id
-        }
-      }
-    `,
-    workspaces: {
-      query: gql`
-        {
-          workspaces {
-            name
-            created
-          }
-        }
-      `,
-      client: 'work',
-    },
-    workspace: {
-      query: gql`
-        query getWorkspace($name: String!) {
-          workspace(name: $name) {
-            name
-            created
-            members {
-              callname
-              email
-            }
-          }
-        }
-      `,
-      client: 'work',
-      variables() {
-        return {
-          name: localStorage.getItem('workspace'),
-        }
-      },
-    },
-  },
   components: {
     LabeledInput,
     InviteForm,
   },
+  created() {
+    this.fetchMembers()
+  },
   computed: {
+    ...mapState('workspace', ['workspace']),
+    ...mapState('user', { user: 'info' }),
     creationDate() {
       return this.workspace
         ? formatDate(parseDate(this.workspace.created))
         : 'unknown'
     },
   },
-  data: () => ({
-    user: {
-      name: '',
-      callName: '',
-      email: '',
-    },
-    workspaces: [],
-  }),
   methods: {
-    submitProfile: function() {
-      this.$apollo.mutate({
-        mutation: gql`
-          mutation { 
-            setName(name: "${this.user.name}" callname: "${
-          this.user.callname
-        }") {
-              id
-              name
-              callname
-            }
-          }
-        `,
-        update: (store, { data: { setName } }) => {
-          store.writeQuery({
-            query: gql`
-              {
-                user {
-                  id
-                  name
-                  callname
-                }
-              }
-            `,
-            data: { user: setName },
-          })
-        },
-      })
-    },
+    ...mapActions('workspace', ['fetchMembers', 'deleteWorkspace']),
     confirmDelete() {
       this.$root.$children[0].showPopup({
         component: ConfirmDelete,
@@ -160,30 +72,12 @@ export default new Component({
         },
       })
     },
-    deleteWorkspace() {
-      this.$apollo
-        .mutate({
-          client: 'work',
-          mutation: gql`
-            mutation deleteCurrentWorkspace($workspace: String!) {
-              deleteWorkspace(name: $workspace)
-            }
-          `,
-          variables: {
-            workspace: this.workspace.name,
-          },
-        })
-        .then(() => this.$router.push({ path: '/space' }))
-    },
-    onError(err) {
-      throw err
-    },
   },
 })
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors.scss';
+@import '/styles/colors.scss';
 
 .settings {
   display: flex;

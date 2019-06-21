@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Atomic from '/components/sharedScripts/atomic'
+import Atomic from '~/scripts/atomic'
 
 export default new Atomic({
   name: 'TableCell',
@@ -26,7 +26,7 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/colors';
+@import '/styles/colors';
 
 .table-cell {
   height: calc(2 * var(--baseline));

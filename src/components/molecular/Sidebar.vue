@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Molecular from '/components/sharedScripts/component'
+import Molecular from '~/scripts/component'
 
 export default new Molecular({
   name: 'Sidebar',
@@ -47,8 +47,8 @@ export default new Molecular({
 </script>
 
 <style lang="scss" scoped>
-@import '/components/sharedStyles/shadows';
-@import '/components/sharedStyles/colors';
+@import '/styles/shadows';
+@import '/styles/colors';
 
 .sidebar {
   position: fixed;

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Atomic from '../sharedScripts/atomic'
+import Atomic from '~/scripts/atomic'
 
 export default new Atomic({
   name: 'Header',
@@ -21,11 +21,11 @@ export default new Atomic({
 </script>
 
 <style lang="scss" scoped>
-@import '../sharedStyles/colors';
-@import '../sharedStyles/shapes';
-@import '../sharedStyles/text';
-@import '../sharedStyles/fluid';
-@import '../sharedStyles/math';
+@import '/styles/colors';
+@import '/styles/shapes';
+@import '/styles/text';
+@import '/styles/fluid';
+@import '/styles/math';
 
 .header {
   font-weight: 500;

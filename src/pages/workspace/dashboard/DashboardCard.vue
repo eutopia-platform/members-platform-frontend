@@ -2,14 +2,14 @@
   <Card :class="getClass">
     <div class="top">
       <Header s3>{{ title }}</Header>
-      <Button primary @click="$emit('click')">{{ button }}</Button>
+      <Button outlined primary @click="$emit('click')">{{ button }}</Button>
     </div>
     <slot></slot>
   </Card>
 </template>
 
 <script>
-import Component from '/components/sharedScripts/component'
+import Component from '~/scripts/component'
 
 export default new Component({
   name: 'DashboardCard',
