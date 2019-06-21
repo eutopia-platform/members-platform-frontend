@@ -1,38 +1,26 @@
 <template>
   <div class="user-status" @click="logout">
-    <UserIcon :user-id="user.id"></UserIcon>
+    <UserIcon :user-id="info.id"></UserIcon>
     <div class="right">
-      <Paragraph>{{ user.callname }}</Paragraph>
-      <Small>{{ user.email }}</Small>
+      <Paragraph>{{ info.callname }}</Paragraph>
+      <Small>{{ info.email }}</Small>
     </div>
     <Icon :src="srcLogout" class="logout-icon"></Icon>
   </div>
 </template>
 
 <script>
-import currentUserQuery from '~/gql/user'
-import logout from '~/scripts/logout'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'UserStatus',
-  apollo: {
-    user: currentUserQuery,
-  },
   data() {
     return {
       srcLogout: require('/../data/img/ui/logout.svg'),
-      user: {
-        id: '',
-        email: '',
-        callname: '',
-      },
     }
   },
-  methods: {
-    logout() {
-      logout(this)
-    },
-  },
+  computed: mapState('user', ['info']),
+  methods: mapActions(['logout']),
 }
 </script>
 

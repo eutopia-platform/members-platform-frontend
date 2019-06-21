@@ -1,0 +1,12 @@
+query getToolkit($id: ID!) {
+  toolkit(id: $id) {
+    id
+    title
+    description
+    canvas
+    learning
+    workflow
+    learning
+    visibility
+  }
+}

@@ -50,11 +50,6 @@ export default {
           link: `/space/${this.workspace}`,
         },
         {
-          name: 'Analytics',
-          icon: require('/../data/img/workspace/navbar/analytics.svg'),
-          link: `/space/${this.workspace}/analytics`,
-        },
-        {
           name: 'Toolkits',
           icon: require('/../data/img/workspace/navbar/toolkits.svg'),
           link: `/space/${this.workspace}/toolkits`,

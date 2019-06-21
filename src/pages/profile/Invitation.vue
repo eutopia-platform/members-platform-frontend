@@ -6,15 +6,15 @@
       workspace.
     </Paragraph>
     <div class="button-wrap">
-      <Button outlined @click="decline">decline</Button>
-      <Button outlined @click="accept">accept</Button>
+      <Button outlined @click="declineInvitation(space)">decline</Button>
+      <Button outlined @click="acceptInvitation(space)">accept</Button>
     </div>
   </div>
 </template>
 
 <script>
 import Component from '~/scripts/component'
-import gql from 'graphql-tag'
+import { mapActions } from 'vuex'
 
 export default new Component({
   name: 'Invitation',
@@ -24,60 +24,7 @@ export default new Component({
       required: true,
     },
   },
-  methods: {
-    decline() {
-      this.$apollo
-        .mutate({
-          client: 'work',
-          mutation: gql`
-            mutation declineInvite($space: String!) {
-              declineInvitation(workspace: $space)
-            }
-          `,
-          variables: { space: this.space },
-        })
-        .then(() => void this.done())
-    },
-    accept() {
-      this.$apollo
-        .mutate({
-          client: 'work',
-          mutation: gql`
-            mutation acceptInvite($space: String!) {
-              acceptInvitation(workspace: $space) {
-                name
-              }
-            }
-          `,
-          variables: { space: this.space },
-        })
-        .then(() => {
-          this.done()
-          this.$router.push(`/space/${this.name}`)
-        })
-    },
-    done() {
-      const query = gql`
-        {
-          user {
-            id
-            name
-            callname
-            email
-            joined
-            invitations
-          }
-        }
-      `
-      const data = this.$apollo.provider.defaultClient.readQuery({
-        query,
-      })
-      data.user.invitations = data.user.invitations.filter(
-        invitation => invitation !== this.space
-      )
-      this.$apollo.provider.defaultClient.writeQuery({ query, data })
-    },
-  },
+  methods: mapActions('user', ['declineInvitation', 'acceptInvitation']),
 })
 </script>
 

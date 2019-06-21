@@ -1,0 +1,26 @@
+mutation editToolkit(
+  $id: ID!
+  $title: String
+  $description: String
+  $canvas: String
+  $learning: String
+  $workflow: String
+) {
+  editToolkit(
+    toolkit: {
+      id: $id
+      title: $title
+      description: $description
+      canvas: $canvas
+      learning: $learning
+      workflow: $workflow
+    }
+  ) {
+    id
+    title
+    description
+    canvas
+    learning
+    workflow
+  }
+}

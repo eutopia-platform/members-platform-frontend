@@ -1,0 +1,9 @@
+query getWorkspaceMembers($name: String!) {
+  workspace(name: $name) {
+    members {
+      name
+      callname
+      email
+    }
+  }
+}

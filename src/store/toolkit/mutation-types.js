@@ -1,0 +1,5 @@
+export const ADD_TOOLKITS = 'ADD_TOOLKITS'
+export const REMOVE_TOOLKIT = 'REMOVE_TOOLKIT'
+export const UPDATE_TOOLKIT = 'UPDATE_TOOLKIT'
+export const SET_LOADING = 'SET_LOADING'
+export const SET_CURRENT_KIT = 'SET_CURRENT_KIT'

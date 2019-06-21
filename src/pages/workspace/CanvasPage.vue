@@ -1,16 +1,8 @@
 <template>
   <div :class="getClass">
     <div class="center" :style="centerWidth">
-      <TitleBar
-        ref="titlebar"
-        :toolkit="toolkit"
-        :style="titleBarWidth"
-      ></TitleBar>
-      <Canvas
-        :style="canvasPos"
-        :width="canvasWidth"
-        :template="template"
-      ></Canvas>
+      <TitleBar ref="titlebar" :style="titleBarWidth"></TitleBar>
+      <Canvas :style="canvasPos" :width="canvasWidth"></Canvas>
     </div>
     <ContextBar @changeWidth="updateSidebarWidth"></ContextBar>
   </div>
@@ -22,7 +14,7 @@ import Canvas from './canvas/Canvas'
 import ContextBar from './canvas/ContextBar'
 import TitleBar from './canvas/TitleBar'
 import { parseLength } from '~/scripts/parseCSS'
-import gql from 'graphql-tag'
+import { mapState, mapActions } from 'vuex'
 
 export default new Component({
   name: 'CanvasPage',
@@ -30,27 +22,6 @@ export default new Component({
     Canvas,
     TitleBar,
     ContextBar,
-  },
-  apollo: {
-    toolkit: {
-      client: 'tool',
-      query: gql`
-        query currentToolkit($id: ID!) {
-          toolkit(id: $id) {
-            title
-            canvas
-            learning
-            workflow
-            id
-          }
-        }
-      `,
-      variables() {
-        return {
-          id: this.id,
-        }
-      },
-    },
   },
   data: () => ({
     sidebarWidth: 0,
@@ -67,6 +38,7 @@ export default new Component({
     },
   },
   computed: {
+    ...mapState('toolkit', { toolkit: 'currentKit' }),
     navbarWidth() {
       return parseLength(this.offsetLeft)
     },
@@ -77,7 +49,6 @@ export default new Component({
         parseLength(this.sidebarWidth)
       )
     },
-
     centerWidth() {
       return {
         width: `calc(100% - ${this.sidebarWidth})`,
@@ -94,11 +65,12 @@ export default new Component({
         height: `calc(100% - ${this.titlebarHeight}px)`,
       }
     },
-    template() {
-      return this.toolkit ? JSON.parse(this.toolkit.canvas) : null
-    },
+  },
+  created() {
+    this.fetchToolkit(this.id)
   },
   methods: {
+    ...mapActions('toolkit', ['fetchToolkit']),
     updateSidebarWidth(width) {
       this.sidebarWidth = width
     },

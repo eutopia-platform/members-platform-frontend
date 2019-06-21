@@ -11,12 +11,12 @@
     <div class="workspace-list">
       <Invitation
         v-for="(name, i) in user.invitations"
-        :key="i"
+        :key="`invite${i}`"
         class="invite"
         :space="name"
       ></Invitation>
       <Header s3>Workspaces</Header>
-      <Paragraph v-for="(space, i) in workspaces" :key="i">
+      <Paragraph v-for="(space, i) in workspaces" :key="`space${i}`">
         <RouterLink :to="`/space/${space.name}`">{{ space.name }}</RouterLink>
       </Paragraph>
       <Paragraph v-if="workspaces.length === 0">
@@ -33,66 +33,24 @@
 import Component from '~/scripts/component'
 import { formatDate, parseDate } from '~/scripts/date'
 import Invitation from './profile/Invitation'
-import gql from 'graphql-tag'
+import { mapState, mapActions } from 'vuex'
 
 export default new Component({
   name: 'Profile',
   components: {
     Invitation,
   },
-  apollo: {
-    user: {
-      query: gql`
-        {
-          user {
-            name
-            callname
-            email
-            id
-            joined
-            invitations
-            role
-          }
-        }
-      `,
-      error(err) {
-        if (err.message.includes('NOT_LOGGED_IN'))
-          this.$router.push({
-            name: 'login',
-            params: { redirect: this.$route.path },
-          })
-        return true
-      },
-    },
-    workspaces: {
-      query: gql`
-        {
-          workspaces {
-            name
-          }
-        }
-      `,
-      client: 'work',
-    },
-  },
-  data() {
-    return {
-      user: {
-        name: '',
-        callname: '',
-        email: '',
-        id: '',
-        invitations: [],
-        role: '',
-      },
-      workspaces: [],
-    }
-  },
   computed: {
+    ...mapState('user', { user: 'info' }),
+    ...mapState('workspace', ['workspaces']),
     joinDate() {
       return this.user.joined ? formatDate(parseDate(this.user.joined)) : ''
     },
   },
+  created() {
+    this.loadUserWorkspaces()
+  },
+  methods: mapActions('workspace', ['loadUserWorkspaces']),
 })
 </script>
 

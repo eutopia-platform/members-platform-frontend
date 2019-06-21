@@ -1,0 +1,6 @@
+mutation createToolkit {
+  createToolkit {
+    id
+    title
+  }
+}

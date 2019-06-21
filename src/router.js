@@ -12,12 +12,10 @@ import NotFound from '~/pages/NotFound'
 import WorkspaceGuard from '~/pages/workspace/WorkspaceGuard'
 import Login from '~/pages/Login'
 import Dashboard from '~/pages/workspace/Dashboard'
-import Analytics from '~/pages/workspace/Analytics'
 import Toolkits from '~/pages/workspace/Toolkits'
 import Processes from '~/pages/workspace/Processes'
 import Settings from '~/pages/workspace/Settings'
 import Canvas from '~/pages/workspace/CanvasPage'
-import Invite from '~/pages/Invite'
 import Signup from '~/pages/Signup'
 import Profile from '~/pages/Profile'
 import CreateWorkspace from '~/pages/CreateWorkspace'
@@ -38,7 +36,10 @@ export default new Router({
         { path: 'toolkits', component: LpToolkits },
       ],
       beforeEnter(to, from, next) {
-        if ('sessionToken' in localStorage) next('/space')
+        if ('sessionToken' in localStorage) {
+          next(`/space/${localStorage.getItem('workspace') || ''}`)
+          return
+        }
         next()
       },
     },
@@ -53,10 +54,6 @@ export default new Router({
         {
           path: '/',
           component: Dashboard,
-        },
-        {
-          path: 'analytics',
-          component: Analytics,
         },
         {
           path: 'toolkits',
@@ -98,7 +95,6 @@ export default new Router({
     { path: '/signup', component: Signup },
     { path: '/profile', component: Profile },
     { path: '/new', component: CreateWorkspace },
-    { path: '/invite/:code', component: Invite },
     {
       path: '/admin',
       component: Admin,

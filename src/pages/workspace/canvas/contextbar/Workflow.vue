@@ -1,9 +1,8 @@
 <template>
   <div :class="getClass">
     <MarkdownDisplay
-      v-if="toolkit && toolkit.workflow.length"
-      :markdown="toolkit.workflow"
-      :encoded="true"
+      v-if="workflow.length"
+      :markdown="workflow"
     ></MarkdownDisplay>
     <Paragraph v-else>no workflow available</Paragraph>
     <Button outlined color="secondary">Milestone Challenge</Button>
@@ -13,35 +12,11 @@
 <script>
 import Component from '~/scripts/component'
 import MarkdownDisplay from '~/components/molecular/MarkdownDisplay'
-import gql from 'graphql-tag'
+import { mapGetters } from 'vuex'
 
 export default new Component({
   name: 'Workflow',
-  apollo: {
-    toolkit: {
-      client: 'tool',
-      query: gql`
-        query getWorkflow($id: ID!) {
-          toolkit(id: $id) {
-            workflow
-          }
-        }
-      `,
-      variables() {
-        return {
-          id: this.$route.params.id,
-        }
-      },
-      fetchPolicy: 'cache-only',
-    },
-  },
-  data() {
-    return {
-      toolkit: {
-        workflow: 'loading...',
-      },
-    }
-  },
+  computed: mapGetters('toolkit', ['workflow']),
   components: {
     MarkdownDisplay,
   },

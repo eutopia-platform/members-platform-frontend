@@ -4,10 +4,7 @@
     type="button"
     class="button"
     :class="{
-      text,
-      outlined,
-      raised,
-      unelevated,
+      ...getClass.reduce((a, c) => Object.assign(a, { [c]: true }), {}),
       'cl-default': color === 'default',
       'cl-primary': color === 'primary',
       'cl-secondary': color === 'secondary',

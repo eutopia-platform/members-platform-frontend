@@ -1,0 +1,7 @@
+export const SET_WORKSPACE = 'SET_WORKSPACE'
+export const UPDATE_WORKSPACE = 'UPDATE_WORKSPACE'
+export const SET_LAST_WORKSPACE = 'SET_LAST_WORKSPACE'
+export const SET_ACCESS = 'SET_ACCESS'
+export const SET_WORKSPACES = 'SET_WORKSPACES'
+export const SET_LOADING = 'SET_LOADING'
+export const RESET = 'RESET'
