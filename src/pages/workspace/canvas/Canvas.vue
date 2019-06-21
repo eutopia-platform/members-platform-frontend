@@ -4,7 +4,7 @@
     <Box
       v-for="box in boxes"
       :key="`box-${boxes.indexOf(box)}`"
-      :parent-width="width"
+      :parent-width="parentWidth"
       :parent-height="height"
       :def="box"
     >
@@ -19,7 +19,7 @@ import Box from './Box'
 import Toolbar from './Toolbar'
 import { Canvas } from './definition'
 import Template from './template'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default new Component({
   name: 'Canvas',
@@ -33,10 +33,11 @@ export default new Component({
       sideRatio: 1,
       height: window.innerHeight,
       boxes: [],
+      parentWidth: this.width,
     }
   },
   computed: {
-    ...mapState('toolkit', { toolkit: 'currentKit' }),
+    ...mapGetters('toolkit', { toolkit: 'currentKit' }),
     template() {
       return this.toolkit ? this.toolkit.canvas : null
     },
@@ -83,10 +84,11 @@ export default new Component({
       y /= this.$el.offsetHeight
       this.def.addBox(x, y)
     },
-    onResize() {
+    onResize(width = null) {
+      this.parentWidth = width === null ? this.width : width
       this.height = this.$el.offsetHeight
       this.sideRatio = this.$el.offsetHeight / this.$el.offsetWidth
-      this.def.setSideRatio(this.setSideRatio)
+      this.def.setSideRatio(this.sideRatio)
     },
     onWheel(e) {
       if (e.ctrlKey)
@@ -188,13 +190,6 @@ export default new Component({
       this.def.zoom(step, target)
     },
   },
-  mounted() {
-    window.addEventListener('resize', this.onResize)
-    this.onResize()
-    this.$el.addEventListener('wheel', this.onWheel)
-    this.$el.addEventListener('mousedown', this.onMouseDown)
-    this.$el.addEventListener('mouseup', this.onMouseUp)
-  },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
     this.$el.removeEventListener('wheel', this.onWheel)
@@ -205,6 +200,25 @@ export default new Component({
     if (this.template) {
       this.def.loadTemplate(new Template(this.def.viewport, this.template))
       this.boxes = this.def.boxes
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.onResize)
+    this.onResize()
+    this.$el.addEventListener('wheel', this.onWheel)
+    this.$el.addEventListener('mousedown', this.onMouseDown)
+    this.$el.addEventListener('mouseup', this.onMouseUp)
+
+    try {
+      new ResizeObserver(entries => {
+        if (!entries.map(entry => entry.target).includes(this.$el)) return
+        this.onResize(this.$el.offsetWidth)
+      }).observe(this.$el)
+    } catch (e) {
+      if (e instanceof ReferenceError)
+        /* eslint-disable-next-line no-console */
+        console.info("browser doesn't support ResizeObserver")
+      else throw e
     }
   },
 })

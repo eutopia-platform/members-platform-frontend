@@ -21,7 +21,7 @@
         @delete="deleteBox"
       ></BoxEdit>
       <Button outlined @click="addBox">add new box</Button>
-      <Preview :canvas="value"></Preview>
+      <Canvas></Canvas>
     </template>
   </div>
 </template>
@@ -29,8 +29,8 @@
 <script>
 import Component from '~/scripts/component'
 import BoxEdit from './BoxEdit'
-import Preview from './Preview'
 import LabeledInput from '~/components/molecular/LabeledInput'
+import Canvas from '~/pages/workspace/canvas/Canvas'
 
 export default new Component({
   name: 'CanvasEdit',
@@ -58,8 +58,8 @@ export default new Component({
   },
   components: {
     BoxEdit,
-    Preview,
     LabeledInput,
+    Canvas,
   },
   methods: {
     deleteBox(index) {
@@ -78,4 +78,14 @@ export default new Component({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.canvas-edit {
+  .canvas {
+    width: 100%;
+    height: 30rem;
+    border: 1px solid black;
+    background: gray;
+    overflow: hidden;
+  }
+}
+</style>
