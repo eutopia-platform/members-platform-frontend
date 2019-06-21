@@ -13,13 +13,17 @@ export default {
   state: {
     loading: false,
     toolkits: [],
-    currentKit: null,
+    _kitActive: null,
   },
   getters: {
     getKitById: state => id => state.toolkits.find(kit => kit.id === id),
-    title: state => (state.currentKit ? state.currentKit.title : ''),
-    workflow: state => (state.currentKit ? state.currentKit.workflow : ''),
-    learning: state => (state.currentKit ? state.currentKit.learning : ''),
+    currentKit: state =>
+      state._kitActive !== null
+        ? JSON.parse(JSON.stringify(state._kitActive))
+        : null,
+    title: state => (state._kitActive ? state._kitActive.title : ''),
+    workflow: state => (state._kitActive ? state._kitActive.workflow : ''),
+    learning: state => (state._kitActive ? state._kitActive.learning : ''),
   },
   mutations: {
     [types.ADD_TOOLKITS](state, payload) {
@@ -39,10 +43,10 @@ export default {
       state.loading = value
     },
     [types.SET_CURRENT_KIT](state, ref) {
-      state.currentKit = ref
+      state._kitActive = ref
     },
     [types.REMOVE_TOOLKIT](state, id) {
-      if (state.currentKit.id === id) state.currentKit = null
+      if (state._kitActive.id === id) state._kitActive = null
       const toolkit = state.toolkits.find(kit => kit.id === id)
       if (toolkit) state.toolkits.splice(state.toolkits.indexOf(toolkit), 1)
     },

@@ -5,11 +5,7 @@ export default class Toolkit {
   constructor(def, opt) {
     if (!def) return
 
-    const unobserve = obj => {
-      obj = JSON.parse(JSON.stringify(obj))
-      for (let e in obj) if (typeof obj[e] === 'object') unobserve(obj[e])
-    }
-    if (typeof def === 'object') unobserve(def)
+    if (typeof def === 'object') def = JSON.parse(JSON.stringify(def))
 
     if (opt && opt.decode) def = Toolkit._decode(def)
 
